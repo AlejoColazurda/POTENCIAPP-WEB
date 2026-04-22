@@ -61,9 +61,10 @@ export function Header() {
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
             <Button
+              asChild
               className="bg-[#7CFF3A] text-background hover:bg-[#6EE832] font-semibold shadow-[0_0_20px_rgba(124,255,58,0.3)] hover:shadow-[0_0_30px_rgba(124,255,58,0.5)] transition-all duration-300"
             >
-              Cotizar
+              <Link href="#contacto">Cotizar</Link>
             </Button>
           </div>
 
@@ -97,9 +98,12 @@ export function Header() {
             </Link>
           ))}
           <Button
+            asChild
             className="bg-[#7CFF3A] text-background hover:bg-[#6EE832] font-semibold w-full mt-2"
           >
-            Cotizar
+            <Link href="#contacto" onClick={() => setIsMobileMenuOpen(false)}>
+              Cotizar
+            </Link>
           </Button>
         </nav>
       </div>

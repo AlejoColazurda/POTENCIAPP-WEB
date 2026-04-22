@@ -37,7 +37,7 @@ const cases = [
 
 export function CasesSection() {
   return (
-    <section id="casos" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="casos" className="relative scroll-mt-24 py-24 lg:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/10 via-background to-background" />
       

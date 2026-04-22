@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { ArrowRight, Sparkles, Layers, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -48,18 +49,22 @@ export function HeroSection() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up animation-delay-300">
               <Button
+                asChild
                 size="lg"
                 className="bg-[#7CFF3A] text-background hover:bg-[#6EE832] font-semibold text-base h-14 px-8 shadow-[0_0_30px_rgba(124,255,58,0.4)] hover:shadow-[0_0_50px_rgba(124,255,58,0.6)] transition-all duration-300 animate-glow-pulse"
               >
-                Empezar ahora
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <Link href="#contacto">
+                  Empezar ahora
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
               <Button
+                asChild
                 variant="outline"
                 size="lg"
                 className="border-border text-foreground hover:bg-secondary hover:text-foreground font-semibold text-base h-14 px-8 transition-all duration-300"
               >
-                Ver soluciones
+                <Link href="#servicios">Ver soluciones</Link>
               </Button>
             </div>
 

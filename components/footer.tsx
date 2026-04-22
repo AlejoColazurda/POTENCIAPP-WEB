@@ -1,33 +1,26 @@
 "use client"
 
 import Link from "next/link"
-import { Linkedin, Instagram, Github, Mail, MapPin } from "lucide-react"
+import { MapPin } from "lucide-react"
 
 const footerLinks = {
   servicios: [
     { label: "Desarrollo E-commerce", href: "#servicios" },
     { label: "IA & Automatización", href: "#servicios" },
     { label: "Desarrollo Web", href: "#servicios" },
-    { label: "Consultoría", href: "#" },
+    { label: "Consultoría", href: "#contacto" },
   ],
   empresa: [
     { label: "Casos de Éxito", href: "#casos" },
-    { label: "Proceso", href: "#" },
+    { label: "Proceso", href: "#proceso" },
     { label: "Blog", href: "#" },
-    { label: "Contacto", href: "#" },
+    { label: "Contacto", href: "#contacto" },
   ],
   legal: [
     { label: "Términos", href: "#" },
     { label: "Privacidad", href: "#" },
   ],
 }
-
-const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Mail, href: "mailto:contacto@potenciapp.com", label: "Email" },
-]
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -97,23 +90,19 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Social & Legal */}
+            {/* Legal */}
             <div>
               <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide mb-4">
-                Conectar
+                Legal
               </h4>
-              <div className="flex gap-3 mb-6">
-                {socialLinks.map((social) => (
-                  <Link
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    className="h-10 w-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:bg-[#7CFF3A]/20 hover:text-[#7CFF3A] transition-all duration-200"
-                  >
-                    <social.icon className="h-5 w-5" />
-                  </Link>
-                ))}
-              </div>
+              <p className="text-sm text-muted-foreground mb-4">
+                <Link
+                  href="mailto:contacto@potenciapp.com"
+                  className="hover:text-[#7CFF3A] transition-colors duration-200"
+                >
+                  contacto@potenciapp.com
+                </Link>
+              </p>
               <ul className="space-y-2">
                 {footerLinks.legal.map((link) => (
                   <li key={link.label}>

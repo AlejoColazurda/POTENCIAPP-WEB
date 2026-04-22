@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { ShoppingCart, Brain, Code, ArrowUpRight } from "lucide-react"
 
 const services = [
@@ -28,7 +29,7 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="servicios" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="servicios" className="relative scroll-mt-24 py-24 lg:py-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
       
@@ -122,10 +123,13 @@ function ServiceCard({
       </div>
 
       {/* CTA Link */}
-      <div className="flex items-center gap-2 text-sm font-semibold text-[#7CFF3A] group-hover:gap-3 transition-all duration-300">
+      <Link
+        href="#contacto"
+        className="flex items-center gap-2 text-sm font-semibold text-[#7CFF3A] group-hover:gap-3 transition-all duration-300"
+      >
         <span>Más información</span>
         <ArrowUpRight className="h-4 w-4" />
-      </div>
+      </Link>
     </div>
   )
 }

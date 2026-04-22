@@ -1,11 +1,12 @@
 "use client"
 
+import Link from "next/link"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function CTASection() {
   return (
-    <section id="precios" className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="precios" className="relative scroll-mt-24 py-24 lg:py-32 overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-[#7CFF3A]/5 to-background" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#7CFF3A]/10 rounded-full blur-[120px]" />
@@ -45,11 +46,14 @@ export function CTASection() {
 
             {/* CTA Button */}
             <Button
+              asChild
               size="lg"
               className="bg-[#7CFF3A] text-background hover:bg-[#6EE832] font-bold text-lg h-16 px-10 shadow-[0_0_40px_rgba(124,255,58,0.5)] hover:shadow-[0_0_60px_rgba(124,255,58,0.7)] transition-all duration-300 animate-glow-pulse"
             >
-              Hablemos de tu proyecto
-              <ArrowRight className="ml-3 h-5 w-5" />
+              <Link href="#contacto">
+                Hablemos de tu proyecto
+                <ArrowRight className="ml-3 h-5 w-5" />
+              </Link>
             </Button>
 
             {/* Trust note */}

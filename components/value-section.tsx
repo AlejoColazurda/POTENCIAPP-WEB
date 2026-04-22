@@ -27,7 +27,7 @@ const values = [
 
 export function ValueSection() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
+    <section id="proceso" className="relative scroll-mt-24 py-24 lg:py-32 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/10" />
       

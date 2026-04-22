@@ -4,6 +4,7 @@ import { ServicesSection } from "@/components/services-section"
 import { ValueSection } from "@/components/value-section"
 import { CasesSection } from "@/components/cases-section"
 import { CTASection } from "@/components/cta-section"
+import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 
 export default function HomePage() {
@@ -16,6 +17,7 @@ export default function HomePage() {
         <ValueSection />
         <CasesSection />
         <CTASection />
+        <ContactSection />
       </main>
       <Footer />
     </div>
