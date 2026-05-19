@@ -1,111 +1,88 @@
-# Branding Potenciapp — Assets
+# Branding Potenciapp — Assets (REAL, partiendo del diseño original)
 
-Logos e iconos de Potenciapp en SVG (vector, escalables) y PNG (varios tamaños) + favicon multi-size.
+Logos e iconos de Potenciapp en PNG con **fondo transparente real**, derivados de los archivos originales del diseño. Ya no son recreaciones SVG aproximadas — son las imágenes oficiales procesadas.
 
 ## Estructura
 
 ```
 branding/
-├── svg/                       Vectores (preferidos para web)
-│   ├── mark.svg               Solo el ícono (círculo verde con cohete)
-│   ├── favicon.svg            Igual al mark; usar en <link rel="icon">
-│   ├── isotipo-light.svg      P + ícono (texto NEGRO, para fondos claros)
-│   ├── isotipo-dark.svg       P + ícono (texto BLANCO, para fondos oscuros)
-│   ├── wordmark-light.svg     POTENCIAPP horizontal (texto NEGRO)
-│   └── wordmark-dark.svg      POTENCIAPP horizontal (texto BLANCO)
+├── png/                       Logos en varios tamaños
+│   ├── mark-{64,128,256,512,1024}.png       (ícono solo, cuadrado)
+│   ├── mark-full.png                         (resolución completa, ~373×374)
+│   ├── isotipo-light-{256,512,1024}.png      P + ícono, P negra (fondos claros)
+│   ├── isotipo-dark-{256,512,1024}.png       P + ícono, P blanca (fondos oscuros)
+│   ├── isotipo-{light,dark}-full.png         resolución completa, ~627×492
+│   ├── wordmark-light-{400,800,1600}.png     POTENCIAPP, POTENCI negro (fondos claros)
+│   ├── wordmark-dark-{400,800,1600}.png      POTENCIAPP, POTENCI blanco (fondos oscuros)
+│   └── wordmark-{light,dark}-full.png        resolución completa, ~943×133
 │
-├── png/                       Rasterizados (para casos donde no se pueda SVG)
-│   ├── mark-{64,128,256,512,1024}.png
-│   ├── isotipo-{light,dark}-{512,1024,2048}.png
-│   └── wordmark-{light,dark}-{800,1600,3200}.png
-│
-└── favicons/                  Para <head>
-    ├── favicon.ico            multi-size (16/32/48/64) — clásico
-    ├── favicon-{16,32,48,64}.png
-    └── favicon-180.png        Apple Touch Icon
+└── favicons/
+    ├── favicon.ico                           multi-size 16/32/48/64
+    ├── favicon-{16,32,48,64}.png             tamaños chicos
+    └── favicon-180.png                       Apple Touch Icon
 ```
 
-Los archivos con sufijo `-preview` son verificaciones visuales que generé al armar los assets. Podés borrarlos a mano si querés limpieza, no se usan en producción.
+> Si ves archivos terminados en `-preview.png` o `-on-ink-preview.png`, son verificaciones internas que se pueden ignorar/borrar.
+
+## Cómo usar (URLs públicas en producción)
+
+Una vez subidos a `POTENCIAPP-WEB` y deployado en Vercel, las URLs van a ser:
+
+```
+https://www.potenciapp.com/branding/png/mark-512.png
+https://www.potenciapp.com/branding/png/wordmark-light-800.png
+https://www.potenciapp.com/branding/png/wordmark-dark-800.png
+https://www.potenciapp.com/branding/png/isotipo-light-512.png
+https://www.potenciapp.com/branding/png/isotipo-dark-512.png
+https://www.potenciapp.com/branding/favicons/favicon.ico
+https://www.potenciapp.com/branding/favicons/favicon-180.png
+
+# Aliases automáticos de Next.js:
+https://www.potenciapp.com/icon.svg       (fallback vectorial)
+https://www.potenciapp.com/favicon.ico
+https://www.potenciapp.com/apple-icon.png
+```
 
 ## Paleta oficial
 
 | Token | Hex | Uso |
 |---|---|---|
-| Verde principal | `#1AFF1A` | Acentos, "APP" del wordmark, anillo del mark, el cohete |
-| Negro | `#000000` | "POTENCI" del wordmark, fondo del disco interior del mark |
-| Ink (sobre claro) | `#0b1220` | Texto principal cuando se evita el negro puro |
-| Paper | `#f7f9f7` | Fondo de página |
-
-> **Importante:** El verde es lime/neón puro. No confundir con verdes corporativos más oscuros (ej. `#1f7a3e`) que aparecen en algunas variantes históricas del portal. El verde del logo es el verde de marca.
+| Verde lime | `#1AFF1A` | Brand color principal — APP del wordmark, anillo del mark, ojo de la P |
+| Negro | `#000000` | POTENCI del wordmark, P del isotipo, interior del mark |
+| Ink | `#0b1220` | Texto principal en lugar de negro puro cuando se busca menos contraste |
+| Paper | `#f7f9f7` | Fondo de página claro |
 
 ## Tipografía
 
-**Archivo Black** (Google Fonts) — los wordmarks fueron renderizados con esta fuente. Si tu app no la carga, los SVG tienen fallback a Impact / Inter / system-ui, pero el resultado solo será 100% fiel con Archivo Black cargada:
-
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-```
-
-Para body usar **Inter** (400-800). Archivo Black SOLO para el logo y eventualmente para headlines grandes; no usar para body porque es muy pesada.
-
-## Cómo usar los assets
-
-### En código (HTML / React / etc.)
-
-Una vez subidos al repo y desplegados, las URLs públicas van a ser:
-
-```
-https://gisbert.potenciapp.com/branding/svg/wordmark-light.svg
-https://gisbert.potenciapp.com/branding/svg/mark.svg
-https://gisbert.potenciapp.com/branding/png/wordmark-light-1600.png
-https://potenciapp.com/branding/favicons/favicon.ico
-... etc
-```
-
-(Las URLs son las mismas sobre cualquier subdominio del proyecto, porque están en `public/branding/`.)
-
-### En el `<head>` para favicon
-
-```html
-<link rel="icon" type="image/svg+xml" href="/branding/svg/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/branding/favicons/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/branding/favicons/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/branding/favicons/favicon-180.png">
-<link rel="shortcut icon" href="/branding/favicons/favicon.ico">
-```
-
-### En componentes React (project-tracker)
-
-Reemplazar el cuadrado con la letra "P" hardcodeada por el SVG real:
-
-```tsx
-// Antes (placeholder):
-<div className="w-10 h-10 rounded-lg bg-white/10 border border-white/20
-                flex items-center justify-center font-extrabold text-white">
-  P
-</div>
-
-// Después (logo real):
-<img src="/branding/svg/mark.svg" alt="Potenciapp" className="w-10 h-10" />
-```
-
-Para el header con texto:
-
-```tsx
-<img src="/branding/svg/wordmark-light.svg" alt="Potenciapp" className="h-8" />
-// o, sobre fondo oscuro:
-<img src="/branding/svg/wordmark-dark.svg" alt="Potenciapp" className="h-8" />
-```
+- **Logo:** Archivo Black (los wordmarks reales ya tienen las letras embebidas como pixels — no hace falta cargar la fuente solo para el logo)
+- **Body / UI:** Inter (400-800) desde Google Fonts
 
 ## Cuándo usar qué variante
 
-- **mark.svg** — favicon, app icon, avatares de la marca, casos donde no entra el wordmark.
-- **isotipo-light/dark.svg** — header de la app, presentaciones, contextos donde querés P + ícono sin todo el wordmark.
-- **wordmark-light/dark.svg** — footer, página de login, contextos comerciales donde el nombre debe leerse claro.
-- **light vs dark** — light = texto negro para fondos claros (paper, blanco). dark = texto blanco para fondos oscuros (ink, gradiente hero, negro).
+- **mark.png** — favicon, app icon, avatar de la marca, casos donde no entra el wordmark.
+- **isotipo-light/dark.png** — header de app, presentaciones donde querés P + ícono pero no todo el wordmark.
+- **wordmark-light/dark.png** — footer, login, contextos comerciales donde el nombre tiene que leerse claro.
+- **light vs dark** — `light` es texto negro para fondos claros (paper, blanco). `dark` es texto blanco para fondos oscuros (ink, gradiente, negro).
 
-## Subir al repo
+## En código (HTML / React)
 
-Hay un script `subir_branding_a_project_tracker.bat` en la carpeta padre del workspace que hace `git pull` + copia los assets a `project-tracker/public/branding/` + commit + push. Ejecutalo después de que estés conforme con los logos.
+```html
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/branding/favicons/favicon.ico">
+<link rel="apple-touch-icon" href="/branding/favicons/favicon-180.png">
+
+<!-- Header oscuro (sobre fondo --pp-ink o negro) -->
+<img src="/branding/png/wordmark-dark-800.png" alt="Potenciapp" width="200" height="28">
+
+<!-- Header claro (sobre fondo blanco/paper) -->
+<img src="/branding/png/wordmark-light-800.png" alt="Potenciapp" width="200" height="28">
+
+<!-- Avatar / ícono compacto -->
+<img src="/branding/png/mark-128.png" alt="Potenciapp" width="40" height="40">
+```
+
+Si lo usás desde un repo distinto (no `POTENCIAPP-WEB`), referenciá la URL absoluta:
+
+```tsx
+<img src="https://www.potenciapp.com/branding/png/wordmark-dark-800.png" alt="Potenciapp" />
+```
