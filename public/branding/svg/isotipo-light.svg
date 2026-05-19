@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" role="img" aria-label="Potenciapp isotipo">
+  <text x="20" y="260"
+        font-family="'Archivo Black', Impact, 'Inter', system-ui, sans-serif"
+        font-weight="900"
+        font-size="320"
+        fill="#000000"
+        letter-spacing="-8">P</text>
+  <g transform="translate(75 30) scale(0.55) rotate(30 100 100)">
+    <path d="M 100 50 Q 122 76 122 102 L 122 128 Q 122 134 116 134 L 84 134 Q 78 134 78 128 L 78 102 Q 78 76 100 50 Z" fill="#1AFF1A"/>
+    <path d="M 78 110 L 60 144 Q 60 148 64 148 L 78 134 Z" fill="#1AFF1A"/>
+    <path d="M 122 110 L 140 144 Q 140 148 136 148 L 122 134 Z" fill="#1AFF1A"/>
+    <circle cx="100" cy="98" r="9" fill="#000000"/></g>
+  <g transform="translate(340 60)">
+    <circle cx="100" cy="100" r="96" fill="#1AFF1A"/>
+    <circle cx="100" cy="100" r="72" fill="#000000"/>
+    <g transform="rotate(30 100 100)">
+    <path d="M 100 50 Q 122 76 122 102 L 122 128 Q 122 134 116 134 L 84 134 Q 78 134 78 128 L 78 102 Q 78 76 100 50 Z" fill="#1AFF1A"/>
+    <path d="M 78 110 L 60 144 Q 60 148 64 148 L 78 134 Z" fill="#1AFF1A"/>
+    <path d="M 122 110 L 140 144 Q 140 148 136 148 L 122 134 Z" fill="#1AFF1A"/>
+    <circle cx="100" cy="98" r="9" fill="#000000"/></g>
+  </g>
+</svg>
