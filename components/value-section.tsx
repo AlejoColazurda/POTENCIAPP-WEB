@@ -1,107 +1,80 @@
 "use client"
 
-import { Workflow, Link2, TrendingUp, Target, Check } from "lucide-react"
-
-const values = [
-  {
-    icon: Workflow,
-    title: "Automatización de Procesos",
-    description: "Eliminamos tareas repetitivas con flujos automatizados que ahorran tiempo y reducen errores.",
-  },
-  {
-    icon: Link2,
-    title: "Integración con Sistemas Existentes",
-    description: "Conectamos tu nuevo sistema con las herramientas que ya utilizás, sin fricciones.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Escalabilidad Garantizada",
-    description: "Arquitecturas diseñadas para crecer con tu negocio sin comprometer la performance.",
-  },
-  {
-    icon: Target,
-    title: "Enfoque en Resultados",
-    description: "Cada decisión técnica está orientada a generar impacto real en tu negocio.",
-  },
-]
+import { useTranslations } from "next-intl"
+import { BrandMark } from "@/components/brand"
+import { BRAND_LOGOS, BrandLogo } from "@/components/brand-logos"
 
 export function ValueSection() {
+  const tLogos = useTranslations("logos")
+  const t = useTranslations("value")
+
   return (
-    <section id="proceso" className="relative scroll-mt-24 py-24 lg:py-32 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/10" />
-      
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left Column - Content */}
-          <div>
-            <span className="inline-block text-sm font-semibold text-[#7CFF3A] tracking-wide uppercase mb-4">
-              Por qué elegirnos
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6">
-              Tecnología que{" "}
-              <span className="bg-gradient-to-r from-[#7CFF3A] to-[#5ACC2A] bg-clip-text text-transparent">
-                impulsa negocios
-              </span>
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              No solo construimos software, creamos sistemas que transforman la forma en que operás y competís en el mercado.
-            </p>
+    <section className="relative bg-gray-950 py-20 lg:py-32 overflow-hidden">
+      {/* Stack & integrations marquee */}
+      <div className="relative max-w-[1280px] mx-auto px-4 md:px-8 mb-20 lg:mb-32">
+        <div className="flex items-center gap-3 mb-10">
+          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-800 to-gray-800" />
+          <span className="font-mono text-[11px] uppercase tracking-wider text-gray-500 px-3">
+            {tLogos("eyebrow")}
+          </span>
+          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gray-800 to-gray-800" />
+        </div>
 
-            {/* Value Points */}
-            <div className="space-y-4">
-              {["Reducción de costos operativos", "Mayor velocidad de ejecución", "Decisiones basadas en datos", "Ventaja competitiva sostenible"].map((point, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="h-6 w-6 rounded-full bg-[#7CFF3A]/20 flex items-center justify-center flex-shrink-0">
-                    <Check className="h-3.5 w-3.5 text-[#7CFF3A]" />
-                  </div>
-                  <span className="text-foreground font-medium">{point}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="relative overflow-hidden">
+          {/* Fade edges */}
+          <div
+            aria-hidden
+            className="absolute inset-y-0 left-0 w-32 lg:w-48 bg-gradient-to-r from-gray-950 to-transparent z-10"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-y-0 right-0 w-32 lg:w-48 bg-gradient-to-l from-gray-950 to-transparent z-10"
+          />
 
-          {/* Right Column - Cards Grid */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {values.map((value, index) => (
-              <ValueCard key={index} {...value} index={index} />
+          {/*
+            Canonical marquee: 2N items in a single flex track, each with
+            trailing pr-12. No flex `gap` (which would break the -50% math).
+            Animating the track 0 → -50% lands precisely on the boundary
+            between copy A and copy B — perfect seamless loop.
+            Pauses on hover for legibility.
+          */}
+          <ul
+            className="flex items-center marquee-track"
+            style={{ width: "max-content" }}
+          >
+            {[...BRAND_LOGOS, ...BRAND_LOGOS].map((logo, i) => (
+              <li
+                key={i}
+                className="shrink-0 pr-12 lg:pr-16"
+                aria-hidden={i >= BRAND_LOGOS.length || undefined}
+              >
+                <BrandLogo logo={logo} />
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
-    </section>
-  )
-}
 
-function ValueCard({
-  icon: Icon,
-  title,
-  description,
-  index,
-}: {
-  icon: React.ElementType
-  title: string
-  description: string
-  index: number
-}) {
-  return (
-    <div
-      className={`group relative bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-6 hover:border-[#7CFF3A]/30 hover:shadow-[0_0_30px_rgba(124,255,58,0.1)] transition-all duration-500 ${
-        index === 0 ? "sm:-translate-y-4" : index === 3 ? "sm:translate-y-4" : ""
-      }`}
-    >
-      {/* Icon */}
-      <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-[#7CFF3A]/10 text-[#7CFF3A] mb-4 group-hover:bg-[#7CFF3A]/20 transition-colors duration-300">
-        <Icon className="h-6 w-6" />
+      {/* Value prop */}
+      <div className="relative max-w-[1280px] mx-auto px-4 md:px-8 text-center">
+        <div className="inline-flex items-center justify-center mb-8">
+          <BrandMark size={56} glow />
+        </div>
+        <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900 border border-gray-800 mb-6">
+          <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
+          <span className="font-mono text-[11px] uppercase tracking-wider text-gray-300">
+            {t("eyebrow")}
+          </span>
+        </span>
+
+        <h2 className="font-display font-bold text-4xl sm:text-5xl lg:text-[56px] leading-[1.05] tracking-[-0.02em] text-gray-100 max-w-[880px] mx-auto">
+          {t("title")} <span className="text-brand-green">{t("accent")}</span>
+        </h2>
+
+        <p className="mt-8 text-lg text-gray-300 max-w-[640px] mx-auto leading-relaxed">
+          {t("body")}
+        </p>
       </div>
-
-      {/* Content */}
-      <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-[#7CFF3A] transition-colors duration-300">
-        {title}
-      </h3>
-      <p className="text-sm text-muted-foreground leading-relaxed">
-        {description}
-      </p>
-    </div>
+    </section>
   )
 }

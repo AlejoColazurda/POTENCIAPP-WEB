@@ -1,184 +1,315 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, Sparkles, Layers, Zap } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ArrowRight, TrendingUp, Activity, Zap, Sparkles } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+import { useTranslations } from "next-intl"
+import { BrandMark, BrandMarkAnimated } from "@/components/brand"
 
 export function HeroSection() {
+  const t = useTranslations("hero")
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 lg:pt-0">
-      {/* Background gradient effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#7CFF3A]/10 rounded-full blur-[128px] animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#7CFF3A]/5 rounded-full blur-[96px] animate-pulse" style={{ animationDelay: "1s" }} />
-      
-      {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(124,255,58,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(124,255,58,0.3) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
+    <section className="relative isolate overflow-hidden bg-gray-950 pt-32 pb-16 lg:pt-40 lg:pb-24">
+      {/* Remotion-generated background video — slowed via playbackRate */}
+      <video
+        aria-hidden
+        autoPlay
+        loop
+        muted
+        playsInline
+        ref={(el) => {
+          if (el) el.playbackRate = 0.5
         }}
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-40"
+      >
+        <source src="/videos/hero-bg.mp4" type="video/mp4" />
+      </video>
+      {/* Gradient overlay to keep text legible */}
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-b from-gray-950/40 via-gray-950/30 to-gray-950 pointer-events-none"
+      />
+      <div
+        aria-hidden
+        className="absolute top-1/4 right-[8%] w-[480px] h-[480px] rounded-full bg-brand-green/10 blur-[140px] pointer-events-none"
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Column - Text Content */}
-          <div className="space-y-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#7CFF3A]/10 border border-[#7CFF3A]/20 opacity-0 animate-fade-in-up">
-              <Sparkles className="h-4 w-4 text-[#7CFF3A]" />
-              <span className="text-sm font-medium text-[#7CFF3A]">Potenciado por IA</span>
-            </div>
+      <div className="relative mx-auto max-w-[1280px] px-4 md:px-8">
+        <div className="flex items-center gap-3 mb-6 animate-fade-in-up">
+          <BrandMark size={32} glow />
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900 border border-gray-800">
+            <span className="h-2 w-2 rounded-full bg-brand-green animate-pulse-dot" />
+            <span className="font-mono text-xs uppercase tracking-wider text-gray-300">
+              {t("statusBadge")}
+            </span>
+          </span>
+        </div>
 
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-foreground leading-[1.1] opacity-0 animate-fade-in-up animation-delay-100">
-              Desarrollo Web{" "}
-              <span className="text-[#7CFF3A]">&</span>{" "}
-              E-commerce{" "}
-              <span className="bg-gradient-to-r from-[#7CFF3A] to-[#5ACC2A] bg-clip-text text-transparent">
-                Potenciado por IA
+        <h1 className="font-display font-bold leading-[0.85] tracking-[-0.04em] text-outline text-[18vw] sm:text-[16vw] lg:text-[clamp(96px,12vw,180px)] select-none animate-fade-in-up animation-delay-100">
+          {t("outline")}
+        </h1>
+
+        <div className="mt-6 lg:mt-8 grid lg:grid-cols-[6fr_4fr] gap-12 lg:gap-16 items-start">
+          <div className="space-y-7">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-green/10 border border-brand-green/30 animate-fade-in-up animation-delay-100">
+              <Sparkles className="h-3.5 w-3.5 text-brand-green" strokeWidth={2.5} />
+              <span className="font-mono text-xs uppercase tracking-wider text-brand-green">
+                {t("partnerBadge")}
               </span>
-            </h1>
-
-            {/* Subheadline */}
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-xl opacity-0 animate-fade-in-up animation-delay-200">
-              Creamos sistemas digitales de alto rendimiento que escalan tu negocio con automatización, datos e inteligencia aplicada.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up animation-delay-300">
-              <Button
-                asChild
-                size="lg"
-                className="bg-[#7CFF3A] text-background hover:bg-[#6EE832] font-semibold text-base h-14 px-8 shadow-[0_0_30px_rgba(124,255,58,0.4)] hover:shadow-[0_0_50px_rgba(124,255,58,0.6)] transition-all duration-300 animate-glow-pulse"
-              >
-                <Link href="#contacto">
-                  Empezar ahora
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-border text-foreground hover:bg-secondary hover:text-foreground font-semibold text-base h-14 px-8 transition-all duration-300"
-              >
-                <Link href="#servicios">Ver soluciones</Link>
-              </Button>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap gap-6 pt-4 opacity-0 animate-fade-in-up animation-delay-400">
-              <TrustIndicator icon={Sparkles} text="Soluciones a medida" />
-              <TrustIndicator icon={Layers} text="Arquitectura escalable" />
-              <TrustIndicator icon={Zap} text="Automatización con IA" />
+            <h2 className="font-display text-[44px] sm:text-6xl lg:text-7xl font-bold tracking-[-0.03em] leading-[0.95] text-gray-100 animate-fade-in-up animation-delay-200">
+              {t("h2_line1")}<br />
+              <span className="text-brand-green">{t("h2_accent")}</span>
+            </h2>
+
+            <p
+              className="text-lg text-gray-300 max-w-xl leading-relaxed animate-fade-in-up animation-delay-300"
+              dangerouslySetInnerHTML={{
+                __html: t.raw("subheading").replace(/<bold>/g, '<strong class="text-gray-100 font-semibold">').replace(/<\/bold>/g, "</strong>"),
+              }}
+            />
+
+            <div className="flex flex-col sm:flex-row gap-3 pt-2 animate-fade-in-up animation-delay-400">
+              <Link
+                href="#contacto"
+                className="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-lg bg-brand-green text-black font-display font-bold text-base hover:bg-green-hover hover:shadow-[0_0_32px_rgba(34,242,58,0.5)] transition-all duration-300 active:scale-[0.98]"
+              >
+                {t("ctaPrimary")}
+                <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
+              </Link>
+              <Link
+                href="#casos"
+                className="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-lg border border-brand-green text-brand-green font-display font-bold text-base hover:bg-brand-green/10 transition-all duration-300"
+              >
+                {t("ctaSecondary")}
+                <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
+              </Link>
             </div>
           </div>
 
-          {/* Right Column - Dashboard Mockup */}
-          <div className="relative lg:pl-8 opacity-0 animate-fade-in-up animation-delay-300">
+          <div className="relative animate-fade-in-up animation-delay-300">
             <DashboardMockup />
           </div>
+        </div>
+
+        <div className="mt-20 lg:mt-28 grid grid-cols-2 lg:grid-cols-4 gap-px bg-gray-800 border border-gray-800 rounded-2xl overflow-hidden animate-fade-in-up animation-delay-500">
+          {(["m1", "m2", "m3", "m4"] as const).map((k) => (
+            <MetricItem key={k} mk={k} />
+          ))}
         </div>
       </div>
     </section>
   )
 }
 
-function TrustIndicator({ icon: Icon, text }: { icon: React.ElementType; text: string }) {
+function MetricItem({ mk }: { mk: "m1" | "m2" | "m3" | "m4" }) {
+  const t = useTranslations("hero.metrics")
   return (
-    <div className="flex items-center gap-2">
-      <div className="h-8 w-8 rounded-lg bg-[#7CFF3A]/10 flex items-center justify-center">
-        <Icon className="h-4 w-4 text-[#7CFF3A]" />
-      </div>
-      <span className="text-sm font-medium text-muted-foreground">{text}</span>
+    <div className="bg-gray-950 px-6 py-6 lg:py-8 flex flex-col items-start gap-1">
+      <span className="font-display font-bold text-3xl lg:text-4xl text-gray-100 tracking-tight">
+        {t(`${mk}.value`)}
+      </span>
+      <span className="font-mono text-[11px] uppercase tracking-wider text-gray-500">
+        {t(`${mk}.label`)}
+      </span>
     </div>
   )
 }
 
 function DashboardMockup() {
+  const t = useTranslations("hero.dashboard")
+  const [revenue, setRevenue] = useState(0)
+  const [tick, setTick] = useState(0)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!ref.current) return
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    let raf: number
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const target = 124812
+          if (reduced) {
+            setRevenue(target)
+          } else {
+            const start = performance.now()
+            const duration = 2800
+            const step = (now: number) => {
+              const t = Math.min((now - start) / duration, 1)
+              const eased = 1 - Math.pow(1 - t, 3)
+              setRevenue(Math.floor(eased * target))
+              if (t < 1) raf = requestAnimationFrame(step)
+            }
+            raf = requestAnimationFrame(step)
+          }
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.3 },
+    )
+    obs.observe(ref.current)
+    return () => {
+      obs.disconnect()
+      cancelAnimationFrame(raf)
+    }
+  }, [])
+
+  useEffect(() => {
+    const id = setInterval(() => setTick((x) => x + 1), 8000)
+    return () => clearInterval(id)
+  }, [])
+
   return (
-    <div className="relative animate-float">
-      {/* Glow effect */}
-      <div className="absolute -inset-4 bg-gradient-to-r from-[#7CFF3A]/20 to-transparent rounded-2xl blur-2xl" />
-      
-      {/* Main dashboard card */}
-      <div className="relative bg-card/50 backdrop-blur-xl border border-border rounded-2xl p-6 shadow-2xl">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <div className="h-3 w-3 rounded-full bg-[#7CFF3A] shadow-[0_0_10px_rgba(124,255,58,0.5)]" />
-            <span className="text-sm font-medium text-foreground">Dashboard</span>
-          </div>
-          <div className="flex gap-1.5">
-            <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-            <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-            <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-          </div>
+    <div ref={ref} className="relative">
+      <div
+        aria-hidden
+        className="absolute -inset-8 bg-brand-green/15 blur-[80px] pointer-events-none rounded-3xl"
+      />
+
+      <div className="relative bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-[0_24px_64px_-12px_rgba(0,0,0,0.8)]">
+        <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-800 bg-gray-900">
+          <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
+          <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
+          <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
+          <span className="ml-3 flex items-center gap-2 font-mono text-[11px] text-gray-300 truncate">
+            <BrandMark size={16} />
+            {t("url")}
+          </span>
+          <span className="ml-auto flex items-center gap-1.5 font-mono text-[11px] text-brand-green">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-green animate-pulse-dot" />
+            {t("live")}
+          </span>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <StatCard label="Ventas Totales" value="$124,592" change="+12.5%" positive />
-          <StatCard label="Conversiones" value="2,847" change="+8.3%" positive />
-        </div>
+        <div className="p-5 space-y-4">
+          <div className="bg-gray-950 border border-gray-800 rounded-xl p-4">
+            <div className="flex items-baseline justify-between">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-gray-500">
+                {t("revenue")}
+              </span>
+              <span className="font-mono text-[11px] text-brand-green">▲ +18,4%</span>
+            </div>
+            <div className="mt-2 flex items-center justify-between gap-4">
+              <span className="font-display text-3xl font-bold text-gray-100 tracking-tight tabular-nums">
+                ${revenue.toLocaleString("es-AR")}
+              </span>
+              <svg viewBox="0 0 80 28" className="w-24 h-7 flex-shrink-0">
+                <path
+                  d="M0,22 L10,20 L20,18 L30,14 L40,16 L50,10 L60,12 L70,6 L80,4"
+                  fill="none"
+                  stroke="#22F23A"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+                <circle cx="80" cy="4" r="2.5" fill="#22F23A" />
+              </svg>
+            </div>
+          </div>
 
-        {/* Chart Preview */}
-        <div className="bg-secondary/50 rounded-xl p-4 mb-4">
-          <div className="flex items-end justify-between h-24 gap-2">
-            {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((height, i) => (
-              <div
-                key={i}
-                className="flex-1 bg-gradient-to-t from-[#7CFF3A] to-[#7CFF3A]/40 rounded-t-sm transition-all duration-300 hover:from-[#7CFF3A] hover:to-[#7CFF3A]/60"
-                style={{ height: `${height}%` }}
-              />
+          <div className="grid grid-cols-3 gap-2">
+            {[
+              { label: t("kpi1"), value: "4,21%", delta: "+0,9" },
+              { label: t("kpi2"), value: "8.412", delta: "+12%" },
+              { label: t("kpi3"), value: "$328", delta: "−2,1%", down: true },
+            ].map((k) => (
+              <div key={k.label} className="bg-gray-950 border border-gray-800 rounded-lg p-3">
+                <div className="font-mono text-[11px] uppercase tracking-wider text-gray-500">
+                  {k.label}
+                </div>
+                <div className="mt-1 font-display text-base font-bold text-gray-100 tracking-tight">
+                  {k.value}
+                </div>
+                <div
+                  className={`mt-0.5 font-mono text-[11px] ${
+                    k.down ? "text-red-400" : "text-brand-green"
+                  }`}
+                >
+                  {k.down ? "▼" : "▲"} {k.delta}
+                </div>
+              </div>
             ))}
           </div>
-        </div>
 
-        {/* Mini Cards */}
-        <div className="grid grid-cols-3 gap-3">
-          <MiniCard icon="📦" label="Pedidos" value="156" />
-          <MiniCard icon="👥" label="Usuarios" value="3.2k" />
-          <MiniCard icon="⚡" label="API Calls" value="12k" />
+          <div className="bg-gray-950 border border-gray-800 rounded-xl p-4">
+            <div className="flex items-baseline justify-between mb-3">
+              <span className="font-mono text-[11px] uppercase tracking-wider text-gray-500">
+                {t("revenueChart")}
+              </span>
+              <span className="font-mono text-[11px] text-gray-300">{t("vs")}</span>
+            </div>
+            <svg viewBox="0 0 280 90" className="w-full h-20" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="hero-grad" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stopColor="#22F23A" stopOpacity="0.35" />
+                  <stop offset="100%" stopColor="#22F23A" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M0,72 C30,60 50,68 80,50 C110,28 140,42 170,30 C200,18 230,28 280,8 L280,90 L0,90 Z"
+                fill="url(#hero-grad)"
+              />
+              <path
+                d="M0,72 C30,60 50,68 80,50 C110,28 140,42 170,30 C200,18 230,28 280,8"
+                fill="none"
+                stroke="#22F23A"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <path
+                d="M0,82 C30,76 50,80 80,68 C110,56 140,62 170,52 C200,42 230,48 280,38"
+                fill="none"
+                stroke="#6B6B6B"
+                strokeWidth="1.2"
+                strokeDasharray="3 3"
+              />
+              <circle cx="280" cy="8" r="3" fill="#22F23A" />
+            </svg>
+          </div>
+
+          <div className="bg-gray-950 border border-gray-800 rounded-lg p-3 font-mono text-[11px] space-y-1">
+            <div className="flex items-center gap-2 text-gray-500">
+              <span className="text-brand-green">●</span>
+              <span className="text-gray-300">{t("deployLine")}</span>
+              <span className="text-gray-500">main · #{1842 + tick}</span>
+              <span className="ml-auto text-brand-green">ready</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-500">
+              <Zap className="h-3 w-3 text-brand-green" />
+              <span>{t("agentLine")}</span>
+              <span className="ml-auto text-gray-300">+12%</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-500">
+              <Activity className="h-3 w-3 text-gray-500" />
+              <span>{t("uptimeLine")}</span>
+              <span className="ml-auto text-gray-300">24h</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Floating notification */}
-      <div className="absolute -right-4 top-1/4 bg-card border border-[#7CFF3A]/30 rounded-xl p-3 shadow-xl shadow-[#7CFF3A]/10 animate-bounce" style={{ animationDuration: '3s' }}>
-        <div className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-full bg-[#7CFF3A]/20 flex items-center justify-center">
-            <Zap className="h-4 w-4 text-[#7CFF3A]" />
+      <div className="hidden lg:block absolute -top-10 -right-6">
+        <BrandMarkAnimated size={88} />
+      </div>
+
+      <div className="hidden lg:flex absolute -left-6 top-40 items-center gap-2 bg-gray-900 border border-brand-green/40 rounded-xl px-3 py-2 shadow-[0_0_32px_rgba(34,242,58,0.2)]">
+        <Sparkles className="h-4 w-4 text-brand-green" />
+        <div>
+          <div className="font-mono text-[11px] uppercase tracking-wider text-gray-500">
+            IA agent
           </div>
-          <div>
-            <p className="text-xs font-medium text-foreground">IA Optimización</p>
-            <p className="text-xs text-[#7CFF3A]">+23% rendimiento</p>
-          </div>
+          <div className="font-display text-xs font-semibold text-gray-100">+23%</div>
         </div>
       </div>
-    </div>
-  )
-}
 
-function StatCard({ label, value, change, positive }: { label: string; value: string; change: string; positive?: boolean }) {
-  return (
-    <div className="bg-secondary/50 rounded-xl p-4">
-      <p className="text-xs text-muted-foreground mb-1">{label}</p>
-      <p className="text-xl font-bold text-foreground">{value}</p>
-      <p className={`text-xs font-medium ${positive ? 'text-[#7CFF3A]' : 'text-destructive'}`}>
-        {change}
-      </p>
-    </div>
-  )
-}
-
-function MiniCard({ icon, label, value }: { icon: string; label: string; value: string }) {
-  return (
-    <div className="bg-secondary/30 rounded-lg p-3 text-center">
-      <span className="text-lg">{icon}</span>
-      <p className="text-xs text-muted-foreground mt-1">{label}</p>
-      <p className="text-sm font-semibold text-foreground">{value}</p>
+      <div className="hidden lg:flex absolute -right-4 bottom-20 items-center gap-2 bg-gray-900 border border-gray-800 rounded-xl px-3 py-2 shadow-lg">
+        <TrendingUp className="h-4 w-4 text-brand-green" />
+        <span className="font-mono text-[11px] uppercase tracking-wider text-gray-300">
+          7d
+        </span>
+      </div>
     </div>
   )
 }

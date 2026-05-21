@@ -1,65 +1,31 @@
 "use client"
 
-import { ShoppingBag, Settings, Brain, ArrowUpRight } from "lucide-react"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+import { useTranslations } from "next-intl"
+import { SectionHeading } from "./services-section"
 
-const cases = [
-  {
-    icon: ShoppingBag,
-    category: "E-commerce",
-    title: "Tienda Online Optimizada",
-    problem: "E-commerce con alta tasa de abandono de carrito y tiempos de carga lentos que afectaban las conversiones.",
-    solution: "Rediseño completo con Next.js, optimización de imágenes, checkout simplificado y recomendaciones personalizadas.",
-    result: "+156% en conversiones",
-    resultDetail: "Reducción del 40% en abandono de carrito",
-    tags: ["Next.js", "Stripe", "Performance"],
-  },
-  {
-    icon: Settings,
-    category: "Sistemas Internos",
-    title: "Sistema de Operaciones",
-    problem: "Procesos manuales que consumían 20+ horas semanales del equipo en tareas administrativas repetitivas.",
-    solution: "Dashboard centralizado con automatización de reportes, gestión de inventario en tiempo real e integraciones API.",
-    result: "85% menos tiempo manual",
-    resultDetail: "ROI positivo en 3 meses",
-    tags: ["React", "Node.js", "Automatización"],
-  },
-  {
-    icon: Brain,
-    category: "Inteligencia Artificial",
-    title: "Asistente IA para Atención",
-    problem: "Equipo de soporte saturado con consultas repetitivas que retrasaban la atención de casos complejos.",
-    solution: "Chatbot con IA entrenado en la base de conocimiento del negocio, con escalamiento inteligente a agentes.",
-    result: "70% consultas automatizadas",
-    resultDetail: "Satisfacción del cliente +35%",
-    tags: ["OpenAI", "NLP", "Integración"],
-  },
-]
+type CaseKey = "c1" | "c2" | "c3"
+
+const METRICS: Record<CaseKey, { value: number; suffix: string; prefix?: string; decimals?: number }> = {
+  c1: { value: 340, suffix: "%", prefix: "+" },
+  c2: { value: 67, suffix: "%", prefix: "−" },
+  c3: { value: 99.98, suffix: "%", decimals: 2 },
+}
 
 export function CasesSection() {
-  return (
-    <section id="casos" className="relative scroll-mt-24 py-24 lg:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary/10 via-background to-background" />
-      
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <span className="inline-block text-sm font-semibold text-[#7CFF3A] tracking-wide uppercase mb-4">
-            Casos de Éxito
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-6">
-            Resultados que{" "}
-            <span className="text-[#7CFF3A]">hablan solos</span>
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Proyectos reales con impacto medible. Cada solución está diseñada para resolver problemas específicos y generar valor tangible.
-          </p>
-        </div>
+  const t = useTranslations("cases")
+  const keys: CaseKey[] = ["c1", "c2", "c3"]
 
-        {/* Cases Grid */}
-        <div className="grid lg:grid-cols-3 gap-6">
-          {cases.map((caseItem, index) => (
-            <CaseCard key={index} {...caseItem} />
+  return (
+    <section id="casos" className="relative bg-gray-950 py-20 lg:py-32 border-t border-gray-800">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-8">
+        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+
+        <div className="mt-14 lg:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {keys.map((k) => (
+            <CaseCard key={k} caseKey={k} />
           ))}
         </div>
       </div>
@@ -67,72 +33,74 @@ export function CasesSection() {
   )
 }
 
-function CaseCard({
-  icon: Icon,
-  category,
-  title,
-  problem,
-  solution,
-  result,
-  resultDetail,
-  tags,
-}: {
-  icon: React.ElementType
-  category: string
-  title: string
-  problem: string
-  solution: string
-  result: string
-  resultDetail: string
-  tags: string[]
-}) {
+function CaseCard({ caseKey }: { caseKey: CaseKey }) {
+  const t = useTranslations(`cases.items.${caseKey}`)
+  const tRoot = useTranslations("cases")
+  const m = METRICS[caseKey]
+  const ref = useRef<HTMLDivElement>(null)
+  const [val, setVal] = useState(0)
+
+  useEffect(() => {
+    if (!ref.current) return
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    let raf: number
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (reduced) {
+            setVal(m.value)
+          } else {
+            const start = performance.now()
+            const duration = 2800
+            const step = (now: number) => {
+              const t = Math.min((now - start) / duration, 1)
+              const eased = 1 - Math.pow(1 - t, 3)
+              setVal(eased * m.value)
+              if (t < 1) raf = requestAnimationFrame(step)
+            }
+            raf = requestAnimationFrame(step)
+          }
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.4 },
+    )
+    obs.observe(ref.current)
+    return () => {
+      obs.disconnect()
+      cancelAnimationFrame(raf)
+    }
+  }, [m.value])
+
+  const formatted = m.decimals
+    ? val.toFixed(m.decimals).replace(".", ",")
+    : Math.round(val).toString()
+
   return (
-    <div className="group relative bg-card/50 backdrop-blur-sm border border-border rounded-2xl overflow-hidden hover:border-[#7CFF3A]/30 hover:shadow-[0_0_40px_rgba(124,255,58,0.1)] transition-all duration-500">
-      {/* Header */}
-      <div className="p-6 pb-0">
-        <div className="flex items-center justify-between mb-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#7CFF3A]/10 rounded-full">
-            <Icon className="h-4 w-4 text-[#7CFF3A]" />
-            <span className="text-xs font-semibold text-[#7CFF3A]">{category}</span>
-          </div>
-          <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-[#7CFF3A] transition-colors duration-300" />
-        </div>
-        <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-[#7CFF3A] transition-colors duration-300">
-          {title}
-        </h3>
+    <div
+      ref={ref}
+      className="group relative bg-gray-900 border border-gray-800 rounded-2xl p-8 transition-all duration-300 hover:border-brand-green hover:-translate-y-0.5"
+    >
+      <div className="font-display font-bold text-6xl lg:text-7xl text-brand-green leading-none tracking-[-0.04em] tabular-nums">
+        {m.prefix || ""}
+        {formatted}
+        {m.suffix}
       </div>
 
-      {/* Content */}
-      <div className="p-6 pt-2 space-y-4">
-        <div>
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Problema</p>
-          <p className="text-sm text-foreground/80 leading-relaxed">{problem}</p>
-        </div>
-        <div>
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">Solución</p>
-          <p className="text-sm text-foreground/80 leading-relaxed">{solution}</p>
-        </div>
+      <div className="mt-3 font-mono text-[11px] uppercase tracking-wider text-gray-500">
+        {t("metricLabel")}
       </div>
 
-      {/* Result Banner */}
-      <div className="mx-6 mb-6 p-4 bg-gradient-to-r from-[#7CFF3A]/10 to-transparent border border-[#7CFF3A]/20 rounded-xl">
-        <p className="text-2xl font-bold text-[#7CFF3A]">{result}</p>
-        <p className="text-sm text-muted-foreground">{resultDetail}</p>
-      </div>
+      <h3 className="mt-8 font-display font-semibold text-xl text-gray-100">{t("client")}</h3>
+      <p className="mt-2 text-base text-gray-300 leading-relaxed">{t("desc")}</p>
 
-      {/* Tags */}
-      <div className="px-6 pb-6">
-        <div className="flex flex-wrap gap-2">
-          {tags.map((tag, i) => (
-            <span
-              key={i}
-              className="px-2 py-1 text-xs font-medium bg-secondary text-muted-foreground rounded-md"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
+      <Link
+        href="#contacto"
+        className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green group-hover:gap-2.5 transition-all"
+      >
+        {tRoot("verCompleto")}
+        <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+      </Link>
     </div>
   )
 }

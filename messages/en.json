@@ -1,0 +1,353 @@
+{
+  "meta": {
+    "title": "PotenciApp | Apps, e-commerce and systems with applied AI",
+    "description": "Your business hit a technical ceiling. We break it. We build custom apps, e-commerce, systems and applied AI — shipped in weeks.",
+    "ogTitle": "PotenciApp | No technical ceiling.",
+    "ogDescription": "Apps, e-commerce and systems with applied AI. Free 30-minute diagnostic call."
+  },
+  "nav": {
+    "soluciones": "Solutions",
+    "casos": "Cases",
+    "proceso": "Process",
+    "faq": "FAQ",
+    "ctaShort": "Let's talk",
+    "ctaLong": "Book a diagnostic",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "hero": {
+    "statusBadge": "Available · Q1 2026",
+    "partnerBadge": "Your technical partner",
+    "outline": "WE BOOST",
+    "h2_line1": "your business.",
+    "h2_accent": "No ceiling.",
+    "subheading": "Apps, e-commerce, systems and <bold>applied AI</bold> for your business. Custom-built and shipped in weeks, not years.",
+    "ctaPrimary": "Free diagnostic",
+    "ctaSecondary": "See cases",
+    "metrics": {
+      "m1": { "value": "+340%", "label": "average conversion" },
+      "m2": { "value": "−67%", "label": "ops time" },
+      "m3": { "value": "99.98%", "label": "peak uptime" },
+      "m4": { "value": "12k+", "label": "transactions/day" }
+    },
+    "dashboard": {
+      "url": "app.potenciapp.com",
+      "live": "LIVE",
+      "revenue": "Gross revenue",
+      "vsPrev": "vs previous period",
+      "kpi1": "Conversion",
+      "kpi2": "Sessions",
+      "kpi3": "AOV",
+      "revenueChart": "Revenue · 2026",
+      "vs": "vs 2025",
+      "deployLine": "deploy",
+      "agentLine": "agent: SKU optimization active",
+      "uptimeLine": "uptime 99.98%"
+    }
+  },
+  "logos": {
+    "eyebrow": "Stack & integrations we master"
+  },
+  "value": {
+    "eyebrow": "Value prop",
+    "title": "Your business has a technical ceiling.",
+    "accent": "We break it.",
+    "body": "No templates. Real systems. We diagnose where your ops stall, design the architecture that scales, and ship it before you lose the next quarter."
+  },
+  "services": {
+    "eyebrow": "Solutions",
+    "title": "We build what your team can't get to.",
+    "subtitle": "Apps, e-commerce, internal systems, applied AI and consulting. Custom-built and shipped in weeks.",
+    "verMas": "Learn more",
+    "cards": {
+      "apps": {
+        "eyebrow": "01 · Product",
+        "title": "Custom applications",
+        "desc": "Mobile apps, web apps and SaaS platforms built around your real operation. UX your team understands, code that scales with your volume."
+      },
+      "ia": {
+        "eyebrow": "02 · AI",
+        "title": "Applied AI",
+        "desc": "Agents that automate real processes: support, sales, analysis. Open models + proprietary APIs."
+      },
+      "ecommerce": {
+        "eyebrow": "03 · Sales",
+        "title": "E-commerce",
+        "desc": "Stores that convert. Shopify, headless or fully custom. Performance and data first."
+      },
+      "sistemas": {
+        "eyebrow": "04 · Backoffice",
+        "title": "Internal systems",
+        "desc": "Custom ERPs, CRMs and dashboards. Replace 5 spreadsheets and 3 SaaS with a tool that's yours."
+      },
+      "automatizaciones": {
+        "eyebrow": "05 · Ops",
+        "title": "Automations",
+        "desc": "Flows that connect what you already use. n8n, Zapier, custom workers — no stack changes."
+      },
+      "consultoria": {
+        "eyebrow": "06 · Strategy",
+        "title": "Technical consulting",
+        "desc": "Build, buy or outsource? We audit your stack, identify bottlenecks, and ship a 2-week applicable roadmap."
+      }
+    }
+  },
+  "portfolio": {
+    "eyebrow": "Portfolio",
+    "title": "Recent work.",
+    "subtitle": "A selection of projects shipped in the last 12 months. Each one — a real operation with real problems.",
+    "verCaso": "View case",
+    "items": {
+      "p1": { "title": "Nordix Commerce", "category": "Headless e-commerce", "desc": "Shopify → headless Next.js migration + AI recommendation agent." },
+      "p2": { "title": "Atlasware OS", "category": "Internal system", "desc": "Custom ERP that replaced 4 scattered SaaS tools + n8n automations." },
+      "p3": { "title": "Forge Cloud", "category": "SaaS platform", "desc": "Architecture for 12k transactions/day with 99.98% peak uptime." },
+      "p4": { "title": "Valka Health", "category": "Mobile app", "desc": "Telemedicine app with realtime patient queue and AI triage." },
+      "p5": { "title": "Quantum Logistics", "category": "Automation", "desc": "Shipping pipeline: unified tracking across 6 carriers + predictive alerts." },
+      "p6": { "title": "Meridian Capital", "category": "Financial dashboard", "desc": "Realtime executive dashboard with risk models deployed as agents." }
+    }
+  },
+  "cases": {
+    "eyebrow": "Success stories",
+    "title": "Results that already happened.",
+    "subtitle": "We don't show hypotheses. We show what we did before — real metrics, real teams.",
+    "verCompleto": "Read full case",
+    "items": {
+      "c1": { "metricLabel": "Sales increase", "client": "Nordix Retail", "desc": "We migrated the store to a headless stack and added an AI recommendation agent. 3 months to production." },
+      "c2": { "metricLabel": "Ops time", "client": "Atlasware", "desc": "We replaced 4 scattered tools with an internal system + custom n8n automations." },
+      "c3": { "metricLabel": "Peak uptime", "client": "Forge SaaS", "desc": "Re-architected to handle 12k transactions/day with zero downtime through Black Friday." }
+    }
+  },
+  "globe": {
+    "eyebrow": "Global reach",
+    "title": "Built from Latin America for",
+    "accent": "the world.",
+    "subtitle": "Teams in Buenos Aires, Madrid and remote. Clients in 8 countries. Stack and processes timezone-proof.",
+    "stats": {
+      "s1": { "value": "8", "label": "Active countries" },
+      "s2": { "value": "3", "label": "Operational hubs" },
+      "s3": { "value": "24/7", "label": "Distributed support" }
+    }
+  },
+  "proceso": {
+    "eyebrow": "How we work",
+    "title": "Three steps. Zero surprises.",
+    "subtitle": "A process built so you know exactly what happens each week. No status meetings, no endless slides.",
+    "steps": {
+      "s1": { "num": "01", "title": "Diagnostic", "desc": "30-min call. We audit your current operation, identify bottlenecks and rank priorities by impact/effort.", "tag": "2 WEEKS" },
+      "s2": { "num": "02", "title": "Biweekly sprints", "desc": "Building in 2-week sprints with live demos. Each sprint ships something deployed and measurable.", "tag": "8–16 WEEKS" },
+      "s3": { "num": "03", "title": "Launch + retainer", "desc": "Production deploy, team handoff, and monthly retainer to iterate on real data.", "tag": "CONTINUOUS" }
+    }
+  },
+  "porque": {
+    "eyebrow": "Why PotenciApp",
+    "title": "We're not another agency.",
+    "accent": "We're technical partners.",
+    "otros": "What happens with others",
+    "nosotros": "What happens with us",
+    "otrosItems": [
+      "Quote in hours, ship in months — no heads-up",
+      "Rigid stack: React, or WordPress. Period.",
+      "They hand off the code and an 80-page PDF",
+      "Weekly status meetings that go nowhere",
+      "They charge by the hour — incentive to overhead"
+    ],
+    "nosotrosItems": [
+      "30-min diagnostic, first demo in 2 weeks",
+      "Stack by problem: the right one, not the comfortable one",
+      "Real handoff: trained team + living docs",
+      "Biweekly sprints with navigable demo",
+      "We charge per closed sprint — incentive to ship"
+    ],
+    "stats": [
+      { "value": "2 wks", "label": "First production deploy" },
+      { "value": "+40", "label": "Shipped projects" },
+      { "value": "98%", "label": "Client retention" },
+      { "value": "24/7", "label": "Post-launch monitoring" }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Testimonials",
+    "title": "From those who lived it.",
+    "items": {
+      "t1": { "quote": "We went from running on spreadsheets to an operation that scales on its own. In 10 weeks we were selling 2x.", "name": "Martín Vega", "role": "CEO, Nordix Retail" },
+      "t2": { "quote": "No fluff. Diagnostic, sprint, demo, deploy. First time a tech partner actually hits the deadlines they promised.", "name": "Lucía Méndez", "role": "CTO, Atlasware" },
+      "t3": { "quote": "The AI agent they built saves us 6 hours of support daily. ROI in the first month.", "name": "Diego Sánchez", "role": "Founder, Forge SaaS" }
+    }
+  },
+  "chat": {
+    "eyebrow": "Let's talk",
+    "title": "Talk to us.",
+    "accent": "No forms.",
+    "subtitle": "Tell us in 30 seconds what you need. We send you to WhatsApp with the context already loaded — no retyping, no waiting.",
+    "perks": [
+      "Reply in under 24h.",
+      "30-min diagnostic, no cost.",
+      "Zero commitment to advance."
+    ],
+    "online": "Online",
+    "reset": "Restart conversation",
+    "openWhatsApp": "Open WhatsApp",
+    "context": "context loaded",
+    "contexts": "contexts loaded",
+    "endsAt": "Ends in WhatsApp →"
+  },
+  "chatFlow": {
+    "greeting": "Hi PotenciApp, coming from the website.",
+    "start": {
+      "bot": "Tell me — what brings you here?",
+      "opt1": "New project",
+      "opt2": "Optimize something existing",
+      "opt3": "AI / automation",
+      "opt4": "Just exploring"
+    },
+    "nuevo": {
+      "bot": "Great. What kind of product?",
+      "opt1": "Mobile app",
+      "opt2": "Web app",
+      "opt3": "Internal system",
+      "opt4": "E-commerce"
+    },
+    "optimizar": {
+      "bot": "What's the main pain point?",
+      "opt1": "Performance / speed",
+      "opt2": "Production bugs",
+      "opt3": "Doesn't scale",
+      "opt4": "High costs"
+    },
+    "ia": {
+      "bot": "What use case do you have in mind?",
+      "opt1": "Chatbot / assistant",
+      "opt2": "Process automation",
+      "opt3": "Data analysis",
+      "opt4": "Not sure yet"
+    },
+    "urgencia": {
+      "bot": "Last one — how urgent is it?",
+      "opt1": "Urgent · this week",
+      "opt2": "Next 2-4 weeks",
+      "opt3": "No rush · exploring"
+    },
+    "final": {
+      "bot": "Done. Taking you to WhatsApp with the context loaded."
+    },
+    "tags": {
+      "nuevo": "New project",
+      "optimizar": "Optimize existing",
+      "ia": "AI / automation",
+      "exploratorio": "Exploratory",
+      "app": "Mobile app",
+      "web": "Web app",
+      "sistema": "Internal system",
+      "ecommerce": "E-commerce",
+      "performance": "Performance",
+      "bugs": "Prod bugs",
+      "escala": "Scale",
+      "costos": "Costs",
+      "chatbot": "Chatbot",
+      "automatizacion": "Automation",
+      "datos": "Data analysis",
+      "iaSinDefinir": "AI undefined",
+      "urgente": "Urgent",
+      "estaSem": "This week",
+      "sinApuro": "No rush"
+    }
+  },
+  "faq": {
+    "eyebrow": "Frequently asked",
+    "title": "What everyone asks before the call.",
+    "cta": "Didn't find your question?",
+    "ctaLink": "Write to us directly →",
+    "items": [
+      { "q": "How much does a typical project cost?", "a": "Depends on scope, but as reference: an app/web MVP usually lands between USD 18k–45k. A custom internal system between USD 12k–35k. We give a free diagnostic + closed proposal per sprint — no estimates that double mid-way." },
+      { "q": "How long until delivery?", "a": "First navigable demo at week 2. Functional MVP between 6 and 12 weeks depending on complexity. We work in biweekly sprints with closing demo — if something stalls, you see it too." },
+      { "q": "Who owns the code?", "a": "You. 100%. Repos in your GitHub/GitLab from day 1. No proprietary licenses, no dependencies on our tools. We hand off code, docs, and a trained team." },
+      { "q": "What happens after launch?", "a": "We offer an optional monthly retainer for support, continuous improvements and 24/7 monitoring. If you'd rather bring it in-house, we leave a complete handoff with one transition month included at no cost." },
+      { "q": "Do you work with startups or only big companies?", "a": "Both. We've built MVPs for solo founders and replatformings for 500+ person companies. The criterion isn't size: it's problem clarity and real commitment to shipping." },
+      { "q": "Can you integrate with my current team?", "a": "Yes. We can lead technically, complement your team, or just review architecture. We define the model based on what serves the project — not what's easiest for us." },
+      { "q": "What if I want to cancel after starting?", "a": "We work in 2-week sprints with sprint-by-sprint commitment. You can cancel at the end of any one, no penalties or excuses. If we're not delivering value, you shouldn't continue." }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Start",
+    "title": "Your next quarter",
+    "accent": "can be different.",
+    "subtitle": "Tell us about your business in 60 seconds. We reply with an initial diagnostic in under 24 hours.",
+    "perks": [
+      "30-min diagnostic · no cost",
+      "Closed proposal per sprint",
+      "No commitments until you sign"
+    ],
+    "slotsBadge": "3 slots available this week",
+    "form": {
+      "title": "Tell us about your business",
+      "subtitle": "We reply in under 24h",
+      "name": "Full name",
+      "namePh": "María García",
+      "email": "Work email",
+      "emailPh": "maria@company.com",
+      "company": "Company",
+      "companyPh": "Nordix Retail",
+      "website": "Current website",
+      "optional": "(optional)",
+      "websitePh": "company.com",
+      "billing": "Approx. monthly revenue",
+      "billingOptions": [
+        "Less than USD 10k",
+        "USD 10k – 50k",
+        "USD 50k – 200k",
+        "More than USD 200k",
+        "Prefer not to say"
+      ],
+      "need": "What are you looking for?",
+      "needOptions": [
+        "Technical diagnostic",
+        "New project",
+        "Optimize / scale",
+        "Integrate AI",
+        "Not sure yet"
+      ],
+      "message": "Tell us more",
+      "messagePh": "Add context if you want (current issue, deadline, etc.)",
+      "submit": "Request free diagnostic",
+      "submitting": "Sending...",
+      "select": "Select...",
+      "terms": "By submitting you accept our",
+      "termsLink": "Terms",
+      "and": "and",
+      "privacyLink": "Privacy Policy",
+      "errors": {
+        "min2": "Minimum 2 characters",
+        "emailInvalid": "Invalid email",
+        "required": "Required",
+        "selectOne": "Select an option"
+      },
+      "success": {
+        "title": "Received!",
+        "body": "We'll reply in under 24 hours with an initial diagnostic. If you want to speed up, go straight to WhatsApp.",
+        "altWhatsApp": "Or chat directly on WhatsApp →"
+      },
+      "toast": "Received. We reply in under 24h."
+    }
+  },
+  "footer": {
+    "tagline": "We build what your team can't get to. Apps, e-commerce, systems and applied AI — custom-built and shipped in weeks.",
+    "operamos": "Operating from",
+    "operamosValue": "Buenos Aires · Madrid · Remote",
+    "soluciones": "Solutions",
+    "empresa": "Company",
+    "recursos": "Resources",
+    "conecta": "Connect",
+    "rights": "© {year} PotenciApp. All rights reserved.",
+    "availability": "Available for new projects · Q1 2026",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "cookies": "Cookies"
+  },
+  "lang": {
+    "switcherLabel": "Change language",
+    "es": "Español",
+    "en": "English",
+    "pt": "Português",
+    "fr": "Français"
+  }
+}
