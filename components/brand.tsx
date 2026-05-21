@@ -77,13 +77,15 @@ export function BrandMark({
 
 /**
  * BrandWordmark — wordmark oficial Potenciapp.
- * Renderiza el PNG original (800×113, aspect ~7.08:1) desde /public/branding/png/.
+ * Renderiza el PNG original a resolución máxima (943×133, aspect ~7.09:1) desde
+ * /public/branding/png/wordmark-{theme}-full.png — fuente única de verdad para
+ * que cualquier update del asset se refleje sin tocar tamaños intermedios.
  * Convención del branding (ver public/branding/README.md):
  *   theme="dark"  → POTENCI en blanco, para fondos oscuros (default — el sitio es negro)
  *   theme="light" → POTENCI en negro, para fondos claros
  */
-const WORDMARK_W = 800
-const WORDMARK_H = 113
+const WORDMARK_W = 943
+const WORDMARK_H = 133
 
 export function BrandWordmark({
   size = "md",
@@ -101,7 +103,7 @@ export function BrandWordmark({
   const heights = { sm: 22, md: 28, lg: 40, xl: 64 } as const
   const h = heights[size]
   const w = Math.round((h * WORDMARK_W) / WORDMARK_H)
-  const src = `/branding/png/wordmark-${theme}-800.png`
+  const src = `/branding/png/wordmark-${theme}-full.png`
 
   return (
     <Image
