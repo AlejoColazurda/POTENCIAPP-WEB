@@ -9,8 +9,8 @@ import AnimatedContent from "@/components/reactbits/AnimatedContent"
 const DEMOS_INDEX = "https://demo.potenciapp.com"
 
 type ProjectKey =
-  | "maxikiosco" | "lachola" | "newbaby" | "jazcal"
-  | "sportivo" | "lmt" | "hidradock" | "fussinato"
+  | "maxikiosco" | "lachola" | "newbaby" | "gisbert"
+  | "jazcal" | "sportivo" | "lmt" | "hidradock" | "fussinato"
 
 type Project = {
   key: ProjectKey
@@ -51,6 +51,14 @@ const PROJECTS: Project[] = [
     live: true,
     handle: "newbaby.com.ar",
     tags: ["E-commerce", "Mercado Pago", "Stock API"],
+  },
+  {
+    key: "gisbert",
+    url: "https://www.gisbertheladeras.com.ar",
+    image: "/demos/gisbert.webp",
+    live: true,
+    handle: "gisbertheladeras.com.ar",
+    tags: ["Catálogo", "Cotizador", "WhatsApp API"],
   },
   {
     key: "jazcal",
