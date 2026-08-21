@@ -38,7 +38,7 @@ const ORG_JSONLD = {
   name: "PotenciApp",
   url: "https://potenciapp.com",
   email: "contacto@potenciapp.com",
-  telephone: "+5493329627578",
+  telephone: "+5493329613035",
   description:
     "Empresa de software: aplicaciones iOS y Android, e-commerce, sistemas internos, IA aplicada, ciberseguridad, arquitectura de software e infraestructura cloud (Docker, AWS, VPS, redes, mantenimiento). Contrato con hitos y fechas, precio cerrado, factura y 90 días de garantía.",
   areaServed: ["AR", "Worldwide"],

@@ -10,7 +10,7 @@ const social = [
   { label: "Twitter", href: "#", Icon: Twitter },
   { label: "Instagram", href: "#", Icon: Instagram },
   { label: "GitHub", href: "#", Icon: Github },
-  { label: "WhatsApp", href: "https://wa.me/5493329627578", Icon: MessageCircle },
+  { label: "WhatsApp", href: "https://wa.me/5493329613035", Icon: MessageCircle },
 ]
 
 export function Footer() {
