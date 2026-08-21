@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { ArrowDown, ArrowRight, Check, ShieldCheck, Sparkles } from "lucide-react"
 import Image from "next/image"
+import { useEffect, useState } from "react"
 import { useTranslations } from "next-intl"
 import { BrandMark } from "@/components/brand"
 import Aurora from "@/components/reactbits/Aurora"
@@ -185,10 +186,32 @@ function MetricItem({ mk, index }: { mk: "m1" | "m2" | "m3" | "m4"; index: numbe
   )
 }
 
+/** Production projects cycled by the hero carousel. Names and categories come
+ *  from the portfolio translations so both stay in sync. */
+const SHOWCASE_SLIDES = [
+  { key: "lachola", domain: "www.lachola.ar", image: "/demos/lachola.webp" },
+  { key: "gisbert", domain: "gisbertheladeras.com.ar", image: "/demos/gisbert.webp" },
+  { key: "maxikiosco", domain: "maxikiosco247.com.ar", image: "/demos/maxikiosco.webp" },
+  { key: "newbaby", domain: "www.newbaby.com.ar", image: "/demos/newbaby.webp" },
+] as const
+
 function ProductShowcase() {
   const t = useTranslations("hero.showcase")
+  const tPortfolio = useTranslations("portfolio")
   const beforeItems = t.raw("beforeItems") as string[]
   const milestones = [t("m1"), t("m2"), t("m3")] as const
+
+  const [active, setActive] = useState(0)
+
+  // Fast rotation, paused while the visitor hovers the frame.
+  const [paused, setPaused] = useState(false)
+  useEffect(() => {
+    if (paused) return
+    const id = setInterval(() => setActive((i) => (i + 1) % SHOWCASE_SLIDES.length), 2600)
+    return () => clearInterval(id)
+  }, [paused])
+
+  const slide = SHOWCASE_SLIDES[active]
 
   return (
     <div className="relative">
@@ -224,7 +247,7 @@ function ProductShowcase() {
             <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
             <span className="ml-3 flex items-center gap-2 truncate font-mono text-[11px] text-gray-300">
               <BrandMark size={16} />
-              www.lachola.ar
+              {slide.domain}
             </span>
             <span className="ml-auto flex items-center gap-1.5 font-mono text-[11px] text-brand-green">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-green animate-pulse-dot" />
@@ -232,28 +255,49 @@ function ProductShowcase() {
             </span>
           </div>
 
-          <div className="relative aspect-[16/10]">
-            <Image
-              src="/demos/lachola.webp"
-              alt={t("name")}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover object-top"
-            />
+          <div
+            className="relative aspect-[16/10]"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+          >
+            {/* All slides stay mounted; opacity crossfades between them. */}
+            {SHOWCASE_SLIDES.map((sl, i) => (
+              <Image
+                key={sl.key}
+                src={sl.image}
+                alt={tPortfolio(`items.${sl.key}.title`)}
+                fill
+                priority={i === 0}
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className={`object-cover object-top transition-opacity duration-700 ease-out ${
+                  i === active ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
             {/* Legibility scrim for the caption strip */}
             <div
               aria-hidden
               className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-gray-950/95 to-transparent"
             />
             <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
-              <div>
+              <div key={slide.key} className="animate-fade-in">
                 <div className="font-display text-base font-semibold text-gray-100">
-                  {t("name")}
+                  {tPortfolio(`items.${slide.key}.title`)}
                 </div>
                 <div className="font-mono text-[10px] uppercase tracking-wider text-gray-300">
-                  {t("type")}
+                  {tPortfolio(`items.${slide.key}.category`)}
                 </div>
+              </div>
+              <div className="flex items-center gap-1.5 pb-1">
+                {SHOWCASE_SLIDES.map((sl, i) => (
+                  <span
+                    key={sl.key}
+                    aria-hidden
+                    className={`h-1 rounded-full transition-all duration-500 ${
+                      i === active ? "w-4 bg-brand-green" : "w-1 bg-gray-600"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
           </div>
