@@ -3,7 +3,8 @@ import { NextResponse } from "next/server"
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
-const MODEL = "gemini-2.5-flash"
+// gemini-2.5-flash was retired for new accounts; 3.6-flash is the current tier.
+const MODEL = "gemini-3.6-flash"
 const MAX_MESSAGES = 20
 const MAX_CHARS = 2000
 
@@ -86,7 +87,13 @@ export async function POST(request: Request) {
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
           contents: history,
-          generationConfig: { temperature: 0.4, maxOutputTokens: 512 },
+          generationConfig: {
+            temperature: 0.4,
+            // Gemini 3.x spends "thinking" tokens inside this budget; too low
+            // and replies arrive truncated mid-sentence. (thinkingBudget: 0 is
+            // rejected with INVALID_ARGUMENT on this model.)
+            maxOutputTokens: 2048,
+          },
         }),
         signal: AbortSignal.timeout(25_000),
       },

@@ -4,12 +4,11 @@ import Link from "next/link"
 import { ArrowDown, ArrowRight, Check, ShieldCheck, Sparkles } from "lucide-react"
 import Image from "next/image"
 import { useTranslations } from "next-intl"
-import { BrandMark, BrandMarkAnimated } from "@/components/brand"
+import { BrandMark } from "@/components/brand"
 import Aurora from "@/components/reactbits/Aurora"
 import SplitText from "@/components/reactbits/SplitText"
 import RotatingText from "@/components/reactbits/RotatingText"
 import CountUp from "@/components/reactbits/CountUp"
-import ElectricBorder from "@/components/reactbits/ElectricBorder"
 import Magnet from "@/components/reactbits/Magnet"
 import ShinyText from "@/components/reactbits/ShinyText"
 
@@ -195,7 +194,7 @@ function ProductShowcase() {
     <div className="relative">
       <div
         aria-hidden
-        className="absolute -inset-8 bg-brand-green/15 blur-[80px] pointer-events-none rounded-3xl"
+        className="absolute -inset-10 bg-brand-green/[0.07] blur-[100px] pointer-events-none rounded-3xl"
       />
 
       {/* ANTES — the mess this software replaces */}
@@ -206,8 +205,7 @@ function ProductShowcase() {
           </div>
           <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1">
             {beforeItems.map((item) => (
-              <span key={item} className="inline-flex items-center gap-1.5 text-xs text-gray-500">
-                <span aria-hidden className="text-red-400/70">×</span>
+              <span key={item} className="inline-flex items-center gap-1.5 text-xs text-gray-500 line-through decoration-gray-700">
                 {item}
               </span>
             ))}
@@ -216,9 +214,10 @@ function ProductShowcase() {
         <ArrowDown aria-hidden className="h-5 w-5 shrink-0 text-brand-green" strokeWidth={2.5} />
       </div>
 
-      {/* DESPUÉS — a real product PotenciApp built, in a browser frame */}
-      <ElectricBorder color="#22F23A" speed={0.8} chaos={0.45} borderRadius={16}>
-        <div className="relative overflow-hidden rounded-2xl bg-gray-900 shadow-[0_24px_64px_-12px_rgba(0,0,0,0.8)]">
+      {/* DESPUÉS — a real product PotenciApp built, in a clean browser frame.
+          Apple-style restraint: hairline border, deep shadow, faint glow. */}
+      <div className="relative rounded-2xl p-px bg-gradient-to-b from-white/15 via-gray-800 to-gray-800/40 shadow-[0_32px_80px_-16px_rgba(0,0,0,0.9),0_0_48px_-12px_rgba(34,242,58,0.18)]">
+        <div className="relative overflow-hidden rounded-[15px] bg-gray-900">
           <div className="flex items-center gap-2 border-b border-gray-800 bg-gray-900 px-4 py-3">
             <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
             <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
@@ -259,34 +258,28 @@ function ProductShowcase() {
             </div>
           </div>
         </div>
-      </ElectricBorder>
+      </div>
 
-      {/* Blueprint milestones — the delivery, not the metrics */}
-      <div className="relative mt-4 flex items-stretch gap-2">
+      {/* Delivery milestones — one quiet strip, no boxes */}
+      <div className="relative mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
         {milestones.map((m) => (
-          <div
-            key={m}
-            className="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-gray-800 bg-gray-900/80 px-2 py-2.5"
-          >
-            <Check className="h-3.5 w-3.5 shrink-0 text-brand-green" strokeWidth={3} />
-            <span className="font-mono text-[10px] uppercase tracking-wider text-gray-300">{m}</span>
-          </div>
+          <span key={m} className="inline-flex items-center gap-1.5">
+            <Check className="h-3.5 w-3.5 text-brand-green" strokeWidth={2.5} />
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-gray-500">{m}</span>
+          </span>
         ))}
-        <div className="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-brand-green/40 bg-brand-green/5 px-2 py-2.5">
-          <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-brand-green" strokeWidth={2.5} />
-          <span className="font-mono text-[10px] uppercase tracking-wider text-brand-green">
+        <span aria-hidden className="hidden sm:block h-3 w-px bg-gray-800" />
+        <span className="inline-flex items-center gap-1.5">
+          <ShieldCheck className="h-3.5 w-3.5 text-brand-green" strokeWidth={2.5} />
+          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-brand-green">
             {t("m4")}
           </span>
-        </div>
+        </span>
       </div>
 
-      <p className="relative mt-4 text-center font-mono text-[11px] uppercase tracking-wider text-gray-500">
-        {t("caption")}
-      </p>
+      <p className="relative mt-3 text-center text-[13px] text-gray-500">
+        {t("caption")}</p>
 
-      <div className="hidden lg:block absolute -top-12 -right-6 pointer-events-none">
-        <BrandMarkAnimated size={88} />
-      </div>
     </div>
   )
 }
