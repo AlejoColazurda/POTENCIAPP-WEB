@@ -9,8 +9,8 @@ import AnimatedContent from "@/components/reactbits/AnimatedContent"
 const DEMOS_INDEX = "https://demo.potenciapp.com"
 
 type ProjectKey =
-  | "maxikiosco" | "lachola" | "newbaby" | "losincreibles" | "terrazas" | "cprem"
-  | "jazcal" | "pss" | "sportivo" | "lmt" | "hidradock" | "fussinato"
+  | "maxikiosco" | "lachola" | "newbaby" | "jazcal"
+  | "sportivo" | "lmt" | "hidradock" | "fussinato"
 
 type Project = {
   key: ProjectKey
@@ -53,39 +53,11 @@ const PROJECTS: Project[] = [
     tags: ["E-commerce", "Mercado Pago", "Stock API"],
   },
   {
-    key: "losincreibles",
-    url: `${DEMOS_INDEX}/distribuidora-losincreibles/catalog`,
-    image: "/demos/losincreibles.webp",
-    handle: "DEMO",
-    tags: ["POS", "ERP", "PWA"],
-  },
-  {
-    key: "terrazas",
-    url: `${DEMOS_INDEX}/web/terrazas-al-rio/`,
-    image: "/demos/terrazas.webp",
-    handle: "DEMO",
-    tags: ["Booking", "Admin", "WhatsApp API"],
-  },
-  {
-    key: "cprem",
-    url: `${DEMOS_INDEX}/web/cprem/`,
-    image: "/demos/cprem.webp",
-    handle: "DEMO",
-    tags: ["E-commerce", "Checkout", "WhatsApp API"],
-  },
-  {
     key: "jazcal",
     url: `${DEMOS_INDEX}/web/jazcal-software/`,
     image: "/demos/jazcal.webp",
     handle: "DEMO",
     tags: ["CMMS", "Auth", "RBAC"],
-  },
-  {
-    key: "pss",
-    url: `${DEMOS_INDEX}/web/pss-innovaciones/`,
-    image: "/demos/pss.webp",
-    handle: "DEMO",
-    tags: ["B2B", "Checkout", "WhatsApp API"],
   },
   {
     key: "sportivo",

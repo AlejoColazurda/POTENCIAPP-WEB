@@ -224,7 +224,7 @@ function ProductShowcase() {
             <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
             <span className="ml-3 flex items-center gap-2 truncate font-mono text-[11px] text-gray-300">
               <BrandMark size={16} />
-              demo.potenciapp.com
+              www.lachola.ar
             </span>
             <span className="ml-auto flex items-center gap-1.5 font-mono text-[11px] text-brand-green">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-green animate-pulse-dot" />
@@ -234,7 +234,7 @@ function ProductShowcase() {
 
           <div className="relative aspect-[16/10]">
             <Image
-              src="/demos/terrazas.webp"
+              src="/demos/lachola.webp"
               alt={t("name")}
               fill
               priority

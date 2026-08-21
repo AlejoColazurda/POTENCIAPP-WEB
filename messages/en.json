@@ -27,7 +27,7 @@
     "ctaSecondary": "See live projects",
     "metrics": {
       "m1": {
-        "value": "15+",
+        "value": "+40",
         "label": "projects delivered"
       },
       "m2": {
@@ -58,8 +58,8 @@
         "Data everywhere"
       ],
       "badge": "LIVE",
-      "name": "Terrazas al Río",
-      "type": "Custom booking system",
+      "name": "La Chola",
+      "type": "Online store in production",
       "m1": "Design",
       "m2": "Development",
       "m3": "Deploy",
@@ -200,30 +200,10 @@
         "category": "Kidswear e-commerce",
         "desc": "Baby and toddler clothing with real stock per size, store favorites and secure payment."
       },
-      "losincreibles": {
-        "title": "Los Increíbles",
-        "category": "Distributor · End-to-end system",
-        "desc": "Online store + POS, centralized stock, delivery notes, credit accounts and cash control. Installable PWA with wholesale access."
-      },
-      "terrazas": {
-        "title": "Terrazas al Río",
-        "category": "Tourism · Online booking",
-        "desc": "Riverside complex with real availability, gallery, 5★ reviews and an admin panel."
-      },
-      "cprem": {
-        "title": "C-PREM",
-        "category": "Precast e-commerce",
-        "desc": "Thermal tiles and precast concrete: video hero, catalog with cart and WhatsApp checkout."
-      },
       "jazcal": {
         "title": "Jazcal",
         "category": "CMMS · Industrial maintenance",
         "desc": "Assets, work orders, inventory, tool crib and preventive plans. App with login and role-based permissions."
-      },
-      "pss": {
-        "title": "PSS Innovaciones",
-        "category": "Wholesale · Wall coverings",
-        "desc": "Wholesale store for wall panels and PVC boards with cart, real catalog and WhatsApp checkout."
       },
       "sportivo": {
         "title": "Sportivo Resto & Café",
@@ -331,7 +311,7 @@
     ],
     "stats": [
       {
-        "value": "15+",
+        "value": "+40",
         "label": "Projects delivered"
       },
       {

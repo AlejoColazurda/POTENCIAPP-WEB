@@ -27,7 +27,7 @@
     "ctaSecondary": "Voir les projets en ligne",
     "metrics": {
       "m1": {
-        "value": "15+",
+        "value": "+40",
         "label": "projets livrés"
       },
       "m2": {
@@ -58,8 +58,8 @@
         "Données dispersées"
       ],
       "badge": "EN LIGNE",
-      "name": "Terrazas al Río",
-      "type": "Système de réservation sur mesure",
+      "name": "La Chola",
+      "type": "Boutique en ligne en production",
       "m1": "Design",
       "m2": "Développement",
       "m3": "Déploiement",
@@ -200,30 +200,10 @@
         "category": "E-commerce puériculture",
         "desc": "Layette et petite enfance avec stock réel par taille, coups de cœur et paiement sécurisé."
       },
-      "losincreibles": {
-        "title": "Los Increíbles",
-        "category": "Distributeur · Système intégral",
-        "desc": "Boutique en ligne + caisse, stock centralisé, bons de livraison, comptes clients et caisse. PWA installable avec accès grossiste."
-      },
-      "terrazas": {
-        "title": "Terrazas al Río",
-        "category": "Tourisme · Réservation en ligne",
-        "desc": "Complexe au bord du fleuve avec disponibilité réelle, galerie, avis 5★ et panneau d'administration."
-      },
-      "cprem": {
-        "title": "C-PREM",
-        "category": "E-commerce préfabriqué",
-        "desc": "Dalles athermiques et préfabriqués : hero vidéo, catalogue avec panier et commande par WhatsApp."
-      },
       "jazcal": {
         "title": "Jazcal",
         "category": "GMAO · Maintenance industrielle",
         "desc": "Actifs, ordres de travail, inventaire, magasin d'outils et préventif. App avec login et rôles."
-      },
-      "pss": {
-        "title": "PSS Innovaciones",
-        "category": "Grossiste · Revêtements",
-        "desc": "Boutique grossiste de panneaux muraux et plaques PVC avec panier, catalogue réel et commande WhatsApp."
       },
       "sportivo": {
         "title": "Sportivo Resto & Café",
@@ -331,7 +311,7 @@
     ],
     "stats": [
       {
-        "value": "15+",
+        "value": "+40",
         "label": "Projets livrés"
       },
       {

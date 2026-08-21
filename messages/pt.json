@@ -27,7 +27,7 @@
     "ctaSecondary": "Ver projetos no ar",
     "metrics": {
       "m1": {
-        "value": "15+",
+        "value": "+40",
         "label": "projetos entregues"
       },
       "m2": {
@@ -58,8 +58,8 @@
         "Dados dispersos"
       ],
       "badge": "NO AR",
-      "name": "Terrazas al Río",
-      "type": "Sistema de reservas sob medida",
+      "name": "La Chola",
+      "type": "Loja online em produção",
       "m1": "Design",
       "m2": "Desenvolvimento",
       "m3": "Deploy",
@@ -200,30 +200,10 @@
         "category": "E-commerce infantil",
         "desc": "Enxoval e primeira infância com estoque real por tamanho, favoritos da loja e pagamento seguro."
       },
-      "losincreibles": {
-        "title": "Los Increíbles",
-        "category": "Distribuidora · Sistema integral",
-        "desc": "Loja online + PDV, estoque centralizado, remessas, conta corrente e caixa. PWA instalável com acesso atacadista."
-      },
-      "terrazas": {
-        "title": "Terrazas al Río",
-        "category": "Turismo · Reservas online",
-        "desc": "Complexo à beira do rio com disponibilidade real, galeria, avaliações 5★ e painel de administração."
-      },
-      "cprem": {
-        "title": "C-PREM",
-        "category": "E-commerce pré-moldados",
-        "desc": "Ladrilhos atérmicos e pré-moldados: hero em vídeo, catálogo com carrinho e checkout por WhatsApp."
-      },
       "jazcal": {
         "title": "Jazcal",
         "category": "CMMS · Manutenção industrial",
         "desc": "Ativos, ordens de serviço, inventário, almoxarifado e preventiva. App com login e permissões por papel."
-      },
-      "pss": {
-        "title": "PSS Innovaciones",
-        "category": "Atacado · Revestimentos",
-        "desc": "Loja atacadista de wall panels e placas de PVC com carrinho, catálogo real e checkout por WhatsApp."
       },
       "sportivo": {
         "title": "Sportivo Resto & Café",
@@ -331,7 +311,7 @@
     ],
     "stats": [
       {
-        "value": "15+",
+        "value": "+40",
         "label": "Projetos entregues"
       },
       {
