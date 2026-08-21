@@ -275,3 +275,50 @@
 /* Hide scrollbar utility */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ============================================
+   ReactBits integration
+   ============================================ */
+
+/* GooeyNav particle palette — the component reads var(--color-N). */
+:root {
+  --color-1: #22F23A;
+  --color-2: #1AD832;
+  --color-3: #8BFF9A;
+  --color-4: #FFFFFF;
+}
+
+/* Recolour GooeyNav's pill from white to brand green. The blur+contrast trick
+   that makes the blob gooey needs a high-luminance fill, which #22F23A has. */
+/* Until an item is clicked the effect spans sit unpositioned at 0,0 — the
+   filter's black ::before would paint a stray square over the header. */
+.gooey-nav-brand .effect {
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease);
+}
+.gooey-nav-brand .effect.active {
+  opacity: 1;
+}
+.gooey-nav-brand .effect.filter::after {
+  background: var(--brand-green);
+}
+.gooey-nav-brand ul li {
+  color: var(--text-secondary);
+  transition: color var(--duration-base) var(--ease);
+}
+.gooey-nav-brand ul li:hover {
+  color: var(--text-primary);
+}
+.gooey-nav-brand ul li.active {
+  color: var(--brand-black);
+  text-shadow: none;
+}
+.gooey-nav-brand .effect.text.active {
+  color: var(--brand-black);
+}
+
+/* ScrollStack scopes its own scroller; keep it transparent over our bg. */
+.scroll-stack-card { will-change: transform; }
+
+/* ChromaGrid cards sit on the dark page — kill the default white ring. */
+.chroma-grid-brand article { background-clip: padding-box; }

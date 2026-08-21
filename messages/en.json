@@ -1,63 +1,83 @@
 {
   "meta": {
-    "title": "PotenciApp | Apps, e-commerce and systems with applied AI",
-    "description": "Your business hit a technical ceiling. We break it. We build custom apps, e-commerce, systems and applied AI — shipped in weeks.",
-    "ogTitle": "PotenciApp | No technical ceiling.",
-    "ogDescription": "Apps, e-commerce and systems with applied AI. Free 30-minute diagnostic call."
+    "title": "PotenciApp | Custom software with a contract, fixed price and warranty",
+    "description": "Custom apps, e-commerce and internal systems for companies and retailers. Contract with scope, milestones and dates, fixed price, invoicing and a 90-day post-delivery warranty.",
+    "ogTitle": "PotenciApp | Software that gets signed, delivered and guaranteed.",
+    "ogDescription": "Contract with dates, fixed price, invoicing and a 90-day warranty. Real projects you can open and use right now."
   },
   "nav": {
     "soluciones": "Solutions",
-    "casos": "Cases",
+    "proyectos": "Projects",
     "proceso": "Process",
     "faq": "FAQ",
     "ctaShort": "Let's talk",
-    "ctaLong": "Book a diagnostic",
+    "ctaLong": "Request a proposal",
     "menu": "Menu",
-    "close": "Close"
+    "close": "Close",
+    "garantia": "Warranty"
   },
   "hero": {
-    "statusBadge": "Available · Q1 2026",
-    "partnerBadge": "Your technical partner",
+    "statusBadge": "Taking on projects · 2026",
+    "partnerBadge": "Contract · Fixed price · Warranty",
     "outline": "WE BOOST",
-    "h2_line1": "your business.",
+    "h2_line1": "Your software, with",
     "h2_accent": "No ceiling.",
-    "subheading": "Apps, e-commerce, systems and <bold>applied AI</bold> for your business. Custom-built and shipped in weeks, not years.",
-    "ctaPrimary": "Free diagnostic",
-    "ctaSecondary": "See cases",
+    "subheading": "Custom apps, e-commerce and systems for companies and retailers. We sign off on <bold>scope, milestones and dates</bold> before writing a line of code, and we back what we deliver in writing.",
+    "ctaPrimary": "Request a proposal",
+    "ctaSecondary": "See live projects",
     "metrics": {
-      "m1": { "value": "+340%", "label": "average conversion" },
-      "m2": { "value": "−67%", "label": "ops time" },
-      "m3": { "value": "99.98%", "label": "peak uptime" },
-      "m4": { "value": "12k+", "label": "transactions/day" }
+      "m1": {
+        "value": "15+",
+        "label": "projects delivered"
+      },
+      "m2": {
+        "value": "3",
+        "label": "stores selling today"
+      },
+      "m3": {
+        "value": "90 days",
+        "label": "post-delivery warranty"
+      },
+      "m4": {
+        "value": "24 h",
+        "label": "committed response time"
+      }
     },
     "dashboard": {
-      "url": "app.potenciapp.com",
+      "url": "your-business.com/admin",
       "live": "LIVE",
       "revenue": "Gross revenue",
       "vsPrev": "vs previous period",
       "kpi1": "Conversion",
       "kpi2": "Sessions",
-      "kpi3": "AOV",
+      "kpi3": "Avg. order",
       "revenueChart": "Revenue · 2026",
       "vs": "vs 2025",
       "deployLine": "deploy",
-      "agentLine": "agent: SKU optimization active",
-      "uptimeLine": "uptime 99.98%"
-    }
+      "agentLine": "agent: SKU optimisation active",
+      "uptimeLine": "uptime 99.98%",
+      "sample": "Sample dashboard"
+    },
+    "rotating": [
+      "a contract.",
+      "a fixed price.",
+      "a warranty.",
+      "an invoice."
+    ]
   },
   "logos": {
     "eyebrow": "Stack & integrations we master"
   },
   "value": {
-    "eyebrow": "Value prop",
-    "title": "Your business has a technical ceiling.",
-    "accent": "We break it.",
-    "body": "No templates. Real systems. We diagnose where your ops stall, design the architecture that scales, and ship it before you lose the next quarter."
+    "eyebrow": "How we work",
+    "title": "Hiring a software team shouldn't be an act of faith.",
+    "accent": "So we put it in writing.",
+    "body": "Every project starts with a contract that fixes scope, milestones and dates, and a fixed price that doesn't move. We invoice legally, we answer within 24 business hours, and we stand behind what we deliver with a 90-day warranty. None of that is a favour — it's the baseline."
   },
   "services": {
     "eyebrow": "Solutions",
-    "title": "We build what your team can't get to.",
-    "subtitle": "Apps, e-commerce, internal systems, applied AI and consulting. Custom-built and shipped in weeks.",
+    "title": "We build the software your operation actually needs.",
+    "subtitle": "Apps, e-commerce, internal systems, automations and applied AI. All of it with a contract, a fixed price and a warranty.",
     "verMas": "Learn more",
     "cards": {
       "apps": {
@@ -92,86 +112,224 @@
       }
     }
   },
+  "stores": {
+    "eyebrow": "Native apps",
+    "title": "We ship your app to",
+    "accent": "the App Store and Google Play.",
+    "subtitle": "Verified developer accounts, approved store review and releases managed by us. You see your app live; we absorb the process.",
+    "verified": "Verified account",
+    "appStoreTop": "Download on the",
+    "appStoreName": "App Store",
+    "playStoreTop": "Get it on",
+    "playStoreName": "Google Play",
+    "points": [
+      {
+        "title": "Verified accounts",
+        "desc": "Apple Developer Program and Google Play Console, under your name or ours."
+      },
+      {
+        "title": "Review approved",
+        "desc": "We prepare listings, screenshots, privacy forms and everything stores ask for."
+      },
+      {
+        "title": "Managed releases",
+        "desc": "Signed builds, versioning, TestFlight / internal testing and updates."
+      },
+      {
+        "title": "iOS + Android",
+        "desc": "One React Native codebase. Two stores. Same experience."
+      }
+    ]
+  },
   "portfolio": {
     "eyebrow": "Portfolio",
-    "title": "Recent work.",
-    "subtitle": "A selection of projects shipped in the last 12 months. Each one — a real operation with real problems.",
-    "verCaso": "View case",
+    "title": "Real projects, live right now.",
+    "subtitle": "Not mockups, not screenshots. Stores, systems and sites running today, with real clients selling and operating. Go try them before you hire us.",
+    "verCaso": "View project",
+    "verDemo": "Open demo",
+    "live": "Live",
+    "allDemos": "See all demos",
     "items": {
-      "p1": { "title": "Nordix Commerce", "category": "Headless e-commerce", "desc": "Shopify → headless Next.js migration + AI recommendation agent." },
-      "p2": { "title": "Atlasware OS", "category": "Internal system", "desc": "Custom ERP that replaced 4 scattered SaaS tools + n8n automations." },
-      "p3": { "title": "Forge Cloud", "category": "SaaS platform", "desc": "Architecture for 12k transactions/day with 99.98% peak uptime." },
-      "p4": { "title": "Valka Health", "category": "Mobile app", "desc": "Telemedicine app with realtime patient queue and AI triage." },
-      "p5": { "title": "Quantum Logistics", "category": "Automation", "desc": "Shipping pipeline: unified tracking across 6 carriers + predictive alerts." },
-      "p6": { "title": "Meridian Capital", "category": "Financial dashboard", "desc": "Realtime executive dashboard with risk models deployed as agents." }
+      "maxikiosco": {
+        "title": "Maxikiosco 24/7",
+        "category": "E-commerce · PWA in production",
+        "desc": "24/7 store with live catalog, daily deals, local sponsors and online orders at any hour."
+      },
+      "lachola": {
+        "title": "La Chola",
+        "category": "Fashion e-commerce",
+        "desc": "Clothing store with category catalog, deals, Mercado Pago checkout and nationwide shipping."
+      },
+      "newbaby": {
+        "title": "New Baby",
+        "category": "Kidswear e-commerce",
+        "desc": "Baby and toddler clothing with real stock per size, store favorites and secure payment."
+      },
+      "losincreibles": {
+        "title": "Los Increíbles",
+        "category": "Distributor · End-to-end system",
+        "desc": "Online store + POS, centralized stock, delivery notes, credit accounts and cash control. Installable PWA with wholesale access."
+      },
+      "terrazas": {
+        "title": "Terrazas al Río",
+        "category": "Tourism · Online booking",
+        "desc": "Riverside complex with real availability, gallery, 5★ reviews and an admin panel."
+      },
+      "cprem": {
+        "title": "C-PREM",
+        "category": "Precast e-commerce",
+        "desc": "Thermal tiles and precast concrete: video hero, catalog with cart and WhatsApp checkout."
+      },
+      "jazcal": {
+        "title": "Jazcal",
+        "category": "CMMS · Industrial maintenance",
+        "desc": "Assets, work orders, inventory, tool crib and preventive plans. App with login and role-based permissions."
+      },
+      "pss": {
+        "title": "PSS Innovaciones",
+        "category": "Wholesale · Wall coverings",
+        "desc": "Wholesale store for wall panels and PVC boards with cart, real catalog and WhatsApp checkout."
+      },
+      "sportivo": {
+        "title": "Sportivo Resto & Café",
+        "category": "Restaurant · Digital menu",
+        "desc": "Full menu with real prices and photos, gallery and an admin panel to edit dishes without touching code."
+      },
+      "lmt": {
+        "title": "Metalúrgica LMT",
+        "category": "Industry · Heavy transport",
+        "desc": "Corporate site with services, third-axle work, real workshop photos and WhatsApp lead capture."
+      },
+      "hidradock": {
+        "title": "Hidra Dock",
+        "category": "Earthworks",
+        "desc": "Excavation, leveling and land clearing: services site with jobsite photos and direct contact."
+      },
+      "fussinato": {
+        "title": "Muebles & Deco Fussinato",
+        "category": "Showroom · Furniture & decor",
+        "desc": "Collections, real room setups, inspiration and direct WhatsApp inquiries."
+      }
     }
   },
-  "cases": {
-    "eyebrow": "Success stories",
-    "title": "Results that already happened.",
-    "subtitle": "We don't show hypotheses. We show what we did before — real metrics, real teams.",
-    "verCompleto": "Read full case",
+  "band": [
+    "Custom software",
+    "Automation",
+    "Artificial intelligence",
+    "iOS & Android apps",
+    "E-commerce"
+  ],
+  "garantia": {
+    "eyebrow": "Warranty and backing",
+    "title": "What we sign,",
+    "accent": "we honour in writing.",
+    "subtitle": "Four commitments that live in the contract, not on a landing page. If one isn't met, you have a document to hold us to.",
+    "cta": "Request a proposal",
     "items": {
-      "c1": { "metricLabel": "Sales increase", "client": "Nordix Retail", "desc": "We migrated the store to a headless stack and added an AI recommendation agent. 3 months to production." },
-      "c2": { "metricLabel": "Ops time", "client": "Atlasware", "desc": "We replaced 4 scattered tools with an internal system + custom n8n automations." },
-      "c3": { "metricLabel": "Peak uptime", "client": "Forge SaaS", "desc": "Re-architected to handle 12k transactions/day with zero downtime through Black Friday." }
-    }
-  },
-  "globe": {
-    "eyebrow": "Global reach",
-    "title": "Built from Latin America for",
-    "accent": "the world.",
-    "subtitle": "Teams in Buenos Aires, Madrid and remote. Clients in 8 countries. Stack and processes timezone-proof.",
-    "stats": {
-      "s1": { "value": "8", "label": "Active countries" },
-      "s2": { "value": "3", "label": "Operational hubs" },
-      "s3": { "value": "24/7", "label": "Distributed support" }
+      "contrato": {
+        "tag": "Signed before we start",
+        "title": "Contract with scope, milestones and dates",
+        "desc": "Before anything begins you sign a document stating exactly what gets delivered, in how many stages, and on what date each one lands. No grey areas."
+      },
+      "precio": {
+        "tag": "No hourly billing",
+        "title": "Fixed price, no surprise hours",
+        "desc": "The number you approve is the number you pay. If you ask for something outside the scope, it gets quoted separately and in writing before anyone touches it."
+      },
+      "garantia": {
+        "tag": "90 days",
+        "title": "90-day post-delivery warranty",
+        "desc": "Any fault in what we delivered gets fixed at no charge for 90 days after delivery. It isn't a courtesy — it's in the contract."
+      },
+      "respaldo": {
+        "tag": "Invoicing + 24 h response",
+        "title": "Registered company, with invoicing",
+        "desc": "We invoice every payment legally and respond within 24 business hours. You get a receipt, a named counterpart, and someone to hold accountable."
+      }
     }
   },
   "proceso": {
     "eyebrow": "How we work",
-    "title": "Three steps. Zero surprises.",
-    "subtitle": "A process built so you know exactly what happens each week. No status meetings, no endless slides.",
+    "title": "Three stages, every one with a date.",
+    "subtitle": "A process built so you always know what is being done, when it ships and what it costs. No progress reports that say nothing.",
     "steps": {
-      "s1": { "num": "01", "title": "Diagnostic", "desc": "30-min call. We audit your current operation, identify bottlenecks and rank priorities by impact/effort.", "tag": "2 WEEKS" },
-      "s2": { "num": "02", "title": "Biweekly sprints", "desc": "Building in 2-week sprints with live demos. Each sprint ships something deployed and measurable.", "tag": "8–16 WEEKS" },
-      "s3": { "num": "03", "title": "Launch + retainer", "desc": "Production deploy, team handoff, and monthly retainer to iterate on real data.", "tag": "CONTINUOUS" }
+      "s1": {
+        "num": "01",
+        "title": "Diagnosis and proposal",
+        "desc": "One call to understand your operation. You leave with a written proposal: scope, stages, dates and a fixed price.",
+        "tag": "NO COST"
+      },
+      "s2": {
+        "num": "02",
+        "title": "Contract and build",
+        "desc": "Signed, then started. Every stage closes with something working that you can open and try yourself.",
+        "tag": "DATED STAGES"
+      },
+      "s3": {
+        "num": "03",
+        "title": "Delivery and warranty",
+        "desc": "Production deploy, handover of every access, and training for your team. The 90-day warranty starts from there.",
+        "tag": "90-DAY WARRANTY"
+      }
     }
   },
   "porque": {
     "eyebrow": "Why PotenciApp",
-    "title": "We're not another agency.",
-    "accent": "We're technical partners.",
-    "otros": "What happens with others",
+    "title": "Anyone can promise.",
+    "accent": "We sign it.",
+    "otros": "What usually happens",
     "nosotros": "What happens with us",
     "otrosItems": [
-      "Quote in hours, ship in months — no heads-up",
-      "Rigid stack: React, or WordPress. Period.",
-      "They hand off the code and an 80-page PDF",
-      "Weekly status meetings that go nowhere",
-      "They charge by the hour — incentive to overhead"
+      "A quote over chat, with no contract and no dates",
+      "The price shifts halfway through the project",
+      "They work with no invoice and no legal backing",
+      "They deliver and vanish — the bugs are on you",
+      "To see past work, you get screenshots"
     ],
     "nosotrosItems": [
-      "30-min diagnostic, first demo in 2 weeks",
-      "Stack by problem: the right one, not the comfortable one",
-      "Real handoff: trained team + living docs",
-      "Biweekly sprints with navigable demo",
-      "We charge per closed sprint — incentive to ship"
+      "A signed contract with scope, milestones and dates",
+      "Fixed price; changes are quoted separately and in writing",
+      "Registered company, with an invoice for every payment",
+      "90-day post-delivery warranty on what we built",
+      "Live projects you can open and test before you sign"
     ],
     "stats": [
-      { "value": "2 wks", "label": "First production deploy" },
-      { "value": "+40", "label": "Shipped projects" },
-      { "value": "98%", "label": "Client retention" },
-      { "value": "24/7", "label": "Post-launch monitoring" }
+      {
+        "value": "15+",
+        "label": "Projects delivered"
+      },
+      {
+        "value": "90 days",
+        "label": "Post-delivery warranty"
+      },
+      {
+        "value": "24 h",
+        "label": "Committed response"
+      },
+      {
+        "value": "100%",
+        "label": "Projects under signed contract"
+      }
     ]
   },
-  "testimonials": {
-    "eyebrow": "Testimonials",
-    "title": "From those who lived it.",
-    "items": {
-      "t1": { "quote": "We went from running on spreadsheets to an operation that scales on its own. In 10 weeks we were selling 2x.", "name": "Martín Vega", "role": "CEO, Nordix Retail" },
-      "t2": { "quote": "No fluff. Diagnostic, sprint, demo, deploy. First time a tech partner actually hits the deadlines they promised.", "name": "Lucía Méndez", "role": "CTO, Atlasware" },
-      "t3": { "quote": "The AI agent they built saves us 6 hours of support daily. ROI in the first month.", "name": "Diego Sánchez", "role": "Founder, Forge SaaS" }
+  "globe": {
+    "eyebrow": "Where we work",
+    "title": "From Argentina, for clients",
+    "accent": "here and abroad.",
+    "subtitle": "Remote team, documented processes. We work with companies and retailers across the country, and with clients outside Argentina too.",
+    "stats": {
+      "s1": {
+        "value": "AR",
+        "label": "Base and invoicing"
+      },
+      "s2": {
+        "value": "100%",
+        "label": "Remote and documented"
+      },
+      "s3": {
+        "value": "24 h",
+        "label": "Committed response"
+      }
     }
   },
   "chat": {
@@ -180,9 +338,9 @@
     "accent": "No forms.",
     "subtitle": "Tell us in 30 seconds what you need. We send you to WhatsApp with the context already loaded — no retyping, no waiting.",
     "perks": [
-      "Reply in under 24h.",
-      "30-min diagnostic, no cost.",
-      "Zero commitment to advance."
+      "Reply within 24 business hours.",
+      "Diagnosis at no cost.",
+      "Written proposal with a fixed price."
     ],
     "online": "Online",
     "reset": "Restart conversation",
@@ -253,62 +411,87 @@
     }
   },
   "faq": {
-    "eyebrow": "Frequently asked",
-    "title": "What everyone asks before the call.",
+    "eyebrow": "FAQ",
+    "title": "What everyone asks before signing.",
     "cta": "Didn't find your question?",
     "ctaLink": "Write to us directly →",
     "items": [
-      { "q": "How much does a typical project cost?", "a": "Depends on scope, but as reference: an app/web MVP usually lands between USD 18k–45k. A custom internal system between USD 12k–35k. We give a free diagnostic + closed proposal per sprint — no estimates that double mid-way." },
-      { "q": "How long until delivery?", "a": "First navigable demo at week 2. Functional MVP between 6 and 12 weeks depending on complexity. We work in biweekly sprints with closing demo — if something stalls, you see it too." },
-      { "q": "Who owns the code?", "a": "You. 100%. Repos in your GitHub/GitLab from day 1. No proprietary licenses, no dependencies on our tools. We hand off code, docs, and a trained team." },
-      { "q": "What happens after launch?", "a": "We offer an optional monthly retainer for support, continuous improvements and 24/7 monitoring. If you'd rather bring it in-house, we leave a complete handoff with one transition month included at no cost." },
-      { "q": "Do you work with startups or only big companies?", "a": "Both. We've built MVPs for solo founders and replatformings for 500+ person companies. The criterion isn't size: it's problem clarity and real commitment to shipping." },
-      { "q": "Can you integrate with my current team?", "a": "Yes. We can lead technically, complement your team, or just review architecture. We define the model based on what serves the project — not what's easiest for us." },
-      { "q": "What if I want to cancel after starting?", "a": "We work in 2-week sprints with sprint-by-sprint commitment. You can cancel at the end of any one, no penalties or excuses. If we're not delivering value, you shouldn't continue." }
+      {
+        "q": "How much does a project cost?",
+        "a": "We don't publish prices because scope sets the number. What is fixed: you get a written proposal with a closed price before signing, and that number doesn't move. If you ask for something outside the scope mid-project, it's quoted separately and also in writing."
+      },
+      {
+        "q": "What's in the contract?",
+        "a": "Detailed scope, stages with delivery dates, fixed price, payment terms and the 90-day post-delivery warranty. You read it before signing and you keep a copy."
+      },
+      {
+        "q": "What does the 90-day warranty cover?",
+        "a": "Any error or fault in what we delivered: we fix it at no charge for 90 days after delivery. It doesn't cover new features or scope changes, which are quoted separately."
+      },
+      {
+        "q": "Do you issue invoices?",
+        "a": "Yes. We're a registered company and we invoice every payment on the project. You have proper documentation from start to finish."
+      },
+      {
+        "q": "How fast do you respond?",
+        "a": "Within 24 business hours, committed in the contract. During the project you have a direct line to whoever is building, not a generic inbox."
+      },
+      {
+        "q": "Can I see something you've built?",
+        "a": "Yes, and without asking. The portfolio projects are online right now: go in, browse the catalog, add something to the cart. None of them is a mockup."
+      },
+      {
+        "q": "Do you work with clients outside Argentina?",
+        "a": "Yes. We work fully remote with documented processes, so distance doesn't change how we work. Invoicing and payment terms are agreed before signing."
+      },
+      {
+        "q": "Do you publish apps on the App Store and Google Play?",
+        "a": "Yes. We hold verified developer accounts and handle the whole publishing process: listings, screenshots, privacy forms, signed builds and updates."
+      }
     ]
   },
   "contact": {
-    "eyebrow": "Start",
-    "title": "Your next quarter",
-    "accent": "can be different.",
-    "subtitle": "Tell us about your business in 60 seconds. We reply with an initial diagnostic in under 24 hours.",
+    "eyebrow": "Get started",
+    "title": "Request your proposal",
+    "accent": "in writing.",
+    "subtitle": "Tell us what you need. We reply within 24 business hours with an initial diagnosis and, if it's a fit, a proposal with scope, dates and a fixed price.",
     "perks": [
-      "30-min diagnostic · no cost",
-      "Closed proposal per sprint",
-      "No commitments until you sign"
+      "Diagnosis at no cost, no commitment",
+      "Written proposal with a fixed price",
+      "90-day post-delivery warranty"
     ],
-    "slotsBadge": "3 slots available this week",
+    "slotsBadge": "We reply within 24 business hours",
     "form": {
-      "title": "Tell us about your business",
-      "subtitle": "We reply in under 24h",
+      "title": "Tell us about your project",
+      "subtitle": "We reply within 24 business hours",
       "name": "Full name",
       "namePh": "María García",
       "email": "Work email",
       "emailPh": "maria@company.com",
       "company": "Company",
-      "companyPh": "Nordix Retail",
+      "companyPh": "My Company Ltd.",
       "website": "Current website",
       "optional": "(optional)",
       "websitePh": "company.com",
-      "billing": "Approx. monthly revenue",
+      "billing": "Estimated budget",
       "billingOptions": [
-        "Less than USD 10k",
-        "USD 10k – 50k",
-        "USD 50k – 200k",
-        "More than USD 200k",
-        "Prefer not to say"
+        "Not defined yet",
+        "Under USD 5,000",
+        "USD 5,000 – 15,000",
+        "USD 15,000 – 40,000",
+        "Over USD 40,000"
       ],
       "need": "What are you looking for?",
       "needOptions": [
-        "Technical diagnostic",
-        "New project",
-        "Optimize / scale",
-        "Integrate AI",
+        "A new project",
+        "Online store / e-commerce",
+        "Internal system",
+        "App for the App Store / Google Play",
         "Not sure yet"
       ],
       "message": "Tell us more",
       "messagePh": "Add context if you want (current issue, deadline, etc.)",
-      "submit": "Request free diagnostic",
+      "submit": "Request a proposal",
       "submitting": "Sending...",
       "select": "Select...",
       "terms": "By submitting you accept our",
@@ -322,23 +505,23 @@
         "selectOne": "Select an option"
       },
       "success": {
-        "title": "Received!",
-        "body": "We'll reply in under 24 hours with an initial diagnostic. If you want to speed up, go straight to WhatsApp.",
-        "altWhatsApp": "Or chat directly on WhatsApp →"
+        "title": "Got it!",
+        "body": "We'll write within 24 business hours with a first diagnosis. If you want to move faster, go straight to WhatsApp.",
+        "altWhatsApp": "Or talk to us on WhatsApp →"
       },
-      "toast": "Received. We reply in under 24h."
+      "toast": "Got it. We reply within 24 business hours."
     }
   },
   "footer": {
-    "tagline": "We build what your team can't get to. Apps, e-commerce, systems and applied AI — custom-built and shipped in weeks.",
-    "operamos": "Operating from",
-    "operamosValue": "Buenos Aires · Madrid · Remote",
+    "tagline": "Custom software for companies and retailers: apps, e-commerce and internal systems. With a contract, a fixed price, invoicing and a 90-day warranty.",
+    "operamos": "We operate from",
+    "operamosValue": "Argentina · Remote · Clients abroad",
     "soluciones": "Solutions",
     "empresa": "Company",
     "recursos": "Resources",
     "conecta": "Connect",
     "rights": "© {year} PotenciApp. All rights reserved.",
-    "availability": "Available for new projects · Q1 2026",
+    "availability": "Taking on projects · 2026",
     "terms": "Terms",
     "privacy": "Privacy",
     "cookies": "Cookies"

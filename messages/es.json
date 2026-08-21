@@ -1,37 +1,50 @@
 {
   "meta": {
-    "title": "PotenciApp | Aplicaciones, e-commerce y sistemas con IA aplicada",
-    "description": "Tu negocio tiene un techo técnico. Lo rompemos. Construimos aplicaciones, e-commerce, sistemas e IA aplicada a medida, desplegados en semanas.",
-    "ogTitle": "PotenciApp | Sin techo técnico.",
-    "ogDescription": "Aplicaciones, e-commerce y sistemas con IA aplicada. Diagnóstico gratuito de 30 minutos."
+    "title": "PotenciApp | Software a medida con contrato, precio cerrado y garantía",
+    "description": "Apps, e-commerce y sistemas a medida para empresas y comercios. Contrato con alcance, hitos y fechas, precio cerrado, factura y 90 días de garantía post-entrega.",
+    "ogTitle": "PotenciApp | Software que se firma, se entrega y se garantiza.",
+    "ogDescription": "Contrato con fechas, precio cerrado, factura y 90 días de garantía. Proyectos reales que podés abrir y probar ahora mismo."
   },
   "nav": {
     "soluciones": "Soluciones",
-    "casos": "Casos",
+    "proyectos": "Proyectos",
     "proceso": "Proceso",
     "faq": "FAQ",
     "ctaShort": "Hablemos",
-    "ctaLong": "Agendar diagnóstico",
+    "ctaLong": "Pedir propuesta",
     "menu": "Menú",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "garantia": "Garantía"
   },
   "hero": {
-    "statusBadge": "Disponible · Q1 2026",
-    "partnerBadge": "Tu partner técnico",
+    "statusBadge": "Tomando proyectos · 2026",
+    "partnerBadge": "Contrato · Precio cerrado · Garantía",
     "outline": "POTENCIAMOS",
-    "h2_line1": "tu negocio.",
+    "h2_line1": "Tu software, con",
     "h2_accent": "Sin techo.",
-    "subheading": "Aplicaciones, e-commerce, sistemas e <bold>IA aplicada</bold> a tu negocio. Construido a medida y desplegado en semanas, no en años.",
-    "ctaPrimary": "Diagnóstico gratuito",
-    "ctaSecondary": "Ver casos",
+    "subheading": "Apps, e-commerce y sistemas a medida para empresas y comercios. Firmamos <bold>alcance, hitos y fechas</bold> antes de escribir una línea de código, y respaldamos lo que entregamos por escrito.",
+    "ctaPrimary": "Pedir propuesta",
+    "ctaSecondary": "Ver proyectos en vivo",
     "metrics": {
-      "m1": { "value": "+340%", "label": "conversión promedio" },
-      "m2": { "value": "−67%", "label": "tiempo operativo" },
-      "m3": { "value": "99,98%", "label": "uptime en peak" },
-      "m4": { "value": "12k+", "label": "transacciones/día" }
+      "m1": {
+        "value": "15+",
+        "label": "proyectos entregados"
+      },
+      "m2": {
+        "value": "3",
+        "label": "tiendas vendiendo hoy"
+      },
+      "m3": {
+        "value": "90 días",
+        "label": "garantía post-entrega"
+      },
+      "m4": {
+        "value": "24 h",
+        "label": "respuesta comprometida"
+      }
     },
     "dashboard": {
-      "url": "app.potenciapp.com",
+      "url": "tu-negocio.com/panel",
       "live": "EN VIVO",
       "revenue": "Ingresos brutos",
       "vsPrev": "vs período anterior",
@@ -42,22 +55,29 @@
       "vs": "vs 2025",
       "deployLine": "deploy",
       "agentLine": "agente: optimización SKU activa",
-      "uptimeLine": "uptime 99,98%"
-    }
+      "uptimeLine": "uptime 99,98%",
+      "sample": "Panel de ejemplo"
+    },
+    "rotating": [
+      "contrato.",
+      "precio cerrado.",
+      "garantía.",
+      "factura."
+    ]
   },
   "logos": {
     "eyebrow": "Stack & integraciones que dominamos"
   },
   "value": {
-    "eyebrow": "Propuesta de valor",
-    "title": "Tu negocio tiene un techo técnico.",
-    "accent": "Lo rompemos.",
-    "body": "No hacemos plantillas. Hacemos sistemas. Diagnosticamos dónde se cuelga tu operación, diseñamos la arquitectura que escala, y la desplegamos antes de que pierdas el próximo trimestre."
+    "eyebrow": "Cómo trabajamos",
+    "title": "Contratar software no debería ser un acto de fe.",
+    "accent": "Por eso lo ponemos por escrito.",
+    "body": "Cada proyecto arranca con un contrato que fija alcance, hitos y fechas, y con un precio cerrado que no se mueve. Facturamos legalmente, respondemos en 24 horas hábiles y bancamos lo que entregamos con 90 días de garantía. Nada de eso es un favor: es la base."
   },
   "services": {
     "eyebrow": "Soluciones",
-    "title": "Construimos lo que tu equipo no llega a hacer.",
-    "subtitle": "Apps, e-commerce, sistemas internos, IA aplicada y consultoría. A medida y desplegado en semanas.",
+    "title": "Construimos el software que tu operación necesita.",
+    "subtitle": "Apps, e-commerce, sistemas internos, automatizaciones e IA aplicada. Todo con contrato, precio cerrado y garantía.",
     "verMas": "Ver más",
     "cards": {
       "apps": {
@@ -92,86 +112,224 @@
       }
     }
   },
+  "stores": {
+    "eyebrow": "Apps nativas",
+    "title": "Publicamos tu app en",
+    "accent": "App Store y Google Play.",
+    "subtitle": "Cuentas de desarrollador verificadas, revisión de tienda aprobada y releases gestionados por nosotros. Vos ves tu app publicada; nosotros nos comemos el proceso.",
+    "verified": "Cuenta verificada",
+    "appStoreTop": "Disponible en el",
+    "appStoreName": "App Store",
+    "playStoreTop": "Disponible en",
+    "playStoreName": "Google Play",
+    "points": [
+      {
+        "title": "Cuentas verificadas",
+        "desc": "Apple Developer Program y Google Play Console a nombre tuyo o nuestro."
+      },
+      {
+        "title": "Review aprobada",
+        "desc": "Preparamos fichas, capturas, privacidad y todo lo que piden las tiendas."
+      },
+      {
+        "title": "Releases gestionados",
+        "desc": "Builds firmados, versionado, TestFlight / testing interno y updates."
+      },
+      {
+        "title": "iOS + Android",
+        "desc": "Una sola base React Native. Dos tiendas. Misma experiencia."
+      }
+    ]
+  },
   "portfolio": {
     "eyebrow": "Portfolio",
-    "title": "Trabajos recientes.",
-    "subtitle": "Una selección de proyectos shippeados en los últimos 12 meses. Cada caso, una operación real con problemas reales.",
-    "verCaso": "Ver caso",
+    "title": "Proyectos reales, en vivo.",
+    "subtitle": "No son mockups ni capturas de pantalla. Son tiendas, sistemas y webs funcionando hoy, con clientes reales vendiendo y operando. Entrá y probalas antes de contratarnos.",
+    "verCaso": "Ver proyecto",
+    "verDemo": "Abrir demo",
+    "live": "En vivo",
+    "allDemos": "Ver todas las demos",
     "items": {
-      "p1": { "title": "Nordix Commerce", "category": "E-commerce headless", "desc": "Migración Shopify → headless Next.js + agente IA de recomendación." },
-      "p2": { "title": "Atlasware OS", "category": "Sistema interno", "desc": "ERP custom que reemplazó 4 SaaS dispersos + automatizaciones n8n." },
-      "p3": { "title": "Forge Cloud", "category": "Plataforma SaaS", "desc": "Arquitectura para 12k transacciones/día con 99,98% uptime en peak." },
-      "p4": { "title": "Valka Health", "category": "App móvil", "desc": "App de telemedicina con cola de pacientes en tiempo real e IA triage." },
-      "p5": { "title": "Quantum Logistics", "category": "Automatización", "desc": "Pipeline de despachos: tracking unificado de 6 carriers + alertas predictivas." },
-      "p6": { "title": "Meridian Capital", "category": "Dashboard financiero", "desc": "Dashboard ejecutivo en tiempo real con modelos de riesgo desplegados como agentes." }
+      "maxikiosco": {
+        "title": "Maxikiosco 24/7",
+        "category": "E-commerce · PWA en producción",
+        "desc": "Tienda 24/7 con catálogo en vivo, promos del día, auspiciantes del barrio y pedidos online a cualquier hora."
+      },
+      "lachola": {
+        "title": "La Chola",
+        "category": "E-commerce indumentaria",
+        "desc": "Tienda de ropa con catálogo por categoría, ofertas, checkout con Mercado Pago y envíos a todo el país."
+      },
+      "newbaby": {
+        "title": "New Baby",
+        "category": "E-commerce ropa infantil",
+        "desc": "Ajuar y primera infancia con stock real por talle, favoritos de la tienda y pago seguro."
+      },
+      "losincreibles": {
+        "title": "Los Increíbles",
+        "category": "Distribuidora · Sistema integral",
+        "desc": "Tienda online + TPV, stock centralizado, remitos, cuenta corriente y caja. PWA instalable con accesos mayoristas."
+      },
+      "terrazas": {
+        "title": "Terrazas al Río",
+        "category": "Turismo · Reservas online",
+        "desc": "Complejo frente al río con disponibilidad real, galería, reseñas 5★ y panel de administración."
+      },
+      "cprem": {
+        "title": "C-PREM",
+        "category": "E-commerce premoldeados",
+        "desc": "Baldosas atérmicas y premoldeados: hero en video, catálogo con carrito y checkout por WhatsApp."
+      },
+      "jazcal": {
+        "title": "Jazcal",
+        "category": "CMMS · Mantenimiento industrial",
+        "desc": "Activos, órdenes de trabajo, inventario, pañol y preventivo. App con login y permisos por rol."
+      },
+      "pss": {
+        "title": "PSS Innovaciones",
+        "category": "Mayorista · Revestimientos",
+        "desc": "Tienda mayorista de wall panels y placas PVC con carrito, catálogo real y checkout por WhatsApp."
+      },
+      "sportivo": {
+        "title": "Sportivo Resto & Café",
+        "category": "Gastronomía · Carta digital",
+        "desc": "Carta completa con precios y fotos reales, galería y panel para editar platos sin tocar código."
+      },
+      "lmt": {
+        "title": "Metalúrgica LMT",
+        "category": "Industria · Transporte pesado",
+        "desc": "Web corporativa con servicios, tercer eje, fotos reales del taller y captación por WhatsApp."
+      },
+      "hidradock": {
+        "title": "Hidra Dock",
+        "category": "Movimiento de suelos",
+        "desc": "Excavación, nivelación y limpieza de terrenos: web de servicios con fotos de obra y contacto directo."
+      },
+      "fussinato": {
+        "title": "Muebles & Deco Fussinato",
+        "category": "Showroom · Muebles y deco",
+        "desc": "Colecciones, ambientes reales, inspiración y consultas directas por WhatsApp."
+      }
     }
   },
-  "cases": {
-    "eyebrow": "Casos de éxito",
-    "title": "Resultados que ya pasaron.",
-    "subtitle": "No mostramos hipótesis. Mostramos lo que hicimos antes — métricas reales, equipos reales.",
-    "verCompleto": "Leer caso completo",
+  "band": [
+    "Software a medida",
+    "Automatización",
+    "Inteligencia artificial",
+    "Apps iOS y Android",
+    "E-commerce"
+  ],
+  "garantia": {
+    "eyebrow": "Garantía y respaldo",
+    "title": "Lo que firmamos,",
+    "accent": "lo cumplimos por escrito.",
+    "subtitle": "Cuatro compromisos que van en el contrato, no en una landing. Si alguno no se cumple, tenés un papel para reclamarlo.",
+    "cta": "Pedir propuesta",
     "items": {
-      "c1": { "metricLabel": "Incremento en ventas", "client": "Nordix Retail", "desc": "Migramos la tienda a un stack headless y agregamos un agente IA de recomendación. 3 meses a producción." },
-      "c2": { "metricLabel": "Tiempo operativo", "client": "Atlasware", "desc": "Reemplazamos 4 herramientas dispersas por un sistema interno + automatizaciones n8n custom." },
-      "c3": { "metricLabel": "Uptime en peak", "client": "Forge SaaS", "desc": "Rediseñamos la arquitectura para soportar 12k transacciones/día sin caídas durante Black Friday." }
-    }
-  },
-  "globe": {
-    "eyebrow": "Alcance global",
-    "title": "Construimos desde Latinoamérica para",
-    "accent": "el mundo.",
-    "subtitle": "Equipos en Buenos Aires, Madrid y remoto. Clientes en 8 países. Stack y procesos a prueba de zonas horarias.",
-    "stats": {
-      "s1": { "value": "8", "label": "Países activos" },
-      "s2": { "value": "3", "label": "Hubs operativos" },
-      "s3": { "value": "24/7", "label": "Soporte distribuido" }
+      "contrato": {
+        "tag": "Firmado antes de arrancar",
+        "title": "Contrato con alcance, hitos y fechas",
+        "desc": "Antes de empezar firmás un documento que dice exactamente qué se entrega, en cuántas etapas y con qué fecha cada una. Sin zonas grises ni interpretaciones."
+      },
+      "precio": {
+        "tag": "Sin facturación por hora",
+        "title": "Precio cerrado, sin horas sorpresa",
+        "desc": "El número que aceptás es el número que pagás. Si pedís algo fuera del alcance, se cotiza aparte y por escrito antes de tocarlo."
+      },
+      "garantia": {
+        "tag": "90 días",
+        "title": "90 días de garantía post-entrega",
+        "desc": "Cualquier falla de lo que entregamos se corrige sin cargo durante los 90 días posteriores a la entrega. No es cortesía: está en el contrato."
+      },
+      "respaldo": {
+        "tag": "Factura + respuesta en 24 h",
+        "title": "Empresa registrada, con factura",
+        "desc": "Facturamos legalmente cada pago y respondemos en 24 horas hábiles. Tenés comprobante, tenés interlocutor y tenés a quién reclamarle."
+      }
     }
   },
   "proceso": {
     "eyebrow": "Cómo trabajamos",
-    "title": "Tres pasos. Cero sorpresas.",
-    "subtitle": "Un proceso pensado para que sepas exactamente qué pasa en cada semana. Sin reuniones de status, sin slides infinitos.",
+    "title": "Tres etapas, todas con fecha.",
+    "subtitle": "Un proceso pensado para que en cada momento sepas qué se está haciendo, cuándo se entrega y cuánto cuesta. Sin informes de avance que no dicen nada.",
     "steps": {
-      "s1": { "num": "01", "title": "Diagnóstico", "desc": "30 min de call. Auditamos tu operación actual, identificamos cuellos y ranqueamos prioridades por impacto/esfuerzo.", "tag": "2 SEMANAS" },
-      "s2": { "num": "02", "title": "Sprints quincenales", "desc": "Building en sprints de 2 semanas con demos en vivo. Cada sprint cierra con algo desplegado y mensurable.", "tag": "8–16 SEMANAS" },
-      "s3": { "num": "03", "title": "Lanzamiento + retainer", "desc": "Deploy a producción, transferencia al equipo, y retainer mensual para iterar sobre datos reales.", "tag": "CONTINUO" }
+      "s1": {
+        "num": "01",
+        "title": "Diagnóstico y propuesta",
+        "desc": "Una llamada para entender tu operación. Salís con una propuesta escrita: alcance, etapas, fechas y precio cerrado.",
+        "tag": "SIN COSTO"
+      },
+      "s2": {
+        "num": "02",
+        "title": "Contrato y construcción",
+        "desc": "Se firma y se arranca. Cada etapa cierra con algo funcionando que podés abrir y probar vos mismo.",
+        "tag": "POR ETAPAS CON FECHA"
+      },
+      "s3": {
+        "num": "03",
+        "title": "Entrega y garantía",
+        "desc": "Deploy a producción, entrega de accesos y capacitación a tu equipo. Desde ahí corren los 90 días de garantía.",
+        "tag": "90 DÍAS DE GARANTÍA"
+      }
     }
   },
   "porque": {
     "eyebrow": "Por qué PotenciApp",
-    "title": "No somos otra agencia.",
-    "accent": "Somos partners técnicos.",
-    "otros": "Lo que pasa con otros",
+    "title": "Cualquiera te promete.",
+    "accent": "Nosotros te lo firmamos.",
+    "otros": "Lo que suele pasar",
     "nosotros": "Lo que pasa con nosotros",
     "otrosItems": [
-      "Cotizan en horas, entregan en meses sin avisar",
-      "Stack rígido: o React, o WordPress. Punto.",
-      "Te dejan el código y un PDF de 80 páginas",
-      "Reuniones de status semanales que no avanzan",
-      "Cobran por hora — incentivo al overhead"
+      "Presupuesto por mensaje, sin contrato ni fechas",
+      "El precio se mueve a mitad del proyecto",
+      "Trabajan sin factura y sin respaldo legal",
+      "Entregan y desaparecen: los bugs los pagás vos",
+      "Para ver trabajos previos, capturas de pantalla"
     ],
     "nosotrosItems": [
-      "Diagnóstico en 30 min, primera demo en 2 semanas",
-      "Stack según problema: lo correcto, no lo cómodo",
-      "Hand-off real: equipo entrenado + docs vivas",
-      "Sprints quincenales con demo navegable",
-      "Cobramos por sprint cerrado — incentivo a entregar"
+      "Contrato firmado con alcance, hitos y fechas",
+      "Precio cerrado; los cambios se cotizan aparte y por escrito",
+      "Empresa registrada, con factura por cada pago",
+      "90 días de garantía post-entrega sobre lo que hicimos",
+      "Proyectos online que podés abrir y probar antes de firmar"
     ],
     "stats": [
-      { "value": "2 sem.", "label": "Primer deploy en producción" },
-      { "value": "+40", "label": "Proyectos shippeados" },
-      { "value": "98%", "label": "Retention de clientes" },
-      { "value": "24/7", "label": "Monitoreo post-lanzamiento" }
+      {
+        "value": "15+",
+        "label": "Proyectos entregados"
+      },
+      {
+        "value": "90 días",
+        "label": "Garantía post-entrega"
+      },
+      {
+        "value": "24 h",
+        "label": "Respuesta comprometida"
+      },
+      {
+        "value": "100%",
+        "label": "Proyectos con contrato firmado"
+      }
     ]
   },
-  "testimonials": {
-    "eyebrow": "Testimonios",
-    "title": "Lo dicen quienes lo vivieron.",
-    "items": {
-      "t1": { "quote": "Pasamos de tener todo en planillas a una operación que escala sola. En 10 semanas ya estábamos vendiendo el doble.", "name": "Martín Vega", "role": "CEO, Nordix Retail" },
-      "t2": { "quote": "No te venden humo. Diagnóstico, sprint, demo, deploy. Es la primera vez que un partner técnico cumple los plazos que prometió.", "name": "Lucía Méndez", "role": "CTO, Atlasware" },
-      "t3": { "quote": "El agente de IA que armaron nos ahorra 6 horas diarias de atención. La inversión se pagó en el primer mes.", "name": "Diego Sánchez", "role": "Founder, Forge SaaS" }
+  "globe": {
+    "eyebrow": "Dónde trabajamos",
+    "title": "Desde Argentina, para clientes",
+    "accent": "acá y en el exterior.",
+    "subtitle": "Equipo remoto y procesos documentados. Trabajamos con empresas y comercios de todo el país, y también con clientes fuera de Argentina.",
+    "stats": {
+      "s1": {
+        "value": "AR",
+        "label": "Base y facturación"
+      },
+      "s2": {
+        "value": "100%",
+        "label": "Remoto y documentado"
+      },
+      "s3": {
+        "value": "24 h",
+        "label": "Respuesta comprometida"
+      }
     }
   },
   "chat": {
@@ -180,9 +338,9 @@
     "accent": "Sin formularios.",
     "subtitle": "Decinos en 30 segundos qué necesitás. Te llevamos a WhatsApp con el contexto ya cargado — sin reescribir nada, sin esperas.",
     "perks": [
-      "Respuesta en menos de 24hs.",
-      "Diagnóstico de 30 min sin costo.",
-      "Cero compromiso de avance."
+      "Respuesta en 24 h hábiles.",
+      "Diagnóstico sin costo.",
+      "Propuesta escrita con precio cerrado."
     ],
     "online": "En línea",
     "reset": "Reiniciar conversación",
@@ -254,61 +412,86 @@
   },
   "faq": {
     "eyebrow": "Preguntas frecuentes",
-    "title": "Lo que todo el mundo nos pregunta antes de la llamada.",
+    "title": "Lo que todo el mundo pregunta antes de firmar.",
     "cta": "¿No encontraste tu pregunta?",
     "ctaLink": "Escribinos directo →",
     "items": [
-      { "q": "¿Cuánto cuesta un proyecto típico?", "a": "Depende de scope, pero como referencia: una MVP de app/web suele estar entre USD 18k–45k. Un sistema interno custom entre USD 12k–35k. Damos diagnóstico gratuito + propuesta cerrada por sprint — sin estimaciones que se duplican a mitad de camino." },
-      { "q": "¿Cuánto tardan en entregar?", "a": "Primera demo navegable a las 2 semanas. MVP funcional entre 6 y 12 semanas según complejidad. Trabajamos en sprints quincenales con demo al cierre — si algo no avanza, lo ves vos también." },
-      { "q": "¿Quién es el dueño del código?", "a": "Vos. 100%. Repos en tu cuenta de GitHub/GitLab desde el día 1. Sin licencias propietarias, sin dependencias a herramientas nuestras. Te entregamos código, docs y al equipo entrenado." },
-      { "q": "¿Qué pasa después del lanzamiento?", "a": "Ofrecemos retainer mensual (opcional) para soporte, mejoras continuas y monitoreo 24/7. Si preferís tomarlo internamente, dejamos el handoff completo y un mes de transición incluido sin costo." },
-      { "q": "¿Trabajan con startups o solo empresas grandes?", "a": "Ambos. Hicimos MVPs para founders solo y replatformings para empresas con +500 personas. El criterio no es tamaño: es claridad de problema y compromiso real con shippear." },
-      { "q": "¿Pueden integrarse con mi equipo actual?", "a": "Sí. Podemos liderar técnicamente, complementar a tu equipo, o solamente revisar arquitectura. Definimos el modelo según lo que sirva al proyecto — no según lo que sea más fácil para nosotros." },
-      { "q": "¿Y si después de empezar quiero cancelar?", "a": "Trabajamos en sprints de 2 semanas con compromiso sprint a sprint. Podés cancelar al cierre de cualquiera, sin penalidades ni excusas. Si no estamos entregando valor, no deberías seguir." }
+      {
+        "q": "¿Cuánto cuesta un proyecto?",
+        "a": "No publicamos precios porque el alcance define el número. Lo que sí es fijo: recibís una propuesta escrita con precio cerrado antes de firmar, y ese número no se mueve. Si durante el proyecto pedís algo fuera del alcance, se cotiza aparte y también por escrito."
+      },
+      {
+        "q": "¿Qué incluye el contrato?",
+        "a": "Alcance detallado, etapas con fecha de entrega, precio cerrado, forma de pago y los 90 días de garantía post-entrega. Lo leés antes de firmar y te queda una copia."
+      },
+      {
+        "q": "¿Qué cubre la garantía de 90 días?",
+        "a": "Cualquier error o falla de lo que entregamos: lo corregimos sin cargo durante los 90 días posteriores a la entrega. No cubre funcionalidades nuevas ni cambios de alcance, que se cotizan aparte."
+      },
+      {
+        "q": "¿Emiten factura?",
+        "a": "Sí. Somos una empresa registrada y facturamos cada pago del proyecto. Tenés comprobante fiscal de principio a fin."
+      },
+      {
+        "q": "¿En cuánto responden?",
+        "a": "24 horas hábiles, comprometidas por contrato. Durante el proyecto tenés un canal directo con quien está construyendo, no una casilla genérica."
+      },
+      {
+        "q": "¿Puedo ver algo que hayan hecho?",
+        "a": "Sí, y sin pedir permiso. Los proyectos del portfolio están online ahora mismo: entrá, navegá el catálogo, agregá algo al carrito. Ninguno es un mockup."
+      },
+      {
+        "q": "¿Trabajan con clientes fuera de Argentina?",
+        "a": "Sí. Trabajamos 100% remoto y con procesos documentados, así que la distancia no cambia la forma de trabajar. La facturación y la forma de pago se acuerdan antes de firmar."
+      },
+      {
+        "q": "¿Publican apps en App Store y Google Play?",
+        "a": "Sí. Tenemos cuentas de desarrollador verificadas y nos hacemos cargo del proceso completo: fichas, capturas, formularios de privacidad, builds firmados y actualizaciones."
+      }
     ]
   },
   "contact": {
     "eyebrow": "Empezar",
-    "title": "Tu próximo trimestre",
-    "accent": "puede ser distinto.",
-    "subtitle": "Contanos sobre tu negocio en 60 segundos. Te respondemos con un diagnóstico inicial en menos de 24 horas.",
+    "title": "Pedí tu propuesta",
+    "accent": "por escrito.",
+    "subtitle": "Contanos qué necesitás. Te respondemos en menos de 24 horas hábiles con un diagnóstico inicial y, si hay match, una propuesta con alcance, fechas y precio cerrado.",
     "perks": [
-      "Diagnóstico de 30 min · sin costo",
-      "Propuesta cerrada por sprint",
-      "Sin compromisos hasta firmar"
+      "Diagnóstico sin costo ni compromiso",
+      "Propuesta escrita con precio cerrado",
+      "90 días de garantía post-entrega"
     ],
-    "slotsBadge": "3 slots disponibles esta semana",
+    "slotsBadge": "Respondemos en 24 h hábiles",
     "form": {
-      "title": "Contanos sobre tu negocio",
-      "subtitle": "Te respondemos en menos de 24hs",
+      "title": "Contanos sobre tu proyecto",
+      "subtitle": "Te respondemos en menos de 24 h hábiles",
       "name": "Nombre y apellido",
       "namePh": "María García",
       "email": "Email corporativo",
       "emailPh": "maria@empresa.com",
       "company": "Empresa",
-      "companyPh": "Nordix Retail",
+      "companyPh": "Mi Empresa SRL",
       "website": "Web actual",
       "optional": "(opcional)",
       "websitePh": "empresa.com",
-      "billing": "Facturación mensual aprox.",
+      "billing": "Presupuesto estimado",
       "billingOptions": [
-        "Menos de USD 10k",
-        "USD 10k – 50k",
-        "USD 50k – 200k",
-        "Más de USD 200k",
-        "Prefiero no responder"
+        "Todavía no lo definí",
+        "Menos de USD 5.000",
+        "USD 5.000 – 15.000",
+        "USD 15.000 – 40.000",
+        "Más de USD 40.000"
       ],
       "need": "¿Qué estás buscando?",
       "needOptions": [
-        "Diagnóstico técnico",
         "Proyecto nuevo",
-        "Optimizar / escalar",
-        "Integrar IA",
+        "Tienda online / e-commerce",
+        "Sistema interno",
+        "App para App Store / Google Play",
         "Todavía no estoy seguro"
       ],
       "message": "Contanos más",
       "messagePh": "Sumá contexto si querés (problema actual, deadline, etc.)",
-      "submit": "Pedir diagnóstico gratuito",
+      "submit": "Pedir propuesta",
       "submitting": "Enviando...",
       "select": "Seleccionar...",
       "terms": "Al enviar aceptás nuestros",
@@ -323,22 +506,22 @@
       },
       "success": {
         "title": "¡Recibido!",
-        "body": "Te escribimos en menos de 24 horas con un primer diagnóstico. Si querés acelerar, podés ir directo a WhatsApp.",
+        "body": "Te escribimos en menos de 24 horas hábiles con un primer diagnóstico. Si querés acelerar, podés ir directo a WhatsApp.",
         "altWhatsApp": "O hablá directo en WhatsApp →"
       },
-      "toast": "Recibido. Te escribimos en menos de 24hs."
+      "toast": "Recibido. Te respondemos en menos de 24 h hábiles."
     }
   },
   "footer": {
-    "tagline": "Construimos lo que tu equipo no llega a hacer. Apps, e-commerce, sistemas e IA aplicada — a medida y desplegado en semanas.",
+    "tagline": "Software a medida para empresas y comercios: apps, e-commerce y sistemas internos. Con contrato, precio cerrado, factura y 90 días de garantía.",
     "operamos": "Operamos desde",
-    "operamosValue": "Buenos Aires · Madrid · Remoto",
+    "operamosValue": "Argentina · Remoto · Clientes en el exterior",
     "soluciones": "Soluciones",
     "empresa": "Empresa",
     "recursos": "Recursos",
     "conecta": "Conectá",
     "rights": "© {year} PotenciApp. Todos los derechos reservados.",
-    "availability": "Disponible para nuevos proyectos · Q1 2026",
+    "availability": "Tomando proyectos · 2026",
     "terms": "Términos",
     "privacy": "Privacidad",
     "cookies": "Cookies"

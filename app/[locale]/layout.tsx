@@ -6,7 +6,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { setRequestLocale, getMessages, getTranslations } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
-import { Rocket3DMount } from "@/components/rocket-3d-mount"
+import ClickSpark from "@/components/reactbits/ClickSpark"
 import "../globals.css"
 
 const inter = Inter({
@@ -80,8 +80,10 @@ export default async function LocaleLayout({
         className="font-sans antialiased bg-gray-950 text-gray-100"
       >
         <NextIntlClientProvider messages={messages}>
-          <Rocket3DMount />
-          {children}
+          {/* Brand-green spark burst on every click, page-wide */}
+          <ClickSpark sparkColor="#22F23A" sparkSize={11} sparkRadius={22} sparkCount={9} duration={430}>
+            {children}
+          </ClickSpark>
           <Toaster richColors theme="dark" position="top-center" />
           <Analytics />
         </NextIntlClientProvider>

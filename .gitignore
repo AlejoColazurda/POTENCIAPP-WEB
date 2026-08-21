@@ -18,3 +18,7 @@ node_modules
 # Local tooling / internal audits
 .claude/
 UI-REVIEW.md
+.gstack/
+
+# TypeScript incremental build cache
+*.tsbuildinfo

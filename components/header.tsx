@@ -7,6 +7,15 @@ import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
 import { BrandWordmark } from "@/components/brand"
 import { LanguageSwitcher } from "@/components/language-switcher"
+import GooeyNav from "@/components/reactbits/GooeyNav"
+
+const NAV_ITEMS = [
+  { key: "soluciones", href: "#soluciones" },
+  { key: "proyectos", href: "#proyectos" },
+  { key: "garantia", href: "#garantia" },
+  { key: "proceso", href: "#proceso" },
+  { key: "faq", href: "#faq" },
+] as const
 
 export function Header() {
   const t = useTranslations("nav")
@@ -20,12 +29,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navItems = [
-    { key: "soluciones", href: "#soluciones" },
-    { key: "casos", href: "#casos" },
-    { key: "proceso", href: "#proceso" },
-    { key: "faq", href: "#faq" },
-  ] as const
+  const gooeyItems = NAV_ITEMS.map((item) => ({ label: t(item.key), href: item.href }))
 
   return (
     <header
@@ -46,16 +50,17 @@ export function Header() {
             <BrandWordmark size="md" priority />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-7 lg:gap-8" aria-label="Principal">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm font-medium text-gray-300 hover:text-gray-100 transition-colors duration-200"
-              >
-                {t(item.key)}
-              </Link>
-            ))}
+          {/* Gooey pill nav — the active item is chased by a blob of green particles */}
+          <nav className="hidden md:block gooey-nav-brand text-sm font-medium" aria-label="Principal">
+            <GooeyNav
+              items={gooeyItems}
+              particleCount={12}
+              particleDistances={[70, 8]}
+              particleR={90}
+              animationTime={560}
+              timeVariance={280}
+              initialActiveIndex={-1}
+            />
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
@@ -87,16 +92,16 @@ export function Header() {
       <div
         className={cn(
           "md:hidden absolute top-full left-0 right-0 bg-gray-950/95 backdrop-blur-xl border-b border-gray-800 overflow-hidden transition-all duration-300",
-          isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
+          isMobileMenuOpen ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0",
         )}
       >
         <nav className="flex flex-col px-4 py-4 gap-2" aria-label="Mobile">
-          {navItems.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-base font-medium text-gray-300 hover:text-gray-100 py-3 border-b border-gray-800 last:border-b-0"
+              className="text-base font-medium text-gray-300 hover:text-brand-green py-3 border-b border-gray-800 last:border-b-0 transition-colors"
             >
               {t(item.key)}
             </Link>

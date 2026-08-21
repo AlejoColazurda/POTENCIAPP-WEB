@@ -11,6 +11,8 @@ import {
   ArrowRight,
 } from "lucide-react"
 import { useTranslations } from "next-intl"
+import SpotlightCard from "@/components/reactbits/SpotlightCard"
+import AnimatedContent from "@/components/reactbits/AnimatedContent"
 
 type CardKey = "apps" | "ia" | "ecommerce" | "sistemas" | "automatizaciones" | "consultoria"
 
@@ -43,24 +45,24 @@ export function ServicesSection() {
                   { k: "Web app", v: "Next.js + tRPC" },
                   { k: "Backend", v: "Node + Postgres" },
                   { k: "Realtime", v: "WebSockets + queues" },
-                ].map((t) => (
-                  <div key={t.k} className="bg-gray-950 border border-gray-800 rounded-lg p-3">
+                ].map((item) => (
+                  <div key={item.k} className="bg-gray-950 border border-gray-800 rounded-lg p-3">
                     <div className="font-mono text-[11px] uppercase tracking-wider text-gray-500">
-                      {t.k}
+                      {item.k}
                     </div>
                     <div className="mt-1 font-display text-sm font-semibold text-gray-100">
-                      {t.v}
+                      {item.v}
                     </div>
                   </div>
                 ))}
               </div>
             }
           />
-          <SolutionCard cardKey="ia" className="md:col-span-4" />
-          <SolutionCard cardKey="ecommerce" className="md:col-span-4" />
-          <SolutionCard cardKey="sistemas" className="md:col-span-4" />
-          <SolutionCard cardKey="automatizaciones" className="md:col-span-4" />
-          <SolutionCard cardKey="consultoria" className="md:col-span-12" horizontal />
+          <SolutionCard cardKey="ia" className="md:col-span-4" delay={0.08} />
+          <SolutionCard cardKey="ecommerce" className="md:col-span-4" delay={0.16} />
+          <SolutionCard cardKey="sistemas" className="md:col-span-4" delay={0.08} />
+          <SolutionCard cardKey="automatizaciones" className="md:col-span-4" delay={0.16} />
+          <SolutionCard cardKey="consultoria" className="md:col-span-12" horizontal delay={0.24} />
         </div>
       </div>
     </section>
@@ -79,30 +81,32 @@ export function SectionHeading({
   center?: boolean
 }) {
   return (
-    <div className={center ? "text-center" : ""}>
-      <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900 border border-gray-800">
-        <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
-        <span className="font-mono text-[11px] uppercase tracking-wider text-gray-300">
-          {eyebrow}
+    <AnimatedContent distance={60} duration={0.9} threshold={0.15}>
+      <div className={center ? "text-center" : ""}>
+        <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900 border border-gray-800">
+          <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
+          <span className="font-mono text-[11px] uppercase tracking-wider text-gray-300">
+            {eyebrow}
+          </span>
         </span>
-      </span>
-      <h2
-        className={`mt-5 font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em] text-gray-100 ${
-          center ? "max-w-[720px] mx-auto" : "max-w-[720px]"
-        }`}
-      >
-        {title}
-      </h2>
-      {subtitle && (
-        <p
-          className={`mt-5 text-lg text-gray-300 leading-relaxed ${
-            center ? "max-w-[640px] mx-auto" : "max-w-[640px]"
+        <h2
+          className={`mt-5 font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em] text-gray-100 ${
+            center ? "max-w-[720px] mx-auto" : "max-w-[720px]"
           }`}
         >
-          {subtitle}
-        </p>
-      )}
-    </div>
+          {title}
+        </h2>
+        {subtitle && (
+          <p
+            className={`mt-5 text-lg text-gray-300 leading-relaxed ${
+              center ? "max-w-[640px] mx-auto" : "max-w-[640px]"
+            }`}
+          >
+            {subtitle}
+          </p>
+        )}
+      </div>
+    </AnimatedContent>
   )
 }
 
@@ -112,22 +116,26 @@ function SolutionCard({
   featured,
   horizontal,
   extraContent,
+  delay = 0,
 }: {
   cardKey: CardKey
   className?: string
   featured?: boolean
   horizontal?: boolean
   extraContent?: React.ReactNode
+  delay?: number
 }) {
   const t = useTranslations(`services.cards.${cardKey}`)
   const tRoot = useTranslations("services")
 
-  return (
-    <Link
-      href="#contacto"
-      className={`group relative bg-gray-900 border border-gray-800 rounded-2xl p-8 transition-all duration-300 hover:border-brand-green hover:-translate-y-0.5 hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.6)] flex ${
-        horizontal ? "flex-col md:flex-row md:items-center md:gap-8" : "flex-col"
-      } ${className}`}
+  const body = (
+    <SpotlightCard
+      className={`h-full bg-gray-900 border rounded-2xl p-8 transition-all duration-300 flex ${
+        featured
+          ? "border-brand-green/30 shadow-[0_0_60px_-24px_rgba(34,242,58,0.55)] hover:border-brand-green"
+          : "border-gray-800 hover:border-brand-green hover:-translate-y-0.5 hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.6)]"
+      } ${horizontal ? "flex-col md:flex-row md:items-center md:gap-8" : "flex-col"}`}
+      spotlightColor="rgba(34, 242, 58, 0.18)"
     >
       <div
         className={`${horizontal ? "md:flex-shrink-0" : ""} h-12 w-12 rounded-xl bg-gray-950 border border-gray-800 flex items-center justify-center text-gray-300 group-hover:text-brand-green group-hover:border-brand-green/30 transition-colors`}
@@ -141,11 +149,7 @@ function SolutionCard({
         </div>
         <h3
           className={`mt-2 font-display font-semibold text-gray-100 tracking-tight ${
-            featured
-              ? "text-3xl lg:text-4xl"
-              : horizontal
-                ? "text-2xl lg:text-3xl"
-                : "text-2xl"
+            featured ? "text-3xl lg:text-4xl" : horizontal ? "text-2xl lg:text-3xl" : "text-2xl"
           }`}
         >
           {t("title")}
@@ -161,6 +165,20 @@ function SolutionCard({
         {tRoot("verMas")}
         <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
       </div>
-    </Link>
+    </SpotlightCard>
+  )
+
+  return (
+    <AnimatedContent
+      distance={50}
+      duration={0.8}
+      delay={delay}
+      threshold={0.1}
+      className={`h-full ${className}`}
+    >
+      <Link href="#contacto" className="group block h-full">
+        {body}
+      </Link>
+    </AnimatedContent>
   )
 }

@@ -1,63 +1,83 @@
 {
   "meta": {
-    "title": "PotenciApp | Apps, e-commerce et systèmes avec IA appliquée",
-    "description": "Votre entreprise a un plafond technique. On le casse. Nous construisons des apps, e-commerce, systèmes et IA appliquée sur mesure — livrés en semaines.",
-    "ogTitle": "PotenciApp | Sans plafond technique.",
-    "ogDescription": "Apps, e-commerce et systèmes avec IA appliquée. Diagnostic gratuit de 30 minutes."
+    "title": "PotenciApp | Logiciel sur mesure avec contrat, prix ferme et garantie",
+    "description": "Apps, e-commerce et systèmes sur mesure pour entreprises et commerces. Contrat avec périmètre, jalons et dates, prix ferme, facturation et 90 jours de garantie après livraison.",
+    "ogTitle": "PotenciApp | Un logiciel qui se signe, se livre et se garantit.",
+    "ogDescription": "Contrat avec dates, prix ferme, facturation et 90 jours de garantie. Des projets réels que vous pouvez ouvrir et tester maintenant."
   },
   "nav": {
     "soluciones": "Solutions",
-    "casos": "Cas",
+    "proyectos": "Projets",
     "proceso": "Processus",
     "faq": "FAQ",
     "ctaShort": "Parlons-en",
-    "ctaLong": "Réserver un diagnostic",
+    "ctaLong": "Demander une proposition",
     "menu": "Menu",
-    "close": "Fermer"
+    "close": "Fermer",
+    "garantia": "Garantie"
   },
   "hero": {
-    "statusBadge": "Disponible · T1 2026",
-    "partnerBadge": "Votre partenaire technique",
+    "statusBadge": "Nouveaux projets · 2026",
+    "partnerBadge": "Contrat · Prix ferme · Garantie",
     "outline": "BOOSTONS",
-    "h2_line1": "votre entreprise.",
+    "h2_line1": "Votre logiciel, avec",
     "h2_accent": "Sans plafond.",
-    "subheading": "Apps, e-commerce, systèmes et <bold>IA appliquée</bold> à votre entreprise. Sur mesure et livré en semaines, pas en années.",
-    "ctaPrimary": "Diagnostic gratuit",
-    "ctaSecondary": "Voir les cas",
+    "subheading": "Apps, e-commerce et systèmes sur mesure pour entreprises et commerces. Nous signons <bold>le périmètre, les jalons et les dates</bold> avant d'écrire une ligne de code, et nous garantissons par écrit ce que nous livrons.",
+    "ctaPrimary": "Demander une proposition",
+    "ctaSecondary": "Voir les projets en ligne",
     "metrics": {
-      "m1": { "value": "+340%", "label": "conversion moyenne" },
-      "m2": { "value": "−67%", "label": "temps opérationnel" },
-      "m3": { "value": "99,98%", "label": "uptime en pic" },
-      "m4": { "value": "12k+", "label": "transactions/jour" }
+      "m1": {
+        "value": "15+",
+        "label": "projets livrés"
+      },
+      "m2": {
+        "value": "3",
+        "label": "boutiques qui vendent aujourd'hui"
+      },
+      "m3": {
+        "value": "90 jours",
+        "label": "garantie après livraison"
+      },
+      "m4": {
+        "value": "24 h",
+        "label": "délai de réponse garanti"
+      }
     },
     "dashboard": {
-      "url": "app.potenciapp.com",
-      "live": "EN DIRECT",
-      "revenue": "Revenus bruts",
+      "url": "votre-entreprise.com/admin",
+      "live": "EN LIGNE",
+      "revenue": "Chiffre d'affaires",
       "vsPrev": "vs période précédente",
       "kpi1": "Conversion",
       "kpi2": "Sessions",
-      "kpi3": "Panier",
+      "kpi3": "Panier moyen",
       "revenueChart": "Revenus · 2026",
       "vs": "vs 2025",
       "deployLine": "deploy",
       "agentLine": "agent : optimisation SKU active",
-      "uptimeLine": "uptime 99,98%"
-    }
+      "uptimeLine": "uptime 99,98%",
+      "sample": "Tableau de bord d'exemple"
+    },
+    "rotating": [
+      "un contrat.",
+      "un prix ferme.",
+      "une garantie.",
+      "une facture."
+    ]
   },
   "logos": {
     "eyebrow": "Stack & intégrations que nous maîtrisons"
   },
   "value": {
-    "eyebrow": "Proposition de valeur",
-    "title": "Votre entreprise a un plafond technique.",
-    "accent": "On le casse.",
-    "body": "Pas de templates. De vrais systèmes. On diagnostique où votre opération cale, on conçoit l'architecture qui scale, et on livre avant que vous perdiez le prochain trimestre."
+    "eyebrow": "Notre façon de travailler",
+    "title": "Commander un logiciel ne devrait pas être un acte de foi.",
+    "accent": "Alors on le met par écrit.",
+    "body": "Chaque projet démarre avec un contrat qui fixe le périmètre, les jalons et les dates, et un prix ferme qui ne bouge pas. Nous facturons légalement, nous répondons sous 24 heures ouvrées et nous assumons ce que nous livrons avec 90 jours de garantie. Rien de tout cela n'est une faveur : c'est la base."
   },
   "services": {
     "eyebrow": "Solutions",
-    "title": "On construit ce que votre équipe n'arrive pas à faire.",
-    "subtitle": "Apps, e-commerce, systèmes internes, IA appliquée et conseil. Sur mesure et livré en semaines.",
+    "title": "Nous construisons le logiciel dont votre activité a besoin.",
+    "subtitle": "Apps, e-commerce, systèmes internes, automatisations et IA appliquée. Le tout avec contrat, prix ferme et garantie.",
     "verMas": "En savoir plus",
     "cards": {
       "apps": {
@@ -92,86 +112,224 @@
       }
     }
   },
+  "stores": {
+    "eyebrow": "Apps natives",
+    "title": "On publie votre app sur",
+    "accent": "l'App Store et Google Play.",
+    "subtitle": "Comptes développeur vérifiés, validation des stores obtenue et releases gérées par nos soins. Vous voyez votre app en ligne ; on absorbe le processus.",
+    "verified": "Compte vérifié",
+    "appStoreTop": "Télécharger dans l'",
+    "appStoreName": "App Store",
+    "playStoreTop": "Disponible sur",
+    "playStoreName": "Google Play",
+    "points": [
+      {
+        "title": "Comptes vérifiés",
+        "desc": "Apple Developer Program et Google Play Console, à votre nom ou au nôtre."
+      },
+      {
+        "title": "Validation obtenue",
+        "desc": "On prépare fiches, captures, confidentialité et tout ce que les stores exigent."
+      },
+      {
+        "title": "Releases gérées",
+        "desc": "Builds signés, versioning, TestFlight / test interne et mises à jour."
+      },
+      {
+        "title": "iOS + Android",
+        "desc": "Une seule base React Native. Deux stores. Même expérience."
+      }
+    ]
+  },
   "portfolio": {
     "eyebrow": "Portfolio",
-    "title": "Travaux récents.",
-    "subtitle": "Une sélection de projets livrés ces 12 derniers mois. Chaque cas, une opération réelle avec de vrais problèmes.",
-    "verCaso": "Voir le cas",
+    "title": "Des projets réels, en ligne.",
+    "subtitle": "Ni maquettes ni captures d'écran. Des boutiques, des systèmes et des sites en production, avec de vrais clients qui vendent et opèrent. Testez-les avant de nous engager.",
+    "verCaso": "Voir le projet",
+    "verDemo": "Ouvrir la démo",
+    "live": "En ligne",
+    "allDemos": "Voir toutes les démos",
     "items": {
-      "p1": { "title": "Nordix Commerce", "category": "E-commerce headless", "desc": "Migration Shopify → headless Next.js + agent IA de recommandation." },
-      "p2": { "title": "Atlasware OS", "category": "Système interne", "desc": "ERP custom remplaçant 4 SaaS dispersés + automatisations n8n." },
-      "p3": { "title": "Forge Cloud", "category": "Plateforme SaaS", "desc": "Architecture pour 12k transactions/jour avec 99,98% uptime en pic." },
-      "p4": { "title": "Valka Health", "category": "App mobile", "desc": "App de télémédecine avec file de patients en temps réel et IA de triage." },
-      "p5": { "title": "Quantum Logistics", "category": "Automatisation", "desc": "Pipeline d'expéditions : tracking unifié de 6 transporteurs + alertes prédictives." },
-      "p6": { "title": "Meridian Capital", "category": "Tableau de bord financier", "desc": "Tableau de bord exécutif en temps réel avec modèles de risque déployés comme agents." }
+      "maxikiosco": {
+        "title": "Maxikiosco 24/7",
+        "category": "E-commerce · PWA en production",
+        "desc": "Boutique 24/7 avec catalogue en direct, promos du jour, sponsors du quartier et commandes en ligne à toute heure."
+      },
+      "lachola": {
+        "title": "La Chola",
+        "category": "E-commerce mode",
+        "desc": "Boutique de vêtements avec catalogue par catégorie, promos, paiement Mercado Pago et livraison nationale."
+      },
+      "newbaby": {
+        "title": "New Baby",
+        "category": "E-commerce puériculture",
+        "desc": "Layette et petite enfance avec stock réel par taille, coups de cœur et paiement sécurisé."
+      },
+      "losincreibles": {
+        "title": "Los Increíbles",
+        "category": "Distributeur · Système intégral",
+        "desc": "Boutique en ligne + caisse, stock centralisé, bons de livraison, comptes clients et caisse. PWA installable avec accès grossiste."
+      },
+      "terrazas": {
+        "title": "Terrazas al Río",
+        "category": "Tourisme · Réservation en ligne",
+        "desc": "Complexe au bord du fleuve avec disponibilité réelle, galerie, avis 5★ et panneau d'administration."
+      },
+      "cprem": {
+        "title": "C-PREM",
+        "category": "E-commerce préfabriqué",
+        "desc": "Dalles athermiques et préfabriqués : hero vidéo, catalogue avec panier et commande par WhatsApp."
+      },
+      "jazcal": {
+        "title": "Jazcal",
+        "category": "GMAO · Maintenance industrielle",
+        "desc": "Actifs, ordres de travail, inventaire, magasin d'outils et préventif. App avec login et rôles."
+      },
+      "pss": {
+        "title": "PSS Innovaciones",
+        "category": "Grossiste · Revêtements",
+        "desc": "Boutique grossiste de panneaux muraux et plaques PVC avec panier, catalogue réel et commande WhatsApp."
+      },
+      "sportivo": {
+        "title": "Sportivo Resto & Café",
+        "category": "Restauration · Carte digitale",
+        "desc": "Carte complète avec vrais prix et photos, galerie et panneau pour modifier les plats sans toucher au code."
+      },
+      "lmt": {
+        "title": "Metalúrgica LMT",
+        "category": "Industrie · Transport lourd",
+        "desc": "Site corporate avec services, troisième essieu, photos réelles de l'atelier et capture de leads WhatsApp."
+      },
+      "hidradock": {
+        "title": "Hidra Dock",
+        "category": "Terrassement",
+        "desc": "Excavation, nivellement et défrichage : site de services avec photos de chantier et contact direct."
+      },
+      "fussinato": {
+        "title": "Muebles & Deco Fussinato",
+        "category": "Showroom · Mobilier & déco",
+        "desc": "Collections, ambiances réelles, inspiration et demandes directes par WhatsApp."
+      }
     }
   },
-  "cases": {
-    "eyebrow": "Cas de succès",
-    "title": "Des résultats déjà passés.",
-    "subtitle": "On ne montre pas d'hypothèses. On montre ce qu'on a fait avant — vraies métriques, vraies équipes.",
-    "verCompleto": "Lire le cas complet",
+  "band": [
+    "Logiciel sur mesure",
+    "Automatisation",
+    "Intelligence artificielle",
+    "Apps iOS & Android",
+    "E-commerce"
+  ],
+  "garantia": {
+    "eyebrow": "Garantie et cadre",
+    "title": "Ce que nous signons,",
+    "accent": "nous le tenons par écrit.",
+    "subtitle": "Quatre engagements inscrits au contrat, pas sur une page d'accueil. Si l'un n'est pas tenu, vous avez un document pour l'exiger.",
+    "cta": "Demander une proposition",
     "items": {
-      "c1": { "metricLabel": "Augmentation des ventes", "client": "Nordix Retail", "desc": "Migration de la boutique vers un stack headless + agent IA de recommandation. 3 mois en production." },
-      "c2": { "metricLabel": "Temps opérationnel", "client": "Atlasware", "desc": "Remplacement de 4 outils dispersés par un système interne + automatisations n8n custom." },
-      "c3": { "metricLabel": "Uptime en pic", "client": "Forge SaaS", "desc": "Architecture redessinée pour 12k transactions/jour sans coupure pendant Black Friday." }
-    }
-  },
-  "globe": {
-    "eyebrow": "Portée mondiale",
-    "title": "Construit depuis l'Amérique latine pour",
-    "accent": "le monde.",
-    "subtitle": "Équipes à Buenos Aires, Madrid et en remote. Clients dans 8 pays. Stack et processus à l'épreuve des fuseaux horaires.",
-    "stats": {
-      "s1": { "value": "8", "label": "Pays actifs" },
-      "s2": { "value": "3", "label": "Hubs opérationnels" },
-      "s3": { "value": "24/7", "label": "Support distribué" }
+      "contrato": {
+        "tag": "Signé avant de démarrer",
+        "title": "Contrat avec périmètre, jalons et dates",
+        "desc": "Avant de commencer, vous signez un document qui dit exactement ce qui sera livré, en combien d'étapes et à quelle date chacune. Aucune zone grise."
+      },
+      "precio": {
+        "tag": "Pas de facturation horaire",
+        "title": "Prix ferme, sans heures surprises",
+        "desc": "Le montant que vous validez est celui que vous payez. Toute demande hors périmètre est chiffrée à part et par écrit avant d'y toucher."
+      },
+      "garantia": {
+        "tag": "90 jours",
+        "title": "90 jours de garantie après livraison",
+        "desc": "Toute anomalie de ce que nous avons livré est corrigée sans frais pendant les 90 jours suivant la livraison. Ce n'est pas un geste commercial : c'est au contrat."
+      },
+      "respaldo": {
+        "tag": "Facture + réponse sous 24 h",
+        "title": "Société enregistrée, avec facturation",
+        "desc": "Nous facturons légalement chaque paiement et répondons sous 24 heures ouvrées. Vous avez un justificatif, un interlocuteur identifié et un recours."
+      }
     }
   },
   "proceso": {
-    "eyebrow": "Comment on travaille",
-    "title": "Trois étapes. Zéro surprise.",
-    "subtitle": "Un processus conçu pour que vous sachiez exactement ce qui se passe chaque semaine. Pas de réunions de statut, pas de slides interminables.",
+    "eyebrow": "Notre façon de travailler",
+    "title": "Trois étapes, toutes datées.",
+    "subtitle": "Un processus pensé pour que vous sachiez à tout moment ce qui est fait, quand ça sort et ce que ça coûte. Sans rapports d'avancement qui ne disent rien.",
     "steps": {
-      "s1": { "num": "01", "title": "Diagnostic", "desc": "Call de 30 min. On audite votre opération actuelle, identifie les goulots et priorise par impact/effort.", "tag": "2 SEMAINES" },
-      "s2": { "num": "02", "title": "Sprints bimensuels", "desc": "Building en sprints de 2 semaines avec démos en direct. Chaque sprint livre quelque chose déployé et mesurable.", "tag": "8–16 SEMAINES" },
-      "s3": { "num": "03", "title": "Lancement + retainer", "desc": "Déploiement en production, handoff à l'équipe, et retainer mensuel pour itérer sur données réelles.", "tag": "CONTINU" }
+      "s1": {
+        "num": "01",
+        "title": "Diagnostic et proposition",
+        "desc": "Un appel pour comprendre votre activité. Vous repartez avec une proposition écrite : périmètre, étapes, dates et prix ferme.",
+        "tag": "SANS FRAIS"
+      },
+      "s2": {
+        "num": "02",
+        "title": "Contrat et construction",
+        "desc": "Signé, puis lancé. Chaque étape se clôt avec quelque chose qui fonctionne et que vous pouvez ouvrir et tester vous-même.",
+        "tag": "ÉTAPES DATÉES"
+      },
+      "s3": {
+        "num": "03",
+        "title": "Livraison et garantie",
+        "desc": "Mise en production, remise de tous les accès et formation de votre équipe. Les 90 jours de garantie démarrent à partir de là.",
+        "tag": "90 JOURS DE GARANTIE"
+      }
     }
   },
   "porque": {
     "eyebrow": "Pourquoi PotenciApp",
-    "title": "On n'est pas une agence de plus.",
-    "accent": "On est des partenaires techniques.",
-    "otros": "Ce qui se passe avec les autres",
+    "title": "Tout le monde promet.",
+    "accent": "Nous, on le signe.",
+    "otros": "Ce qui arrive d'habitude",
     "nosotros": "Ce qui se passe avec nous",
     "otrosItems": [
-      "Devis en heures, livraison en mois sans prévenir",
-      "Stack rigide : React, ou WordPress. Point.",
-      "Ils livrent le code et un PDF de 80 pages",
-      "Réunions de statut hebdomadaires qui n'avancent pas",
-      "Facturation à l'heure — incitation à l'overhead"
+      "Un devis par message, sans contrat ni dates",
+      "Le prix bouge en cours de projet",
+      "Ils travaillent sans facture ni cadre légal",
+      "Ils livrent et disparaissent : les bugs sont pour vous",
+      "Pour voir leurs travaux, des captures d'écran"
     ],
     "nosotrosItems": [
-      "Diagnostic en 30 min, première démo en 2 semaines",
-      "Stack selon le problème : le bon, pas le confortable",
-      "Vrai handoff : équipe formée + docs vivantes",
-      "Sprints bimensuels avec démo navigable",
-      "Facturation par sprint clos — incitation à livrer"
+      "Un contrat signé avec périmètre, jalons et dates",
+      "Prix ferme ; les changements sont chiffrés à part et par écrit",
+      "Société enregistrée, avec une facture pour chaque paiement",
+      "90 jours de garantie après livraison sur ce que nous avons fait",
+      "Des projets en ligne à ouvrir et tester avant de signer"
     ],
     "stats": [
-      { "value": "2 sem.", "label": "Premier déploiement prod" },
-      { "value": "+40", "label": "Projets livrés" },
-      { "value": "98%", "label": "Rétention clients" },
-      { "value": "24/7", "label": "Monitoring post-lancement" }
+      {
+        "value": "15+",
+        "label": "Projets livrés"
+      },
+      {
+        "value": "90 jours",
+        "label": "Garantie après livraison"
+      },
+      {
+        "value": "24 h",
+        "label": "Réponse garantie"
+      },
+      {
+        "value": "100%",
+        "label": "Projets sous contrat signé"
+      }
     ]
   },
-  "testimonials": {
-    "eyebrow": "Témoignages",
-    "title": "Ceux qui l'ont vécu en parlent.",
-    "items": {
-      "t1": { "quote": "On est passé des feuilles de calcul à une opération qui scale toute seule. En 10 semaines on vendait le double.", "name": "Martín Vega", "role": "CEO, Nordix Retail" },
-      "t2": { "quote": "Pas de blabla. Diagnostic, sprint, démo, déploiement. Première fois qu'un partenaire technique tient ses délais.", "name": "Lucía Méndez", "role": "CTO, Atlasware" },
-      "t3": { "quote": "L'agent IA qu'ils ont monté nous économise 6 heures de support par jour. ROI dans le premier mois.", "name": "Diego Sánchez", "role": "Founder, Forge SaaS" }
+  "globe": {
+    "eyebrow": "Où nous travaillons",
+    "title": "Depuis l'Argentine, pour des clients",
+    "accent": "ici et à l'étranger.",
+    "subtitle": "Équipe à distance et processus documentés. Nous travaillons avec des entreprises et des commerces dans tout le pays, et aussi avec des clients hors d'Argentine.",
+    "stats": {
+      "s1": {
+        "value": "AR",
+        "label": "Base et facturation"
+      },
+      "s2": {
+        "value": "100%",
+        "label": "À distance et documenté"
+      },
+      "s3": {
+        "value": "24 h",
+        "label": "Réponse garantie"
+      }
     }
   },
   "chat": {
@@ -180,9 +338,9 @@
     "accent": "Sans formulaires.",
     "subtitle": "Dites-nous en 30 secondes ce qu'il vous faut. On vous amène sur WhatsApp avec le contexte déjà chargé — sans réécrire, sans attendre.",
     "perks": [
-      "Réponse en moins de 24h.",
-      "Diagnostic de 30 min sans coût.",
-      "Zéro engagement pour avancer."
+      "Réponse sous 24 h ouvrées.",
+      "Diagnostic sans frais.",
+      "Proposition écrite à prix ferme."
     ],
     "online": "En ligne",
     "reset": "Recommencer la conversation",
@@ -254,61 +412,86 @@
   },
   "faq": {
     "eyebrow": "Questions fréquentes",
-    "title": "Ce que tout le monde demande avant l'appel.",
-    "cta": "Vous n'avez pas trouvé votre question ?",
+    "title": "Ce que tout le monde demande avant de signer.",
+    "cta": "Vous ne trouvez pas votre question ?",
     "ctaLink": "Écrivez-nous directement →",
     "items": [
-      { "q": "Combien coûte un projet typique ?", "a": "Ça dépend du scope, mais comme référence : un MVP d'app/web se situe entre USD 18k–45k. Un système interne sur mesure entre USD 12k–35k. On fait un diagnostic gratuit + une proposition fermée par sprint — sans estimations qui doublent en cours de route." },
-      { "q": "Combien de temps pour livrer ?", "a": "Première démo navigable à la semaine 2. MVP fonctionnel entre 6 et 12 semaines selon la complexité. On travaille en sprints bimensuels avec démo de clôture — si quelque chose cale, vous le voyez aussi." },
-      { "q": "Qui possède le code ?", "a": "Vous. 100%. Les repos sont sur votre compte GitHub/GitLab depuis le jour 1. Pas de licences propriétaires, pas de dépendances à nos outils. On livre le code, les docs et une équipe formée." },
-      { "q": "Que se passe-t-il après le lancement ?", "a": "On propose un retainer mensuel optionnel pour support, améliorations continues et monitoring 24/7. Si vous préférez internaliser, on laisse un handoff complet avec un mois de transition inclus sans frais." },
-      { "q": "Vous travaillez avec des startups ou seulement de grandes entreprises ?", "a": "Les deux. On a fait des MVPs pour des founders solos et des replatformings pour des sociétés de 500+ personnes. Le critère n'est pas la taille : c'est la clarté du problème et l'engagement réel à livrer." },
-      { "q": "Pouvez-vous vous intégrer avec mon équipe actuelle ?", "a": "Oui. On peut diriger techniquement, compléter votre équipe, ou simplement réviser l'architecture. On définit le modèle selon ce qui sert le projet — pas selon ce qui est plus facile pour nous." },
-      { "q": "Et si je veux annuler après avoir commencé ?", "a": "On travaille en sprints de 2 semaines avec engagement sprint par sprint. Vous pouvez annuler à la fin de n'importe quel sprint, sans pénalités ni excuses. Si on ne livre pas de valeur, vous ne devriez pas continuer." }
+      {
+        "q": "Combien coûte un projet ?",
+        "a": "Nous ne publions pas de prix car le périmètre détermine le montant. Ce qui est fixe : vous recevez une proposition écrite à prix ferme avant de signer, et ce montant ne bouge pas. Toute demande hors périmètre en cours de projet est chiffrée à part et également par écrit."
+      },
+      {
+        "q": "Que contient le contrat ?",
+        "a": "Périmètre détaillé, étapes avec dates de livraison, prix ferme, modalités de paiement et les 90 jours de garantie après livraison. Vous le lisez avant de signer et vous en gardez une copie."
+      },
+      {
+        "q": "Que couvre la garantie de 90 jours ?",
+        "a": "Toute erreur ou anomalie de ce que nous avons livré : nous la corrigeons sans frais pendant les 90 jours suivant la livraison. Elle ne couvre pas les nouvelles fonctionnalités ni les changements de périmètre, chiffrés à part."
+      },
+      {
+        "q": "Émettez-vous des factures ?",
+        "a": "Oui. Nous sommes une société enregistrée et nous facturons chaque paiement du projet. Vous avez un justificatif du début à la fin."
+      },
+      {
+        "q": "Sous quel délai répondez-vous ?",
+        "a": "Sous 24 heures ouvrées, engagement inscrit au contrat. Pendant le projet, vous avez un canal direct avec la personne qui construit, pas une boîte générique."
+      },
+      {
+        "q": "Puis-je voir quelque chose que vous avez fait ?",
+        "a": "Oui, et sans rien demander. Les projets du portfolio sont en ligne en ce moment : entrez, parcourez le catalogue, ajoutez au panier. Aucun n'est une maquette."
+      },
+      {
+        "q": "Travaillez-vous avec des clients hors d'Argentine ?",
+        "a": "Oui. Nous travaillons 100 % à distance avec des processus documentés, donc la distance ne change pas notre façon de travailler. Facturation et modalités de paiement sont convenues avant la signature."
+      },
+      {
+        "q": "Publiez-vous des apps sur l'App Store et Google Play ?",
+        "a": "Oui. Nous avons des comptes développeur vérifiés et nous prenons en charge tout le processus de publication : fiches, captures, formulaires de confidentialité, builds signés et mises à jour."
+      }
     ]
   },
   "contact": {
-    "eyebrow": "Commencer",
-    "title": "Votre prochain trimestre",
-    "accent": "peut être différent.",
-    "subtitle": "Parlez-nous de votre entreprise en 60 secondes. On répond avec un diagnostic initial en moins de 24 heures.",
+    "eyebrow": "Démarrer",
+    "title": "Demandez votre proposition",
+    "accent": "par écrit.",
+    "subtitle": "Dites-nous ce qu'il vous faut. Nous répondons sous 24 heures ouvrées avec un premier diagnostic et, si ça colle, une proposition avec périmètre, dates et prix ferme.",
     "perks": [
-      "Diagnostic de 30 min · sans coût",
-      "Proposition fermée par sprint",
-      "Pas d'engagements jusqu'à signature"
+      "Diagnostic sans frais ni engagement",
+      "Proposition écrite à prix ferme",
+      "90 jours de garantie après livraison"
     ],
-    "slotsBadge": "3 créneaux disponibles cette semaine",
+    "slotsBadge": "Nous répondons sous 24 h ouvrées",
     "form": {
-      "title": "Parlez-nous de votre entreprise",
-      "subtitle": "On répond en moins de 24h",
+      "title": "Parlez-nous de votre projet",
+      "subtitle": "Nous répondons sous 24 h ouvrées",
       "name": "Nom et prénom",
       "namePh": "Marie Dupont",
       "email": "Email professionnel",
       "emailPh": "marie@entreprise.com",
       "company": "Entreprise",
-      "companyPh": "Nordix Retail",
+      "companyPh": "Ma Société SARL",
       "website": "Site actuel",
       "optional": "(optionnel)",
       "websitePh": "entreprise.com",
-      "billing": "CA mensuel approx.",
+      "billing": "Budget estimé",
       "billingOptions": [
-        "Moins de USD 10k",
-        "USD 10k – 50k",
-        "USD 50k – 200k",
-        "Plus de USD 200k",
-        "Préfère ne pas répondre"
+        "Pas encore défini",
+        "Moins de 5 000 USD",
+        "5 000 – 15 000 USD",
+        "15 000 – 40 000 USD",
+        "Plus de 40 000 USD"
       ],
       "need": "Que cherchez-vous ?",
       "needOptions": [
-        "Diagnostic technique",
-        "Nouveau projet",
-        "Optimiser / scaler",
-        "Intégrer l'IA",
-        "Pas encore sûr"
+        "Un nouveau projet",
+        "Boutique en ligne / e-commerce",
+        "Système interne",
+        "App pour l'App Store / Google Play",
+        "Je ne sais pas encore"
       ],
       "message": "Dites-en plus",
       "messagePh": "Ajoutez du contexte si vous voulez (problème actuel, deadline, etc.)",
-      "submit": "Demander un diagnostic gratuit",
+      "submit": "Demander une proposition",
       "submitting": "Envoi...",
       "select": "Sélectionner...",
       "terms": "En envoyant vous acceptez nos",
@@ -322,23 +505,23 @@
         "selectOne": "Sélectionnez une option"
       },
       "success": {
-        "title": "Reçu !",
-        "body": "On vous répond en moins de 24 heures avec un premier diagnostic. Si vous voulez accélérer, allez directement sur WhatsApp.",
-        "altWhatsApp": "Ou discutez directement sur WhatsApp →"
+        "title": "Bien reçu !",
+        "body": "Nous vous écrivons sous 24 heures ouvrées avec un premier diagnostic. Pour aller plus vite, passez directement par WhatsApp.",
+        "altWhatsApp": "Ou parlez-nous sur WhatsApp →"
       },
-      "toast": "Reçu. On répond en moins de 24h."
+      "toast": "Bien reçu. Nous répondons sous 24 h ouvrées."
     }
   },
   "footer": {
-    "tagline": "On construit ce que votre équipe n'arrive pas à faire. Apps, e-commerce, systèmes et IA appliquée — sur mesure et livrés en semaines.",
-    "operamos": "Opérations depuis",
-    "operamosValue": "Buenos Aires · Madrid · Remote",
+    "tagline": "Logiciel sur mesure pour entreprises et commerces : apps, e-commerce et systèmes internes. Avec contrat, prix ferme, facturation et 90 jours de garantie.",
+    "operamos": "Nous opérons depuis",
+    "operamosValue": "Argentine · À distance · Clients à l'étranger",
     "soluciones": "Solutions",
     "empresa": "Entreprise",
     "recursos": "Ressources",
     "conecta": "Connectez",
     "rights": "© {year} PotenciApp. Tous droits réservés.",
-    "availability": "Disponible pour de nouveaux projets · T1 2026",
+    "availability": "Nouveaux projets · 2026",
     "terms": "Conditions",
     "privacy": "Confidentialité",
     "cookies": "Cookies"

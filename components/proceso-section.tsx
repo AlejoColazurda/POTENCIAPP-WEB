@@ -2,6 +2,8 @@
 
 import { useTranslations } from "next-intl"
 import { SectionHeading } from "./services-section"
+import ScrollFloat from "@/components/reactbits/ScrollFloat"
+import AnimatedContent from "@/components/reactbits/AnimatedContent"
 
 type StepKey = "s1" | "s2" | "s3"
 
@@ -27,23 +29,30 @@ export function ProcesoSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             {keys.map((k, i) => (
-              <div
-                key={k}
-                className="relative animate-fade-in-up"
-                style={{ animationDelay: `${i * 120}ms` }}
-              >
-                <div className="font-display font-bold text-[96px] lg:text-[128px] text-gray-700 leading-none tracking-[-0.04em] select-none">
+              <div key={k} className="relative">
+                {/* Step numeral rises and un-squashes as the row enters the viewport */}
+                <ScrollFloat
+                  containerClassName="!my-0"
+                  textClassName="font-display font-bold text-[96px] lg:text-[128px] text-gray-700 leading-none tracking-[-0.04em] select-none"
+                  animationDuration={0.9}
+                  stagger={0.05}
+                  scrollStart="center bottom+=35%"
+                  scrollEnd="bottom bottom-=25%"
+                >
                   {t(`steps.${k}.num`)}
-                </div>
-                <h3 className="mt-4 font-display font-semibold text-2xl text-gray-100">
-                  {t(`steps.${k}.title`)}
-                </h3>
-                <p className="mt-3 text-base text-gray-300 leading-relaxed max-w-[360px]">
-                  {t(`steps.${k}.desc`)}
-                </p>
-                <span className="mt-5 inline-block font-mono text-[11px] uppercase tracking-wider text-brand-green border border-brand-green/30 rounded-md px-2.5 py-1 bg-brand-green/5">
-                  {t(`steps.${k}.tag`)}
-                </span>
+                </ScrollFloat>
+
+                <AnimatedContent distance={40} duration={0.8} delay={0.1 + i * 0.1} threshold={0.15}>
+                  <h3 className="mt-4 font-display font-semibold text-2xl text-gray-100">
+                    {t(`steps.${k}.title`)}
+                  </h3>
+                  <p className="mt-3 text-base text-gray-300 leading-relaxed max-w-[360px]">
+                    {t(`steps.${k}.desc`)}
+                  </p>
+                  <span className="mt-5 inline-block font-mono text-[11px] uppercase tracking-wider text-brand-green border border-brand-green/30 rounded-md px-2.5 py-1 bg-brand-green/5">
+                    {t(`steps.${k}.tag`)}
+                  </span>
+                </AnimatedContent>
               </div>
             ))}
           </div>

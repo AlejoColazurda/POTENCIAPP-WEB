@@ -4,6 +4,7 @@ import { useState, useId } from "react"
 import { Plus } from "lucide-react"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
+import AnimatedContent from "@/components/reactbits/AnimatedContent"
 
 export function FaqSection() {
   const t = useTranslations("faq")
@@ -14,6 +15,7 @@ export function FaqSection() {
   return (
     <section id="faq" className="relative bg-gray-950 py-20 lg:py-32 border-t border-gray-800">
       <div className="max-w-[1280px] mx-auto px-4 md:px-8">
+        <AnimatedContent distance={60} duration={0.9} threshold={0.15}>
         <div className="max-w-[800px] mx-auto text-center mb-12 lg:mb-16">
           <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900 border border-gray-800">
             <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
@@ -25,6 +27,7 @@ export function FaqSection() {
             {t("title")}
           </h2>
         </div>
+        </AnimatedContent>
 
         <div className="max-w-[800px] mx-auto divide-y divide-gray-800 border-y border-gray-800">
           {items.map((f, i) => {
@@ -32,7 +35,7 @@ export function FaqSection() {
             const btnId = `${baseId}-btn-${i}`
             const panelId = `${baseId}-panel-${i}`
             return (
-              <div key={f.q}>
+              <AnimatedContent key={f.q} distance={30} duration={0.6} delay={i * 0.05} threshold={0.1}>
                 <button
                   type="button"
                   id={btnId}
@@ -64,7 +67,7 @@ export function FaqSection() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </AnimatedContent>
             )
           })}
         </div>

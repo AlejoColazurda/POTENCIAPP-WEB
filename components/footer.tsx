@@ -29,7 +29,7 @@ export function Footer() {
     {
       title: t("empresa"),
       links: [
-        { label: tNav("casos"), href: "#casos" },
+        { label: tNav("garantia"), href: "#garantia" },
         { label: tNav("proceso"), href: "#proceso" },
         { label: tNav("faq"), href: "#faq" },
       ],
