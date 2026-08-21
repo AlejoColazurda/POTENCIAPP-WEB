@@ -16,6 +16,7 @@ import ShinyText from "@/components/reactbits/ShinyText"
 export function HeroSection() {
   const t = useTranslations("hero")
   const rotating = t.raw("rotating") as string[]
+  const trustChips = t.raw("trustChips") as string[]
 
   return (
     <section className="relative isolate overflow-hidden bg-gray-950 pt-32 pb-16 lg:pt-40 lg:pb-24">
@@ -121,6 +122,17 @@ export function HeroSection() {
                 <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
               </Link>
             </div>
+
+            {/* Risk-inversion strip: Fragor-style trust chips, except every one
+                of these is contractual, not marketing copy. */}
+            <ul className="flex flex-wrap items-center gap-x-4 gap-y-1.5 pt-1 animate-fade-in-up animation-delay-500">
+              {trustChips.map((chip) => (
+                <li key={chip} className="inline-flex items-center gap-1.5">
+                  <Check className="h-3.5 w-3.5 text-brand-green" strokeWidth={3} />
+                  <span className="text-[13px] text-gray-300">{chip}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="relative animate-fade-in-up animation-delay-300">

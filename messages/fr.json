@@ -63,7 +63,14 @@
       "m3": "Déploiement",
       "m4": "Garantie active",
       "caption": "Un logiciel fait exactement pour votre entreprise."
-    }
+    },
+    "trustChips": [
+      "Sans frais jusqu'à la proposition",
+      "La proposition, par écrit",
+      "Prix ferme",
+      "Facture légale",
+      "90 jours de garantie"
+    ]
   },
   "logos": {
     "eyebrow": "Stack & intégrations que nous maîtrisons"

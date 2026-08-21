@@ -63,7 +63,14 @@
       "m3": "Deploy",
       "m4": "Warranty active",
       "caption": "Software built exactly for your business."
-    }
+    },
+    "trustChips": [
+      "No cost until the proposal",
+      "The proposal, in writing",
+      "Fixed price",
+      "Legal invoicing",
+      "90-day warranty"
+    ]
   },
   "logos": {
     "eyebrow": "Stack & integrations we master"
