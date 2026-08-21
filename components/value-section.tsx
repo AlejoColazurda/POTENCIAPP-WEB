@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl"
 import { BrandMark } from "@/components/brand"
-import { BRAND_LOGOS, BrandLogo } from "@/components/brand-logos"
 import LogoLoop from "@/components/reactbits/LogoLoop"
 import ScrollFloat from "@/components/reactbits/ScrollFloat"
 import AnimatedContent from "@/components/reactbits/AnimatedContent"
@@ -11,10 +10,36 @@ export function ValueSection() {
   const tLogos = useTranslations("logos")
   const t = useTranslations("value")
 
-  const logos = BRAND_LOGOS.map((logo) => ({
-    node: <BrandLogo logo={logo} />,
-    title: logo.name,
-    ariaLabel: logo.name,
+  // Real clients with shipped work — names a business owner recognises as
+  // "people like me", unlike a strip of framework logos.
+  const clients = [
+    "Gisbert Refrigeración",
+    "La Chola",
+    "Maxikiosco 24/7",
+    "New Baby",
+    "El 42 Motos",
+    "Mister Sandwich",
+    "Entre Canes",
+    "Sportivo Resto & Café",
+    "Metalúrgica LMT",
+    "Hidra Dock",
+    "Jazcal",
+    "Los Increíbles",
+    "Terrazas al Río",
+    "Muebles & Deco Fussinato",
+  ]
+
+  const logos = clients.map((name) => ({
+    node: (
+      <span className="inline-flex items-center gap-3 whitespace-nowrap select-none">
+        <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-brand-green/60" />
+        <span className="font-display text-lg lg:text-xl font-semibold text-gray-500 hover:text-gray-100 transition-colors duration-300">
+          {name}
+        </span>
+      </span>
+    ),
+    title: name,
+    ariaLabel: name,
   }))
 
   return (
@@ -31,10 +56,10 @@ export function ValueSection() {
 
         <LogoLoop
           logos={logos}
-          speed={62}
+          speed={48}
           direction="left"
-          logoHeight={34}
-          gap={64}
+          logoHeight={28}
+          gap={56}
           pauseOnHover
           hoverSpeed={0.25}
           scaleOnHover
