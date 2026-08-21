@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "PotenciApp | Custom software with a contract, fixed price and warranty",
-    "description": "Custom apps, e-commerce and internal systems for companies and retailers. Contract with scope, milestones and dates, fixed price, invoicing and a 90-day post-delivery warranty.",
+    "title": "PotenciApp | Software, cybersecurity and infrastructure with contract and warranty",
+    "description": "Full-stack software company: iOS and Android apps, e-commerce, systems, AI, cybersecurity, architecture, Docker, AWS, VPS, networking and maintenance. Contract with milestones and dates, fixed price, invoicing and a 90-day warranty.",
     "ogTitle": "PotenciApp | Software that gets signed, delivered and guaranteed.",
-    "ogDescription": "Contract with dates, fixed price, invoicing and a 90-day warranty. Real projects you can open and use right now."
+    "ogDescription": "Apps, e-commerce, systems, cybersecurity and cloud infrastructure. Contract, fixed price, invoicing and a 90-day warranty."
   },
   "nav": {
     "soluciones": "Solutions",
@@ -43,27 +43,29 @@
         "label": "committed response time"
       }
     },
-    "dashboard": {
-      "url": "your-business.com/admin",
-      "live": "LIVE",
-      "revenue": "Gross revenue",
-      "vsPrev": "vs previous period",
-      "kpi1": "Conversion",
-      "kpi2": "Sessions",
-      "kpi3": "Avg. order",
-      "revenueChart": "Revenue · 2026",
-      "vs": "vs 2025",
-      "deployLine": "deploy",
-      "agentLine": "agent: SKU optimisation active",
-      "uptimeLine": "uptime 99.98%",
-      "sample": "Sample dashboard"
-    },
     "rotating": [
       "a contract.",
       "a fixed price.",
       "a warranty.",
       "an invoice."
-    ]
+    ],
+    "showcase": {
+      "before": "Before",
+      "beforeItems": [
+        "Scattered spreadsheets",
+        "Orders over WhatsApp",
+        "Pen and paper",
+        "Data everywhere"
+      ],
+      "badge": "LIVE",
+      "name": "Terrazas al Río",
+      "type": "Custom booking system",
+      "m1": "Design",
+      "m2": "Development",
+      "m3": "Deploy",
+      "m4": "Warranty active",
+      "caption": "Software built exactly for your business."
+    }
   },
   "logos": {
     "eyebrow": "Stack & integrations we master"
@@ -76,14 +78,22 @@
   },
   "services": {
     "eyebrow": "Solutions",
-    "title": "We build the software your operation actually needs.",
-    "subtitle": "Apps, e-commerce, internal systems, automations and applied AI. All of it with a contract, a fixed price and a warranty.",
+    "title": "A complete company, division by division.",
+    "subtitle": "From code to infrastructure: apps, e-commerce, systems, AI, cybersecurity, servers and maintenance. All under contract, fixed price and warranty.",
     "verMas": "Learn more",
     "cards": {
       "apps": {
         "eyebrow": "01 · Product",
         "title": "Custom applications",
-        "desc": "Mobile apps, web apps and SaaS platforms built around your real operation. UX your team understands, code that scales with your volume."
+        "desc": "Mobile and web apps built for your real operation. Published on the App Store and Google Play under verified accounts.",
+        "chips": [
+          "iOS",
+          "Android",
+          "React Native",
+          "Next.js",
+          "App Store",
+          "Google Play"
+        ]
       },
       "ia": {
         "eyebrow": "02 · AI",
@@ -93,22 +103,47 @@
       "ecommerce": {
         "eyebrow": "03 · Sales",
         "title": "E-commerce",
-        "desc": "Stores that convert. Shopify, headless or fully custom. Performance and data first."
+        "desc": "Stores that convert, with catalog, cart and Mercado Pago. Like the ones already running in production."
       },
       "sistemas": {
         "eyebrow": "04 · Backoffice",
         "title": "Internal systems",
-        "desc": "Custom ERPs, CRMs and dashboards. Replace 5 spreadsheets and 3 SaaS with a tool that's yours."
+        "desc": "Custom ERPs, CRMs and dashboards. Replace 5 spreadsheets and 3 SaaS tools with one tool of your own."
       },
       "automatizaciones": {
-        "eyebrow": "05 · Ops",
+        "eyebrow": "05 · Operations",
         "title": "Automations",
-        "desc": "Flows that connect what you already use. n8n, Zapier, custom workers — no stack changes."
+        "desc": "Flows that connect what you already use. n8n, Zapier, custom workers — without touching your stack."
+      },
+      "ciberseguridad": {
+        "eyebrow": "06 · Security",
+        "title": "Cybersecurity",
+        "desc": "We audit, harden and protect what you already run online: access, data, backups and certificates.",
+        "chips": [
+          "Audits",
+          "OWASP",
+          "Hardening",
+          "Backups",
+          "SSL"
+        ]
+      },
+      "infraestructura": {
+        "eyebrow": "07 · Infrastructure",
+        "title": "Infrastructure & cloud",
+        "desc": "Software architecture, servers, networks and deployments. We set up, monitor and maintain your full infrastructure.",
+        "chips": [
+          "Docker",
+          "AWS",
+          "VPS",
+          "CI/CD",
+          "Networking",
+          "Maintenance"
+        ]
       },
       "consultoria": {
-        "eyebrow": "06 · Strategy",
-        "title": "Technical consulting",
-        "desc": "Build, buy or outsource? We audit your stack, identify bottlenecks, and ship a 2-week applicable roadmap."
+        "eyebrow": "08 · Strategy",
+        "title": "Architecture & consulting",
+        "desc": "Build, buy or outsource? We audit your stack, design the architecture and leave an actionable roadmap in 2 weeks."
       }
     }
   },
@@ -214,10 +249,11 @@
   },
   "band": [
     "Custom software",
-    "Automation",
-    "Artificial intelligence",
+    "Cybersecurity",
+    "Cloud infrastructure",
     "iOS & Android apps",
-    "E-commerce"
+    "E-commerce",
+    "Applied AI"
   ],
   "garantia": {
     "eyebrow": "Warranty and backing",
@@ -312,103 +348,24 @@
       }
     ]
   },
-  "globe": {
-    "eyebrow": "Where we work",
-    "title": "From Argentina, for clients",
-    "accent": "here and abroad.",
-    "subtitle": "Remote team, documented processes. We work with companies and retailers across the country, and with clients outside Argentina too.",
-    "stats": {
-      "s1": {
-        "value": "AR",
-        "label": "Base and invoicing"
-      },
-      "s2": {
-        "value": "100%",
-        "label": "Remote and documented"
-      },
-      "s3": {
-        "value": "24 h",
-        "label": "Committed response"
-      }
-    }
-  },
-  "chat": {
-    "eyebrow": "Let's talk",
-    "title": "Talk to us.",
-    "accent": "No forms.",
-    "subtitle": "Tell us in 30 seconds what you need. We send you to WhatsApp with the context already loaded — no retyping, no waiting.",
-    "perks": [
-      "Reply within 24 business hours.",
-      "Diagnosis at no cost.",
-      "Written proposal with a fixed price."
+  "assistant": {
+    "title": "PotenciApp Assistant",
+    "status": "Online",
+    "open": "Open chat",
+    "close": "Close chat",
+    "send": "Send",
+    "thinking": "Typing...",
+    "greeting": "Hi! I'm the PotenciApp assistant. Tell me what you need — apps, e-commerce, systems, infrastructure, security — and I'll point you the right way.",
+    "placeholder": "Type your question...",
+    "suggestions": [
+      "I want an online store",
+      "I need an app published on the stores",
+      "What does the warranty cover?",
+      "Migrate my infrastructure to the cloud"
     ],
-    "online": "Online",
-    "reset": "Restart conversation",
-    "openWhatsApp": "Open WhatsApp",
-    "context": "context loaded",
-    "contexts": "contexts loaded",
-    "endsAt": "Ends in WhatsApp →"
-  },
-  "chatFlow": {
-    "greeting": "Hi PotenciApp, coming from the website.",
-    "start": {
-      "bot": "Tell me — what brings you here?",
-      "opt1": "New project",
-      "opt2": "Optimize something existing",
-      "opt3": "AI / automation",
-      "opt4": "Just exploring"
-    },
-    "nuevo": {
-      "bot": "Great. What kind of product?",
-      "opt1": "Mobile app",
-      "opt2": "Web app",
-      "opt3": "Internal system",
-      "opt4": "E-commerce"
-    },
-    "optimizar": {
-      "bot": "What's the main pain point?",
-      "opt1": "Performance / speed",
-      "opt2": "Production bugs",
-      "opt3": "Doesn't scale",
-      "opt4": "High costs"
-    },
-    "ia": {
-      "bot": "What use case do you have in mind?",
-      "opt1": "Chatbot / assistant",
-      "opt2": "Process automation",
-      "opt3": "Data analysis",
-      "opt4": "Not sure yet"
-    },
-    "urgencia": {
-      "bot": "Last one — how urgent is it?",
-      "opt1": "Urgent · this week",
-      "opt2": "Next 2-4 weeks",
-      "opt3": "No rush · exploring"
-    },
-    "final": {
-      "bot": "Done. Taking you to WhatsApp with the context loaded."
-    },
-    "tags": {
-      "nuevo": "New project",
-      "optimizar": "Optimize existing",
-      "ia": "AI / automation",
-      "exploratorio": "Exploratory",
-      "app": "Mobile app",
-      "web": "Web app",
-      "sistema": "Internal system",
-      "ecommerce": "E-commerce",
-      "performance": "Performance",
-      "bugs": "Prod bugs",
-      "escala": "Scale",
-      "costos": "Costs",
-      "chatbot": "Chatbot",
-      "automatizacion": "Automation",
-      "datos": "Data analysis",
-      "iaSinDefinir": "AI undefined",
-      "urgente": "Urgent",
-      "estaSem": "This week",
-      "sinApuro": "No rush"
-    }
+    "fallbackMessage": "I can't answer here right now. Let's continue on WhatsApp — the team replies within 24 business hours.",
+    "fallbackCta": "Continue on WhatsApp",
+    "waGreeting": "Hi PotenciApp, coming from the website."
   },
   "faq": {
     "eyebrow": "FAQ",
@@ -447,6 +404,10 @@
       {
         "q": "Do you publish apps on the App Store and Google Play?",
         "a": "Yes. We hold verified developer accounts and handle the whole publishing process: listings, screenshots, privacy forms, signed builds and updates."
+      },
+      {
+        "q": "Do you cover infrastructure, servers and security?",
+        "a": "Yes — it's a division of its own. Software architecture, Docker, AWS, VPS, networking, CI/CD, monitoring and ongoing maintenance, plus cybersecurity audits, hardening, backups and certificates. We can run your entire infrastructure or work alongside your current provider."
       }
     ]
   },
@@ -454,63 +415,15 @@
     "eyebrow": "Get started",
     "title": "Request your proposal",
     "accent": "in writing.",
-    "subtitle": "Tell us what you need. We reply within 24 business hours with an initial diagnosis and, if it's a fit, a proposal with scope, dates and a fixed price.",
+    "subtitle": "Tell us what you need on WhatsApp or through the assistant. We reply within 24 business hours with an initial diagnosis and, if it's a fit, a proposal with scope, dates and a fixed price.",
     "perks": [
-      "Diagnosis at no cost, no commitment",
-      "Written proposal with a fixed price",
-      "90-day post-delivery warranty"
+      "Diagnosis at no cost",
+      "Fixed-price proposal",
+      "90-day warranty"
     ],
-    "slotsBadge": "We reply within 24 business hours",
-    "form": {
-      "title": "Tell us about your project",
-      "subtitle": "We reply within 24 business hours",
-      "name": "Full name",
-      "namePh": "María García",
-      "email": "Work email",
-      "emailPh": "maria@company.com",
-      "company": "Company",
-      "companyPh": "My Company Ltd.",
-      "website": "Current website",
-      "optional": "(optional)",
-      "websitePh": "company.com",
-      "billing": "Estimated budget",
-      "billingOptions": [
-        "Not defined yet",
-        "Under USD 5,000",
-        "USD 5,000 – 15,000",
-        "USD 15,000 – 40,000",
-        "Over USD 40,000"
-      ],
-      "need": "What are you looking for?",
-      "needOptions": [
-        "A new project",
-        "Online store / e-commerce",
-        "Internal system",
-        "App for the App Store / Google Play",
-        "Not sure yet"
-      ],
-      "message": "Tell us more",
-      "messagePh": "Add context if you want (current issue, deadline, etc.)",
-      "submit": "Request a proposal",
-      "submitting": "Sending...",
-      "select": "Select...",
-      "terms": "By submitting you accept our",
-      "termsLink": "Terms",
-      "and": "and",
-      "privacyLink": "Privacy Policy",
-      "errors": {
-        "min2": "Minimum 2 characters",
-        "emailInvalid": "Invalid email",
-        "required": "Required",
-        "selectOne": "Select an option"
-      },
-      "success": {
-        "title": "Got it!",
-        "body": "We'll write within 24 business hours with a first diagnosis. If you want to move faster, go straight to WhatsApp.",
-        "altWhatsApp": "Or talk to us on WhatsApp →"
-      },
-      "toast": "Got it. We reply within 24 business hours."
-    }
+    "ctaWhatsApp": "Talk on WhatsApp",
+    "ctaAssistant": "Talk to the assistant",
+    "waGreeting": "Hi PotenciApp, I'd like to request a proposal."
   },
   "footer": {
     "tagline": "Custom software for companies and retailers: apps, e-commerce and internal systems. With a contract, a fixed price, invoicing and a 90-day warranty.",

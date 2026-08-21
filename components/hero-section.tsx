@@ -1,9 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, TrendingUp, Activity, Zap, Sparkles } from "lucide-react"
-import { useEffect, useRef, useState } from "react"
-import { useLocale, useTranslations } from "next-intl"
+import { ArrowDown, ArrowRight, Check, ShieldCheck, Sparkles } from "lucide-react"
+import Image from "next/image"
+import { useTranslations } from "next-intl"
 import { BrandMark, BrandMarkAnimated } from "@/components/brand"
 import Aurora from "@/components/reactbits/Aurora"
 import SplitText from "@/components/reactbits/SplitText"
@@ -124,7 +124,7 @@ export function HeroSection() {
           </div>
 
           <div className="relative animate-fade-in-up animation-delay-300">
-            <DashboardMockup />
+            <ProductShowcase />
           </div>
         </div>
 
@@ -186,198 +186,106 @@ function MetricItem({ mk, index }: { mk: "m1" | "m2" | "m3" | "m4"; index: numbe
   )
 }
 
-function DashboardMockup() {
-  const t = useTranslations("hero.dashboard")
-  const locale = useLocale()
-  const [revenue, setRevenue] = useState(0)
-  const [tick, setTick] = useState(0)
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!ref.current) return
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    let raf: number
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          const target = 124812
-          if (reduced) {
-            setRevenue(target)
-          } else {
-            const start = performance.now()
-            const duration = 2800
-            const step = (now: number) => {
-              const t = Math.min((now - start) / duration, 1)
-              const eased = 1 - Math.pow(1 - t, 3)
-              setRevenue(Math.floor(eased * target))
-              if (t < 1) raf = requestAnimationFrame(step)
-            }
-            raf = requestAnimationFrame(step)
-          }
-          obs.disconnect()
-        }
-      },
-      { threshold: 0.3 },
-    )
-    obs.observe(ref.current)
-    return () => {
-      obs.disconnect()
-      cancelAnimationFrame(raf)
-    }
-  }, [])
-
-  useEffect(() => {
-    const id = setInterval(() => setTick((x) => x + 1), 8000)
-    return () => clearInterval(id)
-  }, [])
+function ProductShowcase() {
+  const t = useTranslations("hero.showcase")
+  const beforeItems = t.raw("beforeItems") as string[]
+  const milestones = [t("m1"), t("m2"), t("m3")] as const
 
   return (
-    <div ref={ref} className="relative">
+    <div className="relative">
       <div
         aria-hidden
         className="absolute -inset-8 bg-brand-green/15 blur-[80px] pointer-events-none rounded-3xl"
       />
 
+      {/* ANTES — the mess this software replaces */}
+      <div className="relative mb-4 flex items-center gap-3">
+        <div className="flex-1 rounded-xl border border-gray-800 bg-gray-900/80 px-4 py-3">
+          <div className="font-mono text-[10px] uppercase tracking-wider text-gray-500">
+            {t("before")}
+          </div>
+          <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1">
+            {beforeItems.map((item) => (
+              <span key={item} className="inline-flex items-center gap-1.5 text-xs text-gray-500">
+                <span aria-hidden className="text-red-400/70">×</span>
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+        <ArrowDown aria-hidden className="h-5 w-5 shrink-0 text-brand-green" strokeWidth={2.5} />
+      </div>
+
+      {/* DESPUÉS — a real product PotenciApp built, in a browser frame */}
       <ElectricBorder color="#22F23A" speed={0.8} chaos={0.45} borderRadius={16}>
-        <div className="relative bg-gray-900 rounded-2xl overflow-hidden shadow-[0_24px_64px_-12px_rgba(0,0,0,0.8)]">
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-800 bg-gray-900">
+        <div className="relative overflow-hidden rounded-2xl bg-gray-900 shadow-[0_24px_64px_-12px_rgba(0,0,0,0.8)]">
+          <div className="flex items-center gap-2 border-b border-gray-800 bg-gray-900 px-4 py-3">
             <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
             <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
             <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
-            <span className="ml-3 flex items-center gap-2 font-mono text-[11px] text-gray-300 truncate">
+            <span className="ml-3 flex items-center gap-2 truncate font-mono text-[11px] text-gray-300">
               <BrandMark size={16} />
-              {t("url")}
+              demo.potenciapp.com
             </span>
             <span className="ml-auto flex items-center gap-1.5 font-mono text-[11px] text-brand-green">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-green animate-pulse-dot" />
-              {t("live")}
+              {t("badge")}
             </span>
           </div>
 
-          <div className="p-5 space-y-4">
-            <div className="bg-gray-950 border border-gray-800 rounded-xl p-4">
-              <div className="flex items-baseline justify-between">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-gray-500">
-                  {t("revenue")}
-                </span>
-                <span className="font-mono text-[11px] text-brand-green">▲ +18,4%</span>
-              </div>
-              <div className="mt-2 flex items-center justify-between gap-4">
-                <span className="font-display text-3xl font-bold text-gray-100 tracking-tight tabular-nums">
-                  ${revenue.toLocaleString(locale)}
-                </span>
-                <svg viewBox="0 0 80 28" className="w-24 h-7 flex-shrink-0">
-                  <path
-                    d="M0,22 L10,20 L20,18 L30,14 L40,16 L50,10 L60,12 L70,6 L80,4"
-                    fill="none"
-                    stroke="#22F23A"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                  />
-                  <circle cx="80" cy="4" r="2.5" fill="#22F23A" />
-                </svg>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-3 gap-2">
-              {[
-                { label: t("kpi1"), value: "4,21%", delta: "+0,9" },
-                { label: t("kpi2"), value: "8.412", delta: "+12%" },
-                { label: t("kpi3"), value: "$328", delta: "−2,1%", down: true },
-              ].map((k) => (
-                <div key={k.label} className="bg-gray-950 border border-gray-800 rounded-lg p-3">
-                  <div className="font-mono text-[11px] uppercase tracking-wider text-gray-500">
-                    {k.label}
-                  </div>
-                  <div className="mt-1 font-display text-base font-bold text-gray-100 tracking-tight">
-                    {k.value}
-                  </div>
-                  <div
-                    className={`mt-0.5 font-mono text-[11px] ${
-                      k.down ? "text-red-400" : "text-brand-green"
-                    }`}
-                  >
-                    {k.down ? "▼" : "▲"} {k.delta}
-                  </div>
+          <div className="relative aspect-[16/10]">
+            <Image
+              src="/demos/terrazas.webp"
+              alt={t("name")}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="object-cover object-top"
+            />
+            {/* Legibility scrim for the caption strip */}
+            <div
+              aria-hidden
+              className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-gray-950/95 to-transparent"
+            />
+            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
+              <div>
+                <div className="font-display text-base font-semibold text-gray-100">
+                  {t("name")}
                 </div>
-              ))}
-            </div>
-
-            <div className="bg-gray-950 border border-gray-800 rounded-xl p-4">
-              <div className="flex items-baseline justify-between mb-3">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-gray-500">
-                  {t("revenueChart")}
-                </span>
-                <span className="font-mono text-[11px] text-gray-300">{t("vs")}</span>
-              </div>
-              <svg viewBox="0 0 280 90" className="w-full h-20" preserveAspectRatio="none">
-                <defs>
-                  <linearGradient id="hero-grad" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#22F23A" stopOpacity="0.35" />
-                    <stop offset="100%" stopColor="#22F23A" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M0,72 C30,60 50,68 80,50 C110,28 140,42 170,30 C200,18 230,28 280,8 L280,90 L0,90 Z"
-                  fill="url(#hero-grad)"
-                />
-                <path
-                  d="M0,72 C30,60 50,68 80,50 C110,28 140,42 170,30 C200,18 230,28 280,8"
-                  fill="none"
-                  stroke="#22F23A"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M0,82 C30,76 50,80 80,68 C110,56 140,62 170,52 C200,42 230,48 280,38"
-                  fill="none"
-                  stroke="#6B6B6B"
-                  strokeWidth="1.2"
-                  strokeDasharray="3 3"
-                />
-                <circle cx="280" cy="8" r="3" fill="#22F23A" />
-              </svg>
-            </div>
-
-            <div className="bg-gray-950 border border-gray-800 rounded-lg p-3 font-mono text-[11px] space-y-1">
-              <div className="flex items-center gap-2 text-gray-500">
-                <span className="text-brand-green">●</span>
-                <span className="text-gray-300">{t("deployLine")}</span>
-                <span className="text-gray-500">main · #{1842 + tick}</span>
-                <span className="ml-auto text-brand-green">ready</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-500">
-                <Zap className="h-3 w-3 text-brand-green" />
-                <span>{t("agentLine")}</span>
-                <span className="ml-auto text-gray-300">+12%</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-500">
-                <Activity className="h-3 w-3 text-gray-500" />
-                <span>{t("uptimeLine")}</span>
-                <span className="ml-auto text-gray-300">24h</span>
+                <div className="font-mono text-[10px] uppercase tracking-wider text-gray-300">
+                  {t("type")}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </ElectricBorder>
 
-      <div className="hidden lg:block absolute -top-10 -right-6 pointer-events-none">
-        <BrandMarkAnimated size={88} />
-      </div>
-
-      <div className="hidden lg:flex absolute -left-6 top-40 items-center gap-2 bg-gray-900 border border-brand-green/40 rounded-xl px-3 py-2 shadow-[0_0_32px_rgba(34,242,58,0.2)]">
-        <Sparkles className="h-4 w-4 text-brand-green" />
-        <div>
-          <div className="font-mono text-[11px] uppercase tracking-wider text-gray-500">
-            IA agent
+      {/* Blueprint milestones — the delivery, not the metrics */}
+      <div className="relative mt-4 flex items-stretch gap-2">
+        {milestones.map((m) => (
+          <div
+            key={m}
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-gray-800 bg-gray-900/80 px-2 py-2.5"
+          >
+            <Check className="h-3.5 w-3.5 shrink-0 text-brand-green" strokeWidth={3} />
+            <span className="font-mono text-[10px] uppercase tracking-wider text-gray-300">{m}</span>
           </div>
-          <div className="font-display text-xs font-semibold text-gray-100">+23%</div>
+        ))}
+        <div className="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-brand-green/40 bg-brand-green/5 px-2 py-2.5">
+          <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-brand-green" strokeWidth={2.5} />
+          <span className="font-mono text-[10px] uppercase tracking-wider text-brand-green">
+            {t("m4")}
+          </span>
         </div>
       </div>
 
-      <div className="hidden lg:flex absolute -right-4 bottom-20 items-center gap-2 bg-gray-900 border border-gray-800 rounded-xl px-3 py-2 shadow-lg">
-        <TrendingUp className="h-4 w-4 text-brand-green" />
-        <span className="font-mono text-[11px] uppercase tracking-wider text-gray-300">7d</span>
+      <p className="relative mt-4 text-center font-mono text-[11px] uppercase tracking-wider text-gray-500">
+        {t("caption")}
+      </p>
+
+      <div className="hidden lg:block absolute -top-12 -right-6 pointer-events-none">
+        <BrandMarkAnimated size={88} />
       </div>
     </div>
   )

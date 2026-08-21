@@ -32,8 +32,8 @@ export function MarqueeBand() {
         numCopies={6}
         damping={44}
         stiffness={380}
-        className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl tracking-[-0.03em] text-outline"
-        parallaxClassName="py-1"
+        className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.3] tracking-[-0.03em] text-outline"
+        parallaxClassName="py-2"
       />
     </div>
   )

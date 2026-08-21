@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "PotenciApp | Software sob medida com contrato, preço fechado e garantia",
-    "description": "Apps, e-commerce e sistemas sob medida para empresas e comércios. Contrato com escopo, marcos e datas, preço fechado, nota fiscal e 90 dias de garantia pós-entrega.",
+    "title": "PotenciApp | Software, cibersegurança e infraestrutura com contrato e garantia",
+    "description": "Empresa completa de software: apps iOS e Android, e-commerce, sistemas, IA, cibersegurança, arquitetura, Docker, AWS, VPS, redes e manutenção. Contrato com marcos e datas, preço fechado, nota fiscal e 90 dias de garantia.",
     "ogTitle": "PotenciApp | Software que se assina, se entrega e se garante.",
-    "ogDescription": "Contrato com datas, preço fechado, nota fiscal e 90 dias de garantia. Projetos reais que você pode abrir e testar agora."
+    "ogDescription": "Apps, e-commerce, sistemas, cibersegurança e infraestrutura cloud. Contrato, preço fechado, nota fiscal e 90 dias de garantia."
   },
   "nav": {
     "soluciones": "Soluções",
@@ -43,27 +43,29 @@
         "label": "resposta comprometida"
       }
     },
-    "dashboard": {
-      "url": "seu-negocio.com/painel",
-      "live": "NO AR",
-      "revenue": "Receita bruta",
-      "vsPrev": "vs período anterior",
-      "kpi1": "Conversão",
-      "kpi2": "Sessões",
-      "kpi3": "Ticket",
-      "revenueChart": "Receita · 2026",
-      "vs": "vs 2025",
-      "deployLine": "deploy",
-      "agentLine": "agente: otimização de SKU ativa",
-      "uptimeLine": "uptime 99,98%",
-      "sample": "Painel de exemplo"
-    },
     "rotating": [
       "contrato.",
       "preço fechado.",
       "garantia.",
       "nota fiscal."
-    ]
+    ],
+    "showcase": {
+      "before": "Antes",
+      "beforeItems": [
+        "Planilhas soltas",
+        "Pedidos pelo WhatsApp",
+        "Papel e caderno",
+        "Dados dispersos"
+      ],
+      "badge": "NO AR",
+      "name": "Terrazas al Río",
+      "type": "Sistema de reservas sob medida",
+      "m1": "Design",
+      "m2": "Desenvolvimento",
+      "m3": "Deploy",
+      "m4": "Garantia ativa",
+      "caption": "Software feito exatamente para o seu negócio."
+    }
   },
   "logos": {
     "eyebrow": "Stack & integrações que dominamos"
@@ -76,14 +78,22 @@
   },
   "services": {
     "eyebrow": "Soluções",
-    "title": "Construímos o software que a sua operação precisa.",
-    "subtitle": "Apps, e-commerce, sistemas internos, automações e IA aplicada. Tudo com contrato, preço fechado e garantia.",
+    "title": "Uma empresa completa, divisão por divisão.",
+    "subtitle": "Do código à infraestrutura: apps, e-commerce, sistemas, IA, cibersegurança, servidores e manutenção. Tudo com contrato, preço fechado e garantia.",
     "verMas": "Ver mais",
     "cards": {
       "apps": {
         "eyebrow": "01 · Produto",
         "title": "Aplicações sob medida",
-        "desc": "Apps móveis, web apps e plataformas SaaS pensadas para sua operação real. UX que sua equipe entende, código que escala com seu volume."
+        "desc": "Apps mobile e web pensados para a sua operação real. Publicados na App Store e no Google Play com contas verificadas.",
+        "chips": [
+          "iOS",
+          "Android",
+          "React Native",
+          "Next.js",
+          "App Store",
+          "Google Play"
+        ]
       },
       "ia": {
         "eyebrow": "02 · IA",
@@ -93,7 +103,7 @@
       "ecommerce": {
         "eyebrow": "03 · Venda",
         "title": "E-commerce",
-        "desc": "Lojas que convertem. Shopify, Vtex ou headless próprio. Performance e dados em primeiro lugar."
+        "desc": "Lojas que convertem, com catálogo, carrinho e Mercado Pago. Como as que já operam em produção."
       },
       "sistemas": {
         "eyebrow": "04 · Backoffice",
@@ -105,10 +115,35 @@
         "title": "Automações",
         "desc": "Fluxos que conectam o que você já usa. n8n, Zapier, workers custom — sem mexer no seu stack."
       },
+      "ciberseguridad": {
+        "eyebrow": "06 · Segurança",
+        "title": "Cibersegurança",
+        "desc": "Auditamos, reforçamos e protegemos o que você já tem online: acessos, dados, backups e certificados.",
+        "chips": [
+          "Auditorias",
+          "OWASP",
+          "Hardening",
+          "Backups",
+          "SSL"
+        ]
+      },
+      "infraestructura": {
+        "eyebrow": "07 · Infraestrutura",
+        "title": "Infraestrutura e cloud",
+        "desc": "Arquitetura de software, servidores, redes e deploys. Montamos, monitoramos e mantemos a sua infraestrutura completa.",
+        "chips": [
+          "Docker",
+          "AWS",
+          "VPS",
+          "CI/CD",
+          "Redes",
+          "Manutenção"
+        ]
+      },
       "consultoria": {
-        "eyebrow": "06 · Estratégia",
-        "title": "Consultoria técnica",
-        "desc": "Construir, comprar ou terceirizar? Auditamos seu stack, identificamos gargalos, e deixamos um roadmap aplicável em 2 semanas."
+        "eyebrow": "08 · Estratégia",
+        "title": "Arquitetura e consultoria",
+        "desc": "Construir, comprar ou terceirizar? Auditamos seu stack, desenhamos a arquitetura e deixamos um roadmap aplicável em 2 semanas."
       }
     }
   },
@@ -214,10 +249,11 @@
   },
   "band": [
     "Software sob medida",
-    "Automação",
-    "Inteligência artificial",
+    "Cibersegurança",
+    "Infraestrutura cloud",
     "Apps iOS e Android",
-    "E-commerce"
+    "E-commerce",
+    "IA aplicada"
   ],
   "garantia": {
     "eyebrow": "Garantia e respaldo",
@@ -312,103 +348,24 @@
       }
     ]
   },
-  "globe": {
-    "eyebrow": "Onde trabalhamos",
-    "title": "Da Argentina, para clientes",
-    "accent": "aqui e no exterior.",
-    "subtitle": "Equipe remota e processos documentados. Trabalhamos com empresas e comércios de todo o país, e também com clientes fora da Argentina.",
-    "stats": {
-      "s1": {
-        "value": "AR",
-        "label": "Base e faturamento"
-      },
-      "s2": {
-        "value": "100%",
-        "label": "Remoto e documentado"
-      },
-      "s3": {
-        "value": "24 h",
-        "label": "Resposta comprometida"
-      }
-    }
-  },
-  "chat": {
-    "eyebrow": "Vamos conversar",
-    "title": "Fale com a gente.",
-    "accent": "Sem formulários.",
-    "subtitle": "Diga em 30 segundos o que precisa. Te levamos pro WhatsApp com o contexto já carregado — sem reescrever nada, sem espera.",
-    "perks": [
-      "Resposta em 24 h úteis.",
-      "Diagnóstico sem custo.",
-      "Proposta escrita com preço fechado."
+  "assistant": {
+    "title": "Assistente PotenciApp",
+    "status": "Online",
+    "open": "Abrir chat",
+    "close": "Fechar chat",
+    "send": "Enviar",
+    "thinking": "Digitando...",
+    "greeting": "Olá! Sou o assistente da PotenciApp. Conte o que você precisa — apps, e-commerce, sistemas, infraestrutura, segurança — e eu te oriento.",
+    "placeholder": "Digite sua pergunta...",
+    "suggestions": [
+      "Quero uma loja online",
+      "Preciso de um app publicado nas lojas",
+      "O que a garantia cobre?",
+      "Migrar minha infraestrutura para a nuvem"
     ],
-    "online": "Online",
-    "reset": "Reiniciar conversa",
-    "openWhatsApp": "Abrir WhatsApp",
-    "context": "contexto carregado",
-    "contexts": "contextos carregados",
-    "endsAt": "Termina no WhatsApp →"
-  },
-  "chatFlow": {
-    "greeting": "Oi PotenciApp, vim pelo site.",
-    "start": {
-      "bot": "Me conta — o que te trouxe aqui?",
-      "opt1": "Projeto novo",
-      "opt2": "Otimizar algo existente",
-      "opt3": "IA / automação",
-      "opt4": "Só explorando"
-    },
-    "nuevo": {
-      "bot": "Beleza. Que tipo de produto?",
-      "opt1": "App móvel",
-      "opt2": "Web app",
-      "opt3": "Sistema interno",
-      "opt4": "E-commerce"
-    },
-    "optimizar": {
-      "bot": "Qual é a dor principal?",
-      "opt1": "Performance / velocidade",
-      "opt2": "Bugs em produção",
-      "opt3": "Não escala",
-      "opt4": "Custos altos"
-    },
-    "ia": {
-      "bot": "Qual caso de uso você tem em mente?",
-      "opt1": "Chatbot / assistente",
-      "opt2": "Automatizar processos",
-      "opt3": "Análise de dados",
-      "opt4": "Ainda não sei bem"
-    },
-    "urgencia": {
-      "bot": "Última — qual a urgência?",
-      "opt1": "Urgente · essa semana",
-      "opt2": "Próximas 2-4 semanas",
-      "opt3": "Sem pressa · explorando"
-    },
-    "final": {
-      "bot": "Pronto. Te levo pro WhatsApp com o contexto."
-    },
-    "tags": {
-      "nuevo": "Projeto novo",
-      "optimizar": "Otimizar existente",
-      "ia": "IA / automação",
-      "exploratorio": "Exploratório",
-      "app": "App móvel",
-      "web": "Web app",
-      "sistema": "Sistema interno",
-      "ecommerce": "E-commerce",
-      "performance": "Performance",
-      "bugs": "Bugs em prod",
-      "escala": "Escala",
-      "costos": "Custos",
-      "chatbot": "Chatbot",
-      "automatizacion": "Automação",
-      "datos": "Análise de dados",
-      "iaSinDefinir": "IA sem definir",
-      "urgente": "Urgente",
-      "estaSem": "Essa semana",
-      "sinApuro": "Sem pressa"
-    }
+    "fallbackMessage": "Não consigo responder por aqui agora. Vamos continuar no WhatsApp — a equipe responde em até 24 h úteis.",
+    "fallbackCta": "Continuar no WhatsApp",
+    "waGreeting": "Olá PotenciApp, vim do site."
   },
   "faq": {
     "eyebrow": "Perguntas frequentes",
@@ -447,6 +404,10 @@
       {
         "q": "Publicam apps na App Store e no Google Play?",
         "a": "Sim. Temos contas de desenvolvedor verificadas e cuidamos do processo completo: fichas, capturas, formulários de privacidade, builds assinados e atualizações."
+      },
+      {
+        "q": "Vocês cobrem infraestrutura, servidores e segurança?",
+        "a": "Sim — é uma divisão própria. Arquitetura de software, Docker, AWS, VPS, redes, CI/CD, monitoramento e manutenção contínua, além de auditorias de cibersegurança, hardening, backups e certificados. Podemos assumir toda a sua infraestrutura ou conviver com o seu fornecedor atual."
       }
     ]
   },
@@ -454,63 +415,15 @@
     "eyebrow": "Começar",
     "title": "Peça sua proposta",
     "accent": "por escrito.",
-    "subtitle": "Conte o que você precisa. Respondemos em menos de 24 horas úteis com um diagnóstico inicial e, se fizer sentido, uma proposta com escopo, datas e preço fechado.",
+    "subtitle": "Conte o que você precisa pelo WhatsApp ou pelo assistente. Respondemos em menos de 24 horas úteis com um diagnóstico inicial e, se fizer sentido, uma proposta com escopo, datas e preço fechado.",
     "perks": [
-      "Diagnóstico sem custo nem compromisso",
-      "Proposta escrita com preço fechado",
-      "90 dias de garantia pós-entrega"
+      "Diagnóstico sem custo",
+      "Proposta com preço fechado",
+      "90 dias de garantia"
     ],
-    "slotsBadge": "Respondemos em 24 h úteis",
-    "form": {
-      "title": "Conte sobre o seu projeto",
-      "subtitle": "Respondemos em menos de 24 h úteis",
-      "name": "Nome completo",
-      "namePh": "Maria Silva",
-      "email": "Email corporativo",
-      "emailPh": "maria@empresa.com",
-      "company": "Empresa",
-      "companyPh": "Minha Empresa Ltda.",
-      "website": "Site atual",
-      "optional": "(opcional)",
-      "websitePh": "empresa.com",
-      "billing": "Orçamento estimado",
-      "billingOptions": [
-        "Ainda não defini",
-        "Menos de USD 5.000",
-        "USD 5.000 – 15.000",
-        "USD 15.000 – 40.000",
-        "Mais de USD 40.000"
-      ],
-      "need": "O que você está buscando?",
-      "needOptions": [
-        "Projeto novo",
-        "Loja online / e-commerce",
-        "Sistema interno",
-        "App para App Store / Google Play",
-        "Ainda não tenho certeza"
-      ],
-      "message": "Conte mais",
-      "messagePh": "Adicione contexto se quiser (problema atual, deadline, etc.)",
-      "submit": "Pedir proposta",
-      "submitting": "Enviando...",
-      "select": "Selecionar...",
-      "terms": "Ao enviar você aceita nossos",
-      "termsLink": "Termos",
-      "and": "e",
-      "privacyLink": "Política de Privacidade",
-      "errors": {
-        "min2": "Mínimo 2 caracteres",
-        "emailInvalid": "Email inválido",
-        "required": "Obrigatório",
-        "selectOne": "Selecione uma opção"
-      },
-      "success": {
-        "title": "Recebido!",
-        "body": "Escrevemos em menos de 24 horas úteis com um primeiro diagnóstico. Se quiser acelerar, vá direto ao WhatsApp.",
-        "altWhatsApp": "Ou fale direto no WhatsApp →"
-      },
-      "toast": "Recebido. Respondemos em menos de 24 h úteis."
-    }
+    "ctaWhatsApp": "Falar no WhatsApp",
+    "ctaAssistant": "Falar com o assistente",
+    "waGreeting": "Olá PotenciApp, quero pedir uma proposta."
   },
   "footer": {
     "tagline": "Software sob medida para empresas e comércios: apps, e-commerce e sistemas internos. Com contrato, preço fechado, nota fiscal e 90 dias de garantia.",

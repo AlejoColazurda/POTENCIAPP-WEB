@@ -178,7 +178,21 @@ export default function Aurora(props: AuroraProps) {
     ctn.appendChild(gl.canvas);
 
     let animateId = 0;
+    // Render only while visible: the hero aurora kept the GPU busy for the
+    // whole page scroll otherwise.
+    let visible = true;
+    const io = new IntersectionObserver(([entry]) => {
+      const wasVisible = visible;
+      visible = entry.isIntersecting;
+      if (visible && !wasVisible) animateId = requestAnimationFrame(update);
+    });
+    io.observe(ctn);
+
     const update = (t: number) => {
+      if (!visible) {
+        animateId = 0;
+        return;
+      }
       animateId = requestAnimationFrame(update);
       const { time = t * 0.01, speed = 1.0 } = propsRef.current;
       if (program) {
@@ -198,6 +212,7 @@ export default function Aurora(props: AuroraProps) {
     resize();
 
     return () => {
+      io.disconnect();
       cancelAnimationFrame(animateId);
       window.removeEventListener('resize', resize);
       if (ctn && gl.canvas.parentNode === ctn) {

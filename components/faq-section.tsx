@@ -2,7 +2,7 @@
 
 import { useState, useId } from "react"
 import { Plus } from "lucide-react"
-import Link from "next/link"
+import { openFloatingChat } from "@/lib/site"
 import { useTranslations } from "next-intl"
 import AnimatedContent from "@/components/reactbits/AnimatedContent"
 
@@ -75,12 +75,13 @@ export function FaqSection() {
         <div className="max-w-[800px] mx-auto mt-10 text-center">
           <p className="text-base text-gray-300">
             {t("cta")}{" "}
-            <Link
-              href="#chat"
+            <button
+              type="button"
+              onClick={openFloatingChat}
               className="text-brand-green font-semibold hover:underline underline-offset-4"
             >
               {t("ctaLink")}
-            </Link>
+            </button>
           </p>
         </div>
       </div>

@@ -36,10 +36,20 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
 }) => {
   const containerRef = useRef<HTMLHeadingElement>(null);
 
+  // Chars are grouped inside per-word nowrap wrappers: bare inline-block chars
+  // let the browser wrap mid-word ("deberia se / r").
   const splitChars = (text: string, keyPrefix: string, extraClassName = '') =>
-    text.split('').map((char, index) => (
-      <span className={`inline-block word ${extraClassName}`} key={`${keyPrefix}-${index}`}>
-        {char === ' ' ? '\u00A0' : char}
+    text.split(' ').map((word, wordIndex, words) => (
+      <span className="inline-block whitespace-nowrap" key={`${keyPrefix}-w${wordIndex}`}>
+        {word.split('').map((char, charIndex) => (
+          <span
+            className={`inline-block word ${extraClassName}`}
+            key={`${keyPrefix}-w${wordIndex}-c${charIndex}`}
+          >
+            {char}
+          </span>
+        ))}
+        {wordIndex < words.length - 1 && <span className="inline-block word">{'\u00A0'}</span>}
       </span>
     ));
 

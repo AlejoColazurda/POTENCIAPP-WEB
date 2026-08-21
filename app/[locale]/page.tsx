@@ -9,8 +9,6 @@ import { MarqueeBand } from "@/components/marquee-band"
 import { GarantiaSection } from "@/components/garantia-section"
 import { ProcesoSection } from "@/components/proceso-section"
 import { PorQueSection } from "@/components/porque-section"
-import { GlobeSection } from "@/components/globe-section"
-import { ChatSection } from "@/components/chat-section"
 import { FaqSection } from "@/components/faq-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
@@ -41,8 +39,6 @@ export default async function HomePage({
         <GarantiaSection />
         <ProcesoSection />
         <PorQueSection />
-        <GlobeSection />
-        <ChatSection />
         <FaqSection />
         <ContactSection />
       </main>
