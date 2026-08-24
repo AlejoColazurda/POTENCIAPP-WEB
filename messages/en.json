@@ -17,7 +17,7 @@
     "garantia": "Warranty"
   },
   "hero": {
-    "statusBadge": "Taking on projects · 2026",
+    "statusBadge": "We reply within 24 business hours",
     "partnerBadge": "Contract · Fixed price · Warranty",
     "outline": "WE BOOST",
     "h2_line1": "Your software, with",
@@ -31,8 +31,8 @@
         "label": "projects delivered"
       },
       "m2": {
-        "value": "3",
-        "label": "stores selling today"
+        "value": "4",
+        "label": "clients in production"
       },
       "m3": {
         "value": "90 days",
@@ -71,9 +71,6 @@
       "Legal invoicing",
       "90-day warranty"
     ]
-  },
-  "logos": {
-    "eyebrow": "Real businesses that already trusted us"
   },
   "value": {
     "eyebrow": "How we work",
@@ -355,7 +352,9 @@
     ],
     "fallbackMessage": "I can't answer here right now. Let's continue on WhatsApp — the team replies within 24 business hours.",
     "fallbackCta": "Continue on WhatsApp",
-    "waGreeting": "Hi PotenciApp, coming from the website."
+    "waGreeting": "Hi PotenciApp, coming from the website.",
+    "privacyNote": "This chat uses AI (Google Gemini). Don't share passwords or sensitive data.",
+    "privacyLink": "Privacy"
   },
   "faq": {
     "eyebrow": "FAQ",
@@ -398,6 +397,14 @@
       {
         "q": "Do you cover infrastructure, servers and security?",
         "a": "Yes — it's a division of its own. Software architecture, Docker, AWS, VPS, networking, CI/CD, monitoring and ongoing maintenance, plus cybersecurity audits, hardening, backups and certificates. We can run your entire infrastructure or work alongside your current provider."
+      },
+      {
+        "q": "Where are you based?",
+        "a": "In Baradero, Buenos Aires, Argentina. Several of our clients are local businesses that know us in person, and we work remotely with companies across the country and abroad."
+      },
+      {
+        "q": "Do you work with small businesses or only companies?",
+        "a": "Both. The portfolio ranges from a 24/7 convenience store and clothing shops to a factory with 40 years of history. The criterion isn't size: it's a clear problem worth solving."
       }
     ]
   },
@@ -435,5 +442,52 @@
     "en": "English",
     "pt": "Português",
     "fr": "Français"
+  },
+  "legal": {
+    "title": "Legal",
+    "backHome": "← Back to home",
+    "updated": "Last updated: August 2026",
+    "termsTitle": "Terms and conditions",
+    "termsBlocks": [
+      {
+        "h": "Who we are",
+        "p": "PotenciApp is a software development company registered in Argentina, based in Baradero, Buenos Aires. Contact: contacto@potenciapp.com · WhatsApp +54 9 3329 613035."
+      },
+      {
+        "h": "How we engage",
+        "p": "Every project is formalised through a contract signed by both parties before work starts, defining scope, milestones, delivery dates, fixed price and payment terms. Requests outside the agreed scope are quoted separately and in writing. We issue a legal invoice for every payment."
+      },
+      {
+        "h": "Warranty",
+        "p": "Deliverables carry a 90-calendar-day warranty from delivery, covering free correction of errors or faults in what we built. It does not cover new features, scope changes, or failures caused by third-party modifications, misuse or external services."
+      },
+      {
+        "h": "Ownership",
+        "p": "Unless the contract states otherwise, once the project is paid in full the client receives the source code and the accounts for contracted services in their own name (domain, hosting, store accounts)."
+      },
+      {
+        "h": "This website",
+        "p": "The content of potenciapp.com is informational and does not constitute a contractual offer: the conditions applicable to each project are exclusively those of the signed contract. Client names and brands shown belong to their owners and are displayed as references of delivered work."
+      }
+    ],
+    "privacyTitle": "Privacy policy",
+    "privacyBlocks": [
+      {
+        "h": "What data we receive",
+        "p": "This site uses no tracking cookies and no analytics tools. We only receive the data you send us voluntarily: what you write in the site chat, on WhatsApp or by email (typically your name, contact details and project description)."
+      },
+      {
+        "h": "The site chat",
+        "p": "The site assistant is powered by artificial intelligence (Google Gemini). Messages you write in the chat are sent to Google's API to generate the reply and are not stored by us in any database of our own. Do not write passwords, card details or sensitive information in the chat."
+      },
+      {
+        "h": "How we use it",
+        "p": "Exclusively to reply to you, prepare proposals and deliver contracted projects. We do not sell or share your data with third parties for commercial purposes."
+      },
+      {
+        "h": "Your rights",
+        "p": "You can ask us at any time to access, correct or delete the data you sent us by writing to contacto@potenciapp.com. Billing-related data is kept for as long as Argentine law requires."
+      }
+    ]
   }
 }

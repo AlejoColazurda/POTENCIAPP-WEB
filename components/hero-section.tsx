@@ -18,12 +18,22 @@ export function HeroSection() {
   const rotating = t.raw("rotating") as string[]
   const trustChips = t.raw("trustChips") as string[]
 
+  // WebGL aurora only where it earns its cost: desktop, motion allowed.
+  const [showAurora, setShowAurora] = useState(false)
+  useEffect(() => {
+    setShowAurora(
+      window.matchMedia("(min-width: 1024px) and (prefers-reduced-motion: no-preference)").matches,
+    )
+  }, [])
+
   return (
     <section className="relative isolate overflow-hidden bg-gray-950 pt-32 pb-16 lg:pt-40 lg:pb-24">
       {/* WebGL aurora in brand green — replaces the old background video */}
-      <div aria-hidden className="absolute inset-x-0 top-0 h-[68%] opacity-35 pointer-events-none">
-        <Aurora colorStops={["#062B0B", "#22F23A", "#062B0B"]} amplitude={0.75} blend={0.75} speed={0.35} />
-      </div>
+      {showAurora && (
+        <div aria-hidden className="absolute inset-x-0 top-0 h-[68%] opacity-35 pointer-events-none">
+          <Aurora colorStops={["#062B0B", "#22F23A", "#062B0B"]} amplitude={0.75} blend={0.75} speed={0.35} />
+        </div>
+      )}
       <div
         aria-hidden
         className="absolute inset-0 bg-gradient-to-b from-gray-950/50 via-gray-950/40 to-gray-950 pointer-events-none"
@@ -46,8 +56,22 @@ export function HeroSection() {
           </span>
         </div>
 
-        <h1 className="font-display font-bold leading-[0.85] tracking-[-0.04em] text-outline text-[18vw] sm:text-[16vw] lg:text-[clamp(96px,12vw,180px)] select-none animate-fade-in-up animation-delay-100">
-          {t("outline")}
+        {/* Infinite marquee: the word never clips, it drifts. 4 identical
+            copies with trailing padding; -50% lands exactly on copy 3. */}
+        <h1
+          aria-label={t("outline")}
+          className="relative -mx-4 md:-mx-8 overflow-hidden select-none animate-fade-in-up animation-delay-100"
+        >
+          <div aria-hidden className="marquee-track-fast flex items-center" style={{ width: "max-content" }}>
+            {[0, 1, 2, 3].map((i) => (
+              <span
+                key={i}
+                className="pr-12 lg:pr-20 font-display font-bold leading-[0.85] tracking-[-0.04em] text-outline text-[clamp(64px,14vw,170px)] whitespace-nowrap"
+              >
+                {t("outline")}
+              </span>
+            ))}
+          </div>
         </h1>
 
         <div className="mt-6 lg:mt-8 grid lg:grid-cols-[6fr_4fr] gap-12 lg:gap-16 items-start">

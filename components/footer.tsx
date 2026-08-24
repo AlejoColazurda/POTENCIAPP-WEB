@@ -1,16 +1,14 @@
 "use client"
 
 import Link from "next/link"
-import { Linkedin, Twitter, Instagram, Github, MessageCircle, Rocket } from "lucide-react"
+import { Mail, MessageCircle, Rocket } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { BrandWordmark } from "@/components/brand"
 
+// Only channels that actually exist — a dead social link reads as a fake company.
 const social = [
-  { label: "LinkedIn", href: "#", Icon: Linkedin },
-  { label: "Twitter", href: "#", Icon: Twitter },
-  { label: "Instagram", href: "#", Icon: Instagram },
-  { label: "GitHub", href: "#", Icon: Github },
   { label: "WhatsApp", href: "https://wa.me/5493329613035", Icon: MessageCircle },
+  { label: "contacto@potenciapp.com", href: "mailto:contacto@potenciapp.com", Icon: Mail },
 ]
 
 export function Footer() {
@@ -23,7 +21,7 @@ export function Footer() {
       title: t("soluciones"),
       links: [
         { label: tNav("soluciones"), href: "#soluciones" },
-        { label: t("recursos"), href: "#" },
+        { label: tNav("proyectos"), href: "#proyectos" },
       ],
     },
     {
@@ -37,8 +35,8 @@ export function Footer() {
     {
       title: t("recursos"),
       links: [
-        { label: t("terms"), href: "#" },
-        { label: t("privacy"), href: "#" },
+        { label: t("terms"), href: "/legal#terminos" },
+        { label: t("privacy"), href: "/legal#privacidad" },
       ],
     },
   ]
@@ -112,14 +110,11 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-5 text-xs text-gray-500">
-            <Link href="#" className="hover:text-gray-100 transition-colors">
+            <Link href="/legal#terminos" className="hover:text-gray-100 transition-colors">
               {t("terms")}
             </Link>
-            <Link href="#" className="hover:text-gray-100 transition-colors">
+            <Link href="/legal#privacidad" className="hover:text-gray-100 transition-colors">
               {t("privacy")}
-            </Link>
-            <Link href="#" className="hover:text-gray-100 transition-colors">
-              {t("cookies")}
             </Link>
           </div>
         </div>

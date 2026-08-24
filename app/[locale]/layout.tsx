@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next"
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "sonner"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { setRequestLocale, getMessages, getTranslations } from "next-intl/server"
@@ -84,6 +83,13 @@ export async function generateMetadata({
       type: "website",
       locale,
       siteName: "PotenciApp",
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "PotenciApp" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("ogTitle"),
+      description: t("ogDescription"),
+      images: ["/og.png"],
     },
   }
 }
@@ -126,7 +132,6 @@ export default async function LocaleLayout({
           </ClickSpark>
           <FloatingChat />
           <Toaster richColors theme="dark" position="top-center" />
-          <Analytics />
         </NextIntlClientProvider>
       </body>
     </html>

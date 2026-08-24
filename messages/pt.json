@@ -17,7 +17,7 @@
     "garantia": "Garantia"
   },
   "hero": {
-    "statusBadge": "Aceitando projetos · 2026",
+    "statusBadge": "Respondemos em 24 h úteis",
     "partnerBadge": "Contrato · Preço fechado · Garantia",
     "outline": "POTENCIAMOS",
     "h2_line1": "Seu software, com",
@@ -31,8 +31,8 @@
         "label": "projetos entregues"
       },
       "m2": {
-        "value": "3",
-        "label": "lojas vendendo hoje"
+        "value": "4",
+        "label": "clientes em produção"
       },
       "m3": {
         "value": "90 dias",
@@ -71,9 +71,6 @@
       "Nota fiscal",
       "90 dias de garantia"
     ]
-  },
-  "logos": {
-    "eyebrow": "Negócios reais que já confiaram na gente"
   },
   "value": {
     "eyebrow": "Como trabalhamos",
@@ -355,7 +352,9 @@
     ],
     "fallbackMessage": "Não consigo responder por aqui agora. Vamos continuar no WhatsApp — a equipe responde em até 24 h úteis.",
     "fallbackCta": "Continuar no WhatsApp",
-    "waGreeting": "Olá PotenciApp, vim do site."
+    "waGreeting": "Olá PotenciApp, vim do site.",
+    "privacyNote": "Este chat usa IA (Google Gemini). Não compartilhe senhas nem dados sensíveis.",
+    "privacyLink": "Privacidade"
   },
   "faq": {
     "eyebrow": "Perguntas frequentes",
@@ -398,6 +397,14 @@
       {
         "q": "Vocês cobrem infraestrutura, servidores e segurança?",
         "a": "Sim — é uma divisão própria. Arquitetura de software, Docker, AWS, VPS, redes, CI/CD, monitoramento e manutenção contínua, além de auditorias de cibersegurança, hardening, backups e certificados. Podemos assumir toda a sua infraestrutura ou conviver com o seu fornecedor atual."
+      },
+      {
+        "q": "De onde vocês são?",
+        "a": "De Baradero, Buenos Aires, Argentina. Vários dos nossos clientes são negócios da região que nos conhecem pessoalmente, e trabalhamos remoto com empresas de todo o país e do exterior."
+      },
+      {
+        "q": "Trabalham com negócios pequenos ou só com empresas?",
+        "a": "Com os dois. No portfólio há desde um quiosque 24/7 e lojas de roupa até uma fábrica com 40 anos de história. O critério não é o tamanho: é ter um problema claro para resolver."
       }
     ]
   },
@@ -435,5 +442,52 @@
     "en": "English",
     "pt": "Português",
     "fr": "Français"
+  },
+  "legal": {
+    "title": "Legal",
+    "backHome": "← Voltar ao início",
+    "updated": "Última atualização: agosto de 2026",
+    "termsTitle": "Termos e condições",
+    "termsBlocks": [
+      {
+        "h": "Quem somos",
+        "p": "A PotenciApp é uma empresa de desenvolvimento de software registrada na Argentina, com base em Baradero, Buenos Aires. Contato: contacto@potenciapp.com · WhatsApp +54 9 3329 613035."
+      },
+      {
+        "h": "Como contratamos",
+        "p": "Todo projeto é formalizado por um contrato assinado pelas duas partes antes de começar, definindo escopo, marcos, datas de entrega, preço fechado e forma de pagamento. Pedidos fora do escopo acordado são orçados à parte e por escrito. Emitimos nota fiscal por cada pagamento."
+      },
+      {
+        "h": "Garantia",
+        "p": "O que entregamos tem garantia de 90 dias corridos a partir da entrega, cobrindo a correção sem custo de erros ou falhas do que desenvolvemos. Não cobre funcionalidades novas, mudanças de escopo, nem falhas causadas por modificações de terceiros, uso indevido ou serviços externos."
+      },
+      {
+        "h": "Propriedade",
+        "p": "Salvo acordo diferente no contrato, ao completar o pagamento do projeto o cliente recebe o código-fonte e os acessos dos serviços contratados em seu nome (domínio, hosting, contas de lojas)."
+      },
+      {
+        "h": "Este site",
+        "p": "O conteúdo de potenciapp.com é informativo e não constitui oferta contratual: as condições aplicáveis a cada projeto são exclusivamente as do contrato assinado. Nomes e marcas de clientes exibidos pertencem aos seus titulares e aparecem como referência de trabalhos entregues."
+      }
+    ],
+    "privacyTitle": "Política de privacidade",
+    "privacyBlocks": [
+      {
+        "h": "Quais dados recebemos",
+        "p": "Este site não usa cookies de rastreamento nem ferramentas de análise. Só recebemos os dados que você envia voluntariamente: o que escreve no chat do site, no WhatsApp ou por email (normalmente nome, contato e descrição do projeto)."
+      },
+      {
+        "h": "O chat do site",
+        "p": "O assistente do site funciona com inteligência artificial (Google Gemini). As mensagens que você escreve no chat são enviadas à API do Google para gerar a resposta e não são armazenadas por nós em nenhum banco de dados próprio. Não escreva senhas, dados de cartão nem informações sensíveis no chat."
+      },
+      {
+        "h": "Para que usamos",
+        "p": "Exclusivamente para responder, preparar propostas e executar os projetos contratados. Não vendemos nem cedemos seus dados a terceiros com fins comerciais."
+      },
+      {
+        "h": "Seus direitos",
+        "p": "Você pode pedir a qualquer momento para acessar, corrigir ou excluir os dados que nos enviou, escrevendo para contacto@potenciapp.com. Dados vinculados a faturamento são mantidos pelo prazo exigido pela lei argentina."
+      }
+    ]
   }
 }

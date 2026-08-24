@@ -2,73 +2,14 @@
 
 import { useTranslations } from "next-intl"
 import { BrandMark } from "@/components/brand"
-import LogoLoop from "@/components/reactbits/LogoLoop"
 import ScrollFloat from "@/components/reactbits/ScrollFloat"
 import AnimatedContent from "@/components/reactbits/AnimatedContent"
 
 export function ValueSection() {
-  const tLogos = useTranslations("logos")
   const t = useTranslations("value")
-
-  // Real clients with shipped work — names a business owner recognises as
-  // "people like me", unlike a strip of framework logos.
-  const clients = [
-    "Gisbert Refrigeración",
-    "La Chola",
-    "Maxikiosco 24/7",
-    "New Baby",
-    "El 42 Motos",
-    "Mister Sandwich",
-    "Entre Canes",
-    "Sportivo Resto & Café",
-    "Metalúrgica LMT",
-    "Hidra Dock",
-    "Jazcal",
-    "Los Increíbles",
-    "Terrazas al Río",
-    "Muebles & Deco Fussinato",
-  ]
-
-  const logos = clients.map((name) => ({
-    node: (
-      <span className="inline-flex items-center gap-3 whitespace-nowrap select-none">
-        <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-brand-green/60" />
-        <span className="font-display text-lg lg:text-xl font-semibold text-gray-500 hover:text-gray-100 transition-colors duration-300">
-          {name}
-        </span>
-      </span>
-    ),
-    title: name,
-    ariaLabel: name,
-  }))
 
   return (
     <section className="relative bg-gray-950 py-20 lg:py-32 overflow-hidden">
-      {/* Stack & integrations */}
-      <div className="relative max-w-[1280px] mx-auto px-4 md:px-8 mb-20 lg:mb-32">
-        <div className="flex items-center gap-3 mb-10">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gray-800 to-gray-800" />
-          <span className="font-mono text-[11px] uppercase tracking-wider text-gray-500 px-3">
-            {tLogos("eyebrow")}
-          </span>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent via-gray-800 to-gray-800" />
-        </div>
-
-        <LogoLoop
-          logos={logos}
-          speed={48}
-          direction="left"
-          logoHeight={28}
-          gap={56}
-          pauseOnHover
-          hoverSpeed={0.25}
-          scaleOnHover
-          fadeOut
-          fadeOutColor="#0A0A0A"
-          ariaLabel={tLogos("eyebrow")}
-        />
-      </div>
-
       {/* Value prop */}
       <div className="relative max-w-[1280px] mx-auto px-4 md:px-8 text-center">
         <AnimatedContent distance={50} duration={0.9} threshold={0.15}>
