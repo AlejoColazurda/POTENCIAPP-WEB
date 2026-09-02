@@ -149,14 +149,15 @@ export function PortfolioSection() {
             project the visitor is pointing at is the only one in full colour. */}
         <ChromaGrid items={items} radius={340} damping={0.4} fadeOut={0.5} />
 
-        <div className="mt-12 flex justify-center">
+        {/* No link to the raw demos index on purpose: the grid above IS the
+            curated selection. The slot sells the next step instead. */}
+        <div className="mt-12 flex flex-col items-center gap-3 text-center">
+          <p className="text-base text-gray-300">{t("ctaLine")}</p>
           <Link
-            href={DEMOS_INDEX}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 h-12 px-6 rounded-lg border border-gray-700 text-gray-100 font-display font-semibold text-sm hover:border-brand-green hover:text-brand-green transition-all duration-300"
+            href="#contacto"
+            className="group inline-flex items-center gap-2 h-12 px-6 rounded-lg border border-brand-green text-brand-green font-display font-semibold text-sm hover:bg-brand-green/10 transition-all duration-300"
           >
-            {t("allDemos")}
+            {t("ctaButton")}
             <ArrowUpRight
               className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               strokeWidth={2.5}

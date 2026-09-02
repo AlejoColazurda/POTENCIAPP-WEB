@@ -185,7 +185,6 @@
     "verCaso": "Ver projeto",
     "verDemo": "Abrir demo",
     "live": "No ar",
-    "allDemos": "Ver todas as demos",
     "items": {
       "maxikiosco": {
         "title": "Maxikiosco 24/7",
@@ -232,7 +231,9 @@
         "category": "Showroom · Móveis e decoração",
         "desc": "Coleções, ambientes reais, inspiração e consultas diretas por WhatsApp."
       }
-    }
+    },
+    "ctaLine": "Quer algo assim para o seu negócio?",
+    "ctaButton": "Pedir proposta"
   },
   "band": [
     "Software sob medida",

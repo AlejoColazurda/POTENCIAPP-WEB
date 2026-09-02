@@ -185,7 +185,6 @@
     "verCaso": "View project",
     "verDemo": "Open demo",
     "live": "Live",
-    "allDemos": "See all demos",
     "items": {
       "maxikiosco": {
         "title": "Maxikiosco 24/7",
@@ -232,7 +231,9 @@
         "category": "Showroom · Furniture & decor",
         "desc": "Collections, real room setups, inspiration and direct WhatsApp inquiries."
       }
-    }
+    },
+    "ctaLine": "Want something like this for your business?",
+    "ctaButton": "Request a proposal"
   },
   "band": [
     "Custom software",
