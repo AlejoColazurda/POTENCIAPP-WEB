@@ -31,7 +31,7 @@
         "label": "projects delivered"
       },
       "m2": {
-        "value": "4",
+        "value": "8",
         "label": "clients in production"
       },
       "m3": {
@@ -205,6 +205,26 @@
         "title": "Gisbert Refrigeración",
         "category": "Industry · Site + quote builder",
         "desc": "Cold-room manufacturer with 40 years of history: catalog, promotions and an interactive quote builder that specs your custom chamber."
+      },
+      "castro": {
+        "title": "Amoblamientos Castro",
+        "category": "Custom furniture · Stonework",
+        "desc": "Corporate site for custom furniture and stonework: services, real projects, process and direct contact."
+      },
+      "entrecanes": {
+        "title": "Entre Canes",
+        "category": "Dog training school · Booking funnel",
+        "desc": "Dog training school with a 60-second online assessment, session booking, store and real reviews."
+      },
+      "losincreibles": {
+        "title": "Los Increíbles",
+        "category": "Distributor · End-to-end system",
+        "desc": "Online store + POS with centralized stock, delivery notes, credit accounts and cash control. Installable PWA with wholesale access."
+      },
+      "mistersandwich": {
+        "title": "Mister Sandwich",
+        "category": "Food · Online ordering",
+        "desc": "Sandwich shop with online menu, daily deals, cart and WhatsApp ordering, with live opening hours."
       },
       "jazcal": {
         "title": "Jazcal",

@@ -10,6 +10,7 @@ const DEMOS_INDEX = "https://demo.potenciapp.com"
 
 type ProjectKey =
   | "maxikiosco" | "lachola" | "newbaby" | "gisbert"
+  | "castro" | "entrecanes" | "losincreibles" | "mistersandwich"
   | "jazcal" | "sportivo" | "lmt" | "hidradock" | "fussinato"
 
 type Project = {
@@ -59,6 +60,38 @@ const PROJECTS: Project[] = [
     live: true,
     handle: "gisbertheladeras.com.ar",
     tags: ["Catálogo", "Cotizador", "WhatsApp API"],
+  },
+  {
+    key: "castro",
+    url: "https://www.amoblamientoscastro.com.ar",
+    image: "/demos/castro.webp",
+    live: true,
+    handle: "amoblamientoscastro.com.ar",
+    tags: ["Corporativa", "Gallery", "WhatsApp API"],
+  },
+  {
+    key: "entrecanes",
+    url: "https://www.entrecanes.com.ar",
+    image: "/demos/entrecanes.webp",
+    live: true,
+    handle: "entrecanes.com.ar",
+    tags: ["Funnel", "Booking", "E-commerce"],
+  },
+  {
+    key: "losincreibles",
+    url: "https://www.losincreibles.com.ar",
+    image: "/demos/losincreibles.webp",
+    live: true,
+    handle: "losincreibles.com.ar",
+    tags: ["POS", "ERP", "PWA"],
+  },
+  {
+    key: "mistersandwich",
+    url: "https://www.mistersandwich.com.ar",
+    image: "/demos/mistersandwich.webp",
+    live: true,
+    handle: "mistersandwich.com.ar",
+    tags: ["Delivery", "E-commerce", "WhatsApp API"],
   },
   {
     key: "jazcal",

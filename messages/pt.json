@@ -31,7 +31,7 @@
         "label": "projetos entregues"
       },
       "m2": {
-        "value": "4",
+        "value": "8",
         "label": "clientes em produção"
       },
       "m3": {
@@ -205,6 +205,26 @@
         "title": "Gisbert Refrigeración",
         "category": "Indústria · Site + cotador",
         "desc": "Fábrica de câmaras frigoríficas com 40 anos de história: catálogo, promoções e cotador interativo que monta o orçamento da sua câmara sob medida."
+      },
+      "castro": {
+        "title": "Amoblamientos Castro",
+        "category": "Móveis sob medida · Marmoraria",
+        "desc": "Site corporativo de móveis e marmoraria: serviços, trabalhos reais, processo e contato direto."
+      },
+      "entrecanes": {
+        "title": "Entre Canes",
+        "category": "Escola canina · Funil de reservas",
+        "desc": "Escola de adestramento com diagnóstico online de 60 segundos, agenda de sessões, loja e avaliações reais."
+      },
+      "losincreibles": {
+        "title": "Los Increíbles",
+        "category": "Distribuidora · Sistema integral",
+        "desc": "Loja online + PDV com estoque centralizado, remessas, conta corrente e caixa. PWA instalável com acesso atacadista."
+      },
+      "mistersandwich": {
+        "title": "Mister Sandwich",
+        "category": "Gastronomia · Pedidos online",
+        "desc": "Lanchonete com cardápio online, promoções do dia, carrinho e pedidos por WhatsApp, com horários em tempo real."
       },
       "jazcal": {
         "title": "Jazcal",
