@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "PotenciApp | Software, ciberseguridad e infraestructura con contrato y garantía",
-    "description": "Empresa completa de software: apps iOS y Android, e-commerce, sistemas, IA, ciberseguridad, arquitectura, Docker, AWS, VPS, redes y mantenimiento. Contrato con hitos y fechas, precio cerrado, factura y 90 días de garantía.",
+    "description": "Empresa completa de software y marketing digital: apps iOS y Android, tiendas en Tiendanube y Empretienda, anuncios en Meta Ads y Google Ads, actualización de sitios, sistemas, IA, ciberseguridad e infraestructura cloud. Contrato, precio cerrado, factura y 90 días de garantía.",
     "ogTitle": "PotenciApp | Software que se firma, se entrega y se garantiza.",
     "ogDescription": "Apps, e-commerce, sistemas, ciberseguridad e infraestructura cloud. Contrato, precio cerrado, factura y 90 días de garantía."
   },
@@ -81,7 +81,7 @@
   "services": {
     "eyebrow": "Soluciones",
     "title": "Una empresa completa, división por división.",
-    "subtitle": "Del código a la infraestructura: apps, e-commerce, sistemas, IA, ciberseguridad, servidores y mantenimiento. Todo con contrato, precio cerrado y garantía.",
+    "subtitle": "Del código a las ventas: apps, tiendas online, anuncios en Meta y Google, sistemas, IA, ciberseguridad y servidores. Todo con contrato, precio cerrado y garantía.",
     "verMas": "Ver más",
     "cards": {
       "apps": {
@@ -104,21 +104,45 @@
       },
       "ecommerce": {
         "eyebrow": "03 · Venta",
-        "title": "E-commerce",
-        "desc": "Tiendas que convierten, con catálogo, carrito y Mercado Pago. Como las que ya operan en producción."
+        "title": "Tiendas online",
+        "desc": "Creamos tu tienda en Tiendanube o Empretienda, o una a medida: catálogo, medios de pago, envíos y dominio propio. Como las que ya venden en producción.",
+        "chips": [
+          "Tiendanube",
+          "Empretienda",
+          "A medida",
+          "Mercado Pago",
+          "Envíos"
+        ]
+      },
+      "marketing": {
+        "eyebrow": "04 · Marketing",
+        "title": "Anuncios en Meta y Google",
+        "desc": "Campañas en Meta Ads (Facebook e Instagram) y Google Ads desde cuentas publicitarias verificadas: píxel, conversiones y reportes claros de cada peso invertido.",
+        "chips": [
+          "Meta Ads",
+          "Google Ads",
+          "Instagram",
+          "Píxel",
+          "Conversiones"
+        ]
+      },
+      "sitios": {
+        "eyebrow": "05 · Web",
+        "title": "Actualización de sitios",
+        "desc": "Renovamos tu sitio actual: diseño, velocidad, SEO, textos y WhatsApp. Sin empezar de cero y sin perder lo que ya funciona."
       },
       "sistemas": {
-        "eyebrow": "04 · Backoffice",
+        "eyebrow": "06 · Backoffice",
         "title": "Sistemas internos",
         "desc": "ERPs, CRMs y dashboards a medida. Reemplazá 5 planillas y 3 SaaS por una herramienta tuya."
       },
       "automatizaciones": {
-        "eyebrow": "05 · Operación",
+        "eyebrow": "07 · Operación",
         "title": "Automatizaciones",
         "desc": "Flujos que conectan lo que ya usás. n8n, Zapier, custom workers — sin tocar tu stack."
       },
       "ciberseguridad": {
-        "eyebrow": "06 · Seguridad",
+        "eyebrow": "08 · Seguridad",
         "title": "Ciberseguridad",
         "desc": "Auditamos, endurecemos y protegemos lo que ya tenés online: accesos, datos, backups y certificados.",
         "chips": [
@@ -130,7 +154,7 @@
         ]
       },
       "infraestructura": {
-        "eyebrow": "07 · Infraestructura",
+        "eyebrow": "09 · Infraestructura",
         "title": "Infraestructura y cloud",
         "desc": "Arquitectura de software, servidores, redes y despliegues. Montamos, monitoreamos y mantenemos tu infraestructura completa.",
         "chips": [
@@ -143,7 +167,7 @@
         ]
       },
       "consultoria": {
-        "eyebrow": "08 · Estrategia",
+        "eyebrow": "10 · Estrategia",
         "title": "Arquitectura y consultoría",
         "desc": "¿Construir, comprar o tercerizar? Auditamos tu stack, diseñamos la arquitectura y dejamos un roadmap aplicable en 2 semanas."
       }
@@ -363,13 +387,13 @@
     "close": "Cerrar chat",
     "send": "Enviar",
     "thinking": "Escribiendo...",
-    "greeting": "¡Hola! Soy el asistente de PotenciApp. Contame qué necesitás — apps, e-commerce, sistemas, infraestructura, seguridad — y te oriento.",
+    "greeting": "¡Hola! Soy el asistente de PotenciApp. Contame qué necesitás — tienda online, anuncios en Meta o Google, apps, sistemas — y te oriento.",
     "placeholder": "Escribí tu consulta...",
     "suggestions": [
-      "Quiero una tienda online",
-      "Necesito una app publicada en las tiendas",
-      "¿Qué incluye la garantía?",
-      "Migrar mi infraestructura a la nube"
+      "Quiero una tienda en Tiendanube o Empretienda",
+      "Quiero hacer anuncios en Meta y Google",
+      "Necesito actualizar mi sitio",
+      "Necesito una app publicada en las tiendas"
     ],
     "fallbackMessage": "Ahora mismo no puedo responder por acá. Seguimos por WhatsApp y te contesta el equipo en menos de 24 h hábiles.",
     "fallbackCta": "Continuar en WhatsApp",

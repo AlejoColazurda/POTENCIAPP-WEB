@@ -1,6 +1,7 @@
 "use client"
 
-import { Check, Mail, MessageCircle, Sparkles } from "lucide-react"
+import { Check, Mail, Sparkles } from "lucide-react"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { useTranslations } from "next-intl"
 import AnimatedContent from "@/components/reactbits/AnimatedContent"
 import Magnet from "@/components/reactbits/Magnet"
@@ -59,7 +60,7 @@ export function ContactSection() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-lg bg-brand-green text-black font-display font-bold text-base hover:bg-green-hover hover:shadow-[0_0_32px_rgba(34,242,58,0.5)] transition-all duration-300 active:scale-[0.98]"
               >
-                <MessageCircle className="h-5 w-5" strokeWidth={2.5} />
+                <WhatsAppIcon className="h-5 w-5" />
                 {t("ctaWhatsApp")}
               </a>
             </Magnet>

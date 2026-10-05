@@ -5,6 +5,8 @@ import {
   Smartphone,
   BrainCircuit,
   ShoppingBag,
+  Megaphone,
+  RefreshCw,
   Database,
   Workflow,
   Compass,
@@ -20,6 +22,8 @@ type CardKey =
   | "apps"
   | "ia"
   | "ecommerce"
+  | "marketing"
+  | "sitios"
   | "sistemas"
   | "automatizaciones"
   | "ciberseguridad"
@@ -30,6 +34,8 @@ const ICONS: Record<CardKey, React.ReactNode> = {
   apps: <Smartphone className="h-6 w-6" />,
   ia: <BrainCircuit className="h-6 w-6" />,
   ecommerce: <ShoppingBag className="h-6 w-6" />,
+  marketing: <Megaphone className="h-6 w-6" />,
+  sitios: <RefreshCw className="h-6 w-6" />,
   sistemas: <Database className="h-6 w-6" />,
   automatizaciones: <Workflow className="h-6 w-6" />,
   ciberseguridad: <ShieldCheck className="h-6 w-6" />,
@@ -38,7 +44,7 @@ const ICONS: Record<CardKey, React.ReactNode> = {
 }
 
 /**
- * Eight divisions on a 12-col grid with no row-spans: the old featured card
+ * Ten divisions on a 12-col grid with no row-spans: the old featured card
  * spanned two rows and left a large hole under its content.
  */
 export function ServicesSection() {
@@ -52,7 +58,9 @@ export function ServicesSection() {
         <div className="mt-14 lg:mt-20 grid grid-cols-1 md:grid-cols-12 gap-6">
           <SolutionCard cardKey="apps" className="md:col-span-7" featured />
           <SolutionCard cardKey="ia" className="md:col-span-5" delay={0.08} />
-          <SolutionCard cardKey="ecommerce" className="md:col-span-4" delay={0.08} />
+          <SolutionCard cardKey="ecommerce" className="md:col-span-6" delay={0.08} withChips />
+          <SolutionCard cardKey="marketing" className="md:col-span-6" delay={0.16} withChips />
+          <SolutionCard cardKey="sitios" className="md:col-span-4" delay={0.08} />
           <SolutionCard cardKey="sistemas" className="md:col-span-4" delay={0.16} />
           <SolutionCard cardKey="automatizaciones" className="md:col-span-4" delay={0.24} />
           <SolutionCard cardKey="ciberseguridad" className="md:col-span-6" delay={0.08} withChips />

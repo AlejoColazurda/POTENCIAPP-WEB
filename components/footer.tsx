@@ -1,14 +1,15 @@
 "use client"
 
 import Link from "next/link"
-import { Mail, MessageCircle, Rocket } from "lucide-react"
+import { Mail, Rocket } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { BrandWordmark } from "@/components/brand"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
 
 // Only channels that actually exist — a dead social link reads as a fake company.
 const social = [
-  { label: "WhatsApp", href: "https://wa.me/5493329613035", Icon: MessageCircle },
-  { label: "contacto@potenciapp.com", href: "mailto:contacto@potenciapp.com", Icon: Mail },
+  { label: "WhatsApp", href: "https://wa.me/5493329613035", Icon: WhatsAppIcon, iconClass: "text-[#25D366]" },
+  { label: "contacto@potenciapp.com", href: "mailto:contacto@potenciapp.com", Icon: Mail, iconClass: "group-hover:text-brand-green" },
 ]
 
 export function Footer() {
@@ -84,13 +85,13 @@ export function Footer() {
               {t("conecta")}
             </h4>
             <ul className="space-y-3">
-              {social.map(({ label, href, Icon }) => (
+              {social.map(({ label, href, Icon, iconClass }) => (
                 <li key={label}>
                   <Link
                     href={href}
                     className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-100 transition-colors group"
                   >
-                    <Icon className="h-4 w-4 group-hover:text-brand-green transition-colors" />
+                    <Icon className={`h-4 w-4 transition-colors ${iconClass}`} />
                     {label}
                   </Link>
                 </li>

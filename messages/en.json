@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "PotenciApp | Software, cybersecurity and infrastructure with contract and warranty",
-    "description": "Full-stack software company: iOS and Android apps, e-commerce, systems, AI, cybersecurity, architecture, Docker, AWS, VPS, networking and maintenance. Contract with milestones and dates, fixed price, invoicing and a 90-day warranty.",
+    "description": "Full-stack software and digital marketing company: iOS and Android apps, Tiendanube and Empretienda stores, Meta Ads and Google Ads, website updates, systems, AI, cybersecurity and cloud infrastructure. Contract, fixed price, invoicing and a 90-day warranty.",
     "ogTitle": "PotenciApp | Software that gets signed, delivered and guaranteed.",
     "ogDescription": "Apps, e-commerce, systems, cybersecurity and cloud infrastructure. Contract, fixed price, invoicing and a 90-day warranty."
   },
@@ -81,7 +81,7 @@
   "services": {
     "eyebrow": "Solutions",
     "title": "A complete company, division by division.",
-    "subtitle": "From code to infrastructure: apps, e-commerce, systems, AI, cybersecurity, servers and maintenance. All under contract, fixed price and warranty.",
+    "subtitle": "From code to sales: apps, online stores, Meta and Google ads, systems, AI, cybersecurity and servers. All under contract, fixed price and warranty.",
     "verMas": "Learn more",
     "cards": {
       "apps": {
@@ -104,21 +104,45 @@
       },
       "ecommerce": {
         "eyebrow": "03 · Sales",
-        "title": "E-commerce",
-        "desc": "Stores that convert, with catalog, cart and Mercado Pago. Like the ones already running in production."
+        "title": "Online stores",
+        "desc": "We build your store on Tiendanube or Empretienda, or a custom one: catalog, payments, shipping and your own domain. Like the ones already selling in production.",
+        "chips": [
+          "Tiendanube",
+          "Empretienda",
+          "Custom",
+          "Mercado Pago",
+          "Shipping"
+        ]
+      },
+      "marketing": {
+        "eyebrow": "04 · Marketing",
+        "title": "Meta and Google ads",
+        "desc": "Meta Ads (Facebook and Instagram) and Google Ads campaigns run from verified ad accounts: pixel, conversions and clear reporting on every dollar spent.",
+        "chips": [
+          "Meta Ads",
+          "Google Ads",
+          "Instagram",
+          "Pixel",
+          "Conversions"
+        ]
+      },
+      "sitios": {
+        "eyebrow": "05 · Web",
+        "title": "Website updates",
+        "desc": "We refresh your current site: design, speed, SEO, copy and WhatsApp. No starting from scratch, no losing what already works."
       },
       "sistemas": {
-        "eyebrow": "04 · Backoffice",
+        "eyebrow": "06 · Backoffice",
         "title": "Internal systems",
         "desc": "Custom ERPs, CRMs and dashboards. Replace 5 spreadsheets and 3 SaaS tools with one tool of your own."
       },
       "automatizaciones": {
-        "eyebrow": "05 · Operations",
+        "eyebrow": "07 · Operations",
         "title": "Automations",
         "desc": "Flows that connect what you already use. n8n, Zapier, custom workers — without touching your stack."
       },
       "ciberseguridad": {
-        "eyebrow": "06 · Security",
+        "eyebrow": "08 · Security",
         "title": "Cybersecurity",
         "desc": "We audit, harden and protect what you already run online: access, data, backups and certificates.",
         "chips": [
@@ -130,7 +154,7 @@
         ]
       },
       "infraestructura": {
-        "eyebrow": "07 · Infrastructure",
+        "eyebrow": "09 · Infrastructure",
         "title": "Infrastructure & cloud",
         "desc": "Software architecture, servers, networks and deployments. We set up, monitor and maintain your full infrastructure.",
         "chips": [
@@ -143,7 +167,7 @@
         ]
       },
       "consultoria": {
-        "eyebrow": "08 · Strategy",
+        "eyebrow": "10 · Strategy",
         "title": "Architecture & consulting",
         "desc": "Build, buy or outsource? We audit your stack, design the architecture and leave an actionable roadmap in 2 weeks."
       }
@@ -363,13 +387,13 @@
     "close": "Close chat",
     "send": "Send",
     "thinking": "Typing...",
-    "greeting": "Hi! I'm the PotenciApp assistant. Tell me what you need — apps, e-commerce, systems, infrastructure, security — and I'll point you the right way.",
+    "greeting": "Hi! I'm the PotenciApp assistant. Tell me what you need — an online store, Meta or Google ads, apps, systems — and I'll point you in the right direction.",
     "placeholder": "Type your question...",
     "suggestions": [
-      "I want an online store",
-      "I need an app published on the stores",
-      "What does the warranty cover?",
-      "Migrate my infrastructure to the cloud"
+      "I want a Tiendanube or Empretienda store",
+      "I want to run Meta and Google ads",
+      "I need to update my website",
+      "I need an app published on the stores"
     ],
     "fallbackMessage": "I can't answer here right now. Let's continue on WhatsApp — the team replies within 24 business hours.",
     "fallbackCta": "Continue on WhatsApp",
