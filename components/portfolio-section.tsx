@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 import ChromaGrid, { type ChromaItem } from "@/components/reactbits/ChromaGrid"
@@ -186,7 +185,7 @@ export function PortfolioSection() {
             curated selection. The slot sells the next step instead. */}
         <div className="mt-12 flex flex-col items-center gap-3 text-center">
           <p className="text-base text-gray-300">{t("ctaLine")}</p>
-          <Link
+          <a
             href="#contacto"
             className="group inline-flex items-center gap-2 h-12 px-6 rounded-lg border border-brand-green text-brand-green font-display font-semibold text-sm hover:bg-brand-green/10 transition-all duration-300"
           >
@@ -195,7 +194,7 @@ export function PortfolioSection() {
               className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               strokeWidth={2.5}
             />
-          </Link>
+          </a>
         </div>
       </div>
     </section>

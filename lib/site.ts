@@ -1,7 +1,7 @@
 /** Company-wide contact constants. */
 export const WA_PHONE = "5493329613035"
 export const CONTACT_EMAIL = "contacto@potenciapp.com"
-export const SITE_URL = "https://potenciapp.com"
+export const SITE_URL = "https://www.potenciapp.com"
 
 export function whatsAppUrl(text: string) {
   return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(text)}`

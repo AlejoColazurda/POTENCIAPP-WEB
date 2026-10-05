@@ -1,13 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import Link from "next/link"
 import { Menu, X, ArrowRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
 import { BrandWordmark } from "@/components/brand"
 import { LanguageSwitcher } from "@/components/language-switcher"
-import GooeyNav from "@/components/reactbits/GooeyNav"
+import { SectionNav } from "@/components/section-nav"
 
 const NAV_ITEMS = [
   { key: "soluciones", href: "#soluciones" },
@@ -29,7 +29,10 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const gooeyItems = NAV_ITEMS.map((item) => ({ label: t(item.key), href: item.href }))
+  const navItems = useMemo(
+    () => NAV_ITEMS.map((item) => ({ label: t(item.key), href: item.href })),
+    [t],
+  )
 
   return (
     <header
@@ -50,28 +53,19 @@ export function Header() {
             <BrandWordmark size="md" priority />
           </Link>
 
-          {/* Gooey pill nav — the active item is chased by a blob of green particles */}
-          <nav className="hidden md:block gooey-nav-brand text-sm font-medium" aria-label="Principal">
-            <GooeyNav
-              items={gooeyItems}
-              particleCount={12}
-              particleDistances={[70, 8]}
-              particleR={90}
-              animationTime={560}
-              timeVariance={280}
-              initialActiveIndex={-1}
-            />
+          <nav className="hidden md:block" aria-label="Principal">
+            <SectionNav items={navItems} />
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
             <LanguageSwitcher compact />
-            <Link
+            <a
               href="#contacto"
               className="inline-flex items-center gap-2 px-4 lg:px-5 h-10 lg:h-11 rounded-lg bg-brand-green text-black font-semibold text-sm hover:bg-green-hover hover:shadow-[0_0_24px_rgba(34,242,58,0.4)] transition-all duration-300 active:scale-[0.98]"
             >
               {t("ctaLong")}
               <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-            </Link>
+            </a>
           </div>
 
           <div className="md:hidden flex items-center gap-2">
@@ -97,23 +91,23 @@ export function Header() {
       >
         <nav className="flex flex-col px-4 py-4 gap-2" aria-label="Mobile">
           {NAV_ITEMS.map((item) => (
-            <Link
+            <a
               key={item.href}
               href={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
               className="text-base font-medium text-gray-300 hover:text-brand-green py-3 border-b border-gray-800 last:border-b-0 transition-colors"
             >
               {t(item.key)}
-            </Link>
+            </a>
           ))}
-          <Link
+          <a
             href="#contacto"
             onClick={() => setIsMobileMenuOpen(false)}
             className="mt-3 inline-flex items-center justify-center gap-2 h-12 rounded-lg bg-brand-green text-black font-semibold"
           >
             {t("ctaLong")}
             <ArrowRight className="h-4 w-4" />
-          </Link>
+          </a>
         </nav>
       </div>
     </header>

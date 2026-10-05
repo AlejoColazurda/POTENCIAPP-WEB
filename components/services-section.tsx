@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import {
   Smartphone,
   BrainCircuit,
@@ -141,7 +140,7 @@ function SolutionCard({
       threshold={0.1}
       className={`h-full ${className}`}
     >
-      <Link href="#contacto" className="group block h-full">
+      <a href="#contacto" className="group block h-full">
         <SpotlightCard
           className={`h-full bg-gray-900 border rounded-2xl p-8 transition-all duration-300 flex ${
             featured
@@ -192,7 +191,7 @@ function SolutionCard({
             <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
           </div>
         </SpotlightCard>
-      </Link>
+      </a>
     </AnimatedContent>
   )
 }

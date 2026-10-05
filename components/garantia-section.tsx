@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import { FileSignature, Tag, ShieldCheck, Receipt, ArrowRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 import CardSwap, { Card } from "@/components/reactbits/CardSwap"
@@ -53,13 +52,13 @@ export function GarantiaSection() {
               </p>
 
               <Magnet padding={80} magnetStrength={6} wrapperClassName="mt-9 inline-flex">
-                <Link
+                <a
                   href="#contacto"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-brand-green text-black font-display font-bold text-base hover:bg-green-hover hover:shadow-[0_0_32px_rgba(34,242,58,0.45)] transition-all duration-300 active:scale-[0.98]"
                 >
                   {t("cta")}
                   <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
-                </Link>
+                </a>
               </Magnet>
             </div>
           </AnimatedContent>

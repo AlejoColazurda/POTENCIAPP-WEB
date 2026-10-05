@@ -1,13 +1,11 @@
 "use client"
 
-import Link from "next/link"
 import { ArrowDown, ArrowRight, Check, ShieldCheck, Sparkles } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { useTranslations } from "next-intl"
 import { BrandMark } from "@/components/brand"
 import Aurora from "@/components/reactbits/Aurora"
-import SplitText from "@/components/reactbits/SplitText"
 import RotatingText from "@/components/reactbits/RotatingText"
 import CountUp from "@/components/reactbits/CountUp"
 import Magnet from "@/components/reactbits/Magnet"
@@ -83,21 +81,10 @@ export function HeroSection() {
               </span>
             </div>
 
-            {/* SplitText and RotatingText each own a line. Keeping them in
-                separate blocks stops framer's layout animation from measuring
-                against GSAP's in-flight transforms on the first line. */}
             <h2 className="font-display text-[40px] sm:text-5xl lg:text-6xl font-bold tracking-[-0.03em] leading-[0.95] text-gray-100">
-              <SplitText
-                text={t("h2_line1")}
-                tag="span"
-                className="block"
-                splitType="chars"
-                delay={28}
-                duration={0.9}
-                textAlign="left"
-                from={{ opacity: 0, y: 48, rotateX: -60 }}
-                to={{ opacity: 1, y: 0, rotateX: 0 }}
-              />
+              {/* Plain text + CSS fade: this line is the LCP element, and the
+                  old GSAP SplitText kept it at opacity 0 until hydration. */}
+              <span className="block animate-fade-in-up">{t("h2_line1")}</span>
               <span className="block text-brand-green">
                 <RotatingText
                   texts={rotating}
@@ -130,21 +117,21 @@ export function HeroSection() {
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2 animate-fade-in-up animation-delay-400">
               <Magnet padding={90} magnetStrength={5} wrapperClassName="inline-flex">
-                <Link
+                <a
                   href="#contacto"
                   className="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-lg bg-brand-green text-black font-display font-bold text-base hover:bg-green-hover hover:shadow-[0_0_32px_rgba(34,242,58,0.5)] transition-all duration-300 active:scale-[0.98]"
                 >
                   {t("ctaPrimary")}
                   <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
-                </Link>
+                </a>
               </Magnet>
-              <Link
+              <a
                 href="#proyectos"
                 className="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-lg border border-brand-green text-brand-green font-display font-bold text-base hover:bg-brand-green/10 transition-all duration-300"
               >
                 {t("ctaSecondary")}
                 <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
-              </Link>
+              </a>
             </div>
 
             {/* Risk-inversion strip: Fragor-style trust chips, except every one
