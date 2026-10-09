@@ -14,7 +14,8 @@
     "ctaLong": "Request a proposal",
     "menu": "Menu",
     "close": "Close",
-    "garantia": "Warranty"
+    "garantia": "Warranty",
+    "blog": "Blog"
   },
   "hero": {
     "statusBadge": "We reply within 24 business hours",
@@ -534,5 +535,23 @@
         "p": "You can ask us at any time to access, correct or delete the data you sent us by writing to contacto@potenciapp.com. Billing-related data is kept for as long as Argentine law requires."
       }
     ]
+  },
+  "blog": {
+    "eyebrow": "Blog · Cybersecurity",
+    "title": "Practical security for shops and small businesses.",
+    "subtitle": "Short guides to protect your store, your accounts and your payments. No jargon, just steps you can apply today.",
+    "metaTitle": "Cybersecurity blog for small businesses | PotenciApp",
+    "metaDescription": "Practical cybersecurity guides for shops and small businesses: WhatsApp and Mercado Pago scams, Tiendanube and Empretienda security, Instagram accounts and more.",
+    "readMore": "Read article",
+    "minutes": "{n} min read",
+    "back": "All articles",
+    "home": "Home",
+    "spanishOnly": "Articles are currently published in Spanish.",
+    "ctaTitle": "Want us to review your business security?",
+    "ctaBody": "We audit your accounts, store and access, and hand you a written report with what needs fixing.",
+    "ctaPrimary": "Request a proposal",
+    "ctaWhatsApp": "Message us on WhatsApp",
+    "waGreeting": "Hi PotenciApp, I read the blog and want to review my business security.",
+    "author": "PotenciApp team"
   }
 }

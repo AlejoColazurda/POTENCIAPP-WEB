@@ -14,7 +14,8 @@
     "ctaLong": "Pedir proposta",
     "menu": "Menu",
     "close": "Fechar",
-    "garantia": "Garantia"
+    "garantia": "Garantia",
+    "blog": "Blog"
   },
   "hero": {
     "statusBadge": "Respondemos em 24 h úteis",
@@ -534,5 +535,23 @@
         "p": "Você pode pedir a qualquer momento para acessar, corrigir ou excluir os dados que nos enviou, escrevendo para contacto@potenciapp.com. Dados vinculados a faturamento são mantidos pelo prazo exigido pela lei argentina."
       }
     ]
+  },
+  "blog": {
+    "eyebrow": "Blog · Cibersegurança",
+    "title": "Segurança prática para lojas e pequenas empresas.",
+    "subtitle": "Guias curtos para proteger sua loja, suas contas e seus recebimentos. Sem jargão, com passos que você aplica hoje.",
+    "metaTitle": "Blog de cibersegurança para pequenas empresas | PotenciApp",
+    "metaDescription": "Guias práticos de cibersegurança para lojas e pequenas empresas: golpes por WhatsApp e Mercado Pago, segurança na Tiendanube e Empretienda, contas do Instagram e mais.",
+    "readMore": "Ler artigo",
+    "minutes": "{n} min de leitura",
+    "back": "Todos os artigos",
+    "home": "Início",
+    "spanishOnly": "Por enquanto, os artigos são publicados em espanhol.",
+    "ctaTitle": "Quer que revisemos a segurança do seu negócio?",
+    "ctaBody": "Auditamos suas contas, sua loja e seus acessos, e entregamos um relatório por escrito com o que precisa ser corrigido.",
+    "ctaPrimary": "Pedir proposta",
+    "ctaWhatsApp": "Fale conosco no WhatsApp",
+    "waGreeting": "Olá PotenciApp, li o blog e quero revisar a segurança do meu negócio.",
+    "author": "Equipe PotenciApp"
   }
 }

@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react"
 import Link from "next/link"
 import { Menu, X, ArrowRight } from "lucide-react"
 import { useTranslations } from "next-intl"
+import { Link as LocaleLink } from "@/i18n/navigation"
 import { cn } from "@/lib/utils"
 import { BrandWordmark } from "@/components/brand"
 import { LanguageSwitcher } from "@/components/language-switcher"
@@ -53,8 +54,14 @@ export function Header() {
             <BrandWordmark size="md" priority />
           </Link>
 
-          <nav className="hidden md:block" aria-label="Principal">
+          <nav className="hidden md:flex items-center gap-1" aria-label="Principal">
             <SectionNav items={navItems} />
+            <LocaleLink
+              href="/blog"
+              className="rounded-full px-4 py-2 text-sm font-medium text-gray-300 transition-colors hover:text-gray-100"
+            >
+              {t("blog")}
+            </LocaleLink>
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
@@ -100,6 +107,13 @@ export function Header() {
               {t(item.key)}
             </a>
           ))}
+          <LocaleLink
+            href="/blog"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-base font-medium text-gray-300 hover:text-brand-green py-3 transition-colors"
+          >
+            {t("blog")}
+          </LocaleLink>
           <a
             href="#contacto"
             onClick={() => setIsMobileMenuOpen(false)}

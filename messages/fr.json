@@ -14,7 +14,8 @@
     "ctaLong": "Demander une proposition",
     "menu": "Menu",
     "close": "Fermer",
-    "garantia": "Garantie"
+    "garantia": "Garantie",
+    "blog": "Blog"
   },
   "hero": {
     "statusBadge": "Réponse sous 24 h ouvrées",
@@ -534,5 +535,23 @@
         "p": "Vous pouvez à tout moment demander l'accès, la correction ou la suppression des données envoyées, en écrivant à contacto@potenciapp.com. Les données liées à la facturation sont conservées le temps exigé par la loi argentine."
       }
     ]
+  },
+  "blog": {
+    "eyebrow": "Blog · Cybersécurité",
+    "title": "La sécurité concrète pour les commerces et les PME.",
+    "subtitle": "Des guides courts pour protéger votre boutique, vos comptes et vos encaissements. Sans jargon, avec des étapes à appliquer dès aujourd'hui.",
+    "metaTitle": "Blog cybersécurité pour les PME | PotenciApp",
+    "metaDescription": "Guides pratiques de cybersécurité pour commerces et PME : arnaques WhatsApp et Mercado Pago, sécurité Tiendanube et Empretienda, comptes Instagram et plus.",
+    "readMore": "Lire l'article",
+    "minutes": "{n} min de lecture",
+    "back": "Tous les articles",
+    "home": "Accueil",
+    "spanishOnly": "Les articles sont pour l'instant publiés en espagnol.",
+    "ctaTitle": "Vous voulez qu'on vérifie la sécurité de votre entreprise ?",
+    "ctaBody": "Nous auditons vos comptes, votre boutique et vos accès, et vous remettons un rapport écrit avec ce qu'il faut corriger.",
+    "ctaPrimary": "Demander une proposition",
+    "ctaWhatsApp": "Écrivez-nous sur WhatsApp",
+    "waGreeting": "Bonjour PotenciApp, j'ai lu le blog et je veux vérifier la sécurité de mon entreprise.",
+    "author": "Équipe PotenciApp"
   }
 }

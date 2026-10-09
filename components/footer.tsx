@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Mail, Rocket } from "lucide-react"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { BrandWordmark } from "@/components/brand"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
 
@@ -16,6 +16,9 @@ export function Footer() {
   const t = useTranslations("footer")
   const tNav = useTranslations("nav")
   const year = new Date().getFullYear()
+  const locale = useLocale()
+  // Default locale is unprefixed ("as-needed"); the rest live under /<locale>.
+  const lp = (path: string) => (locale === "es" ? path : `/${locale}${path}`)
 
   const columns = [
     {
@@ -36,8 +39,9 @@ export function Footer() {
     {
       title: t("recursos"),
       links: [
-        { label: t("terms"), href: "/legal#terminos" },
-        { label: t("privacy"), href: "/legal#privacidad" },
+        { label: tNav("blog"), href: lp("/blog") },
+        { label: t("terms"), href: lp("/legal#terminos") },
+        { label: t("privacy"), href: lp("/legal#privacidad") },
       ],
     },
   ]
