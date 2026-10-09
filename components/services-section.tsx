@@ -5,6 +5,7 @@ import {
   BrainCircuit,
   ShoppingBag,
   Megaphone,
+  Store,
   RefreshCw,
   Database,
   Workflow,
@@ -21,6 +22,7 @@ type CardKey =
   | "apps"
   | "ia"
   | "ecommerce"
+  | "mercadolibre"
   | "marketing"
   | "sitios"
   | "sistemas"
@@ -33,6 +35,7 @@ const ICONS: Record<CardKey, React.ReactNode> = {
   apps: <Smartphone className="h-6 w-6" />,
   ia: <BrainCircuit className="h-6 w-6" />,
   ecommerce: <ShoppingBag className="h-6 w-6" />,
+  mercadolibre: <Store className="h-6 w-6" />,
   marketing: <Megaphone className="h-6 w-6" />,
   sitios: <RefreshCw className="h-6 w-6" />,
   sistemas: <Database className="h-6 w-6" />,
@@ -43,7 +46,7 @@ const ICONS: Record<CardKey, React.ReactNode> = {
 }
 
 /**
- * Ten divisions on a 12-col grid with no row-spans: the old featured card
+ * Eleven divisions on a 12-col grid with no row-spans: the old featured card
  * spanned two rows and left a large hole under its content.
  */
 export function ServicesSection() {
@@ -57,8 +60,9 @@ export function ServicesSection() {
         <div className="mt-14 lg:mt-20 grid grid-cols-1 md:grid-cols-12 gap-6">
           <SolutionCard cardKey="apps" className="md:col-span-7" featured />
           <SolutionCard cardKey="ia" className="md:col-span-5" delay={0.08} />
-          <SolutionCard cardKey="ecommerce" className="md:col-span-6" delay={0.08} withChips />
-          <SolutionCard cardKey="marketing" className="md:col-span-6" delay={0.16} withChips />
+          <SolutionCard cardKey="ecommerce" className="md:col-span-4" delay={0.08} withChips />
+          <SolutionCard cardKey="mercadolibre" className="md:col-span-4" delay={0.16} withChips />
+          <SolutionCard cardKey="marketing" className="md:col-span-4" delay={0.24} withChips />
           <SolutionCard cardKey="sitios" className="md:col-span-4" delay={0.08} />
           <SolutionCard cardKey="sistemas" className="md:col-span-4" delay={0.16} />
           <SolutionCard cardKey="automatizaciones" className="md:col-span-4" delay={0.24} />
@@ -66,8 +70,44 @@ export function ServicesSection() {
           <SolutionCard cardKey="infraestructura" className="md:col-span-6" delay={0.16} withChips />
           <SolutionCard cardKey="consultoria" className="md:col-span-12" horizontal delay={0.24} />
         </div>
+
+        <PlatformsStrip />
       </div>
     </section>
+  )
+}
+
+/**
+ * Secondary message under the divisions: custom work is the headline, but
+ * visitors already on a platform should see theirs named here.
+ */
+function PlatformsStrip() {
+  const t = useTranslations("services")
+  const platforms = t.raw("platforms") as string[]
+
+  return (
+    <AnimatedContent distance={40} duration={0.8} threshold={0.1}>
+      <div className="mt-6 rounded-2xl border border-gray-800 bg-gray-900/60 p-6 md:p-8">
+        <div className="md:flex md:items-start md:justify-between md:gap-10">
+          <div className="max-w-[460px]">
+            <h3 className="font-display text-xl font-semibold tracking-tight text-gray-100">
+              {t("platformsTitle")}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-gray-300">{t("platformsSubtitle")}</p>
+          </div>
+          <ul className="mt-5 flex flex-wrap gap-2 md:mt-0 md:max-w-[620px] md:justify-end">
+            {platforms.map((name) => (
+              <li
+                key={name}
+                className="rounded-md border border-gray-800 bg-gray-950 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-gray-300"
+              >
+                {name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </AnimatedContent>
   )
 }
 

@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "PotenciApp | Software, cibersegurança e infraestrutura com contrato e garantia",
-    "description": "Empresa completa de software e marketing digital: apps iOS e Android, lojas na Tiendanube e Empretienda, anúncios no Meta Ads e Google Ads, atualização de sites, sistemas, IA, cibersegurança e infraestrutura cloud. Contrato, preço fechado, nota fiscal e 90 dias de garantia.",
+    "description": "Software, lojas online e marketing para o seu negócio vender mais: apps iOS e Android, sistemas, lojas sob medida, na Tiendanube, Empretienda e Mercado Livre, anúncios no Meta Ads, Google Ads e Mercado Livre Ads, IA e cibersegurança. Contrato, preço fechado, nota fiscal e garantia.",
     "ogTitle": "PotenciApp | Software que se assina, se entrega e se garante.",
     "ogDescription": "Apps, e-commerce, sistemas, cibersegurança e infraestrutura cloud. Contrato, preço fechado, nota fiscal e 90 dias de garantia."
   },
@@ -23,7 +23,7 @@
     "outline": "POTENCIAMOS",
     "h2_line1": "Seu software, com",
     "h2_accent": "Sem teto.",
-    "subheading": "Apps, e-commerce e sistemas sob medida para empresas e comércios. Assinamos <bold>escopo, marcos e datas</bold> antes de escrever uma linha de código, e respaldamos por escrito o que entregamos.",
+    "subheading": "Desenvolvemos <bold>sob medida e do zero</bold> apps, sistemas e lojas online feitos exatamente para o seu negócio. E se você já vende na Tiendanube, Empretienda, WordPress ou Mercado Livre, ajudamos você a crescer ali. Tudo com contrato, preço fechado e garantia.",
     "ctaPrimary": "Pedir proposta",
     "ctaSecondary": "Ver projetos no ar",
     "metrics": {
@@ -81,8 +81,8 @@
   },
   "services": {
     "eyebrow": "Soluções",
-    "title": "Uma empresa completa, divisão por divisão.",
-    "subtitle": "Do código às vendas: apps, lojas online, anúncios no Meta e no Google, sistemas, IA, cibersegurança e servidores. Tudo com contrato, preço fechado e garantia.",
+    "title": "Desenvolvemos do zero. E potencializamos o que você já tem.",
+    "subtitle": "Nosso forte é o software sob medida: apps, sistemas e lojas que não dependem de nenhuma plataforma. Somamos marketing, Mercado Livre, IA e segurança para o seu negócio vender mais.",
     "verMas": "Ver mais",
     "cards": {
       "apps": {
@@ -104,46 +104,56 @@
         "desc": "Agentes que automatizam processos reais: atendimento, vendas, análise. Modelos open + APIs proprietárias."
       },
       "ecommerce": {
-        "eyebrow": "03 · Venda",
+        "eyebrow": "03 · Venda online",
         "title": "Lojas online",
-        "desc": "Criamos sua loja na Tiendanube ou Empretienda, ou uma sob medida: catálogo, meios de pagamento, frete e domínio próprio. Como as que já vendem em produção.",
+        "desc": "Desenvolvemos sua loja do zero, sob medida: catálogo, Mercado Pago, frete e domínio próprio, sem limites de plataforma. Se preferir, montamos na Tiendanube, Empretienda, Shopify ou WooCommerce.",
         "chips": [
+          "Sob medida",
           "Tiendanube",
           "Empretienda",
-          "Sob medida",
-          "Mercado Pago",
-          "Frete"
+          "Shopify",
+          "WooCommerce"
+        ]
+      },
+      "mercadolibre": {
+        "eyebrow": "04 · Marketplace",
+        "title": "Mercado Livre",
+        "desc": "Montamos e organizamos sua conta de vendedor, otimizamos seus anúncios e gerenciamos suas campanhas de Mercado Livre Ads para você vender mais.",
+        "chips": [
+          "Conta de vendedor",
+          "Anúncios",
+          "Mercado Livre Ads",
+          "Reputação"
         ]
       },
       "marketing": {
-        "eyebrow": "04 · Marketing",
-        "title": "Anúncios no Meta e no Google",
-        "desc": "Campanhas no Meta Ads (Facebook e Instagram) e no Google Ads a partir de contas de anúncios verificadas: pixel, conversões e relatórios claros de cada real investido.",
+        "eyebrow": "05 · Crescimento",
+        "title": "Anúncios que vendem",
+        "desc": "Meta Ads, Google Ads e Mercado Livre Ads a partir de contas de anúncios verificadas. Gestão mensal, medição de conversões e relatórios claros de cada real investido.",
         "chips": [
           "Meta Ads",
           "Google Ads",
-          "Instagram",
-          "Pixel",
+          "Mercado Livre Ads",
           "Conversões"
         ]
       },
       "sitios": {
-        "eyebrow": "05 · Web",
-        "title": "Atualização de sites",
-        "desc": "Renovamos seu site atual: design, velocidade, SEO, textos e WhatsApp. Sem começar do zero e sem perder o que já funciona."
+        "eyebrow": "06 · Web",
+        "title": "Sites",
+        "desc": "Criamos seu site do zero ou renovamos o que você já tem, seja em WordPress, Wix ou feito sob medida: design, velocidade, SEO, textos e WhatsApp."
       },
       "sistemas": {
-        "eyebrow": "06 · Backoffice",
+        "eyebrow": "07 · Backoffice",
         "title": "Sistemas internos",
         "desc": "ERPs, CRMs e dashboards sob medida. Substitua 5 planilhas e 3 SaaS por uma ferramenta sua."
       },
       "automatizaciones": {
-        "eyebrow": "07 · Operação",
+        "eyebrow": "08 · Operação",
         "title": "Automações",
         "desc": "Fluxos que conectam o que você já usa. n8n, Zapier, workers custom — sem mexer no seu stack."
       },
       "ciberseguridad": {
-        "eyebrow": "08 · Segurança",
+        "eyebrow": "09 · Segurança",
         "title": "Cibersegurança",
         "desc": "Auditamos, reforçamos e protegemos o que você já tem online: acessos, dados, backups e certificados.",
         "chips": [
@@ -155,7 +165,7 @@
         ]
       },
       "infraestructura": {
-        "eyebrow": "09 · Infraestrutura",
+        "eyebrow": "10 · Infraestrutura",
         "title": "Infraestrutura e cloud",
         "desc": "Arquitetura de software, servidores, redes e deploys. Montamos, monitoramos e mantemos a sua infraestrutura completa.",
         "chips": [
@@ -168,11 +178,26 @@
         ]
       },
       "consultoria": {
-        "eyebrow": "10 · Estratégia",
+        "eyebrow": "11 · Estratégia",
         "title": "Arquitetura e consultoria",
         "desc": "Construir, comprar ou terceirizar? Auditamos seu stack, desenhamos a arquitetura e deixamos um roadmap aplicável em 2 semanas."
       }
-    }
+    },
+    "platformsTitle": "Já usa uma plataforma? Também trabalhamos com ela.",
+    "platformsSubtitle": "Nosso forte é desenvolver sob medida, do zero. Mas se o seu negócio já está em uma plataforma, melhoramos ali mesmo, sem obrigar você a migrar.",
+    "platforms": [
+      "Tiendanube",
+      "Empretienda",
+      "Shopify",
+      "WooCommerce",
+      "WordPress",
+      "Mercado Livre",
+      "Wix",
+      "Mercado Pago",
+      "Meta Ads",
+      "Google Ads",
+      "Mercado Livre Ads"
+    ]
   },
   "stores": {
     "eyebrow": "Apps nativos",
@@ -282,10 +307,11 @@
   },
   "band": [
     "Software sob medida",
-    "Cibersegurança",
-    "Infraestrutura cloud",
+    "Mercado Livre",
+    "Marketing digital",
+    "Lojas online",
     "Apps iOS e Android",
-    "E-commerce",
+    "Cibersegurança",
     "IA aplicada"
   ],
   "garantia": {
@@ -388,13 +414,13 @@
     "close": "Fechar chat",
     "send": "Enviar",
     "thinking": "Digitando...",
-    "greeting": "Olá! Sou o assistente da PotenciApp. Conte o que você precisa — loja online, anúncios no Meta ou Google, apps, sistemas — e eu te oriento.",
+    "greeting": "Olá! Sou o assistente da PotenciApp. Desenvolvemos software, apps e lojas sob medida, e ajudamos você a vender mais. Conte o que você quer alcançar e eu te oriento.",
     "placeholder": "Digite sua pergunta...",
     "suggestions": [
-      "Quero uma loja na Tiendanube ou Empretienda",
-      "Quero fazer anúncios no Meta e no Google",
-      "Preciso atualizar meu site",
-      "Preciso de um app publicado nas lojas"
+      "Quero uma loja ou um app sob medida",
+      "Preciso de um sistema para o meu negócio",
+      "Quero vender mais no Mercado Livre",
+      "Quero anúncios que vendam no Meta, Google ou Mercado Livre"
     ],
     "fallbackMessage": "Não consigo responder por aqui agora. Vamos continuar no WhatsApp — a equipe responde em até 24 h úteis.",
     "fallbackCta": "Continuar no WhatsApp",
@@ -411,6 +437,14 @@
       {
         "q": "Quanto custa um projeto?",
         "a": "Não publicamos preços porque o escopo define o número. O que é fixo: você recebe uma proposta escrita com preço fechado antes de assinar, e esse número não se mexe. Se durante o projeto pedir algo fora do escopo, é orçado à parte e também por escrito."
+      },
+      {
+        "q": "Vocês só fazem lojas na Empretienda ou na Tiendanube?",
+        "a": "Não. Nosso forte é o desenvolvimento sob medida, do zero: apps, sistemas e lojas feitos exatamente para o seu negócio. Se você já usa uma plataforma como Tiendanube, Empretienda, Shopify, WooCommerce, WordPress ou Mercado Livre, também trabalhamos com ela. Também fazemos anúncios no Meta, Google e Mercado Livre, IA, cibersegurança e infraestrutura."
+      },
+      {
+        "q": "Vocês trabalham com o Mercado Livre?",
+        "a": "Sim. Montamos e organizamos sua conta de vendedor, otimizamos os anúncios e gerenciamos campanhas de Mercado Livre Ads. Se você também tem loja própria, conectamos os dois canais para crescerem juntos."
       },
       {
         "q": "O que o contrato inclui?",
