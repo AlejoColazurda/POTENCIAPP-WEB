@@ -8,10 +8,12 @@ import { BlogCta, BlogShell } from "@/components/blog-shell"
 import { formatPostDate, getAllPosts, getPost } from "@/lib/blog"
 import { SITE_URL } from "@/lib/site"
 
-export const dynamicParams = false
+// New posts published from /admin render on first request, then are cached.
+export const dynamicParams = true
+export const revalidate = 300
 
-export function generateStaticParams() {
-  const slugs = getAllPosts().map((p) => p.slug)
+export async function generateStaticParams() {
+  const slugs = (await getAllPosts()).map((p) => p.slug)
   return routing.locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })))
 }
 
@@ -21,7 +23,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const post = getPost(slug)
+  const post = await getPost(slug)
   if (!post) return {}
   return {
     title: `${post.title} | PotenciApp`,
@@ -45,7 +47,7 @@ export default async function BlogPostPage({
 }) {
   const { locale, slug } = await params
   setRequestLocale(locale)
-  const post = getPost(slug)
+  const post = await getPost(slug)
   if (!post) notFound()
   const t = await getTranslations({ locale, namespace: "blog" })
 

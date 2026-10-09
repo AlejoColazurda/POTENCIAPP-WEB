@@ -5,6 +5,9 @@ import { Link } from "@/i18n/navigation"
 import { BlogCta, BlogShell } from "@/components/blog-shell"
 import { formatPostDate, getAllPosts } from "@/lib/blog"
 
+// DB posts change without a deploy; publishing from /admin also revalidates.
+export const revalidate = 300
+
 export async function generateMetadata({
   params,
 }: {
@@ -27,7 +30,7 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: "blog" })
-  const posts = getAllPosts()
+  const posts = await getAllPosts()
 
   return (
     <BlogShell locale={locale}>

@@ -1,15 +1,15 @@
 import { getAllPosts } from "@/lib/blog"
 import { CONTACT_EMAIL, SITE_URL } from "@/lib/site"
 
-export const dynamic = "force-static"
+export const revalidate = 3600
 
 /**
  * /llms.txt — a plain-Markdown summary for AI assistants and answer engines
  * (ChatGPT, Perplexity, Claude, Gemini). Cheap to serve; keep it factual and
  * in sync with the site: every claim here must be one the site also makes.
  */
-export function GET() {
-  const posts = getAllPosts()
+export async function GET() {
+  const posts = (await getAllPosts())
     .map((p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}): ${p.description}`)
     .join("\n")
 
