@@ -14,7 +14,7 @@ const STATUS_LABEL: Record<AdminPost["status"], string> = {
 }
 
 export default async function EditPostPage({ params }: { params: Promise<{ id: string }> }) {
-  const { email } = await requireAdmin()
+  const { email, role } = await requireAdmin()
   const { id } = await params
   if (!/^[0-9a-f-]{36}$/.test(id)) notFound()
 
@@ -24,7 +24,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
 
   return (
     <>
-      <AdminHeader email={email} />
+      <AdminHeader email={email} role={role} />
       <main className="mx-auto max-w-[900px] px-4 py-10">
         <Link href={`/admin?tab=${post.status}`} className="text-sm text-gray-500 hover:text-brand-green">
           ← Todos los artículos
@@ -67,7 +67,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
 
         <div className="mt-8">
           {/* key: remount with fresh values after a save or status change */}
-          <PostEditor key={post.updated_at} post={post} />
+          <PostEditor key={post.updated_at} post={post} canDelete={role === "owner"} />
         </div>
       </main>
     </>

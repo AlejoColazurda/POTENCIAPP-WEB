@@ -46,7 +46,7 @@ function tag(xml: string, name: string) {
   return m ? decode(m[1]) : ""
 }
 
-export async function readFeed(url: string): Promise<FeedItem[]> {
+export async function readFeed(url: string, maxAgeDays = MAX_AGE_DAYS, perFeed = ITEMS_PER_FEED): Promise<FeedItem[]> {
   try {
     const res = await fetch(url, {
       headers: { "User-Agent": "PotenciAppBlogBot/1.0 (+https://www.potenciapp.com)" },
@@ -55,7 +55,7 @@ export async function readFeed(url: string): Promise<FeedItem[]> {
     })
     if (!res.ok) return []
     const xml = await res.text()
-    const cutoff = Date.now() - MAX_AGE_DAYS * 86_400_000
+    const cutoff = Date.now() - maxAgeDays * 86_400_000
     return [...xml.matchAll(/<item[\s>][\s\S]*?<\/item>/g)]
       .map((m) => m[0])
       .map((item) => ({
@@ -66,7 +66,7 @@ export async function readFeed(url: string): Promise<FeedItem[]> {
       }))
       .filter((i) => i.title && /^https?:\/\//.test(i.url))
       .filter((i) => !i.date || Number.isNaN(Date.parse(i.date)) || Date.parse(i.date) >= cutoff)
-      .slice(0, ITEMS_PER_FEED)
+      .slice(0, perFeed)
   } catch {
     return []
   }
@@ -131,21 +131,30 @@ function slugify(s: string) {
     .replace(/-+$/g, "")
 }
 
-export async function askGemini(items: FeedItem[], existingTitles: string[]): Promise<Draft> {
-  const apiKey = process.env.GEMINI_API_KEY
-  if (!apiKey) throw new Error("GEMINI_API_KEY no está configurada")
+function newsList(items: FeedItem[]) {
+  return items
+    .map((i, n) => `${n + 1}. ${i.title}${i.date ? ` (${i.date})` : ""}\n   URL: ${i.url}\n   Resumen: ${i.summary}`)
+    .join("\n")
+}
 
+export async function askGemini(items: FeedItem[], existingTitles: string[]): Promise<Draft> {
   const prompt = `ARTÍCULOS QUE YA ESTÁN EN EL BLOG (no repitas el tema):
 ${existingTitles.map((t) => `- ${t}`).join("\n") || "- (ninguno)"}
 
 NOTICIAS DISPONIBLES:
-${items.map((i, n) => `${n + 1}. ${i.title}\n   URL: ${i.url}\n   Resumen: ${i.summary}`).join("\n")}`
+${newsList(items)}`
+  return callGemini(SYSTEM, prompt, items, 400)
+}
+
+async function callGemini(system: string, prompt: string, items: FeedItem[], minBody: number): Promise<Draft> {
+  const apiKey = process.env.GEMINI_API_KEY
+  if (!apiKey) throw new Error("GEMINI_API_KEY no está configurada")
 
   const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
     body: JSON.stringify({
-      systemInstruction: { parts: [{ text: SYSTEM }] },
+      systemInstruction: { parts: [{ text: system }] },
       contents: [{ role: "user", parts: [{ text: prompt }] }],
       generationConfig: {
         temperature: 0.7,
@@ -167,7 +176,7 @@ ${items.map((i, n) => `${n + 1}. ${i.title}\n   URL: ${i.url}\n   Resumen: ${i.s
   const known = new Set(items.map((i) => i.url))
   draft.sources = (draft.sources ?? []).filter((s) => known.has(s.url))
   draft.slug = slugify(draft.slug || draft.title)
-  if (!draft.slug || !draft.title || draft.body_md.length < 400) {
+  if (!draft.slug || !draft.title || draft.body_md.length < minBody) {
     throw new Error("Gemini devolvió un borrador incompleto")
   }
   return draft
@@ -192,7 +201,7 @@ export async function generateDrafts(count = 1): Promise<string[]> {
   )
   const existingTitles = (rows ?? []).map((r) => r.title as string)
 
-  const feeds = await Promise.all(FEEDS.map(readFeed))
+  const feeds = await Promise.all(FEEDS.map((url) => readFeed(url)))
   let items = feeds.flat().filter((i) => !usedUrls.has(i.url))
   if (items.length === 0) throw new Error("No hay noticias nuevas en las fuentes")
 
@@ -222,4 +231,72 @@ export async function generateDrafts(count = 1): Promise<string[]> {
     items = items.filter((i) => !used.has(i.url))
   }
   return created
+}
+
+// ---------- monthly news roundup ----------
+
+const MONTHLY_SYSTEM = `Sos el editor del blog de PotenciApp, una empresa argentina de desarrollo de software a medida, tiendas online, Mercado Libre, marketing digital y ciberseguridad.
+Escribís para dueños de comercios y pymes argentinas, en español rioplatense con voseo, claro y sin tecnicismos.
+
+TAREA
+Escribí el resumen mensual del blog: las noticias del mes indicado que más le sirven a un comercio o pyme argentina (estafas, seguridad de cuentas, ventas online, Mercado Libre, Mercado Pago, tiendas online, cambios en las plataformas).
+
+REGLAS
+- Elegí entre 4 y 6 noticias de la lista. Descartá las que no le cambian nada a un comercio.
+- Antes de las secciones, un párrafo de introducción de dos o tres oraciones, sin título.
+- Una sección "## " por noticia, con un título propio (no el de la fuente) y dos o tres párrafos cortos: qué pasó y qué tiene que hacer o revisar un comercio. Al final de cada sección, una línea "Fuente: [título](URL)" con el título y la URL exactos de la lista.
+- No copies ni parafrasees de cerca: explicá con tus palabras.
+- No inventes datos, cifras, fechas, nombres ni casos. Si un dato no está en la noticia, no lo pongas.
+- No afirmes nada sobre clientes ni resultados de PotenciApp.
+- Sin título "# " (va aparte). Entre 600 y 1200 palabras.
+- Cerrá con un párrafo corto que invite a consultar a PotenciApp, sin exagerar.
+- slug: cualquier valor (se reemplaza).
+- title: "Resumen de <mes> <año>: " seguido de un gancho corto sobre la noticia principal.
+- description: una oración de hasta 160 caracteres.
+- tag: "Resumen del mes".
+- sources: solo las noticias que usaste, con su título y URL exactos.`
+
+/** The month a roundup covers: the previous calendar month, in Argentina. */
+function roundupMonth(now = new Date()) {
+  const ar = new Date(now.toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" }))
+  const d = new Date(ar.getFullYear(), ar.getMonth() - 1, 1)
+  const name = d.toLocaleDateString("es-AR", { month: "long" })
+  return { label: `${name} ${d.getFullYear()}`, slug: `resumen-${name}-${d.getFullYear()}` }
+}
+
+/**
+ * Leaves one draft with last month's most useful news for shops and SMBs.
+ * The cron runs it on the 1st of each month (vercel.json). Returns the slug,
+ * or null if that month's roundup already exists. Never publishes.
+ */
+export async function generateMonthlyRoundup(): Promise<string | null> {
+  const db = serviceClient()
+  const month = roundupMonth()
+
+  const { data: existing, error } = await db.from("blog_posts").select("id").eq("slug", month.slug).maybeSingle()
+  if (error) throw new Error(error.message)
+  if (existing || fileSlugs().includes(month.slug)) return null
+
+  const feeds = await Promise.all(FEEDS.map((url) => readFeed(url, 35, 20)))
+  const items = feeds.flat()
+  if (items.length < 4) throw new Error("Hay muy pocas noticias en las fuentes para armar el resumen")
+
+  const prompt = `MES DEL RESUMEN: ${month.label}
+
+NOTICIAS DISPONIBLES:
+${newsList(items)}`
+  const draft = await callGemini(MONTHLY_SYSTEM, prompt, items, 1500)
+
+  const { error: insertError } = await db.from("blog_posts").insert({
+    slug: month.slug,
+    title: draft.title.trim(),
+    description: draft.description.trim().slice(0, 200),
+    tag: "Resumen del mes",
+    body_md: withSourcesSection(draft.body_md, draft.sources),
+    status: "draft",
+    origin: "ai",
+    sources: draft.sources,
+  })
+  if (insertError) throw new Error(insertError.message)
+  return month.slug
 }

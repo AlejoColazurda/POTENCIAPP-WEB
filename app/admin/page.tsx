@@ -3,7 +3,7 @@ import { requireAdmin, type AdminPost } from "@/lib/admin"
 import { getAllPosts, fileSlugs } from "@/lib/blog"
 import { serviceClient } from "@/lib/supabase"
 import { AdminHeader } from "./admin-header"
-import { GenerateButton } from "./generate-button"
+import { GenerateButton, MonthlyButton } from "./generate-button"
 
 export const dynamic = "force-dynamic"
 
@@ -16,7 +16,7 @@ const TABS = [
 type TabKey = (typeof TABS)[number]["key"]
 
 export default async function AdminHome({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
-  const { email } = await requireAdmin()
+  const { email, role } = await requireAdmin()
   const { tab: rawTab } = await searchParams
   const tab: TabKey = TABS.some((t) => t.key === rawTab) ? (rawTab as TabKey) : "draft"
 
@@ -34,17 +34,18 @@ export default async function AdminHome({ searchParams }: { searchParams: Promis
 
   return (
     <>
-      <AdminHeader email={email} />
+      <AdminHeader email={email} role={role} />
       <main className="mx-auto max-w-[1100px] px-4 py-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h1 className="font-display text-3xl font-bold">Artículos del blog</h1>
             <p className="mt-1 text-sm text-gray-400">
-              La IA deja un borrador lunes, miércoles y viernes. Nada se publica sin tu aprobación.
+              La IA deja un borrador lunes, miércoles y viernes, y el día 1 un resumen con las noticias del mes anterior. Nada se publica sin aprobación.
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
             <GenerateButton />
+            <MonthlyButton />
             <Link
               href="/admin/posts/new"
               className="inline-flex h-10 items-center rounded-lg bg-brand-green px-4 text-sm font-semibold text-black hover:bg-green-hover"

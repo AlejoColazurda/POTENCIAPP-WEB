@@ -6,10 +6,10 @@ import { PostEditor } from "../post-editor"
 export const dynamic = "force-dynamic"
 
 export default async function NewPostPage() {
-  const { email } = await requireAdmin()
+  const { email, role } = await requireAdmin()
   return (
     <>
-      <AdminHeader email={email} />
+      <AdminHeader email={email} role={role} />
       <main className="mx-auto max-w-[900px] px-4 py-10">
         <Link href="/admin" className="text-sm text-gray-500 hover:text-brand-green">
           ← Todos los artículos

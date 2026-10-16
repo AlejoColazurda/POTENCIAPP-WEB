@@ -41,7 +41,7 @@ function parseMarkdownFile(raw: string) {
 const field =
   "mt-1 w-full rounded-lg border border-gray-800 bg-gray-900 px-3 text-base text-gray-100 focus:border-brand-green focus:outline-none sm:text-sm"
 
-export function PostEditor({ post }: { post: AdminPost | null }) {
+export function PostEditor({ post, canDelete = false }: { post: AdminPost | null; canDelete?: boolean }) {
   const [state, action, saving] = useActionState(savePost, null)
   const [title, setTitle] = useState(post?.title ?? "")
   const [slug, setSlug] = useState(post?.slug ?? "")
@@ -259,18 +259,20 @@ export function PostEditor({ post }: { post: AdminPost | null }) {
                   Volver a borrador
                 </button>
               )}
-              <button
-                type="button"
-                disabled={busy}
-                onClick={() => {
-                  if (confirm("¿Eliminar este artículo para siempre? No se puede deshacer.")) {
-                    startTransition(() => deletePost(post.id))
-                  }
-                }}
-                className="h-10 rounded-lg px-3 text-sm text-red-400 hover:bg-red-500/10 disabled:opacity-40"
-              >
-                Eliminar
-              </button>
+              {canDelete && (
+                <button
+                  type="button"
+                  disabled={busy}
+                  onClick={() => {
+                    if (confirm("¿Eliminar este artículo para siempre? No se puede deshacer.")) {
+                      startTransition(() => deletePost(post.id))
+                    }
+                  }}
+                  className="h-10 rounded-lg px-3 text-sm text-red-400 hover:bg-red-500/10 disabled:opacity-40"
+                >
+                  Eliminar
+                </button>
+              )}
             </div>
           )}
         </div>
