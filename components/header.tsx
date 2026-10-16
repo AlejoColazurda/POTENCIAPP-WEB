@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useMemo } from "react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { Menu, X, ArrowRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
@@ -53,8 +53,14 @@ export function Header() {
             <BrandWordmark size="md" priority />
           </Link>
 
-          <nav className="hidden md:block" aria-label="Principal">
+          <nav className="hidden md:flex items-center gap-1" aria-label="Principal">
             <SectionNav items={navItems} />
+            <Link
+              href="/blog"
+              className="rounded-full px-4 py-2 text-sm font-medium text-gray-300 hover:text-brand-green transition-colors duration-200"
+            >
+              {t("blog")}
+            </Link>
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
@@ -100,6 +106,13 @@ export function Header() {
               {t(item.key)}
             </a>
           ))}
+          <Link
+            href="/blog"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-base font-medium text-gray-300 hover:text-brand-green py-3 border-b border-gray-800 transition-colors"
+          >
+            {t("blog")}
+          </Link>
           <a
             href="#contacto"
             onClick={() => setIsMobileMenuOpen(false)}

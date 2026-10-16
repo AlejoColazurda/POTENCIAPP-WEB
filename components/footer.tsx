@@ -36,6 +36,7 @@ export function Footer() {
     {
       title: t("recursos"),
       links: [
+        { label: tNav("blog"), href: "/blog" },
         { label: t("terms"), href: "/legal#terminos" },
         { label: t("privacy"), href: "/legal#privacidad" },
       ],
