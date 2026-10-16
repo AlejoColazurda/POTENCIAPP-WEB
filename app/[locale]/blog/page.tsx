@@ -1,81 +1,123 @@
 import type { Metadata } from "next"
-import { ArrowRight } from "lucide-react"
-import { setRequestLocale, getTranslations } from "next-intl/server"
-import { Link } from "@/i18n/navigation"
-import { BlogCta, BlogShell } from "@/components/blog-shell"
-import { formatPostDate, getAllPosts } from "@/lib/blog"
+import { setRequestLocale } from "next-intl/server"
+import { BlogHeader } from "@/components/blog/blog-header"
+import { Footer } from "@/components/footer"
+import { BlogIndex } from "@/components/blog/blog-index"
+import { getAllPosts } from "@/lib/blog/service"
+import { generateBlogIndexJsonLd } from "@/lib/blog/seo"
+import { SITE_URL } from "@/lib/site"
+import { Sparkles } from "lucide-react"
 
-// DB posts change without a deploy; publishing from /admin also revalidates.
 export const revalidate = 300
 
-export async function generateMetadata({
-  params,
-}: {
+interface BlogPageProps {
   params: Promise<{ locale: string }>
-}): Promise<Metadata> {
+}
+
+export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: "blog" })
+
+  const title = "Blog & Insights | PotenciApp — Software, IA y Automatizaciones"
+  const description =
+    "Guías prácticas para comercios y pymes: ciberseguridad, estafas, ventas online, Mercado Libre y las noticias del mes que te cambian algo."
+
+  const canonicalUrl = `${SITE_URL}/${locale}/blog`
+
   return {
-    title: t("metaTitle"),
-    description: t("metaDescription"),
+    title,
+    description,
     alternates: {
-      canonical: locale === "es" ? "/blog" : `/${locale}/blog`,
-      languages: { es: "/blog", en: "/en/blog", pt: "/pt/blog", fr: "/fr/blog", "x-default": "/blog" },
+      canonical: canonicalUrl,
+      languages: {
+        es: `${SITE_URL}/es/blog`,
+        en: `${SITE_URL}/en/blog`,
+        pt: `${SITE_URL}/pt/blog`,
+        fr: `${SITE_URL}/fr/blog`,
+      },
     },
-    openGraph: { title: t("metaTitle"), description: t("metaDescription"), type: "website" },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: "PotenciApp",
+      images: [
+        {
+          url: `${SITE_URL}/og.png`,
+          width: 1200,
+          height: 630,
+          alt: "PotenciApp Blog & Insights",
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`${SITE_URL}/og.png`],
+      creator: "@potenciapp",
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
   }
 }
 
-export default async function BlogIndexPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function BlogPage({ params }: BlogPageProps) {
   const { locale } = await params
   setRequestLocale(locale)
-  const t = await getTranslations({ locale, namespace: "blog" })
+
+  // Spanish-only articles, listed on every locale.
   const posts = await getAllPosts()
+  const jsonLd = generateBlogIndexJsonLd(locale)
 
   return (
-    <BlogShell locale={locale}>
-      <div className="mx-auto max-w-[960px] px-4 py-16 md:px-8 lg:py-24">
-        <span className="inline-flex items-center gap-2 rounded-full border border-gray-800 bg-gray-900 px-3 py-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
-          <span className="font-mono text-[11px] uppercase tracking-wider text-gray-300">{t("eyebrow")}</span>
-        </span>
-        <h1 className="mt-5 max-w-[720px] font-display text-4xl font-bold leading-[1.05] tracking-[-0.02em] sm:text-5xl">
-          {t("title")}
-        </h1>
-        <p className="mt-5 max-w-[640px] text-lg leading-relaxed text-gray-300">{t("subtitle")}</p>
-        {t("spanishOnly") && (
-          <p className="mt-3 font-mono text-[11px] uppercase tracking-wider text-gray-500">{t("spanishOnly")}</p>
-        )}
+    <div className="min-h-screen bg-[#0A0A0A] text-gray-100 flex flex-col justify-between selection:bg-[#22F23A] selection:text-black">
+      {/* Schema.org Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
-        <ul className="mt-12 grid gap-6">
-          {posts.map((post) => (
-            <li key={post.slug}>
-              <Link
-                href={`/blog/${post.slug}`}
-                className="group block rounded-2xl border border-gray-800 bg-gray-900 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-green sm:p-8"
-              >
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-wider text-gray-500">
-                  <span className="text-brand-green">{post.tag}</span>
-                  <span aria-hidden>·</span>
-                  <time dateTime={post.date}>{formatPostDate(post.date, locale)}</time>
-                  <span aria-hidden>·</span>
-                  <span>{t("minutes", { n: post.readingMinutes })}</span>
-                </div>
-                <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight text-gray-100 sm:text-[26px]">
-                  {post.title}
-                </h2>
-                <p className="mt-3 text-base leading-relaxed text-gray-300">{post.description}</p>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green transition-all group-hover:gap-2.5">
-                  {t("readMore")}
-                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <BlogHeader />
 
-        <BlogCta locale={locale} />
-      </div>
-    </BlogShell>
+      <main className="flex-1 pt-24 sm:pt-32 pb-20">
+        <div className="max-w-[1280px] mx-auto px-4 md:px-8">
+          {/* Hero Section of the Blog */}
+          <div className="relative py-8 sm:py-14 border-b border-[#1A1A1A] mb-12 overflow-hidden">
+            {/* Ambient Background Glow */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#22F23A]/10 rounded-full blur-[120px] pointer-events-none" />
+
+            <div className="relative z-10 max-w-3xl space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#111111] border border-[#22F23A]/30 text-xs font-semibold text-[#22F23A]">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>POTENCIAPP LABS & INSIGHTS</span>
+              </div>
+
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white font-display tracking-tight leading-[1.1]">
+                Software, IA y Arquitectura que Mueve la Aguja.
+              </h1>
+
+              <p className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-2xl">
+                Investigaciones, guías prácticas y aprendizajes reales del equipo sobre cómo escalar productos digitales con garantía por escrito.
+              </p>
+            </div>
+          </div>
+
+          {/* Interactive Articles Grid with Morphing & Paper Crumple Interaction */}
+          <BlogIndex initialPosts={posts} locale={locale} />
+        </div>
+      </main>
+
+      <Footer />
+    </div>
   )
 }

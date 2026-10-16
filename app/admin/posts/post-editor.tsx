@@ -3,6 +3,7 @@
 import { useActionState, useMemo, useRef, useState, useTransition } from "react"
 import { Marked } from "marked"
 import type { AdminPost } from "@/lib/admin"
+import { BLOG_CATEGORIES } from "@/lib/blog/categories"
 import { deletePost, savePost, setStatus, uploadImage } from "../actions"
 
 // Preview mirrors lib/blog.ts: raw HTML is shown escaped, never rendered.
@@ -49,6 +50,9 @@ export function PostEditor({ post, canDelete = false }: { post: AdminPost | null
   const [description, setDescription] = useState(post?.description ?? "")
   const [tag, setTag] = useState(post?.tag ?? "Ciberseguridad")
   const [body, setBody] = useState(post?.body_md ?? "")
+  const [category, setCategory] = useState(post?.category ?? "security")
+  const [cover, setCover] = useState(post?.cover_image ?? "")
+  const [author, setAuthor] = useState(post?.author_name ?? "Equipo PotenciApp")
   const [view, setView] = useState<"edit" | "preview">("edit")
   const [uploadMsg, setUploadMsg] = useState<string | null>(null)
   const [busy, startTransition] = useTransition()
@@ -61,7 +65,10 @@ export function PostEditor({ post, canDelete = false }: { post: AdminPost | null
     slug !== post.slug ||
     description !== post.description ||
     tag !== post.tag ||
-    body !== post.body_md
+    body !== post.body_md ||
+    category !== post.category ||
+    cover !== post.cover_image ||
+    author !== post.author_name
 
   function insertAtCursor(text: string) {
     const el = bodyRef.current
@@ -80,11 +87,24 @@ export function PostEditor({ post, canDelete = false }: { post: AdminPost | null
     setUploadMsg("Imagen insertada en el texto.")
   }
 
+  async function onCover(file: File) {
+    setUploadMsg("Subiendo portada…")
+    const form = new FormData()
+    form.append("file", file)
+    const res = await uploadImage(form)
+    if (res.error || !res.url) return setUploadMsg(res.error ?? "No se pudo subir.")
+    setCover(res.url)
+    setUploadMsg("Portada lista. Guardá para aplicarla.")
+  }
+
   async function onMarkdownFile(file: File) {
     const { data, body: content } = parseMarkdownFile(await file.text())
     if (data.title) setTitle(data.title)
     if (data.description) setDescription(data.description)
     if (data.tag) setTag(data.tag)
+    if (data.category && data.category in BLOG_CATEGORIES) setCategory(data.category)
+    if (data.cover) setCover(data.cover)
+    if (data.author) setAuthor(data.author)
     const newSlug = data.slug || slugify(data.title || file.name.replace(/\.md$/, ""))
     setSlug(newSlug)
     setSlugTouched(true)
@@ -145,6 +165,62 @@ export function PostEditor({ post, canDelete = false }: { post: AdminPost | null
             <span className="text-sm text-gray-300">Etiqueta</span>
             <input name="tag" value={tag} onChange={(e) => setTag(e.target.value)} className={`${field} h-11`} />
           </label>
+        </div>
+
+        <div className="grid gap-5 sm:grid-cols-2">
+          <label className="block">
+            <span className="text-sm text-gray-300">Categoría</span>
+            <select
+              name="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className={`${field} h-11`}
+            >
+              {Object.values(BLOG_CATEGORIES).map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="block">
+            <span className="text-sm text-gray-300">Autor que se muestra</span>
+            <input
+              name="author_name"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+              maxLength={60}
+              className={`${field} h-11`}
+            />
+          </label>
+        </div>
+
+        <div className="block">
+          <span className="text-sm text-gray-300">
+            Imagen de portada <span className="text-gray-500">(vacía = imagen por defecto de la categoría)</span>
+          </span>
+          <div className="mt-1 flex flex-wrap items-center gap-3">
+            {cover && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={cover} alt="" className="h-16 w-28 rounded-md border border-gray-800 object-cover" />
+            )}
+            <input
+              name="cover_image"
+              value={cover}
+              onChange={(e) => setCover(e.target.value)}
+              placeholder="https://…"
+              className={`${field} mt-0 h-11 min-w-[200px] flex-1`}
+            />
+            <label className="cursor-pointer rounded-md border border-gray-700 px-3 py-2 text-sm text-gray-200 hover:border-brand-green">
+              Subir
+              <input
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                className="sr-only"
+                onChange={(e) => e.target.files?.[0] && onCover(e.target.files[0])}
+              />
+            </label>
+          </div>
         </div>
 
         <label className="block">

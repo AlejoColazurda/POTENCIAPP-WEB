@@ -1,8 +1,8 @@
 "use client"
 
-import Link from "next/link"
+import { Link, usePathname } from "@/i18n/navigation"
 import { Mail, Rocket } from "lucide-react"
-import { useLocale, useTranslations } from "next-intl"
+import { useTranslations } from "next-intl"
 import { BrandWordmark } from "@/components/brand"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
 
@@ -15,33 +15,32 @@ const social = [
 export function Footer() {
   const t = useTranslations("footer")
   const tNav = useTranslations("nav")
+  const pathname = usePathname()
+  const isHomePage = pathname === "/" || pathname === ""
   const year = new Date().getFullYear()
-  const locale = useLocale()
-  // Default locale is unprefixed ("as-needed"); the rest live under /<locale>.
-  const lp = (path: string) => (locale === "es" ? path : `/${locale}${path}`)
 
   const columns = [
     {
       title: t("soluciones"),
       links: [
-        { label: tNav("soluciones"), href: "#soluciones" },
-        { label: tNav("proyectos"), href: "#proyectos" },
+        { label: tNav("soluciones"), href: isHomePage ? "#soluciones" : "/#soluciones" },
+        { label: tNav("proyectos"), href: isHomePage ? "#proyectos" : "/#proyectos" },
       ],
     },
     {
       title: t("empresa"),
       links: [
-        { label: tNav("garantia"), href: "#garantia" },
-        { label: tNav("proceso"), href: "#proceso" },
-        { label: tNav("faq"), href: "#faq" },
+        { label: tNav("garantia"), href: isHomePage ? "#garantia" : "/#garantia" },
+        { label: tNav("proceso"), href: isHomePage ? "#proceso" : "/#proceso" },
+        { label: tNav("faq"), href: isHomePage ? "#faq" : "/#faq" },
       ],
     },
     {
       title: t("recursos"),
       links: [
-        { label: tNav("blog"), href: lp("/blog") },
-        { label: t("terms"), href: lp("/legal#terminos") },
-        { label: t("privacy"), href: lp("/legal#privacidad") },
+        { label: tNav("blog"), href: "/blog" },
+        { label: t("terms"), href: "/legal#terminos" },
+        { label: t("privacy"), href: "/legal#privacidad" },
       ],
     },
   ]

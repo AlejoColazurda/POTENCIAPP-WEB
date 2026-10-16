@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/lib/blog"
+import { getAllPosts } from "@/lib/blog/service"
 import { CONTACT_EMAIL, SITE_URL } from "@/lib/site"
 
 export const revalidate = 3600
@@ -10,7 +10,7 @@ export const revalidate = 3600
  */
 export async function GET() {
   const posts = (await getAllPosts())
-    .map((p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}): ${p.description}`)
+    .map((p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}): ${p.summary}`)
     .join("\n")
 
   const body = `# PotenciApp

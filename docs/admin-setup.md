@@ -25,7 +25,7 @@ Cada artículo guarda quién lo creó y quién lo tocó por última vez (`create
 ## 1. Supabase (una vez)
 
 1. Entrá a [supabase.com](https://supabase.com) y creá una cuenta y un proyecto a nombre de PotenciApp. Región **São Paulo**.
-2. En **SQL Editor**, ejecutá en orden `supabase/migrations/001_blog_posts.sql` y `supabase/migrations/002_blog_members.sql`.
+2. En **SQL Editor**, ejecutá en orden `001_blog_posts.sql`, `002_blog_members.sql` y `003_blog_post_fields.sql` (carpeta `supabase/migrations/`).
 3. **Authentication → Sign In / Providers**: dejá **Email** activado y **desactivá "Allow new users to sign up"**. Los usuarios los crea el sitio solo para los emails autorizados.
 4. **Authentication → URL Configuration**:
    - Site URL: `https://www.potenciapp.com`
@@ -54,6 +54,7 @@ En el proyecto de Vercel de potenciapp.com → **Settings → Environment Variab
 | `ADMIN_EMAILS` | emails de los dueños, separados por coma |
 | `CRON_SECRET` | una contraseña larga al azar |
 | `GEMINI_API_KEY` | ya existe (la usa el chat) |
+| `AGENT_API_SECRET` | opcional: solo si un agente externo va a mandar borradores por API. Mínimo 24 caracteres al azar |
 
 Después de guardarlas, **Redeploy** del último deploy.
 
@@ -68,11 +69,15 @@ Las dos también tienen botón en el panel para generarlas en el momento.
 
 Fuentes (se editan en `lib/blog-drafts.ts`, constante `FEEDS`): ESET WeLiveSecurity en español y búsquedas de Google Noticias Argentina sobre estafas a comercios, ciberseguridad para pymes, Mercado Libre y Mercado Pago.
 
+### API para agentes externos
+
+`POST /api/blog/publish` con `Authorization: Bearer <AGENT_API_SECRET>` y un JSON `{ slug, title, summary, content, category, tag, coverImage?, sources? }`. **Crea un borrador**, no publica. Sin la variable configurada, la API está cerrada. `GET /api/blog` devuelve los artículos publicados en JSON.
+
 ## 4. Uso diario
 
 1. Entrá a `/admin/login` y pedí tu link.
 2. Pestaña **Borradores**: abrí el borrador, leelo entero, corregí y verificá los datos contra las fuentes listadas.
-3. **Guardar cambios** y después **Publicar**. Sale en `/blog`, en el sitemap y en `/llms.txt` en el momento.
+3. Elegí **categoría**, **portada** (o dejá la de la categoría) y **autor**. **Guardar cambios** y después **Publicar**. Sale en `/blog`, en el sitemap y en `/llms.txt` en el momento.
 4. **Descartar** lo que no sirva.
 
 ## 5. Sumar a alguien para que lleve el blog

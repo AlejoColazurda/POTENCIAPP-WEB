@@ -1,25 +1,28 @@
 "use client"
 
 import { useState, useEffect, useMemo } from "react"
-import Link from "next/link"
+import { Link, usePathname } from "@/i18n/navigation"
 import { Menu, X, ArrowRight } from "lucide-react"
 import { useTranslations } from "next-intl"
-import { Link as LocaleLink } from "@/i18n/navigation"
 import { cn } from "@/lib/utils"
 import { BrandWordmark } from "@/components/brand"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { SectionNav } from "@/components/section-nav"
+import { HashScrollHandler } from "@/components/hash-scroll-handler"
 
 const NAV_ITEMS = [
-  { key: "soluciones", href: "#soluciones" },
-  { key: "proyectos", href: "#proyectos" },
-  { key: "garantia", href: "#garantia" },
-  { key: "proceso", href: "#proceso" },
-  { key: "faq", href: "#faq" },
+  { key: "soluciones", id: "soluciones" },
+  { key: "proyectos", id: "proyectos" },
+  { key: "garantia", id: "garantia" },
+  { key: "proceso", id: "proceso" },
+  { key: "faq", id: "faq" },
 ] as const
 
 export function Header() {
   const t = useTranslations("nav")
+  const pathname = usePathname()
+  const isHomePage = pathname === "/" || pathname === ""
+
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -31,99 +34,177 @@ export function Header() {
   }, [])
 
   const navItems = useMemo(
-    () => NAV_ITEMS.map((item) => ({ label: t(item.key), href: item.href })),
-    [t],
+    () =>
+      NAV_ITEMS.map((item) => ({
+        label: t(item.key),
+        href: isHomePage ? `#${item.id}` : `/#${item.id}`,
+        id: item.id,
+      })),
+    [t, isHomePage],
   )
 
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+    fromMobile = false,
+  ) => {
+    if (isHomePage) {
+      e.preventDefault()
+      const doScroll = () => {
+        const el = document.getElementById(id)
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" })
+          window.history.replaceState(null, "", `#${id}`)
+        }
+      }
+      if (fromMobile) {
+        setIsMobileMenuOpen(false)
+        setTimeout(doScroll, 80)
+      } else {
+        doScroll()
+      }
+    }
+  }
+
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-gray-950/80 backdrop-blur-xl border-b border-gray-800"
-          : "bg-transparent border-b border-transparent",
-      )}
-    >
-      <div className="mx-auto max-w-[1280px] px-4 md:px-8">
-        <div className="flex h-16 lg:h-20 items-center justify-between gap-4">
-          <Link
-            href="/"
-            aria-label="PotenciApp"
-            className="group inline-flex items-center transition-transform duration-300 hover:scale-[1.02]"
-          >
-            <BrandWordmark size="md" priority />
-          </Link>
-
-          <nav className="hidden md:flex items-center gap-1" aria-label="Principal">
-            <SectionNav items={navItems} />
-            <LocaleLink
-              href="/blog"
-              className="rounded-full px-4 py-2 text-sm font-medium text-gray-300 transition-colors hover:text-gray-100"
-            >
-              {t("blog")}
-            </LocaleLink>
-          </nav>
-
-          <div className="hidden md:flex items-center gap-3">
-            <LanguageSwitcher compact />
-            <a
-              href="#contacto"
-              className="inline-flex items-center gap-2 px-4 lg:px-5 h-10 lg:h-11 rounded-lg bg-brand-green text-black font-semibold text-sm hover:bg-green-hover hover:shadow-[0_0_24px_rgba(34,242,58,0.4)] transition-all duration-300 active:scale-[0.98]"
-            >
-              {t("ctaLong")}
-              <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-            </a>
-          </div>
-
-          <div className="md:hidden flex items-center gap-2">
-            <LanguageSwitcher compact />
-            <button
-              type="button"
-              className="p-2 text-gray-100"
-              onClick={() => setIsMobileMenuOpen((v) => !v)}
-              aria-label={isMobileMenuOpen ? t("close") : t("menu")}
-              aria-expanded={isMobileMenuOpen}
-            >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div
+    <>
+      <HashScrollHandler />
+      <header
         className={cn(
-          "md:hidden absolute top-full left-0 right-0 bg-gray-950/95 backdrop-blur-xl border-b border-gray-800 overflow-hidden transition-all duration-300",
-          isMobileMenuOpen ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          isScrolled
+            ? "bg-gray-950/80 backdrop-blur-xl border-b border-gray-800"
+            : "bg-transparent border-b border-transparent",
         )}
       >
-        <nav className="flex flex-col px-4 py-4 gap-2" aria-label="Mobile">
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-base font-medium text-gray-300 hover:text-brand-green py-3 border-b border-gray-800 last:border-b-0 transition-colors"
+        <div className="mx-auto max-w-[1280px] px-4 md:px-8">
+          <div className="flex h-16 lg:h-20 items-center justify-between gap-4">
+            <Link
+              href="/"
+              aria-label="PotenciApp"
+              className="group inline-flex items-center transition-transform duration-300 hover:scale-[1.02]"
             >
-              {t(item.key)}
-            </a>
-          ))}
-          <LocaleLink
-            href="/blog"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="text-base font-medium text-gray-300 hover:text-brand-green py-3 transition-colors"
-          >
-            {t("blog")}
-          </LocaleLink>
-          <a
-            href="#contacto"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="mt-3 inline-flex items-center justify-center gap-2 h-12 rounded-lg bg-brand-green text-black font-semibold"
-          >
-            {t("ctaLong")}
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </nav>
-      </div>
-    </header>
+              <BrandWordmark size="md" priority />
+            </Link>
+
+            <nav className="hidden md:flex items-center gap-1" aria-label="Principal">
+              <SectionNav items={navItems} isHomePage={isHomePage} />
+              <Link
+                href="/blog"
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200",
+                  pathname.startsWith("/blog")
+                    ? "text-brand-green bg-brand-green/10"
+                    : "text-gray-300 hover:text-brand-green",
+                )}
+              >
+                {t("blog")}
+              </Link>
+            </nav>
+
+            <div className="hidden md:flex items-center gap-3">
+              <LanguageSwitcher compact />
+              {isHomePage ? (
+                <a
+                  href="#contacto"
+                  onClick={(e) => handleSmoothScroll(e, "contacto")}
+                  className="inline-flex items-center gap-2 px-4 lg:px-5 h-10 lg:h-11 rounded-lg bg-brand-green text-black font-semibold text-sm hover:bg-green-hover hover:shadow-[0_0_24px_rgba(34,242,58,0.4)] transition-all duration-300 active:scale-[0.98]"
+                >
+                  {t("ctaLong")}
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                </a>
+              ) : (
+                <Link
+                  href="/#contacto"
+                  className="inline-flex items-center gap-2 px-4 lg:px-5 h-10 lg:h-11 rounded-lg bg-brand-green text-black font-semibold text-sm hover:bg-green-hover hover:shadow-[0_0_24px_rgba(34,242,58,0.4)] transition-all duration-300 active:scale-[0.98]"
+                >
+                  {t("ctaLong")}
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                </Link>
+              )}
+            </div>
+
+            <div className="md:hidden flex items-center gap-2">
+              <LanguageSwitcher compact />
+              <button
+                type="button"
+                className="p-2 text-gray-100"
+                onClick={() => setIsMobileMenuOpen((v) => !v)}
+                aria-label={isMobileMenuOpen ? t("close") : t("menu")}
+                aria-expanded={isMobileMenuOpen}
+              >
+                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className={cn(
+            "md:hidden absolute top-full left-0 right-0 bg-gray-950/95 backdrop-blur-xl border-b border-gray-800 overflow-hidden transition-all duration-300",
+            isMobileMenuOpen ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0",
+          )}
+        >
+          <nav className="flex flex-col px-4 py-4 gap-2" aria-label="Mobile">
+            {navItems.map((item) =>
+              isHomePage ? (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => {
+                    handleSmoothScroll(e, item.id, true)
+                  }}
+                  className="text-base font-medium text-gray-300 hover:text-brand-green py-3 border-b border-gray-800 last:border-b-0 transition-colors"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.id}
+                  href={`/#${item.id}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-base font-medium text-gray-300 hover:text-brand-green py-3 border-b border-gray-800 last:border-b-0 transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ),
+            )}
+            <Link
+              href="/blog"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={cn(
+                "text-base font-medium py-3 border-b border-gray-800 transition-colors",
+                pathname.startsWith("/blog")
+                  ? "text-brand-green font-semibold"
+                  : "text-gray-300 hover:text-brand-green",
+              )}
+            >
+              {t("blog")}
+            </Link>
+            {isHomePage ? (
+              <a
+                href="#contacto"
+                onClick={(e) => {
+                  handleSmoothScroll(e, "contacto", true)
+                }}
+                className="mt-3 inline-flex items-center justify-center gap-2 h-12 rounded-lg bg-brand-green text-black font-semibold"
+              >
+                {t("ctaLong")}
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            ) : (
+              <Link
+                href="/#contacto"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-3 inline-flex items-center justify-center gap-2 h-12 rounded-lg bg-brand-green text-black font-semibold"
+              >
+                {t("ctaLong")}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            )}
+          </nav>
+        </div>
+      </header>
+    </>
   )
 }

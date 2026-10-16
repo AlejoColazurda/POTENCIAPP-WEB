@@ -3,7 +3,8 @@
 import { revalidatePath } from "next/cache"
 import { headers } from "next/headers"
 import { redirect } from "next/navigation"
-import { fileSlugs } from "@/lib/blog"
+import { BLOG_CATEGORIES } from "@/lib/blog/categories"
+import { fileSlugs } from "@/lib/blog/service"
 import { generateDrafts, generateMonthlyRoundup } from "@/lib/blog-drafts"
 import { requireAdmin, requireOwner, roleFor } from "@/lib/admin"
 import { SITE_URL } from "@/lib/site"
@@ -188,14 +189,19 @@ export async function savePost(_prev: ActionState, form: FormData): Promise<Acti
   const description = String(form.get("description") ?? "").trim()
   const tag = String(form.get("tag") ?? "").trim() || "Ciberseguridad"
   const body_md = String(form.get("body_md") ?? "")
+  const category = String(form.get("category") ?? "security")
+  const cover_image = String(form.get("cover_image") ?? "").trim()
+  const author_name = String(form.get("author_name") ?? "").trim().slice(0, 60) || "Equipo PotenciApp"
 
   if (!title) return { error: "El título es obligatorio." }
   if (!SLUG_RE.test(slug)) return { error: "La URL solo puede tener minúsculas, números y guiones (ej. estafas-por-whatsapp)." }
   if (fileSlugs().includes(slug)) return { error: "Esa URL ya la usa un artículo del repositorio. Elegí otra." }
   if (description.length > 200) return { error: "La descripción puede tener hasta 200 caracteres." }
+  if (!(category in BLOG_CATEGORIES)) return { error: "Categoría inválida." }
+  if (cover_image && !/^https:\/\/\S+$/.test(cover_image)) return { error: "La portada tiene que ser una URL https." }
 
   const db = serviceClient()
-  const values = { slug, title, description, tag, body_md, updated_by: by }
+  const values = { slug, title, description, tag, body_md, category, cover_image, author_name, updated_by: by }
   const { data, error } = id
     ? await db.from("blog_posts").update(values).eq("id", id).select("id").single()
     : await db.from("blog_posts").insert({ ...values, created_by: by }).select("id").single()

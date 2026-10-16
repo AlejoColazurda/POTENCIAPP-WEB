@@ -15,6 +15,9 @@ export type AdminPost = {
   published_at: string | null
   created_at: string
   updated_at: string
+  category: string
+  cover_image: string
+  author_name: string
   created_by: string | null
   updated_by: string | null
 }

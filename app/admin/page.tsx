@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { requireAdmin, type AdminPost } from "@/lib/admin"
-import { getAllPosts, fileSlugs } from "@/lib/blog"
+import { getAllPosts, fileSlugs } from "@/lib/blog/service"
 import { serviceClient } from "@/lib/supabase"
 import { AdminHeader } from "./admin-header"
 import { GenerateButton, MonthlyButton } from "./generate-button"

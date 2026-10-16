@@ -1,98 +1,257 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { ArrowLeft } from "lucide-react"
-import { setRequestLocale, getTranslations } from "next-intl/server"
-import { Link } from "@/i18n/navigation"
+import { setRequestLocale } from "next-intl/server"
+import { BlogHeader } from "@/components/blog/blog-header"
+import { Footer } from "@/components/footer"
+import { getPostBySlug, getAllPosts } from "@/lib/blog/service"
+import { generateBlogPostingJsonLd } from "@/lib/blog/seo"
+import { getCategoryInfo } from "@/lib/blog/categories"
+import { SITE_URL, whatsAppUrl } from "@/lib/site"
+import { SocialShareBar } from "@/components/blog/social-share-bar"
+import { MarkdownContent } from "@/components/blog/markdown-content"
 import { routing } from "@/i18n/routing"
-import { BlogCta, BlogShell } from "@/components/blog-shell"
-import { formatPostDate, getAllPosts, getPost } from "@/lib/blog"
-import { SITE_URL } from "@/lib/site"
+import { ArrowLeft, Clock, Calendar, Sparkles, MessageCircle, ChevronRight } from "lucide-react"
+import { Link } from "@/i18n/navigation"
 
-// New posts published from /admin render on first request, then are cached.
-export const dynamicParams = true
+// New posts approved in /admin also call revalidatePath; this is the safety net.
 export const revalidate = 300
 
-export async function generateStaticParams() {
-  const slugs = (await getAllPosts()).map((p) => p.slug)
-  return routing.locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })))
+interface BlogPostPageProps {
+  params: Promise<{ locale: string; slug: string }>
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string; slug: string }>
-}): Promise<Metadata> {
-  const { slug } = await params
-  const post = await getPost(slug)
-  if (!post) return {}
+export async function generateStaticParams() {
+  const posts = await getAllPosts()
+  return routing.locales.flatMap((locale) =>
+    posts.map((post) => ({
+      locale,
+      slug: post.slug,
+    }))
+  )
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const { locale, slug } = await params
+  const post = await getPostBySlug(slug)
+
+  if (!post) {
+    return {
+      title: "Artículo no encontrado | PotenciApp",
+    }
+  }
+
+  // Articles are Spanish-only: every locale points its canonical at the Spanish URL.
+  const postUrl = `${SITE_URL}/blog/${post.slug}`
+
   return {
-    title: `${post.title} | PotenciApp`,
-    description: post.description,
-    // Articles are Spanish-only: every locale's copy points search engines at /blog/<slug>.
-    alternates: { canonical: `/blog/${slug}` },
+    title: `${post.title} | Blog PotenciApp`,
+    description: post.summary,
+    alternates: {
+      canonical: postUrl,
+      languages: { es: postUrl },
+    },
     openGraph: {
       title: post.title,
-      description: post.description,
+      description: post.summary,
+      url: postUrl,
+      siteName: "PotenciApp",
       type: "article",
-      publishedTime: post.date,
-      locale: "es",
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt || post.publishedAt,
+      authors: [post.author.name],
+      tags: post.tags,
+      images: [
+        {
+          url: post.coverImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.summary,
+      images: [post.coverImage],
+      creator: post.author.handle || "@potenciapp",
     },
   }
 }
 
-export default async function BlogPostPage({
-  params,
-}: {
-  params: Promise<{ locale: string; slug: string }>
-}) {
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { locale, slug } = await params
   setRequestLocale(locale)
-  const post = await getPost(slug)
-  if (!post) notFound()
-  const t = await getTranslations({ locale, namespace: "blog" })
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    inLanguage: "es",
-    mainEntityOfPage: `${SITE_URL}/blog/${slug}`,
-    image: `${SITE_URL}/og.png`,
-    author: { "@type": "Organization", name: "PotenciApp", url: SITE_URL },
-    publisher: { "@type": "Organization", name: "PotenciApp", url: SITE_URL },
+  const post = await getPostBySlug(slug)
+
+  if (!post) {
+    notFound()
   }
 
+  const jsonLd = generateBlogPostingJsonLd(post, locale)
+  const categoryInfo = getCategoryInfo(post.category)
+
   return (
-    <BlogShell locale={locale}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <article lang="es" className="mx-auto max-w-[720px] px-4 py-12 md:px-8 lg:py-20">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-1.5 font-mono text-[12px] uppercase tracking-wider text-gray-500 transition-colors hover:text-brand-green"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          {t("back")}
-        </Link>
+    <div className="min-h-screen bg-[#0A0A0A] text-gray-100 flex flex-col justify-between selection:bg-[#22F23A] selection:text-black">
+      {/* Schema.org BlogPosting Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
-        <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-wider text-gray-500">
-          <span className="text-brand-green">{post.tag}</span>
-          <span aria-hidden>·</span>
-          <time dateTime={post.date}>{formatPostDate(post.date, locale)}</time>
-          <span aria-hidden>·</span>
-          <span>{t("minutes", { n: post.readingMinutes })}</span>
-        </div>
-        <h1 className="mt-4 font-display text-[32px] font-bold leading-[1.1] tracking-[-0.02em] sm:text-5xl">
-          {post.title}
-        </h1>
-        <p className="mt-5 text-lg leading-relaxed text-gray-300">{post.description}</p>
-        <p className="mt-4 text-sm text-gray-500">{t("author")}</p>
+      <BlogHeader />
 
-        <div className="blog-prose mt-10 border-t border-gray-800 pt-10" dangerouslySetInnerHTML={{ __html: post.html }} />
+      <main className="flex-1 pt-24 sm:pt-32 pb-20">
+        <article className="max-w-[880px] mx-auto px-4 sm:px-8 space-y-8">
+          {/* Back link */}
+          <div>
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#111111] hover:bg-[#1A1A1A] border border-[#222222] text-xs font-semibold text-gray-300 hover:text-white transition group"
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform text-[#22F23A]" />
+              <span>Volver a todos los artículos</span>
+            </Link>
+          </div>
 
-        <BlogCta locale={locale} />
-      </article>
-    </BlogShell>
+          {/* Category & Metadata Header */}
+          <div className="flex flex-wrap items-center gap-3">
+            <span
+              className="px-3 py-1 rounded-full text-xs font-semibold border"
+              style={{
+                backgroundColor: `${categoryInfo.color}15`,
+                color: categoryInfo.color,
+                borderColor: `${categoryInfo.color}40`,
+              }}
+            >
+              {categoryInfo.label}
+            </span>
+
+            <div className="flex items-center gap-1.5 text-xs text-gray-400">
+              <Clock className="w-3.5 h-3.5 text-gray-500" />
+              <span>{post.readingTime} de lectura</span>
+            </div>
+
+            <div className="flex items-center gap-1.5 text-xs text-gray-400">
+              <Calendar className="w-3.5 h-3.5 text-gray-500" />
+              <time dateTime={post.publishedAt}>
+                {new Date(post.publishedAt).toLocaleDateString("es-ES", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </time>
+            </div>
+
+            {post.author.isAgent && (
+              <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#22F23A]/10 text-[#22F23A] border border-[#22F23A]/30">
+                <Sparkles className="w-3 h-3" />
+                <span>Publicado por Agente Autónomo</span>
+              </span>
+            )}
+          </div>
+
+          {/* Title */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight leading-tight">
+            {post.title}
+          </h1>
+
+          {/* Author Card */}
+          <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-[#111111] border border-[#1A1A1A]">
+            <img
+              src={post.author.avatar}
+              alt={post.author.name}
+              className="w-12 h-12 rounded-full object-cover ring-2 ring-[#22F23A]/40"
+            />
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-bold text-white">{post.author.name}</span>
+                {post.author.handle && (
+                  <span className="text-xs text-gray-400">{post.author.handle}</span>
+                )}
+              </div>
+              <span className="text-xs text-gray-400">{post.author.role}</span>
+            </div>
+          </div>
+
+          {/* Hero Cover Image */}
+          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-[#1A1A1A] shadow-2xl">
+            <img
+              src={post.coverImage}
+              alt={post.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Top Social Republication & Story Exporter */}
+          <SocialShareBar post={post} />
+
+          {/* Summary Callout Box */}
+          <div className="p-5 rounded-2xl bg-[#111111] border-l-4 border-l-[#22F23A] border-y border-r border-[#1A1A1A] text-gray-300 font-medium leading-relaxed italic">
+            {post.summary}
+          </div>
+
+          {/* Main Markdown Body Content */}
+          <MarkdownContent content={post.content} />
+
+          {/* Tags */}
+          <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-[#1A1A1A]">
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider mr-2">
+              Temas:
+            </span>
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-3 py-1 rounded-full text-xs font-medium bg-[#111111] text-gray-300 border border-[#1A1A1A]"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Bottom Social Share Bar */}
+          <div className="pt-2">
+            <SocialShareBar post={post} />
+          </div>
+
+          {/* Conversion CTA to PotenciApp */}
+          <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#111111] via-[#0E0E0E] to-[#0A0A0A] border border-[#22F23A]/30 overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#22F23A]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 space-y-4">
+              <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#22F23A]/10 text-[#22F23A] border border-[#22F23A]/30">
+                ⚡ SOFTWARE CON CONTRATO Y GARANTÍA
+              </span>
+              <h3 className="text-xl sm:text-3xl font-black text-white font-display">
+                ¿Querés implementar esta tecnología en tu empresa?
+              </h3>
+              <p className="text-sm text-gray-400 max-w-xl">
+                En PotenciApp desarrollamos aplicaciones móviles, sistemas a medida y soluciones de IA con alcance cerrado, contrato firmado y garantía post-entrega.
+              </p>
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <a
+                  href={whatsAppUrl(`Hola PotenciApp, leí el artículo "${post.title}" y quiero consultar por un proyecto.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#22F23A] text-black font-bold hover:bg-[#1AD832] transition shadow-lg shadow-green-500/20"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Hablar por WhatsApp</span>
+                </a>
+                <Link
+                  href="/blog"
+                  className="flex items-center gap-1.5 px-5 py-3 rounded-xl bg-[#1A1A1A] hover:bg-[#222222] text-sm font-semibold text-gray-200 transition"
+                >
+                  <span>Ver todos los artículos</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <Footer />
+    </div>
   )
 }

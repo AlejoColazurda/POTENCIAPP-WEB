@@ -1,5 +1,5 @@
 import "server-only"
-import { fileSlugs } from "@/lib/blog"
+import { fileSlugs } from "@/lib/blog/service"
 import { serviceClient } from "@/lib/supabase"
 
 /**
@@ -292,6 +292,7 @@ ${newsList(items)}`
     title: draft.title.trim(),
     description: draft.description.trim().slice(0, 200),
     tag: "Resumen del mes",
+    category: "news",
     body_md: withSourcesSection(draft.body_md, draft.sources),
     status: "draft",
     origin: "ai",
