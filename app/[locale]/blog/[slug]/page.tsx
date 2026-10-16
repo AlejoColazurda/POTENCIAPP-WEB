@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { setRequestLocale } from "next-intl/server"
-import { Header } from "@/components/header"
+import { BlogHeader } from "@/components/blog/blog-header"
 import { Footer } from "@/components/footer"
 import { getPostBySlug, getAllPosts } from "@/lib/blog/service"
 import { generateBlogPostingJsonLd } from "@/lib/blog/seo"
@@ -11,7 +11,7 @@ import { SocialShareBar } from "@/components/blog/social-share-bar"
 import { MarkdownContent } from "@/components/blog/markdown-content"
 import { routing } from "@/i18n/routing"
 import { ArrowLeft, Clock, Calendar, Sparkles, MessageCircle, ChevronRight } from "lucide-react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 
 interface BlogPostPageProps {
   params: Promise<{ locale: string; slug: string }>
@@ -101,7 +101,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Header />
+      <BlogHeader />
 
       <main className="flex-1 pt-24 sm:pt-32 pb-20">
         <article className="max-w-[880px] mx-auto px-4 sm:px-8 space-y-8">

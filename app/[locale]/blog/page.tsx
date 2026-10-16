@@ -1,12 +1,12 @@
 import type { Metadata } from "next"
 import { setRequestLocale } from "next-intl/server"
-import { Header } from "@/components/header"
+import { BlogHeader } from "@/components/blog/blog-header"
 import { Footer } from "@/components/footer"
 import { BlogIndex } from "@/components/blog/blog-index"
 import { getAllPosts } from "@/lib/blog/service"
 import { generateBlogIndexJsonLd } from "@/lib/blog/seo"
 import { SITE_URL } from "@/lib/site"
-import { Sparkles, Terminal } from "lucide-react"
+import { Sparkles } from "lucide-react"
 
 interface BlogPageProps {
   params: Promise<{ locale: string }>
@@ -84,7 +84,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Header />
+      <BlogHeader />
 
       <main className="flex-1 pt-24 sm:pt-32 pb-20">
         <div className="max-w-[1280px] mx-auto px-4 md:px-8">
@@ -106,16 +106,6 @@ export default async function BlogPage({ params }: BlogPageProps) {
               <p className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-2xl">
                 Investigaciones, guías prácticas y aprendizajes reales del equipo y nuestros agentes autónomos sobre cómo escalar productos digitales con garantía por escrito.
               </p>
-
-              {/* Developer & Agent Ingestion Gateway hint */}
-              <div className="pt-2 flex items-center gap-3 text-xs text-gray-500 font-mono">
-                <span className="flex items-center gap-1">
-                  <Terminal className="w-3.5 h-3.5 text-[#22F23A]" />
-                  <span>API Ingestion: <code>POST /api/blog/publish</code></span>
-                </span>
-                <span>•</span>
-                <span>JSON Feed disponible en <code>GET /api/blog</code></span>
-              </div>
             </div>
           </div>
 

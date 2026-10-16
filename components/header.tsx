@@ -43,13 +43,25 @@ export function Header() {
     [t, isHomePage],
   )
 
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+    fromMobile = false,
+  ) => {
     if (isHomePage) {
-      const el = document.getElementById(id)
-      if (el) {
-        e.preventDefault()
-        el.scrollIntoView({ behavior: "smooth" })
-        window.history.replaceState(null, "", `#${id}`)
+      e.preventDefault()
+      const doScroll = () => {
+        const el = document.getElementById(id)
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" })
+          window.history.replaceState(null, "", `#${id}`)
+        }
+      }
+      if (fromMobile) {
+        setIsMobileMenuOpen(false)
+        setTimeout(doScroll, 80)
+      } else {
+        doScroll()
       }
     }
   }
@@ -140,8 +152,7 @@ export function Header() {
                   key={item.id}
                   href={`#${item.id}`}
                   onClick={(e) => {
-                    setIsMobileMenuOpen(false)
-                    handleSmoothScroll(e, item.id)
+                    handleSmoothScroll(e, item.id, true)
                   }}
                   className="text-base font-medium text-gray-300 hover:text-brand-green py-3 border-b border-gray-800 last:border-b-0 transition-colors"
                 >
@@ -174,8 +185,7 @@ export function Header() {
               <a
                 href="#contacto"
                 onClick={(e) => {
-                  setIsMobileMenuOpen(false)
-                  handleSmoothScroll(e, "contacto")
+                  handleSmoothScroll(e, "contacto", true)
                 }}
                 className="mt-3 inline-flex items-center justify-center gap-2 h-12 rounded-lg bg-brand-green text-black font-semibold"
               >
