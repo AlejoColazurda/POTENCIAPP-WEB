@@ -1,6 +1,6 @@
 "use client"
 
-import Link from "next/link"
+import { Link, usePathname } from "@/i18n/navigation"
 import { Mail, Rocket } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { BrandWordmark } from "@/components/brand"
@@ -15,22 +15,24 @@ const social = [
 export function Footer() {
   const t = useTranslations("footer")
   const tNav = useTranslations("nav")
+  const pathname = usePathname()
+  const isHomePage = pathname === "/" || pathname === ""
   const year = new Date().getFullYear()
 
   const columns = [
     {
       title: t("soluciones"),
       links: [
-        { label: tNav("soluciones"), href: "#soluciones" },
-        { label: tNav("proyectos"), href: "#proyectos" },
+        { label: tNav("soluciones"), href: isHomePage ? "#soluciones" : "/#soluciones" },
+        { label: tNav("proyectos"), href: isHomePage ? "#proyectos" : "/#proyectos" },
       ],
     },
     {
       title: t("empresa"),
       links: [
-        { label: tNav("garantia"), href: "#garantia" },
-        { label: tNav("proceso"), href: "#proceso" },
-        { label: tNav("faq"), href: "#faq" },
+        { label: tNav("garantia"), href: isHomePage ? "#garantia" : "/#garantia" },
+        { label: tNav("proceso"), href: isHomePage ? "#proceso" : "/#proceso" },
+        { label: tNav("faq"), href: isHomePage ? "#faq" : "/#faq" },
       ],
     },
     {

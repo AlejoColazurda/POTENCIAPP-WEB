@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState, useRef, useCallback } from "react"
-import { motion, AnimatePresence, useMotionValue, useTransform } from "motion/react"
+import { motion, AnimatePresence } from "motion/react"
 import { ArrowLeft, Clock, Calendar, Sparkles, X, ChevronRight, MessageCircle, MoveRight } from "lucide-react"
 import type { BlogPost } from "@/lib/blog/types"
 import { getCategoryInfo } from "@/lib/blog/categories"
@@ -19,23 +19,14 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
   const [isCrumpled, setIsCrumpled] = useState(false)
   const articleContentRef = useRef<HTMLDivElement | null>(null)
   const isClosingRef = useRef(false)
-
-  // Motion values for the paper crumple gesture
-  const dragX = useMotionValue(0)
-
-  // Smooth transforms linked to drag progress
-  const paperScale = useTransform(dragX, [0, 200, 420], [1, 0.7, 0.15])
-  const paperRotate = useTransform(dragX, [0, 200, 420], [0, 8, 28])
-  const paperBorderRadius = useTransform(dragX, [0, 180, 420], ["0px", "32px", "120px"])
-  const paperOpacity = useTransform(dragX, [0, 320, 440], [1, 0.9, 0])
-  const paperSkew = useTransform(dragX, [0, 250, 420], [0, 6, 18])
+  const touchStartX = useRef<number | null>(null)
+  const touchStartY = useRef<number | null>(null)
 
   const triggerCrumpleAndClose = useCallback(() => {
     if (isClosingRef.current) return
     isClosingRef.current = true
     setIsCrumpled(true)
 
-    // Trigger smooth crumple sound / vibration if supported
     if (typeof navigator !== "undefined" && "vibrate" in navigator) {
       try {
         navigator.vibrate([20, 40, 20])
@@ -49,41 +40,23 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
     }, 380)
   }, [onClose])
 
-  // Handle native iPhone/Safari back button & swipe
-  // When modal opens, push history state so iPhone's native swipe-back closes the modal cleanly instead of leaving the website!
+  // Manage body scroll and Escape key cleanly without corrupting history state
   useEffect(() => {
     if (!post) return
 
-    // Lock body scroll to prevent iOS background scrolling
     const originalOverflow = document.body.style.overflow
-    const originalTouchAction = document.body.style.touchAction
     document.body.style.overflow = "hidden"
-    document.body.style.touchAction = "none"
-
-    // Push state for iOS Safari back swipe compatibility
-    window.history.pushState({ potenciappModalOpen: true }, "")
-
-    const handlePopState = () => {
-      triggerCrumpleAndClose()
-    }
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        if (window.history.state?.potenciappModalOpen) {
-          window.history.back()
-        } else {
-          triggerCrumpleAndClose()
-        }
+        triggerCrumpleAndClose()
       }
     }
 
-    window.addEventListener("popstate", handlePopState)
     window.addEventListener("keydown", handleKeyDown)
 
     return () => {
       document.body.style.overflow = originalOverflow
-      document.body.style.touchAction = originalTouchAction
-      window.removeEventListener("popstate", handlePopState)
       window.removeEventListener("keydown", handleKeyDown)
     }
   }, [post, triggerCrumpleAndClose])
@@ -110,39 +83,39 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
 
   const categoryInfo = getCategoryInfo(post.category)
 
-  const handleManualClose = () => {
-    if (window.history.state?.potenciappModalOpen) {
-      window.history.back()
-    } else {
-      triggerCrumpleAndClose()
-    }
+  // Natural swipe gesture detection without blocking native vertical scrolling
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+    touchStartY.current = e.touches[0].clientY
   }
 
-  const handleDragEnd = (_: any, info: { offset: { x: number }; velocity: { x: number } }) => {
-    // If swiped right with sufficient offset or velocity
-    if (info.offset.x > 90 || info.velocity.x > 300) {
-      if (window.history.state?.potenciappModalOpen) {
-        window.history.back()
-      } else {
-        triggerCrumpleAndClose()
-      }
-    } else {
-      dragX.set(0)
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current
+
+    // Detect intentional right swipe gesture (dominant horizontal motion > 75px)
+    if (deltaX > 75 && Math.abs(deltaY) < 60) {
+      triggerCrumpleAndClose()
     }
+
+    touchStartX.current = null
+    touchStartY.current = null
   }
 
   return (
     <AnimatePresence>
       <div
-        className="fixed inset-0 z-50 overflow-hidden bg-black/92 backdrop-blur-xl flex justify-center select-none"
-        style={{ overscrollBehavior: "none", touchAction: "pan-y" }}
+        className="fixed inset-0 z-50 overflow-hidden bg-black/92 backdrop-blur-xl flex justify-center"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         {/* SVG Filter for Paper Crumpling Displacement & Creases */}
         <svg className="hidden" aria-hidden="true">
           <defs>
             <filter id="paper-crumple-filter" x="-20%" y="-20%" width="140%" height="140%">
               <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="40" xChannelSelector="R" yChannelSelector="G" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="45" xChannelSelector="R" yChannelSelector="G" />
             </filter>
           </defs>
         </svg>
@@ -153,30 +126,39 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
           style={{ width: `${scrollProgress}%` }}
         />
 
-        {/* Gestural Crumple Container */}
+        {/* Animated Card Container with 3D Paper Crumple Collapse */}
         <motion.div
           layoutId={`card-container-${post.slug}`}
-          drag="x"
-          dragDirectionLock
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={{ left: 0.05, right: 0.75 }}
-          onDragEnd={handleDragEnd}
+          animate={
+            isCrumpled
+              ? {
+                  scale: [1, 0.72, 0.22, 0.05],
+                  rotateZ: [0, 12, 38, 55],
+                  rotateX: [0, 18, 42, 65],
+                  skewX: [0, 8, 22, 32],
+                  y: [0, -25, 75, 260],
+                  opacity: [1, 0.95, 0.65, 0],
+                  borderRadius: ["0px", "24px", "64px", "140px"],
+                  transition: { duration: 0.38, ease: [0.32, 0, 0.67, 0] },
+                }
+              : {
+                  scale: 1,
+                  rotateZ: 0,
+                  rotateX: 0,
+                  skewX: 0,
+                  y: 0,
+                  opacity: 1,
+                  borderRadius: "0px",
+                }
+          }
           style={{
-            x: dragX,
-            scale: paperScale,
-            rotateZ: paperRotate,
-            skewX: paperSkew,
-            borderRadius: paperBorderRadius,
-            opacity: paperOpacity,
             filter: isCrumpled
               ? "url(#paper-crumple-filter) contrast(1.4) brightness(0.9)"
               : undefined,
             WebkitFilter: isCrumpled
               ? "contrast(1.4) brightness(0.9)"
               : undefined,
-            touchAction: "pan-y",
           }}
-          transition={{ type: "spring", stiffness: 340, damping: 28 }}
           className={`relative w-full max-w-4xl h-full bg-[#0A0A0A] border-x border-[#1A1A1A] flex flex-col shadow-2xl overflow-hidden origin-center transition-shadow duration-300 ${
             isCrumpled ? "shadow-[0_20px_60px_rgba(34,242,58,0.3)]" : ""
           }`}
@@ -184,22 +166,28 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
           {/* Header Action Bar */}
           <div className="sticky top-0 z-40 flex items-center justify-between px-3 sm:px-8 py-3 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-[#1A1A1A]">
             <button
-              onClick={handleManualClose}
+              type="button"
+              onClick={triggerCrumpleAndClose}
               className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#111111] hover:bg-[#1A1A1A] border border-[#222222] text-xs font-semibold text-gray-200 hover:text-white transition group shrink-0"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform text-[#22F23A]" />
               <span>Volver</span>
             </button>
 
-            {/* Gesture Cue Pill for Mobile & Desktop */}
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#141414] border border-[#222222] text-[11px] text-gray-300 font-medium cursor-grab active:cursor-grabbing">
+            {/* Gesture Cue Pill for Mobile & Desktop (Clickable to crumple) */}
+            <button
+              type="button"
+              onClick={triggerCrumpleAndClose}
+              className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#141414] hover:bg-[#1C1C1C] border border-[#222222] text-[11px] text-gray-300 font-medium cursor-pointer transition active:scale-95"
+            >
               <span className="text-[#22F23A]">👉 Deslizá a la derecha</span>
               <span className="hidden sm:inline text-gray-400">para hacer un <strong>bollo de papel</strong></span>
               <MoveRight className="w-3.5 h-3.5 text-[#22F23A] animate-pulse" />
-            </div>
+            </button>
 
             <button
-              onClick={handleManualClose}
+              type="button"
+              onClick={triggerCrumpleAndClose}
               className="p-2 rounded-xl bg-[#111111] hover:bg-[#1A1A1A] text-gray-400 hover:text-white transition shrink-0"
               aria-label="Cerrar artículo"
             >
@@ -207,11 +195,11 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
             </button>
           </div>
 
-          {/* Scrollable Article Body */}
+          {/* Scrollable Article Body (Unconstrained Native Vertical Scrolling) */}
           <div
             ref={articleContentRef}
             className="flex-1 overflow-y-auto px-4 sm:px-12 py-8 space-y-8 select-text"
-            style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-y" }}
+            style={{ WebkitOverflowScrolling: "touch" }}
           >
             {/* Category & Metadata */}
             <div className="flex flex-wrap items-center gap-3">
@@ -341,7 +329,8 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
                     <span>Hablar por WhatsApp</span>
                   </a>
                   <button
-                    onClick={handleManualClose}
+                    type="button"
+                    onClick={triggerCrumpleAndClose}
                     className="flex items-center gap-1.5 px-5 py-3 rounded-xl bg-[#1A1A1A] hover:bg-[#222222] text-sm font-semibold text-gray-200 transition"
                   >
                     <span>Seguir explorando el blog</span>
