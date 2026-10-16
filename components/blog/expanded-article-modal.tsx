@@ -1,11 +1,12 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useCallback } from "react"
 import { motion, AnimatePresence, useMotionValue, useTransform } from "motion/react"
-import { ArrowLeft, Clock, Calendar, Sparkles, X, ChevronRight, MessageCircle } from "lucide-react"
+import { ArrowLeft, Clock, Calendar, Sparkles, X, ChevronRight, MessageCircle, MoveRight } from "lucide-react"
 import type { BlogPost } from "@/lib/blog/types"
 import { getCategoryInfo } from "@/lib/blog/categories"
 import { SocialShareBar } from "./social-share-bar"
+import { MarkdownContent } from "./markdown-content"
 import { whatsAppUrl } from "@/lib/site"
 
 interface ExpandedArticleModalProps {
@@ -17,27 +18,75 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isCrumpled, setIsCrumpled] = useState(false)
   const articleContentRef = useRef<HTMLDivElement | null>(null)
+  const isClosingRef = useRef(false)
 
-  // Motion values for the "Bollo de papel" (crumpled paper) gesture
+  // Motion values for the paper crumple gesture
   const dragX = useMotionValue(0)
 
-  // Map drag distance (0px -> 450px) to paper crumple transformations
-  const paperScale = useTransform(dragX, [0, 250, 450], [1, 0.65, 0.15])
-  const paperRotate = useTransform(dragX, [0, 250, 450], [0, 12, 35])
-  const paperBorderRadius = useTransform(dragX, [0, 200, 450], ["0px", "40px", "140px"])
-  const paperOpacity = useTransform(dragX, [0, 350, 480], [1, 0.9, 0])
-  const paperSqueezeX = useTransform(dragX, [0, 300, 450], ["0%", "-8%", "-25%"])
+  // Smooth transforms linked to drag progress
+  const paperScale = useTransform(dragX, [0, 200, 420], [1, 0.7, 0.15])
+  const paperRotate = useTransform(dragX, [0, 200, 420], [0, 8, 28])
+  const paperBorderRadius = useTransform(dragX, [0, 180, 420], ["0px", "32px", "120px"])
+  const paperOpacity = useTransform(dragX, [0, 320, 440], [1, 0.9, 0])
+  const paperSkew = useTransform(dragX, [0, 250, 420], [0, 6, 18])
 
-  // Handle ESC key to exit
+  const triggerCrumpleAndClose = useCallback(() => {
+    if (isClosingRef.current) return
+    isClosingRef.current = true
+    setIsCrumpled(true)
+
+    // Trigger smooth crumple sound / vibration if supported
+    if (typeof navigator !== "undefined" && "vibrate" in navigator) {
+      try {
+        navigator.vibrate([20, 40, 20])
+      } catch {}
+    }
+
+    setTimeout(() => {
+      onClose()
+      setIsCrumpled(false)
+      isClosingRef.current = false
+    }, 380)
+  }, [onClose])
+
+  // Handle native iPhone/Safari back button & swipe
+  // When modal opens, push history state so iPhone's native swipe-back closes the modal cleanly instead of leaving the website!
   useEffect(() => {
+    if (!post) return
+
+    // Lock body scroll to prevent iOS background scrolling
+    const originalOverflow = document.body.style.overflow
+    const originalTouchAction = document.body.style.touchAction
+    document.body.style.overflow = "hidden"
+    document.body.style.touchAction = "none"
+
+    // Push state for iOS Safari back swipe compatibility
+    window.history.pushState({ potenciappModalOpen: true }, "")
+
+    const handlePopState = () => {
+      triggerCrumpleAndClose()
+    }
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        onClose()
+        if (window.history.state?.potenciappModalOpen) {
+          window.history.back()
+        } else {
+          triggerCrumpleAndClose()
+        }
       }
     }
+
+    window.addEventListener("popstate", handlePopState)
     window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [onClose])
+
+    return () => {
+      document.body.style.overflow = originalOverflow
+      document.body.style.touchAction = originalTouchAction
+      window.removeEventListener("popstate", handlePopState)
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [post, triggerCrumpleAndClose])
 
   // Track reading scroll progress
   useEffect(() => {
@@ -61,14 +110,22 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
 
   const categoryInfo = getCategoryInfo(post.category)
 
+  const handleManualClose = () => {
+    if (window.history.state?.potenciappModalOpen) {
+      window.history.back()
+    } else {
+      triggerCrumpleAndClose()
+    }
+  }
+
   const handleDragEnd = (_: any, info: { offset: { x: number }; velocity: { x: number } }) => {
-    // If swiped right past 120px or with sufficient velocity, trigger crumple exit
-    if (info.offset.x > 120 || info.velocity.x > 350) {
-      setIsCrumpled(true)
-      setTimeout(() => {
-        setIsCrumpled(false)
-        onClose()
-      }, 350)
+    // If swiped right with sufficient offset or velocity
+    if (info.offset.x > 90 || info.velocity.x > 300) {
+      if (window.history.state?.potenciappModalOpen) {
+        window.history.back()
+      } else {
+        triggerCrumpleAndClose()
+      }
     } else {
       dragX.set(0)
     }
@@ -76,20 +133,23 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 overflow-hidden bg-black/90 backdrop-blur-xl flex justify-center">
-        {/* SVG Filter for Paper Crumpling Displacement & Texture */}
-        <svg className="hidden">
+      <div
+        className="fixed inset-0 z-50 overflow-hidden bg-black/92 backdrop-blur-xl flex justify-center select-none"
+        style={{ overscrollBehavior: "none", touchAction: "pan-y" }}
+      >
+        {/* SVG Filter for Paper Crumpling Displacement & Creases */}
+        <svg className="hidden" aria-hidden="true">
           <defs>
-            <filter id="paper-crumple-filter">
+            <filter id="paper-crumple-filter" x="-20%" y="-20%" width="140%" height="140%">
               <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" result="noise" />
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="35" xChannelSelector="R" yChannelSelector="G" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="40" xChannelSelector="R" yChannelSelector="G" />
             </filter>
           </defs>
         </svg>
 
         {/* Top Reading Progress Bar */}
         <div
-          className="fixed top-0 left-0 h-1 bg-[#22F23A] z-50 transition-all duration-150 shadow-[0_0_10px_#22F23A]"
+          className="fixed top-0 left-0 h-1 bg-[#22F23A] z-50 transition-all duration-150 shadow-[0_0_12px_#22F23A]"
           style={{ width: `${scrollProgress}%` }}
         />
 
@@ -97,39 +157,50 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
         <motion.div
           layoutId={`card-container-${post.slug}`}
           drag="x"
+          dragDirectionLock
           dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={{ left: 0.05, right: 0.8 }}
+          dragElastic={{ left: 0.05, right: 0.75 }}
           onDragEnd={handleDragEnd}
           style={{
             x: dragX,
             scale: paperScale,
-            rotate: paperRotate,
+            rotateZ: paperRotate,
+            skewX: paperSkew,
             borderRadius: paperBorderRadius,
             opacity: paperOpacity,
-            translateX: paperSqueezeX,
-            filter: isCrumpled ? "url(#paper-crumple-filter) contrast(1.5) brightness(0.85)" : undefined,
+            filter: isCrumpled
+              ? "url(#paper-crumple-filter) contrast(1.4) brightness(0.9)"
+              : undefined,
+            WebkitFilter: isCrumpled
+              ? "contrast(1.4) brightness(0.9)"
+              : undefined,
+            touchAction: "pan-y",
           }}
-          transition={{ type: "spring", stiffness: 320, damping: 28 }}
-          className="relative w-full max-w-4xl h-full bg-[#0A0A0A] border-x border-[#1A1A1A] flex flex-col shadow-2xl overflow-hidden cursor-grab active:cursor-grabbing origin-center"
+          transition={{ type: "spring", stiffness: 340, damping: 28 }}
+          className={`relative w-full max-w-4xl h-full bg-[#0A0A0A] border-x border-[#1A1A1A] flex flex-col shadow-2xl overflow-hidden origin-center transition-shadow duration-300 ${
+            isCrumpled ? "shadow-[0_20px_60px_rgba(34,242,58,0.3)]" : ""
+          }`}
         >
           {/* Header Action Bar */}
-          <div className="sticky top-0 z-40 flex items-center justify-between px-4 sm:px-8 py-3.5 bg-[#0A0A0A]/90 backdrop-blur-md border-b border-[#1A1A1A]">
+          <div className="sticky top-0 z-40 flex items-center justify-between px-3 sm:px-8 py-3 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-[#1A1A1A]">
             <button
-              onClick={onClose}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#111111] hover:bg-[#1A1A1A] border border-[#222222] text-xs font-semibold text-gray-200 hover:text-white transition group"
+              onClick={handleManualClose}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#111111] hover:bg-[#1A1A1A] border border-[#222222] text-xs font-semibold text-gray-200 hover:text-white transition group shrink-0"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform text-[#22F23A]" />
-              <span>Volver al Blog</span>
+              <span>Volver</span>
             </button>
 
-            {/* Gesture Hint Pill */}
-            <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#111111] border border-[#222222] text-[11px] text-gray-400">
-              <span>👉 Desliza a la derecha para hacer un <strong>bollo de papel</strong> y salir</span>
+            {/* Gesture Cue Pill for Mobile & Desktop */}
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#141414] border border-[#222222] text-[11px] text-gray-300 font-medium cursor-grab active:cursor-grabbing">
+              <span className="text-[#22F23A]">👉 Deslizá a la derecha</span>
+              <span className="hidden sm:inline text-gray-400">para hacer un <strong>bollo de papel</strong></span>
+              <MoveRight className="w-3.5 h-3.5 text-[#22F23A] animate-pulse" />
             </div>
 
             <button
-              onClick={onClose}
-              className="p-2 rounded-xl bg-[#111111] hover:bg-[#1A1A1A] text-gray-400 hover:text-white transition"
+              onClick={handleManualClose}
+              className="p-2 rounded-xl bg-[#111111] hover:bg-[#1A1A1A] text-gray-400 hover:text-white transition shrink-0"
               aria-label="Cerrar artículo"
             >
               <X className="w-5 h-5" />
@@ -140,6 +211,7 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
           <div
             ref={articleContentRef}
             className="flex-1 overflow-y-auto px-4 sm:px-12 py-8 space-y-8 select-text"
+            style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-y" }}
           >
             {/* Category & Metadata */}
             <div className="flex flex-wrap items-center gap-3">
@@ -222,57 +294,8 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
               {post.summary}
             </div>
 
-            {/* Main Markdown Body Content */}
-            <div className="prose prose-invert prose-green max-w-none space-y-6 text-gray-300 text-base sm:text-lg leading-relaxed">
-              {post.content.split("\n\n").map((paragraph, index) => {
-                if (paragraph.startsWith("## ")) {
-                  return (
-                    <h2
-                      key={index}
-                      className="text-2xl sm:text-3xl font-bold text-white font-display pt-4 border-b border-[#1A1A1A] pb-2"
-                    >
-                      {paragraph.replace("## ", "")}
-                    </h2>
-                  )
-                }
-                if (paragraph.startsWith("### ")) {
-                  return (
-                    <h3
-                      key={index}
-                      className="text-xl sm:text-2xl font-bold text-white font-display pt-2 text-[#22F23A]"
-                    >
-                      {paragraph.replace("### ", "")}
-                    </h3>
-                  )
-                }
-                if (paragraph.startsWith("> ")) {
-                  return (
-                    <blockquote
-                      key={index}
-                      className="p-4 rounded-xl bg-[#111111] border-l-4 border-[#22F23A] text-gray-200 italic my-4"
-                    >
-                      {paragraph.replace("> ", "")}
-                    </blockquote>
-                  )
-                }
-                if (paragraph.startsWith("```")) {
-                  const cleaned = paragraph.replace(/```[a-z]*\n?/g, "")
-                  return (
-                    <pre
-                      key={index}
-                      className="p-4 rounded-xl bg-[#080808] border border-[#1A1A1A] text-xs sm:text-sm font-mono text-green-400 overflow-x-auto shadow-inner"
-                    >
-                      <code>{cleaned}</code>
-                    </pre>
-                  )
-                }
-                return (
-                  <p key={index} className="text-gray-300">
-                    {paragraph}
-                  </p>
-                )
-              })}
-            </div>
+            {/* Rich Markdown Body Typography (Titles, Bold, Code, Lists, Quotes) */}
+            <MarkdownContent content={post.content} />
 
             {/* Tags Pill List */}
             <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-[#1A1A1A]">
@@ -318,7 +341,7 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
                     <span>Hablar por WhatsApp</span>
                   </a>
                   <button
-                    onClick={onClose}
+                    onClick={handleManualClose}
                     className="flex items-center gap-1.5 px-5 py-3 rounded-xl bg-[#1A1A1A] hover:bg-[#222222] text-sm font-semibold text-gray-200 transition"
                   >
                     <span>Seguir explorando el blog</span>

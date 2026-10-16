@@ -8,6 +8,7 @@ import { generateBlogPostingJsonLd } from "@/lib/blog/seo"
 import { getCategoryInfo } from "@/lib/blog/categories"
 import { SITE_URL, whatsAppUrl } from "@/lib/site"
 import { SocialShareBar } from "@/components/blog/social-share-bar"
+import { MarkdownContent } from "@/components/blog/markdown-content"
 import { routing } from "@/i18n/routing"
 import { ArrowLeft, Clock, Calendar, Sparkles, MessageCircle, ChevronRight } from "lucide-react"
 import Link from "next/link"
@@ -193,56 +194,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
 
           {/* Main Markdown Body Content */}
-          <div className="prose prose-invert prose-green max-w-none space-y-6 text-gray-300 text-base sm:text-lg leading-relaxed">
-            {post.content.split("\n\n").map((paragraph, index) => {
-              if (paragraph.startsWith("## ")) {
-                return (
-                  <h2
-                    key={index}
-                    className="text-2xl sm:text-3xl font-bold text-white font-display pt-4 border-b border-[#1A1A1A] pb-2"
-                  >
-                    {paragraph.replace("## ", "")}
-                  </h2>
-                )
-              }
-              if (paragraph.startsWith("### ")) {
-                return (
-                  <h3
-                    key={index}
-                    className="text-xl sm:text-2xl font-bold text-white font-display pt-2 text-[#22F23A]"
-                  >
-                    {paragraph.replace("### ", "")}
-                  </h3>
-                )
-              }
-              if (paragraph.startsWith("> ")) {
-                return (
-                  <blockquote
-                    key={index}
-                    className="p-4 rounded-xl bg-[#111111] border-l-4 border-[#22F23A] text-gray-200 italic my-4"
-                  >
-                    {paragraph.replace("> ", "")}
-                  </blockquote>
-                )
-              }
-              if (paragraph.startsWith("```")) {
-                const cleaned = paragraph.replace(/```[a-z]*\n?/g, "")
-                return (
-                  <pre
-                    key={index}
-                    className="p-4 rounded-xl bg-[#080808] border border-[#1A1A1A] text-xs sm:text-sm font-mono text-green-400 overflow-x-auto shadow-inner"
-                  >
-                    <code>{cleaned}</code>
-                  </pre>
-                )
-              }
-              return (
-                <p key={index} className="text-gray-300">
-                  {paragraph}
-                </p>
-              )
-            })}
-          </div>
+          <MarkdownContent content={post.content} />
 
           {/* Tags */}
           <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-[#1A1A1A]">
