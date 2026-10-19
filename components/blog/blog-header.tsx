@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils"
 
 export function BlogHeader() {
   const t = useTranslations("nav")
+  const tb = useTranslations("blogUi")
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -35,7 +36,7 @@ export function BlogHeader() {
           <div className="flex items-center gap-3">
             <Link
               href="/"
-              aria-label="PotenciApp — Ir al inicio"
+              aria-label={tb("homeAria")}
               className="group inline-flex items-center transition-transform duration-300 hover:scale-[1.02]"
             >
               <BrandWordmark size="md" priority />
@@ -51,19 +52,19 @@ export function BlogHeader() {
           </div>
 
           {/* Desktop Nav: Distinct navigation for the Blog Sector */}
-          <nav className="hidden md:flex items-center gap-2" aria-label="Navegación del Blog">
+          <nav className="hidden md:flex items-center gap-2" aria-label={tb("navAria")}>
             <Link
               href="/"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 border border-transparent hover:border-gray-800 transition-all"
             >
               <ArrowLeft className="w-4 h-4 text-[#22F23A]" />
-              <span>Volver a la Web Principal</span>
+              <span>{tb("backToSite")}</span>
             </Link>
             <Link
               href="/blog"
               className="px-4 py-2 rounded-full text-sm font-medium text-[#22F23A] bg-[#22F23A]/10 border border-[#22F23A]/20 transition-all"
             >
-              Todos los Artículos
+              {tb("allArticles")}
             </Link>
           </nav>
 
@@ -102,21 +103,21 @@ export function BlogHeader() {
           isMobileMenuOpen ? "max-h-[24rem] opacity-100" : "max-h-0 opacity-0",
         )}
       >
-        <nav className="flex flex-col px-4 py-4 gap-3" aria-label="Menú Mobile Blog">
+        <nav className="flex flex-col px-4 py-4 gap-3" aria-label={tb("navAria")}>
           <Link
             href="/"
             onClick={() => setIsMobileMenuOpen(false)}
             className="flex items-center gap-2 text-base font-semibold text-white hover:text-brand-green py-3 border-b border-gray-800 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 text-brand-green" />
-            <span>Volver a la Web Principal</span>
+            <span>{tb("backToSite")}</span>
           </Link>
           <Link
             href="/blog"
             onClick={() => setIsMobileMenuOpen(false)}
             className="text-base font-medium text-brand-green py-3 border-b border-gray-800 transition-colors"
           >
-            Todos los Artículos del Blog
+            {tb("allArticles")}
           </Link>
           <Link
             href="/#contacto"

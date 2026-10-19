@@ -1,9 +1,10 @@
 "use client"
 
 import { useState, useRef, useEffect, useCallback } from "react"
+import { useLocale, useTranslations } from "next-intl"
 import { X, Download, Copy, Check, Sparkles, Instagram, Facebook } from "lucide-react"
 import type { BlogPost } from "@/lib/blog/types"
-import { SITE_URL } from "@/lib/site"
+import { blogPostUrl } from "@/lib/blog/urls"
 
 interface StoryExportModalProps {
   post: BlogPost
@@ -12,13 +13,15 @@ interface StoryExportModalProps {
 }
 
 const THEMES = [
-  { id: "neon", name: "Verde Neón", accent: "#22F23A", bg: "#0A0A0A" },
+  { id: "neon", name: "Neon", accent: "#22F23A", bg: "#0A0A0A" },
   { id: "cyan", name: "Cyber Cyan", accent: "#3B9EFF", bg: "#060D17" },
   { id: "purple", name: "Deep Purple", accent: "#A855F7", bg: "#0D0617" },
   { id: "amber", name: "Amber Gold", accent: "#FFB020", bg: "#140D05" },
 ]
 
 export function StoryExportModal({ post, isOpen, onClose }: StoryExportModalProps) {
+  const t = useTranslations("blogUi")
+  const locale = useLocale()
   const [selectedTheme, setSelectedTheme] = useState(THEMES[0])
   const [isGenerating, setIsGenerating] = useState(false)
   const [copiedCaption, setCopiedCaption] = useState(false)
@@ -96,25 +99,13 @@ export function StoryExportModal({ post, isOpen, onClose }: StoryExportModalProp
       ctx.fillStyle = selectedTheme.accent
       ctx.font = "bold 28px sans-serif"
       ctx.textAlign = "left"
-      ctx.fillText("⚡ POTENCIAPP LABS", 110, 146)
-
-      // Top Right: Author badge
-      if (post.author.isAgent) {
-        ctx.fillStyle = "rgba(34, 242, 58, 0.15)"
-        ctx.strokeStyle = selectedTheme.accent
-        drawRoundedRect(ctx, 740, 100, 260, 70, 35)
-        ctx.fill()
-        ctx.stroke()
-        ctx.fillStyle = selectedTheme.accent
-        ctx.font = "bold 24px sans-serif"
-        ctx.fillText("🤖 AGENT IA", 780, 146)
-      }
+      ctx.fillText("⚡ POTENCIAPP", 110, 146)
 
       // Category Pill
       const categoryY = 920
       ctx.fillStyle = selectedTheme.accent
       ctx.font = "bold 26px sans-serif"
-      ctx.fillText(post.category.toUpperCase().replace("-", " "), 80, categoryY)
+      ctx.fillText(t(`categories.${post.category}.short`).toUpperCase(), 80, categoryY)
 
       // Main Headline / Title (Space Grotesk style)
       ctx.fillStyle = "#FFFFFF"
@@ -149,7 +140,7 @@ export function StoryExportModal({ post, isOpen, onClose }: StoryExportModalProp
       ctx.fillStyle = "#000000"
       ctx.font = "bold 38px sans-serif"
       ctx.textAlign = "center"
-      ctx.fillText("👆 LINK EN BIO PARA LEER COMPLETO", 540, ctaY + 80)
+      ctx.fillText(t("storyCta"), 540, ctaY + 80)
 
       // Footer branding
       ctx.fillStyle = "rgba(255, 255, 255, 0.4)"
@@ -200,7 +191,7 @@ export function StoryExportModal({ post, isOpen, onClose }: StoryExportModalProp
       }
       c.fillText(line, x, currentY)
     }
-  }, [post, selectedTheme])
+  }, [post, selectedTheme, t])
 
   useEffect(() => {
     if (isOpen) {
@@ -227,8 +218,8 @@ export function StoryExportModal({ post, isOpen, onClose }: StoryExportModalProp
   }
 
   const handleCopyCaption = () => {
-    const postUrl = `${SITE_URL}/${post.locale}/blog/${post.slug}`
-    const caption = `🔥 NUEVO ARTÍCULO EN EL BLOG DE POTENCIAPP\n\n📌 "${post.title}"\n\n${post.summary}\n\n👉 Encontrá el link directo en nuestra biografía o visitá:\n${postUrl}\n\n${post.tags.map((t) => `#${t.replace(/\s+/g, "")}`).join(" ")} #PotenciApp #Software #Tech`
+    const postUrl = blogPostUrl(post.slug, locale)
+    const caption = `${t("caption")}\n\n📌 "${post.title}"\n\n${post.summary}\n\n${t("captionLink")}\n${postUrl}\n\n${post.tags.map((tag) => `#${tag.replace(/\s+/g, "")}`).join(" ")} #PotenciApp`
 
     navigator.clipboard.writeText(caption)
     setCopiedCaption(true)
@@ -244,7 +235,7 @@ export function StoryExportModal({ post, isOpen, onClose }: StoryExportModalProp
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 p-2 rounded-full bg-gray-800/80 text-gray-300 hover:text-white hover:bg-gray-700 transition"
-          aria-label="Cerrar modal"
+          aria-label={t("closeModal")}
         >
           <X className="w-5 h-5" />
         </button>
@@ -258,7 +249,7 @@ export function StoryExportModal({ post, isOpen, onClose }: StoryExportModalProp
               style={{ width: "270px", height: "480px" }}
             />
             <div className="absolute bottom-2 left-2 right-2 text-center py-1 bg-black/60 backdrop-blur-sm rounded-lg text-[10px] text-gray-400 font-mono">
-              Resolución HD: 1080 x 1920 (9:16)
+              {t("resolution")}
             </div>
           </div>
         </div>
@@ -271,17 +262,17 @@ export function StoryExportModal({ post, isOpen, onClose }: StoryExportModalProp
                 <Sparkles className="w-4 h-4 text-[#22F23A]" />
               </span>
               <h3 className="text-xl font-bold text-white font-display">
-                Generador de Historias
+                {t("storyGenTitle")}
               </h3>
             </div>
             <p className="text-sm text-gray-400 mb-6">
-              Exporta una creatividad optimizada en resolución 1080x1920 lista para publicar en <strong>Instagram Stories</strong> y <strong>Facebook Stories</strong>.
+              {t("storyGenBody")}
             </p>
 
             {/* Theme Selector */}
             <div className="mb-6">
               <label className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2 block">
-                Estilo Visual & Acento
+                {t("styleLabel")}
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {THEMES.map((theme) => (
@@ -298,7 +289,7 @@ export function StoryExportModal({ post, isOpen, onClose }: StoryExportModalProp
                       className="w-3.5 h-3.5 rounded-full shrink-0"
                       style={{ backgroundColor: theme.accent }}
                     />
-                    <span>{theme.name}</span>
+                    <span>{theme.id === "neon" ? t("themeNeon") : theme.name}</span>
                   </button>
                 ))}
               </div>
@@ -309,7 +300,7 @@ export function StoryExportModal({ post, isOpen, onClose }: StoryExportModalProp
               <div className="flex items-center gap-3 text-sm text-gray-300">
                 <Instagram className="w-4 h-4 text-pink-400" />
                 <Facebook className="w-4 h-4 text-blue-400" />
-                <span>Compatible con stickers de enlace directo en Instagram</span>
+                <span>{t("linkSticker")}</span>
               </div>
             </div>
           </div>
@@ -322,7 +313,7 @@ export function StoryExportModal({ post, isOpen, onClose }: StoryExportModalProp
               className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#22F23A] text-black font-semibold hover:bg-[#1AD832] transition shadow-lg shadow-green-500/20 active:scale-98"
             >
               <Download className="w-4 h-4" />
-              <span>{isGenerating ? "Generando..." : "Descargar Historia HD (PNG)"}</span>
+              <span>{isGenerating ? t("generating") : t("download")}</span>
             </button>
 
             <button
@@ -332,12 +323,12 @@ export function StoryExportModal({ post, isOpen, onClose }: StoryExportModalProp
               {copiedCaption ? (
                 <>
                   <Check className="w-4 h-4 text-[#22F23A]" />
-                  <span className="text-[#22F23A]">¡Texto de Story copiado!</span>
+                  <span className="text-[#22F23A]">{t("captionCopied")}</span>
                 </>
               ) : (
                 <>
                   <Copy className="w-4 h-4" />
-                  <span>Copiar Caption & Hashtags</span>
+                  <span>{t("copyCaption")}</span>
                 </>
               )}
             </button>

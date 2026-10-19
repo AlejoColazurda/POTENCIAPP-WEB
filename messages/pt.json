@@ -587,5 +587,93 @@
     "ctaWhatsApp": "Fale conosco no WhatsApp",
     "waGreeting": "Olá PotenciApp, li o blog e quero revisar a segurança do meu negócio.",
     "author": "Equipe PotenciApp"
+  },
+  "blogUi": {
+    "metaTitle": "Blog da PotenciApp | Segurança e vendas online para pequenos negócios",
+    "metaDescription": "Guias práticos para lojas e pequenas empresas: golpes, contas invadidas, lojas virtuais, Mercado Livre e as notícias do mês que fazem diferença para você.",
+    "eyebrow": "Blog da PotenciApp",
+    "heroTitle": "Segurança e vendas online, explicadas para o seu negócio.",
+    "heroSubtitle": "Guias curtos e o resumo de notícias do mês para proteger sua loja, suas contas e seus recebimentos. Sem jargão, com passos que você aplica hoje.",
+    "homeAria": "PotenciApp: ir para o início",
+    "navAria": "Navegação do blog",
+    "backToSite": "Voltar ao site principal",
+    "allArticles": "Todos os artigos",
+    "searchPlaceholder": "Buscar por tema ou palavra-chave…",
+    "clear": "Limpar",
+    "all": "Todos",
+    "emptyTitle": "Nenhum artigo para este filtro",
+    "emptyBody": "Tente remover a busca ou a categoria para ver todos os artigos.",
+    "resetFilters": "Limpar filtros",
+    "read": "Ler",
+    "back": "Voltar",
+    "closeArticle": "Fechar artigo",
+    "swipeHint": "👉 Deslize para a direita",
+    "swipeHintLong": "para amassar como papel",
+    "readingTime": "{time} de leitura",
+    "topics": "Temas:",
+    "onlySpanish": "Este artigo ainda não foi traduzido. Você está lendo em espanhol.",
+    "ctaBadge": "⚡ SOFTWARE COM CONTRATO E GARANTIA",
+    "ctaTitle": "Quer que a gente implemente isso no seu negócio?",
+    "ctaBody": "Na PotenciApp desenvolvemos apps, sistemas e lojas virtuais sob medida, com escopo fechado, contrato assinado e garantia pós-entrega.",
+    "whatsapp": "Falar pelo WhatsApp",
+    "waMessage": "Olá PotenciApp, li o artigo \"{title}\" e quero fazer uma pergunta.",
+    "keepExploring": "Continuar explorando o blog",
+    "notFound": "Artigo não encontrado",
+    "share": "Compartilhar:",
+    "shareOn": "Compartilhar no {network}",
+    "discordTitle": "Copiar texto pronto para o Discord",
+    "readOn": "Ler na PotenciApp",
+    "storyButton": "Story (9:16)",
+    "storyTitle": "Criar um story para Instagram e Facebook",
+    "copyLink": "Copiar link",
+    "copied": "Copiado!",
+    "copyCode": "Copiar código",
+    "codeCopied": "Copiado",
+    "closeModal": "Fechar",
+    "resolution": "Resolução HD: 1080 x 1920 (9:16)",
+    "storyGenTitle": "Gerador de stories",
+    "storyGenBody": "Exporte uma imagem 1080x1920 pronta para publicar nos Stories do Instagram e do Facebook.",
+    "styleLabel": "Estilo e cor",
+    "linkSticker": "Compatível com o adesivo de link do Instagram",
+    "generating": "Gerando…",
+    "download": "Baixar story (PNG)",
+    "captionCopied": "Texto copiado!",
+    "copyCaption": "Copiar legenda e hashtags",
+    "storyCta": "👆 LINK NA BIO PARA LER TUDO",
+    "caption": "🔥 NOVO ARTIGO NO BLOG DA POTENCIAPP",
+    "captionLink": "👉 Link na nossa bio ou em:",
+    "themeNeon": "Verde neon",
+    "roleTeam": "PotenciApp",
+    "roleAi": "Redigido com IA e revisado pela equipe",
+    "categories": {
+      "security": {
+        "label": "Cibersegurança para negócios",
+        "short": "Segurança"
+      },
+      "news": {
+        "label": "Resumo do mês",
+        "short": "Resumo do mês"
+      },
+      "ai-agents": {
+        "label": "IA e automação",
+        "short": "IA"
+      },
+      "mobile-apps": {
+        "label": "Desenvolvimento mobile (iOS e Android)",
+        "short": "Apps"
+      },
+      "web-engineering": {
+        "label": "Engenharia web e cloud",
+        "short": "Web e cloud"
+      },
+      "automation": {
+        "label": "Automação de negócios",
+        "short": "Automação"
+      },
+      "startups-scale": {
+        "label": "Crescimento e startups",
+        "short": "Crescimento"
+      }
+    }
   }
 }

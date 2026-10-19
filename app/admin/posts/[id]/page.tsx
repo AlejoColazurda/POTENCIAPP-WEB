@@ -4,8 +4,11 @@ import { requireAdmin, type AdminPost } from "@/lib/admin"
 import { serviceClient } from "@/lib/supabase"
 import { AdminHeader } from "../../admin-header"
 import { PostEditor } from "../post-editor"
+import { TranslationsPanel, type Translation } from "../translations-panel"
 
 export const dynamic = "force-dynamic"
+// Server actions on this page run AI translation (3 languages in parallel).
+export const maxDuration = 120
 
 const STATUS_LABEL: Record<AdminPost["status"], string> = {
   draft: "Borrador",
@@ -21,6 +24,10 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
   const { data } = await serviceClient().from("blog_posts").select("*").eq("id", id).maybeSingle()
   if (!data) notFound()
   const post = data as AdminPost
+  const { data: translations } = await serviceClient()
+    .from("blog_post_translations")
+    .select("locale,title,description,body_md,origin,source_updated_at,updated_at")
+    .eq("post_id", id)
 
   return (
     <>
@@ -69,6 +76,13 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
           {/* key: remount with fresh values after a save or status change */}
           <PostEditor key={post.updated_at} post={post} canDelete={role === "owner"} />
         </div>
+
+        <TranslationsPanel
+          postId={post.id}
+          postUpdatedAt={post.updated_at}
+          published={post.status === "published"}
+          translations={(translations ?? []) as Translation[]}
+        />
       </main>
     </>
   )

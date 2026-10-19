@@ -25,7 +25,7 @@ Cada artículo guarda quién lo creó y quién lo tocó por última vez (`create
 ## 1. Supabase (una vez)
 
 1. Entrá a [supabase.com](https://supabase.com) y creá una cuenta y un proyecto a nombre de PotenciApp. Región **São Paulo**.
-2. En **SQL Editor**, ejecutá en orden `001_blog_posts.sql`, `002_blog_members.sql` y `003_blog_post_fields.sql` (carpeta `supabase/migrations/`).
+2. En **SQL Editor**, ejecutá en orden `001_blog_posts.sql`, `002_blog_members.sql`, `003_blog_post_fields.sql` y `004_blog_post_translations.sql` (carpeta `supabase/migrations/`).
 3. **Authentication → Sign In / Providers**: dejá **Email** activado y **desactivá "Allow new users to sign up"**. Los usuarios los crea el sitio solo para los emails autorizados.
 4. **Authentication → URL Configuration**:
    - Site URL: `https://www.potenciapp.com`
@@ -79,6 +79,16 @@ Fuentes (se editan en `lib/blog-drafts.ts`, constante `FEEDS`): ESET WeLiveSecur
 2. Pestaña **Borradores**: abrí el borrador, leelo entero, corregí y verificá los datos contra las fuentes listadas.
 3. Elegí **categoría**, **portada** (o dejá la de la categoría) y **autor**. **Guardar cambios** y después **Publicar**. Sale en `/blog`, en el sitemap y en `/llms.txt` en el momento.
 4. **Descartar** lo que no sirva.
+
+## Idiomas
+
+El blog se ve en español, inglés, portugués y francés según el idioma elegido en el sitio. Toda la interfaz está en `messages/*.json` (sección `blogUi`).
+
+- **Al publicar**, el artículo se traduce solo con IA a inglés, portugués y francés (tarda hasta un minuto, en segundo plano).
+- En la página del artículo, **Traducciones** muestra el estado de cada idioma: sin traducir, traducida con IA, editada a mano o **desactualizada** (cambiaste el español después). Desde ahí se revisa, se corrige o se vuelve a traducir.
+- Lo que se edita a mano no lo pisa la IA, salvo con **Rehacer todas**.
+- Si un idioma no tiene traducción, se muestra el artículo en español con un aviso, y Google lo indexa solo en español.
+- Artículos del repositorio: la traducción va en `content/blog/<slug>.en.md` (o `.pt.md`, `.fr.md`) con `title` y `description` en el encabezado.
 
 ## 5. Sumar a alguien para que lleve el blog
 

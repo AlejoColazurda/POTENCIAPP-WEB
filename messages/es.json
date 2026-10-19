@@ -587,5 +587,93 @@
     "ctaWhatsApp": "Escribinos por WhatsApp",
     "waGreeting": "Hola PotenciApp, leí el blog y quiero revisar la seguridad de mi negocio.",
     "author": "Equipo PotenciApp"
+  },
+  "blogUi": {
+    "metaTitle": "Blog de PotenciApp | Seguridad y ventas online para comercios y pymes",
+    "metaDescription": "Guías prácticas para comercios y pymes: estafas, cuentas robadas, tiendas online, Mercado Libre y las noticias del mes que te cambian algo.",
+    "eyebrow": "Blog de PotenciApp",
+    "heroTitle": "Seguridad y ventas online, explicadas para tu comercio.",
+    "heroSubtitle": "Guías cortas y el resumen de noticias del mes para proteger tu tienda, tus cuentas y tus cobros. Sin tecnicismos, con pasos que podés aplicar hoy.",
+    "homeAria": "PotenciApp: ir al inicio",
+    "navAria": "Navegación del blog",
+    "backToSite": "Volver a la web principal",
+    "allArticles": "Todos los artículos",
+    "searchPlaceholder": "Buscar por tema o palabra clave…",
+    "clear": "Limpiar",
+    "all": "Todos",
+    "emptyTitle": "No encontramos artículos para este filtro",
+    "emptyBody": "Probá quitando la búsqueda o la categoría para ver todos los artículos.",
+    "resetFilters": "Restablecer filtros",
+    "read": "Leer",
+    "back": "Volver",
+    "closeArticle": "Cerrar artículo",
+    "swipeHint": "👉 Deslizá a la derecha",
+    "swipeHintLong": "para hacer un bollo de papel",
+    "readingTime": "{time} de lectura",
+    "topics": "Temas:",
+    "onlySpanish": "Este artículo todavía no está traducido. Lo estás leyendo en español.",
+    "ctaBadge": "⚡ SOFTWARE CON CONTRATO Y GARANTÍA",
+    "ctaTitle": "¿Querés que lo implementemos en tu negocio?",
+    "ctaBody": "En PotenciApp desarrollamos apps, sistemas y tiendas online a medida, con alcance cerrado, contrato firmado y garantía post-entrega.",
+    "whatsapp": "Hablar por WhatsApp",
+    "waMessage": "Hola PotenciApp, leí el artículo \"{title}\" y quiero hacer una consulta.",
+    "keepExploring": "Seguir explorando el blog",
+    "notFound": "Artículo no encontrado",
+    "share": "Compartir:",
+    "shareOn": "Compartir en {network}",
+    "discordTitle": "Copiar texto listo para Discord",
+    "readOn": "Leer en PotenciApp",
+    "storyButton": "Historia (9:16)",
+    "storyTitle": "Crear una historia para Instagram y Facebook",
+    "copyLink": "Copiar enlace",
+    "copied": "¡Copiado!",
+    "copyCode": "Copiar código",
+    "codeCopied": "Copiado",
+    "closeModal": "Cerrar",
+    "resolution": "Resolución HD: 1080 x 1920 (9:16)",
+    "storyGenTitle": "Generador de historias",
+    "storyGenBody": "Exportá una imagen de 1080x1920 lista para publicar en Instagram Stories y Facebook Stories.",
+    "styleLabel": "Estilo y color",
+    "linkSticker": "Compatible con el sticker de enlace de Instagram",
+    "generating": "Generando…",
+    "download": "Descargar historia (PNG)",
+    "captionCopied": "¡Texto copiado!",
+    "copyCaption": "Copiar texto y hashtags",
+    "storyCta": "👆 LINK EN BIO PARA LEER COMPLETO",
+    "caption": "🔥 NUEVO ARTÍCULO EN EL BLOG DE POTENCIAPP",
+    "captionLink": "👉 Link en nuestra biografía o en:",
+    "themeNeon": "Verde neón",
+    "roleTeam": "PotenciApp",
+    "roleAi": "Redactado con IA y revisado por el equipo",
+    "categories": {
+      "security": {
+        "label": "Ciberseguridad para comercios",
+        "short": "Seguridad"
+      },
+      "news": {
+        "label": "Resumen del mes",
+        "short": "Resumen del mes"
+      },
+      "ai-agents": {
+        "label": "IA y automatización",
+        "short": "IA"
+      },
+      "mobile-apps": {
+        "label": "Desarrollo mobile (iOS y Android)",
+        "short": "Apps"
+      },
+      "web-engineering": {
+        "label": "Ingeniería web y cloud",
+        "short": "Web y cloud"
+      },
+      "automation": {
+        "label": "Automatizaciones de negocio",
+        "short": "Automatización"
+      },
+      "startups-scale": {
+        "label": "Crecimiento y startups",
+        "short": "Crecimiento"
+      }
+    }
   }
 }

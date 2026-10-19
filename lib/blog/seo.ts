@@ -1,47 +1,39 @@
 import type { BlogPost } from "./types"
 import { SITE_URL } from "@/lib/site"
+import { blogIndexUrl, blogPostUrl } from "./urls"
 
-export function generateBlogPostingJsonLd(post: BlogPost, locale = "es") {
-  const url = `${SITE_URL}/blog/${post.slug}`
+/** JSON-LD for an article, in the language the visitor is reading it in. */
+export function generateBlogPostingJsonLd(post: BlogPost) {
+  const url = blogPostUrl(post.slug, post.locale)
 
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": url,
-    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
     headline: post.title,
     description: post.summary,
     image: [post.coverImage],
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
-    author: {
-      "@type": post.author.isAgent ? "SoftwareApplication" : "Person",
-      name: post.author.name,
-      jobTitle: post.author.role,
-      url: post.author.handle ? `https://x.com/${post.author.handle.replace("@", "")}` : SITE_URL,
-    },
+    author: { "@type": "Organization", name: post.author.name, url: SITE_URL },
     publisher: {
       "@type": "Organization",
       name: "PotenciApp",
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/potenciapp-logo.png`,
-      },
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/potenciapp-logo.png` },
     },
     keywords: post.tags.join(", "),
     inLanguage: post.locale,
   }
 }
 
-export function generateBlogIndexJsonLd(locale = "es") {
+export function generateBlogIndexJsonLd(locale: string, name: string, description: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Blog PotenciApp | Software, Inteligencia Artificial y Negocios Digitales",
-    description: "Insights técnicos, arquitectura cloud, agentes autónomos y desarrollo de apps de alto impacto.",
-    url: `${SITE_URL}/${locale}/blog`,
+    name,
+    description,
+    url: blogIndexUrl(locale),
+    inLanguage: locale,
     publisher: {
       "@type": "Organization",
       name: "PotenciApp",

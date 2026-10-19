@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import { useTranslations } from "next-intl"
 import { Search, Newspaper } from "lucide-react"
 import type { BlogPost, BlogCategory } from "@/lib/blog/types"
 import { BLOG_CATEGORIES } from "@/lib/blog/categories"
@@ -13,6 +14,7 @@ interface BlogIndexProps {
 }
 
 export function BlogIndex({ initialPosts }: BlogIndexProps) {
+  const t = useTranslations("blogUi")
   const [posts] = useState<BlogPost[]>(initialPosts)
   const [selectedCategory, setSelectedCategory] = useState<BlogCategory | "all">("all")
   const [searchQuery, setSearchQuery] = useState("")
@@ -55,7 +57,7 @@ export function BlogIndex({ initialPosts }: BlogIndexProps) {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Buscar por tema, tecnología o palabra clave..."
+              placeholder={t("searchPlaceholder")}
               className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#111111] border border-[#1A1A1A] text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#22F23A] transition"
             />
             {searchQuery && (
@@ -63,7 +65,7 @@ export function BlogIndex({ initialPosts }: BlogIndexProps) {
                 onClick={() => setSearchQuery("")}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 hover:text-white"
               >
-                Limpiar
+                {t("clear")}
               </button>
             )}
           </div>
@@ -80,7 +82,7 @@ export function BlogIndex({ initialPosts }: BlogIndexProps) {
                 : "bg-[#111111] text-gray-400 border-[#1A1A1A] hover:text-white hover:border-gray-700"
             }`}
           >
-            Todos ({posts.length})
+            {t("all")} ({posts.length})
           </button>
 
           {categoryKeys.map((catKey) => {
@@ -102,7 +104,7 @@ export function BlogIndex({ initialPosts }: BlogIndexProps) {
                   className="w-2 h-2 rounded-full"
                   style={{ backgroundColor: cat.color }}
                 />
-                <span>{cat.labelShort}</span>
+                <span>{t(`categories.${catKey}.short`)}</span>
                 <span className="text-[10px] opacity-60">({count})</span>
               </button>
             )
@@ -122,9 +124,9 @@ export function BlogIndex({ initialPosts }: BlogIndexProps) {
       ) : (
         <div className="p-12 text-center rounded-2xl bg-[#111111] border border-[#1A1A1A] space-y-4">
           <Newspaper className="w-12 h-12 text-gray-600 mx-auto" />
-          <h3 className="text-lg font-bold text-white">No encontramos artículos para este filtro</h3>
+          <h3 className="text-lg font-bold text-white">{t("emptyTitle")}</h3>
           <p className="text-sm text-gray-400 max-w-sm mx-auto">
-            Probá quitando los filtros de búsqueda o categoría para ver todos los artículos disponibles.
+            {t("emptyBody")}
           </p>
           <button
             onClick={() => {
@@ -133,7 +135,7 @@ export function BlogIndex({ initialPosts }: BlogIndexProps) {
             }}
             className="px-4 py-2 rounded-xl bg-[#22F23A] text-black text-xs font-bold hover:bg-[#1AD832] transition"
           >
-            Restablecer Filtros
+            {t("resetFilters")}
           </button>
         </div>
       )}

@@ -587,5 +587,93 @@
     "ctaWhatsApp": "Écrivez-nous sur WhatsApp",
     "waGreeting": "Bonjour PotenciApp, j'ai lu le blog et je veux vérifier la sécurité de mon entreprise.",
     "author": "Équipe PotenciApp"
+  },
+  "blogUi": {
+    "metaTitle": "Blog PotenciApp | Sécurité et vente en ligne pour les petites entreprises",
+    "metaDescription": "Guides pratiques pour commerces et PME : arnaques, comptes piratés, boutiques en ligne, Mercado Libre et les actualités du mois qui comptent pour vous.",
+    "eyebrow": "Blog PotenciApp",
+    "heroTitle": "Sécurité et vente en ligne, expliquées pour votre commerce.",
+    "heroSubtitle": "Des guides courts et le résumé des actualités du mois pour protéger votre boutique, vos comptes et vos paiements. Sans jargon, avec des étapes à appliquer dès aujourd'hui.",
+    "homeAria": "PotenciApp : aller à l'accueil",
+    "navAria": "Navigation du blog",
+    "backToSite": "Retour au site principal",
+    "allArticles": "Tous les articles",
+    "searchPlaceholder": "Rechercher par thème ou mot-clé…",
+    "clear": "Effacer",
+    "all": "Tous",
+    "emptyTitle": "Aucun article pour ce filtre",
+    "emptyBody": "Essayez de retirer la recherche ou la catégorie pour voir tous les articles.",
+    "resetFilters": "Réinitialiser les filtres",
+    "read": "Lire",
+    "back": "Retour",
+    "closeArticle": "Fermer l'article",
+    "swipeHint": "👉 Glissez vers la droite",
+    "swipeHintLong": "pour le froisser comme du papier",
+    "readingTime": "{time} de lecture",
+    "topics": "Thèmes :",
+    "onlySpanish": "Cet article n'est pas encore traduit. Vous le lisez en espagnol.",
+    "ctaBadge": "⚡ LOGICIEL AVEC CONTRAT ET GARANTIE",
+    "ctaTitle": "Vous voulez qu'on le mette en place dans votre entreprise ?",
+    "ctaBody": "Chez PotenciApp, nous développons des applications, des systèmes et des boutiques en ligne sur mesure, avec un périmètre fixé, un contrat signé et une garantie après livraison.",
+    "whatsapp": "Écrire sur WhatsApp",
+    "waMessage": "Bonjour PotenciApp, j'ai lu l'article \"{title}\" et j'ai une question.",
+    "keepExploring": "Continuer à explorer le blog",
+    "notFound": "Article introuvable",
+    "share": "Partager :",
+    "shareOn": "Partager sur {network}",
+    "discordTitle": "Copier un texte prêt pour Discord",
+    "readOn": "Lire sur PotenciApp",
+    "storyButton": "Story (9:16)",
+    "storyTitle": "Créer une story pour Instagram et Facebook",
+    "copyLink": "Copier le lien",
+    "copied": "Copié !",
+    "copyCode": "Copier le code",
+    "codeCopied": "Copié",
+    "closeModal": "Fermer",
+    "resolution": "Résolution HD : 1080 x 1920 (9:16)",
+    "storyGenTitle": "Générateur de stories",
+    "storyGenBody": "Exportez une image 1080x1920 prête à publier en story sur Instagram et Facebook.",
+    "styleLabel": "Style et couleur",
+    "linkSticker": "Compatible avec le sticker lien d'Instagram",
+    "generating": "Génération…",
+    "download": "Télécharger la story (PNG)",
+    "captionCopied": "Texte copié !",
+    "copyCaption": "Copier le texte et les hashtags",
+    "storyCta": "👆 LIEN EN BIO POUR TOUT LIRE",
+    "caption": "🔥 NOUVEL ARTICLE SUR LE BLOG POTENCIAPP",
+    "captionLink": "👉 Lien dans notre bio ou sur :",
+    "themeNeon": "Vert néon",
+    "roleTeam": "PotenciApp",
+    "roleAi": "Rédigé avec l'IA et relu par l'équipe",
+    "categories": {
+      "security": {
+        "label": "Cybersécurité pour les commerces",
+        "short": "Sécurité"
+      },
+      "news": {
+        "label": "Résumé du mois",
+        "short": "Résumé du mois"
+      },
+      "ai-agents": {
+        "label": "IA et automatisation",
+        "short": "IA"
+      },
+      "mobile-apps": {
+        "label": "Développement mobile (iOS et Android)",
+        "short": "Apps"
+      },
+      "web-engineering": {
+        "label": "Ingénierie web et cloud",
+        "short": "Web et cloud"
+      },
+      "automation": {
+        "label": "Automatisation métier",
+        "short": "Automatisation"
+      },
+      "startups-scale": {
+        "label": "Croissance et startups",
+        "short": "Croissance"
+      }
+    }
   }
 }

@@ -2,10 +2,11 @@
 
 import { revalidatePath } from "next/cache"
 import { headers } from "next/headers"
+import { after } from "next/server"
 import { redirect } from "next/navigation"
 import { BLOG_CATEGORIES } from "@/lib/blog/categories"
 import { fileSlugs } from "@/lib/blog/service"
-import { generateDrafts, generateMonthlyRoundup } from "@/lib/blog-drafts"
+import { generateDrafts, generateMonthlyRoundup, translatePost, TRANSLATION_LOCALES } from "@/lib/blog-drafts"
 import { requireAdmin, requireOwner, roleFor } from "@/lib/admin"
 import { SITE_URL } from "@/lib/site"
 import { adminEmails, isSupabaseConfigured, serviceClient, sessionClient } from "@/lib/supabase"
@@ -228,6 +229,73 @@ export async function setStatus(id: string, status: "draft" | "published" | "dis
   revalidateBlog()
   revalidatePath("/admin")
   revalidatePath(`/admin/posts/${id}`)
+
+  // Translate in the background so publishing stays instant. Hand-edited
+  // translations are kept; the panel shows which ones are out of date.
+  if (status === "published" && process.env.GEMINI_API_KEY) {
+    after(async () => {
+      try {
+        await translatePost(id, { by: "ia" })
+        revalidateBlog()
+      } catch (err) {
+        console.error("auto translation failed", err)
+      }
+    })
+  }
+}
+
+// ---------- translations ----------
+
+export async function translateNow(id: string, force: boolean): Promise<ActionState> {
+  const { email } = await requireAdmin()
+  try {
+    const { done, failed } = await translatePost(id, { force, by: email })
+    revalidateBlog()
+    revalidatePath(`/admin/posts/${id}`)
+    if (failed.length) return { error: `No se pudo traducir a: ${failed.join(", ")}. ${done.length ? `Listo: ${done.join(", ")}.` : ""}` }
+    if (!done.length) return { ok: "No había nada para traducir (las traducciones editadas a mano no se pisan)." }
+    return { ok: `Traducido a: ${done.join(", ")}.` }
+  } catch (err) {
+    return { error: err instanceof Error ? err.message : "No se pudo traducir." }
+  }
+}
+
+export async function saveTranslation(_prev: ActionState, form: FormData): Promise<ActionState> {
+  const { email } = await requireAdmin()
+  const postId = String(form.get("post_id") ?? "")
+  const locale = String(form.get("locale") ?? "") as (typeof TRANSLATION_LOCALES)[number]
+  const title = String(form.get("title") ?? "").trim()
+  const description = String(form.get("description") ?? "").trim()
+  const body_md = String(form.get("body_md") ?? "")
+  if (!TRANSLATION_LOCALES.includes(locale)) return { error: "Idioma inválido." }
+  if (!title) return { error: "El título es obligatorio." }
+  if (description.length > 200) return { error: "La descripción puede tener hasta 200 caracteres." }
+
+  const db = serviceClient()
+  const { data: post } = await db.from("blog_posts").select("updated_at").eq("id", postId).single()
+  if (!post) return { error: "No existe el artículo." }
+  const { error } = await db.from("blog_post_translations").upsert({
+    post_id: postId,
+    locale,
+    title,
+    description,
+    body_md,
+    origin: "manual",
+    source_updated_at: post.updated_at,
+    updated_by: email,
+  })
+  if (error) return { error: error.message }
+  revalidateBlog()
+  revalidatePath(`/admin/posts/${postId}`)
+  return { ok: "Traducción guardada." }
+}
+
+export async function deleteTranslation(postId: string, locale: string) {
+  await requireAdmin()
+  const { error } = await serviceClient().from("blog_post_translations").delete().eq("post_id", postId).eq("locale", locale)
+  if (error) throw new Error(error.message)
+  revalidateBlog()
+  revalidatePath(`/admin/posts/${postId}`)
 }
 
 export async function deletePost(id: string) {

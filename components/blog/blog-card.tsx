@@ -1,9 +1,11 @@
 "use client"
 
 import { motion } from "motion/react"
-import { Clock, Sparkles, ArrowUpRight } from "lucide-react"
+import { useLocale, useTranslations } from "next-intl"
+import { Clock, ArrowUpRight } from "lucide-react"
 import type { BlogPost } from "@/lib/blog/types"
 import { getCategoryInfo } from "@/lib/blog/categories"
+import { formatBlogDate } from "@/lib/blog/urls"
 
 interface BlogCardProps {
   post: BlogPost
@@ -12,6 +14,8 @@ interface BlogCardProps {
 
 export function BlogCard({ post, onSelect }: BlogCardProps) {
   const categoryInfo = getCategoryInfo(post.category)
+  const t = useTranslations("blogUi")
+  const locale = useLocale()
 
   return (
     <motion.article
@@ -46,23 +50,10 @@ export function BlogCard({ post, onSelect }: BlogCardProps) {
               borderColor: `${categoryInfo.color}40`,
             }}
           >
-            {categoryInfo.labelShort}
+            {t(`categories.${post.category}.short`)}
           </span>
         </div>
 
-        {/* Author / Agent Badge */}
-        <div className="absolute top-3 right-3">
-          {post.author.isAgent ? (
-            <span className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-black/70 backdrop-blur-md text-[#22F23A] border border-[#22F23A]/40">
-              <Sparkles className="w-3 h-3 text-[#22F23A]" />
-              <span>Agente IA</span>
-            </span>
-          ) : (
-            <span className="flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-medium bg-black/70 backdrop-blur-md text-gray-300 border border-white/10">
-              <span>{post.author.name}</span>
-            </span>
-          )}
-        </div>
       </div>
 
       {/* Card Content Body */}
@@ -76,11 +67,7 @@ export function BlogCard({ post, onSelect }: BlogCardProps) {
             </span>
             <span>•</span>
             <time dateTime={post.publishedAt}>
-              {new Date(post.publishedAt).toLocaleDateString("es-ES", {
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              })}
+              {formatBlogDate(post.publishedAt, locale, "short")}
             </time>
           </div>
 
@@ -112,7 +99,7 @@ export function BlogCard({ post, onSelect }: BlogCardProps) {
           </div>
 
           <div className="flex items-center gap-1 text-xs font-semibold text-[#22F23A] group-hover:translate-x-0.5 transition-transform">
-            <span>Leer</span>
+            <span>{t("read")}</span>
             <ArrowUpRight className="w-4 h-4" />
           </div>
         </div>

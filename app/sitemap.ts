@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next"
 import { SITE_URL } from "@/lib/site"
 import { routing } from "@/i18n/routing"
 import { getAllPosts } from "@/lib/blog/service"
+import { blogPostUrl } from "@/lib/blog/urls"
 
 export const revalidate = 3600
 
@@ -11,13 +12,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = (locale: string) =>
     locale === routing.defaultLocale ? SITE_URL : `${SITE_URL}/${locale}`
 
-  // Articles are Spanish-only, so only their canonical (unprefixed) URLs are listed.
-  const posts = (await getAllPosts()).map((post) => ({
-    url: `${SITE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.updatedAt || post.publishedAt),
-    changeFrequency: "yearly" as const,
-    priority: 0.6,
-  }))
+  // Each article once per language it really exists in (Spanish + translations).
+  // Untranslated /en|/pt|/fr pages canonicalize to Spanish, so they're left out.
+  const posts = (await getAllPosts()).flatMap((post) =>
+    (post.availableLocales ?? ["es"]).map((locale) => ({
+      url: blogPostUrl(post.slug, locale),
+      lastModified: new Date(post.updatedAt || post.publishedAt),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    })),
+  )
 
   const pages = routing.locales.flatMap((locale) => [
     {

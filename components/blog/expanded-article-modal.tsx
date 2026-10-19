@@ -2,12 +2,14 @@
 
 import { useEffect, useState, useRef, useCallback } from "react"
 import { motion, AnimatePresence } from "motion/react"
-import { ArrowLeft, Clock, Calendar, Sparkles, X, ChevronRight, MessageCircle, MoveRight } from "lucide-react"
+import { useLocale, useTranslations } from "next-intl"
+import { ArrowLeft, Clock, Calendar, X, ChevronRight, MessageCircle, MoveRight } from "lucide-react"
 import type { BlogPost } from "@/lib/blog/types"
 import { getCategoryInfo } from "@/lib/blog/categories"
 import { SocialShareBar } from "./social-share-bar"
 import { MarkdownContent } from "./markdown-content"
 import { whatsAppUrl } from "@/lib/site"
+import { formatBlogDate } from "@/lib/blog/urls"
 
 interface ExpandedArticleModalProps {
   post: BlogPost | null
@@ -15,6 +17,8 @@ interface ExpandedArticleModalProps {
 }
 
 export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProps) {
+  const t = useTranslations("blogUi")
+  const locale = useLocale()
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isCrumpled, setIsCrumpled] = useState(false)
   const articleContentRef = useRef<HTMLDivElement | null>(null)
@@ -171,7 +175,7 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
               className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#111111] hover:bg-[#1A1A1A] border border-[#222222] text-xs font-semibold text-gray-200 hover:text-white transition group shrink-0"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform text-[#22F23A]" />
-              <span>Volver</span>
+              <span>{t("back")}</span>
             </button>
 
             {/* Gesture Cue Pill for Mobile & Desktop (Clickable to crumple) */}
@@ -180,8 +184,8 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
               onClick={triggerCrumpleAndClose}
               className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#141414] hover:bg-[#1C1C1C] border border-[#222222] text-[11px] text-gray-300 font-medium cursor-pointer transition active:scale-95"
             >
-              <span className="text-[#22F23A]">👉 Deslizá a la derecha</span>
-              <span className="hidden sm:inline text-gray-400">para hacer un <strong>bollo de papel</strong></span>
+              <span className="text-[#22F23A]">{t("swipeHint")}</span>
+              <span className="hidden sm:inline text-gray-400">{t("swipeHintLong")}</span>
               <MoveRight className="w-3.5 h-3.5 text-[#22F23A] animate-pulse" />
             </button>
 
@@ -189,7 +193,7 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
               type="button"
               onClick={triggerCrumpleAndClose}
               className="p-2 rounded-xl bg-[#111111] hover:bg-[#1A1A1A] text-gray-400 hover:text-white transition shrink-0"
-              aria-label="Cerrar artículo"
+              aria-label={t("closeArticle")}
             >
               <X className="w-5 h-5" />
             </button>
@@ -211,31 +215,21 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
                   borderColor: `${categoryInfo.color}40`,
                 }}
               >
-                {categoryInfo.label}
+                {t(`categories.${post.category}.label`)}
               </span>
 
               <div className="flex items-center gap-1.5 text-xs text-gray-400">
                 <Clock className="w-3.5 h-3.5 text-gray-500" />
-                <span>{post.readingTime} de lectura</span>
+                <span>{t("readingTime", { time: post.readingTime })}</span>
               </div>
 
               <div className="flex items-center gap-1.5 text-xs text-gray-400">
                 <Calendar className="w-3.5 h-3.5 text-gray-500" />
                 <time dateTime={post.publishedAt}>
-                  {new Date(post.publishedAt).toLocaleDateString("es-ES", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
+                  {formatBlogDate(post.publishedAt, locale)}
                 </time>
               </div>
 
-              {post.author.isAgent && (
-                <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#22F23A]/10 text-[#22F23A] border border-[#22F23A]/30">
-                  <Sparkles className="w-3 h-3" />
-                  <span>Publicado por Agente Autónomo</span>
-                </span>
-              )}
             </div>
 
             {/* Article Title */}
@@ -260,7 +254,7 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
                     <span className="text-xs text-gray-400">{post.author.handle}</span>
                   )}
                 </div>
-                <span className="text-xs text-gray-400">{post.author.role}</span>
+                <span className="text-xs text-gray-400">{t(post.aiAssisted ? "roleAi" : "roleTeam")}</span>
               </div>
             </div>
 
@@ -277,6 +271,12 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
             {/* Top Social Republication Bar */}
             <SocialShareBar post={post} />
 
+            {!post.translated && (
+              <p className="px-4 py-3 rounded-xl bg-yellow-500/10 border border-yellow-500/30 text-sm text-yellow-200">
+                {t("onlySpanish")}
+              </p>
+            )}
+
             {/* Summary Callout Box */}
             <div className="p-5 rounded-2xl bg-[#111111] border-l-4 border-l-[#22F23A] border-y border-r border-[#1A1A1A] text-gray-300 font-medium leading-relaxed italic">
               {post.summary}
@@ -288,7 +288,7 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
             {/* Tags Pill List */}
             <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-[#1A1A1A]">
               <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider mr-2">
-                Temas:
+                {t("topics")}
               </span>
               {post.tags.map((tag) => (
                 <span
@@ -310,30 +310,30 @@ export function ExpandedArticleModal({ post, onClose }: ExpandedArticleModalProp
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#22F23A]/10 rounded-full blur-3xl pointer-events-none" />
               <div className="relative z-10 space-y-4">
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#22F23A]/10 text-[#22F23A] border border-[#22F23A]/30">
-                  ⚡ SOFTWARE CON CONTRATO Y GARANTÍA
+                  {t("ctaBadge")}
                 </span>
                 <h3 className="text-xl sm:text-3xl font-black text-white font-display">
-                  ¿Querés implementar esta tecnología en tu empresa?
+                  {t("ctaTitle")}
                 </h3>
                 <p className="text-sm text-gray-400 max-w-xl">
-                  En PotenciApp desarrollamos aplicaciones móviles, sistemas a medida y soluciones de IA con alcance cerrado, contrato firmado y 90 días de garantía.
+                  {t("ctaBody")}
                 </p>
                 <div className="flex flex-wrap items-center gap-3 pt-2">
                   <a
-                    href={whatsAppUrl(`Hola PotenciApp, leí el artículo "${post.title}" y quiero consultar por un proyecto.`)}
+                    href={whatsAppUrl(t("waMessage", { title: post.title }))}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#22F23A] text-black font-bold hover:bg-[#1AD832] transition shadow-lg shadow-green-500/20"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>Hablar por WhatsApp</span>
+                    <span>{t("whatsapp")}</span>
                   </a>
                   <button
                     type="button"
                     onClick={triggerCrumpleAndClose}
                     className="flex items-center gap-1.5 px-5 py-3 rounded-xl bg-[#1A1A1A] hover:bg-[#222222] text-sm font-semibold text-gray-200 transition"
                   >
-                    <span>Seguir explorando el blog</span>
+                    <span>{t("keepExploring")}</span>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>

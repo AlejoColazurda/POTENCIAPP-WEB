@@ -1,9 +1,10 @@
 "use client"
 
 import { useState } from "react"
+import { useLocale, useTranslations } from "next-intl"
 import { Share2, Check, Copy, MessageSquare, Instagram } from "lucide-react"
 import type { BlogPost } from "@/lib/blog/types"
-import { SITE_URL } from "@/lib/site"
+import { blogPostUrl } from "@/lib/blog/urls"
 import { StoryExportModal } from "./story-export-modal"
 
 interface SocialShareBarProps {
@@ -15,7 +16,9 @@ export function SocialShareBar({ post, className = "" }: SocialShareBarProps) {
   const [copied, setCopied] = useState(false)
   const [isStoryModalOpen, setIsStoryModalOpen] = useState(false)
 
-  const articleUrl = `${SITE_URL}/${post.locale}/blog/${post.slug}`
+  const t = useTranslations("blogUi")
+  // Share the page being read, in the reader's language.
+  const articleUrl = blogPostUrl(post.slug, useLocale())
   const encodedUrl = encodeURIComponent(articleUrl)
   const encodedTitle = encodeURIComponent(post.title)
 
@@ -26,7 +29,7 @@ export function SocialShareBar({ post, className = "" }: SocialShareBarProps) {
   }
 
   const handleCopyDiscordFormat = () => {
-    const discordText = `**${post.title}**\n${post.summary}\n🔗 Leer en PotenciApp: ${articleUrl}`
+    const discordText = `**${post.title}**\n${post.summary}\n🔗 ${t("readOn")}: ${articleUrl}`
     navigator.clipboard.writeText(discordText)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
@@ -39,7 +42,7 @@ export function SocialShareBar({ post, className = "" }: SocialShareBarProps) {
       >
         <div className="flex items-center gap-1.5 px-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
           <Share2 className="w-3.5 h-3.5 text-[#22F23A]" />
-          <span>Sindicación:</span>
+          <span>{t("share")}</span>
         </div>
 
         {/* Twitter / X */}
@@ -48,7 +51,7 @@ export function SocialShareBar({ post, className = "" }: SocialShareBarProps) {
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-xs font-medium text-gray-200 hover:text-white transition"
-          title="Compartir en Twitter / X"
+          title={t("shareOn", { network: "X" })}
         >
           <span>𝕏 Twitter</span>
         </a>
@@ -59,7 +62,7 @@ export function SocialShareBar({ post, className = "" }: SocialShareBarProps) {
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-xs font-medium text-gray-200 hover:text-white transition"
-          title="Compartir en LinkedIn"
+          title={t("shareOn", { network: "LinkedIn" })}
         >
           <span>in LinkedIn</span>
         </a>
@@ -68,7 +71,7 @@ export function SocialShareBar({ post, className = "" }: SocialShareBarProps) {
         <button
           onClick={handleCopyDiscordFormat}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-xs font-medium text-gray-200 hover:text-white transition"
-          title="Copiar texto listo para Discord"
+          title={t("discordTitle")}
         >
           <MessageSquare className="w-3.5 h-3.5 text-indigo-400" />
           <span>Discord</span>
@@ -80,7 +83,7 @@ export function SocialShareBar({ post, className = "" }: SocialShareBarProps) {
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-xs font-medium text-gray-200 hover:text-white transition"
-          title="Compartir en Reddit"
+          title={t("shareOn", { network: "Reddit" })}
         >
           <span className="text-orange-400">🔴 Reddit</span>
         </a>
@@ -89,27 +92,27 @@ export function SocialShareBar({ post, className = "" }: SocialShareBarProps) {
         <button
           onClick={() => setIsStoryModalOpen(true)}
           className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-pink-500/20 to-purple-500/20 hover:from-pink-500/30 hover:to-purple-500/30 border border-pink-500/40 text-xs font-medium text-pink-300 transition"
-          title="Crear Historia para Instagram y Facebook"
+          title={t("storyTitle")}
         >
           <Instagram className="w-3.5 h-3.5 text-pink-400" />
-          <span>Publicar Historia (9:16)</span>
+          <span>{t("storyButton")}</span>
         </button>
 
         {/* Copy Link */}
         <button
           onClick={handleCopyLink}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-xs font-medium text-gray-200 hover:text-white transition ml-auto"
-          title="Copiar enlace directo"
+          title={t("copyLink")}
         >
           {copied ? (
             <>
               <Check className="w-3.5 h-3.5 text-[#22F23A]" />
-              <span className="text-[#22F23A]">¡Copiado!</span>
+              <span className="text-[#22F23A]">{t("copied")}</span>
             </>
           ) : (
             <>
               <Copy className="w-3.5 h-3.5" />
-              <span>Copiar Enlace</span>
+              <span>{t("copyLink")}</span>
             </>
           )}
         </button>

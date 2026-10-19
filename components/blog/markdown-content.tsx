@@ -2,6 +2,7 @@
 
 import React from "react"
 import { Check, Copy } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 interface MarkdownContentProps {
   content: string
@@ -91,6 +92,7 @@ function parseInline(text: string): React.ReactNode {
 
 function CodeBlock({ code, language }: { code: string; language?: string }) {
   const [copied, setCopied] = React.useState(false)
+  const t = useTranslations("blogUi")
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code)
@@ -118,12 +120,12 @@ function CodeBlock({ code, language }: { code: string; language?: string }) {
           {copied ? (
             <>
               <Check className="w-3.5 h-3.5 text-[#22F23A]" />
-              <span className="text-[#22F23A]">Copiado</span>
+              <span className="text-[#22F23A]">{t("codeCopied")}</span>
             </>
           ) : (
             <>
               <Copy className="w-3.5 h-3.5" />
-              <span>Copiar código</span>
+              <span>{t("copyCode")}</span>
             </>
           )}
         </button>

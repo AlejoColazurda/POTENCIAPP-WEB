@@ -1,16 +1,17 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { setRequestLocale } from "next-intl/server"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 import { BlogHeader } from "@/components/blog/blog-header"
 import { Footer } from "@/components/footer"
 import { getPostBySlug, getAllPosts } from "@/lib/blog/service"
 import { generateBlogPostingJsonLd } from "@/lib/blog/seo"
 import { getCategoryInfo } from "@/lib/blog/categories"
-import { SITE_URL, whatsAppUrl } from "@/lib/site"
+import { blogPostUrl, formatBlogDate } from "@/lib/blog/urls"
+import { whatsAppUrl } from "@/lib/site"
 import { SocialShareBar } from "@/components/blog/social-share-bar"
 import { MarkdownContent } from "@/components/blog/markdown-content"
 import { routing } from "@/i18n/routing"
-import { ArrowLeft, Clock, Calendar, Sparkles, MessageCircle, ChevronRight } from "lucide-react"
+import { ArrowLeft, Clock, Calendar, MessageCircle, ChevronRight } from "lucide-react"
 import { Link } from "@/i18n/navigation"
 
 // New posts approved in /admin also call revalidatePath; this is the safety net.
@@ -32,49 +33,45 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { locale, slug } = await params
-  const post = await getPostBySlug(slug)
+  const post = await getPostBySlug(slug, locale)
 
   if (!post) {
-    return {
-      title: "Artículo no encontrado | PotenciApp",
-    }
+    const t = await getTranslations({ locale, namespace: "blogUi" })
+    return { title: `${t("notFound")} | PotenciApp` }
   }
 
-  // Articles are Spanish-only: every locale points its canonical at the Spanish URL.
-  const postUrl = `${SITE_URL}/blog/${post.slug}`
+  // A translated page is its own canonical; an untranslated one (Spanish text
+  // under /en, /pt, /fr) points at the Spanish URL so Google indexes it once.
+  const canonical = blogPostUrl(post.slug, post.locale)
+  const languages = Object.fromEntries(
+    (post.availableLocales ?? ["es"]).map((l) => [l, blogPostUrl(post.slug, l)]),
+  )
 
   return {
     title: `${post.title} | Blog PotenciApp`,
     description: post.summary,
     alternates: {
-      canonical: postUrl,
-      languages: { es: postUrl },
+      canonical,
+      languages: { ...languages, "x-default": blogPostUrl(post.slug, "es") },
     },
     openGraph: {
       title: post.title,
       description: post.summary,
-      url: postUrl,
+      url: canonical,
       siteName: "PotenciApp",
+      locale: post.locale,
       type: "article",
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt || post.publishedAt,
       authors: [post.author.name],
       tags: post.tags,
-      images: [
-        {
-          url: post.coverImage,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
+      images: [{ url: post.coverImage, width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.summary,
       images: [post.coverImage],
-      creator: post.author.handle || "@potenciapp",
     },
   }
 }
@@ -83,13 +80,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { locale, slug } = await params
   setRequestLocale(locale)
 
-  const post = await getPostBySlug(slug)
+  const post = await getPostBySlug(slug, locale)
 
   if (!post) {
     notFound()
   }
 
-  const jsonLd = generateBlogPostingJsonLd(post, locale)
+  const t = await getTranslations("blogUi")
+  const jsonLd = generateBlogPostingJsonLd(post)
   const categoryInfo = getCategoryInfo(post.category)
 
   return (
@@ -111,7 +109,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#111111] hover:bg-[#1A1A1A] border border-[#222222] text-xs font-semibold text-gray-300 hover:text-white transition group"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform text-[#22F23A]" />
-              <span>Volver a todos los artículos</span>
+              <span>{t("allArticles")}</span>
             </Link>
           </div>
 
@@ -125,31 +123,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 borderColor: `${categoryInfo.color}40`,
               }}
             >
-              {categoryInfo.label}
+              {t(`categories.${post.category}.label`)}
             </span>
 
             <div className="flex items-center gap-1.5 text-xs text-gray-400">
               <Clock className="w-3.5 h-3.5 text-gray-500" />
-              <span>{post.readingTime} de lectura</span>
+              <span>{t("readingTime", { time: post.readingTime })}</span>
             </div>
 
             <div className="flex items-center gap-1.5 text-xs text-gray-400">
               <Calendar className="w-3.5 h-3.5 text-gray-500" />
               <time dateTime={post.publishedAt}>
-                {new Date(post.publishedAt).toLocaleDateString("es-ES", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })}
+                {formatBlogDate(post.publishedAt, locale)}
               </time>
             </div>
 
-            {post.author.isAgent && (
-              <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#22F23A]/10 text-[#22F23A] border border-[#22F23A]/30">
-                <Sparkles className="w-3 h-3" />
-                <span>Publicado por Agente Autónomo</span>
-              </span>
-            )}
           </div>
 
           {/* Title */}
@@ -171,7 +159,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <span className="text-xs text-gray-400">{post.author.handle}</span>
                 )}
               </div>
-              <span className="text-xs text-gray-400">{post.author.role}</span>
+              <span className="text-xs text-gray-400">{t(post.aiAssisted ? "roleAi" : "roleTeam")}</span>
             </div>
           </div>
 
@@ -187,6 +175,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Top Social Republication & Story Exporter */}
           <SocialShareBar post={post} />
 
+          {!post.translated && (
+            <p className="px-4 py-3 rounded-xl bg-yellow-500/10 border border-yellow-500/30 text-sm text-yellow-200">
+              {t("onlySpanish")}
+            </p>
+          )}
+
           {/* Summary Callout Box */}
           <div className="p-5 rounded-2xl bg-[#111111] border-l-4 border-l-[#22F23A] border-y border-r border-[#1A1A1A] text-gray-300 font-medium leading-relaxed italic">
             {post.summary}
@@ -198,7 +192,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Tags */}
           <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-[#1A1A1A]">
             <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider mr-2">
-              Temas:
+              {t("topics")}
             </span>
             {post.tags.map((tag) => (
               <span
@@ -220,29 +214,29 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#22F23A]/10 rounded-full blur-3xl pointer-events-none" />
             <div className="relative z-10 space-y-4">
               <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#22F23A]/10 text-[#22F23A] border border-[#22F23A]/30">
-                ⚡ SOFTWARE CON CONTRATO Y GARANTÍA
+                {t("ctaBadge")}
               </span>
               <h3 className="text-xl sm:text-3xl font-black text-white font-display">
-                ¿Querés implementar esta tecnología en tu empresa?
+                {t("ctaTitle")}
               </h3>
               <p className="text-sm text-gray-400 max-w-xl">
-                En PotenciApp desarrollamos aplicaciones móviles, sistemas a medida y soluciones de IA con alcance cerrado, contrato firmado y garantía post-entrega.
+                {t("ctaBody")}
               </p>
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <a
-                  href={whatsAppUrl(`Hola PotenciApp, leí el artículo "${post.title}" y quiero consultar por un proyecto.`)}
+                  href={whatsAppUrl(t("waMessage", { title: post.title }))}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#22F23A] text-black font-bold hover:bg-[#1AD832] transition shadow-lg shadow-green-500/20"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  <span>Hablar por WhatsApp</span>
+                  <span>{t("whatsapp")}</span>
                 </a>
                 <Link
                   href="/blog"
                   className="flex items-center gap-1.5 px-5 py-3 rounded-xl bg-[#1A1A1A] hover:bg-[#222222] text-sm font-semibold text-gray-200 transition"
                 >
-                  <span>Ver todos los artículos</span>
+                  <span>{t("allArticles")}</span>
                   <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>

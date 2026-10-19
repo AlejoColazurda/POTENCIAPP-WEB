@@ -61,6 +61,12 @@ export interface BlogPost {
   status: "draft" | "published"
   viewsCount?: number
   storyCard: StoryCardConfig
+  /** False when the requested locale has no translation and this is the Spanish original. */
+  translated?: boolean
+  /** Locales this article can be read in (always includes "es"). */
+  availableLocales?: Locale[]
+  /** Drafted by AI and approved by a person. */
+  aiAssisted?: boolean
   syndication?: SocialSyndicationTargets
   seo?: {
     metaTitle?: string

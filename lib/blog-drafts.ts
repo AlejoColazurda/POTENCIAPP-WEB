@@ -301,3 +301,118 @@ ${newsList(items)}`
   if (insertError) throw new Error(insertError.message)
   return month.slug
 }
+
+// ---------- translations ----------
+
+const LANGUAGE: Record<"en" | "pt" | "fr", string> = {
+  en: "English (neutral, for small-business owners)",
+  pt: "Brazilian Portuguese",
+  fr: "French",
+}
+
+export const TRANSLATION_LOCALES = Object.keys(LANGUAGE) as ("en" | "pt" | "fr")[]
+
+const TRANSLATE_SYSTEM = `You translate articles from the PotenciApp blog (an Argentine software company) for its English, Portuguese and French pages.
+
+RULES
+- Translate faithfully. Do not add, remove or "improve" information, figures, dates or claims.
+- Keep the Markdown exactly: headings, lists, bold, links. Never change a URL.
+- Keep product and brand names as they are (Mercado Pago, Mercado Libre, Tiendanube, Empretienda, WhatsApp, PotenciApp).
+- Spanish menus or buttons of Argentine apps stay in Spanish, followed by a short translation in parentheses the first time.
+- Natural, plain tone for small-business owners. No jargon.
+- Translate the "## Fuentes" heading too; keep the source titles as they are.
+- description: one sentence, at most 160 characters.`
+
+const TRANSLATE_SCHEMA = {
+  type: "OBJECT",
+  properties: { title: { type: "STRING" }, description: { type: "STRING" }, body_md: { type: "STRING" } },
+  required: ["title", "description", "body_md"],
+}
+
+async function translateOne(post: { title: string; description: string; body_md: string }, locale: "en" | "pt" | "fr") {
+  const apiKey = process.env.GEMINI_API_KEY
+  if (!apiKey) throw new Error("GEMINI_API_KEY no está configurada")
+
+  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
+    body: JSON.stringify({
+      systemInstruction: { parts: [{ text: TRANSLATE_SYSTEM }] },
+      contents: [
+        {
+          role: "user",
+          parts: [{ text: `Target language: ${LANGUAGE[locale]}\n\n${JSON.stringify(post)}` }],
+        },
+      ],
+      generationConfig: {
+        temperature: 0.2,
+        maxOutputTokens: 16384,
+        responseMimeType: "application/json",
+        responseSchema: TRANSLATE_SCHEMA,
+      },
+    }),
+    signal: AbortSignal.timeout(90_000),
+  })
+  if (!res.ok) throw new Error(`Gemini respondió ${res.status}: ${(await res.text()).slice(0, 300)}`)
+  const data = await res.json()
+  const text: string =
+    data?.candidates?.[0]?.content?.parts?.map((p: { text?: string }) => p.text ?? "").join("") ?? ""
+  const out = JSON.parse(text) as { title: string; description: string; body_md: string }
+  // A cut-off answer is worse than none: the page would show half an article.
+  if (!out.title || out.body_md.length < post.body_md.length * 0.6) {
+    throw new Error(`La traducción al ${locale} llegó incompleta`)
+  }
+  return out
+}
+
+/**
+ * Translates a post into en/pt/fr with AI and stores the result in
+ * blog_post_translations (overwriting older AI translations). Translations a
+ * person edited by hand are only replaced when `force` is set. Returns the
+ * locales written; a failure in one language doesn't stop the others.
+ */
+export async function translatePost(
+  postId: string,
+  { locales = TRANSLATION_LOCALES, force = false, by = "ia" }: { locales?: ("en" | "pt" | "fr")[]; force?: boolean; by?: string } = {},
+): Promise<{ done: string[]; failed: string[] }> {
+  const db = serviceClient()
+  const { data: post, error } = await db
+    .from("blog_posts")
+    .select("title,description,body_md,updated_at")
+    .eq("id", postId)
+    .single()
+  if (error || !post) throw new Error(error?.message ?? "No existe el artículo")
+
+  const { data: existing } = await db.from("blog_post_translations").select("locale,origin").eq("post_id", postId)
+  const manual = new Set((existing ?? []).filter((t) => t.origin === "manual").map((t) => t.locale as string))
+
+  const targets = locales.filter((l) => force || !manual.has(l))
+  const results = await Promise.allSettled(
+    targets.map(async (locale) => {
+      const t = await translateOne(post, locale)
+      const { error: upsertError } = await db.from("blog_post_translations").upsert({
+        post_id: postId,
+        locale,
+        title: t.title.trim(),
+        description: t.description.trim().slice(0, 200),
+        body_md: t.body_md,
+        origin: "ai",
+        source_updated_at: post.updated_at,
+        updated_by: by,
+      })
+      if (upsertError) throw new Error(upsertError.message)
+      return locale
+    }),
+  )
+
+  const done: string[] = []
+  const failed: string[] = []
+  results.forEach((r, i) => {
+    if (r.status === "fulfilled") done.push(r.value)
+    else {
+      console.error(`translation ${targets[i]} failed`, r.reason)
+      failed.push(targets[i])
+    }
+  })
+  return { done, failed }
+}
