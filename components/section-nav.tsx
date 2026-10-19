@@ -1,8 +1,18 @@
 "use client"
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react"
+import { Link } from "@/i18n/navigation"
 
-type Item = { label: string; href: `#${string}` }
+type Item = { label: string; href: string }
+
+function hashId(href: string) {
+  const i = href.indexOf("#")
+  return i === -1 ? null : href.slice(i + 1)
+}
+
+function isPagePath(href: string) {
+  return !href.includes("#")
+}
 
 /**
  * Desktop section nav: a single pill slides under the section currently in
@@ -10,18 +20,20 @@ type Item = { label: string; href: `#${string}` }
  * a black backdrop + mix-blend-mode — inside the fixed header's stacking
  * context that backdrop painted as a black box over the hero.
  *
- * Plain <a> on purpose: hash-only next/link hrefs could append to an existing
- * hash (`/#faq#contacto`) instead of replacing it.
+ * Hash hrefs stay plain <a> so they replace the hash instead of stacking
+ * (`/#faq#contacto`). Page hrefs use next-intl Link for locale prefixes.
  */
 export function SectionNav({ items }: { items: Item[] }) {
   const [active, setActive] = useState(-1)
   const listRef = useRef<HTMLUListElement>(null)
   const [pill, setPill] = useState<{ left: number; width: number } | null>(null)
 
-  // Scroll-spy: the active section is the last one whose top crossed 40% of the viewport.
   useEffect(() => {
     const sections = items
-      .map((it) => document.getElementById(it.href.slice(1)))
+      .map((it) => {
+        const id = hashId(it.href)
+        return id ? document.getElementById(id) : null
+      })
       .filter((el): el is HTMLElement => el !== null)
     if (sections.length === 0) return
 
@@ -33,11 +45,10 @@ export function SectionNav({ items }: { items: Item[] }) {
       sections.forEach((el, i) => {
         if (el.getBoundingClientRect().top <= line) idx = i
       })
-      // Past the end of the last section (contact/footer): nothing highlighted.
       const last = sections[sections.length - 1]
       if (idx === sections.length - 1 && last.getBoundingClientRect().bottom < line) idx = -1
       const id = idx === -1 ? null : sections[idx].id
-      setActive(id ? items.findIndex((it) => it.href === `#${id}`) : -1)
+      setActive(id ? items.findIndex((it) => hashId(it.href) === id) : -1)
     }
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update)
@@ -64,19 +75,24 @@ export function SectionNav({ items }: { items: Item[] }) {
         className="absolute inset-y-0 rounded-full bg-brand-green/10 ring-1 ring-brand-green/40 transition-[left,width,opacity] duration-300 ease-out"
         style={{ left: pill?.left ?? 0, width: pill?.width ?? 0, opacity: pill ? 1 : 0 }}
       />
-      {items.map((item, i) => (
-        <li key={item.href} className="relative">
-          <a
-            href={item.href}
-            aria-current={i === active ? "true" : undefined}
-            className={`block rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green ${
-              i === active ? "text-brand-green" : "text-gray-300 hover:text-gray-100"
-            }`}
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
+      {items.map((item, i) => {
+        const className = `flex min-h-11 items-center rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green ${
+          i === active ? "text-brand-green" : "text-gray-300 hover:text-gray-100"
+        }`
+        return (
+          <li key={item.href} className="relative">
+            {isPagePath(item.href) ? (
+              <Link href={item.href} aria-current={i === active ? "page" : undefined} className={className}>
+                {item.label}
+              </Link>
+            ) : (
+              <a href={item.href} aria-current={i === active ? "true" : undefined} className={className}>
+                {item.label}
+              </a>
+            )}
+          </li>
+        )
+      })}
     </ul>
   )
 }

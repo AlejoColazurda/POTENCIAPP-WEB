@@ -14,14 +14,16 @@
     "ctaLong": "Demander une proposition",
     "menu": "Menu",
     "close": "Fermer",
-    "garantia": "Garantie"
+    "garantia": "Garantie",
+    "precios": "Tarifs",
+    "equipo": "Équipe",
+    "blog": "Blog"
   },
   "hero": {
     "statusBadge": "Réponse sous 24 h ouvrées",
     "partnerBadge": "Contrat · Prix ferme · Garantie",
     "outline": "BOOSTONS",
     "h2_line1": "Votre logiciel, avec",
-    "h2_accent": "Sans plafond.",
     "subheading": "Apps, e-commerce et systèmes sur mesure pour entreprises et commerces. Nous signons <bold>le périmètre, les jalons et les dates</bold> avant d'écrire une ligne de code, et nous garantissons par écrit ce que nous livrons.",
     "ctaPrimary": "Demander une proposition",
     "ctaSecondary": "Voir les projets en ligne",
@@ -209,6 +211,11 @@
     "verCaso": "Voir le projet",
     "verDemo": "Ouvrir la démo",
     "live": "En ligne",
+    "liveGroup": "En ligne, qui vendent maintenant",
+    "demoGroup": "Démos que vous pouvez ouvrir",
+    "filterAll": "Tous",
+    "filterLive": "En ligne",
+    "filterDemo": "Démos",
     "items": {
       "maxikiosco": {
         "title": "Maxikiosco 24/7",

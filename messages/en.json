@@ -14,14 +14,16 @@
     "ctaLong": "Request a proposal",
     "menu": "Menu",
     "close": "Close",
-    "garantia": "Warranty"
+    "garantia": "Warranty",
+    "precios": "Pricing",
+    "equipo": "Team",
+    "blog": "Blog"
   },
   "hero": {
     "statusBadge": "We reply within 24 business hours",
     "partnerBadge": "Contract · Fixed price · Warranty",
     "outline": "WE BOOST",
     "h2_line1": "Your software, with",
-    "h2_accent": "No ceiling.",
     "subheading": "Custom apps, e-commerce and systems for companies and retailers. We sign off on <bold>scope, milestones and dates</bold> before writing a line of code, and we back what we deliver in writing.",
     "ctaPrimary": "Request a proposal",
     "ctaSecondary": "See live projects",
@@ -209,6 +211,11 @@
     "verCaso": "View project",
     "verDemo": "Open demo",
     "live": "Live",
+    "liveGroup": "Live, selling now",
+    "demoGroup": "Demos you can open",
+    "filterAll": "All",
+    "filterLive": "Live",
+    "filterDemo": "Demos",
     "items": {
       "maxikiosco": {
         "title": "Maxikiosco 24/7",

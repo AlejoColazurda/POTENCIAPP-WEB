@@ -1,25 +1,34 @@
 import type { MetadataRoute } from "next"
 import { SITE_URL } from "@/lib/site"
-import { routing } from "@/i18n/routing"
+
+/**
+ * Do not import next-intl `routing` here. Metadata routes run outside the
+ * locale layout; that import is a common `/sitemap.xml` 500.
+ * /blog /precios /equipo are added by their own branches.
+ */
+export const dynamic = "force-static"
+
+const locales = ["es", "en", "pt", "fr"] as const
+const defaultLocale = "es"
+
+function originFor(locale: string) {
+  return locale === defaultLocale ? SITE_URL : `${SITE_URL}/${locale}`
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
 
-  const base = (locale: string) =>
-    locale === routing.defaultLocale ? SITE_URL : `${SITE_URL}/${locale}`
-
-  return routing.locales.flatMap((locale) => [
+  return locales.flatMap((locale) => [
     {
-      // Default locale ("as-needed") lives at the root; the rest are prefixed.
-      url: base(locale),
+      url: originFor(locale),
       lastModified,
-      changeFrequency: "monthly" as const,
-      priority: locale === routing.defaultLocale ? 1 : 0.8,
+      changeFrequency: "monthly",
+      priority: locale === defaultLocale ? 1 : 0.8,
     },
     {
-      url: `${base(locale)}/legal`,
+      url: `${originFor(locale)}/legal`,
       lastModified,
-      changeFrequency: "yearly" as const,
+      changeFrequency: "yearly",
       priority: 0.2,
     },
   ])

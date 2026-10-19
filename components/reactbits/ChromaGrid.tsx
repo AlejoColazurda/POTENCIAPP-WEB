@@ -16,6 +16,8 @@ export interface ChromaItem {
   badge?: string;
   /** Small mono chips under the footer, e.g. the stack. */
   tags?: string[];
+  /** Action label, e.g. "Abrir demo". */
+  cta?: string;
 }
 
 export interface ChromaGridProps {
@@ -43,64 +45,8 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
   const setY = useRef<SetterFn | null>(null);
   const pos = useRef({ x: 0, y: 0 });
 
-  const demo: ChromaItem[] = [
-    {
-      image: 'https://i.pravatar.cc/300?img=8',
-      title: 'Alex Rivera',
-      subtitle: 'Full Stack Developer',
-      handle: '@alexrivera',
-      borderColor: '#4F46E5',
-      gradient: 'linear-gradient(145deg,#4F46E5,#000)',
-      url: 'https://github.com/'
-    },
-    {
-      image: 'https://i.pravatar.cc/300?img=11',
-      title: 'Jordan Chen',
-      subtitle: 'DevOps Engineer',
-      handle: '@jordanchen',
-      borderColor: '#10B981',
-      gradient: 'linear-gradient(210deg,#10B981,#000)',
-      url: 'https://linkedin.com/in/'
-    },
-    {
-      image: 'https://i.pravatar.cc/300?img=3',
-      title: 'Morgan Blake',
-      subtitle: 'UI/UX Designer',
-      handle: '@morganblake',
-      borderColor: '#F59E0B',
-      gradient: 'linear-gradient(165deg,#F59E0B,#000)',
-      url: 'https://dribbble.com/'
-    },
-    {
-      image: 'https://i.pravatar.cc/300?img=16',
-      title: 'Casey Park',
-      subtitle: 'Data Scientist',
-      handle: '@caseypark',
-      borderColor: '#EF4444',
-      gradient: 'linear-gradient(195deg,#EF4444,#000)',
-      url: 'https://kaggle.com/'
-    },
-    {
-      image: 'https://i.pravatar.cc/300?img=25',
-      title: 'Sam Kim',
-      subtitle: 'Mobile Developer',
-      handle: '@thesamkim',
-      borderColor: '#8B5CF6',
-      gradient: 'linear-gradient(225deg,#8B5CF6,#000)',
-      url: 'https://github.com/'
-    },
-    {
-      image: 'https://i.pravatar.cc/300?img=60',
-      title: 'Tyler Rodriguez',
-      subtitle: 'Cloud Architect',
-      handle: '@tylerrod',
-      borderColor: '#06B6D4',
-      gradient: 'linear-gradient(135deg,#06B6D4,#000)',
-      url: 'https://aws.amazon.com/'
-    }
-  ];
-
-  const data = items?.length ? items : demo;
+  // Always the caller's list. Never the stock ReactBits pravatars.
+  const data = items ?? [];
 
   useEffect(() => {
     const el = rootRef.current;
@@ -152,6 +98,14 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
     c.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
   };
 
+  const onThumbError: React.ReactEventHandler<HTMLImageElement> = e => {
+    const el = e.currentTarget;
+    el.style.display = 'none';
+    if (el.parentElement) el.parentElement.style.background = '#111111';
+  };
+
+  if (data.length === 0) return null;
+
   return (
     <div
       ref={rootRef}
@@ -180,9 +134,10 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
           role={c.url ? 'link' : undefined}
           tabIndex={c.url ? 0 : undefined}
           aria-label={c.url ? `${c.title} — ${c.subtitle}` : undefined}
-          className="group relative flex flex-col w-full sm:w-[340px] lg:w-[364px] rounded-[20px] overflow-hidden border-2 border-transparent transition-colors duration-300 cursor-pointer"
+          className="group relative flex flex-col w-full sm:w-[340px] lg:w-[364px] rounded-[20px] overflow-hidden border-2 cursor-pointer"
           style={
             {
+              borderColor: c.borderColor || 'transparent',
               '--card-border': c.borderColor || 'transparent',
               background: c.gradient,
               '--spotlight-color': 'rgba(34,242,58,0.22)'
@@ -197,11 +152,12 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
             }}
           />
           <div className="relative z-10 p-[10px] box-border">
-            <div className="relative w-full aspect-[16/10] overflow-hidden rounded-[10px]">
+            <div className="relative w-full aspect-[16/10] overflow-hidden rounded-[10px] bg-[#111111]">
               <img
                 src={c.image}
                 alt={c.title}
                 loading="lazy"
+                onError={onThumbError}
                 className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
               />
               {c.badge && (
@@ -212,34 +168,37 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
               )}
             </div>
           </div>
-          <footer className="relative z-10 px-4 pb-4 pt-1 text-white font-sans">
+          <footer className="relative z-10 px-4 pb-4 pt-1 font-sans">
             <div className="flex items-start justify-between gap-3">
-              <h3 className="m-0 font-display text-[1.05rem] font-semibold tracking-tight">{c.title}</h3>
+              <h3 className="m-0 font-display text-[1.05rem] font-semibold tracking-tight text-gray-100">{c.title}</h3>
               {c.handle && (
-                <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider opacity-70 text-right pt-1">
+                <span className="shrink-0 font-mono text-[10px] uppercase tracking-wider text-gray-300 text-right pt-1">
                   {c.handle}
                 </span>
               )}
             </div>
-            <p className="mt-1 m-0 font-mono text-[10px] uppercase tracking-wider opacity-70">{c.subtitle}</p>
-            {c.location && <p className="mt-2 m-0 text-[0.85rem] leading-relaxed opacity-85">{c.location}</p>}
+            <p className="mt-1 m-0 font-mono text-[10px] uppercase tracking-wider text-gray-300">{c.subtitle}</p>
+            {c.location && <p className="mt-2 m-0 text-[0.85rem] leading-relaxed text-gray-300">{c.location}</p>}
             {c.tags && c.tags.length > 0 && (
               <div className="mt-3 flex flex-wrap gap-x-2 gap-y-1">
                 {c.tags.map(tag => (
-                  <span key={tag} className="font-mono text-[10px] uppercase tracking-wider opacity-55">
+                  <span key={tag} className="font-mono text-[10px] uppercase tracking-wider text-gray-400">
                     {tag}
                   </span>
                 ))}
               </div>
             )}
+            {c.cta && (
+              <p className="mt-3 m-0 font-display text-sm font-semibold text-[#22F23A]">{c.cta}</p>
+            )}
           </footer>
         </article>
       ))}
       <div
-        className="absolute inset-0 pointer-events-none z-30"
+        className="chroma-desaturate absolute inset-0 pointer-events-none z-30"
         style={{
-          backdropFilter: 'grayscale(0.62) brightness(0.82)',
-          WebkitBackdropFilter: 'grayscale(0.62) brightness(0.82)',
+          backdropFilter: 'grayscale(0.15) brightness(0.98)',
+          WebkitBackdropFilter: 'grayscale(0.15) brightness(0.98)',
           background: 'rgba(0,0,0,0.001)',
           maskImage:
             'radial-gradient(circle var(--r) at var(--x) var(--y),transparent 0%,transparent 15%,rgba(0,0,0,0.10) 30%,rgba(0,0,0,0.22)45%,rgba(0,0,0,0.35)60%,rgba(0,0,0,0.50)75%,rgba(0,0,0,0.68)88%,white 100%)',
@@ -249,16 +208,16 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
       />
       <div
         ref={fadeRef}
-        className="absolute inset-0 pointer-events-none transition-opacity duration-[250ms] z-40"
+        className="chroma-desaturate absolute inset-0 pointer-events-none transition-opacity duration-[250ms] z-40"
         style={{
-          backdropFilter: 'grayscale(0.62) brightness(0.82)',
-          WebkitBackdropFilter: 'grayscale(0.62) brightness(0.82)',
+          backdropFilter: 'grayscale(0.15) brightness(0.98)',
+          WebkitBackdropFilter: 'grayscale(0.15) brightness(0.98)',
           background: 'rgba(0,0,0,0.001)',
           maskImage:
             'radial-gradient(circle var(--r) at var(--x) var(--y),white 0%,white 15%,rgba(255,255,255,0.90)30%,rgba(255,255,255,0.78)45%,rgba(255,255,255,0.65)60%,rgba(255,255,255,0.50)75%,rgba(255,255,255,0.32)88%,transparent 100%)',
           WebkitMaskImage:
             'radial-gradient(circle var(--r) at var(--x) var(--y),white 0%,white 15%,rgba(255,255,255,0.90)30%,rgba(255,255,255,0.78)45%,rgba(255,255,255,0.65)60%,rgba(255,255,255,0.50)75%,rgba(255,255,255,0.32)88%,transparent 100%)',
-          opacity: 1
+          opacity: 0
         }}
       />
     </div>

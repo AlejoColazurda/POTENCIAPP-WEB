@@ -27,7 +27,7 @@ export default async function HomePage({
   setRequestLocale(locale)
 
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-gray-950 overflow-x-hidden">
       <Header />
       <main>
         <HeroSection />
@@ -39,6 +39,8 @@ export default async function HomePage({
         <GarantiaSection />
         <ProcesoSection />
         <PorQueSection />
+        {/* Hueco reservado: teasers Precios / Equipo / Blog.
+            feat/precios, feat/equipo y feat/blog-unified montan los bloques acá. */}
         <FaqSection />
         <ContactSection />
       </main>

@@ -293,6 +293,17 @@
 /* ChromaGrid cards sit on the dark page — kill the default white ring. */
 .chroma-grid-brand article { background-clip: padding-box; }
 
+/* Rest saturation ≥ 0.85 (grayscale 0.15). No wash on touch / < lg / reduced motion. */
+@media (hover: none), (max-width: 1023px), (prefers-reduced-motion: reduce) {
+  .chroma-desaturate {
+    display: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [style*="shiny-sweep"] { animation: none !important; }
+  .marquee-track,
+  .marquee-track-fast {
+    animation: none !important;
+  }
 }

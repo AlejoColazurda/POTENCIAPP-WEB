@@ -14,14 +14,16 @@
     "ctaLong": "Pedir proposta",
     "menu": "Menu",
     "close": "Fechar",
-    "garantia": "Garantia"
+    "garantia": "Garantia",
+    "precios": "Preços",
+    "equipo": "Equipe",
+    "blog": "Blog"
   },
   "hero": {
     "statusBadge": "Respondemos em 24 h úteis",
     "partnerBadge": "Contrato · Preço fechado · Garantia",
     "outline": "POTENCIAMOS",
     "h2_line1": "Seu software, com",
-    "h2_accent": "Sem teto.",
     "subheading": "Apps, e-commerce e sistemas sob medida para empresas e comércios. Assinamos <bold>escopo, marcos e datas</bold> antes de escrever uma linha de código, e respaldamos por escrito o que entregamos.",
     "ctaPrimary": "Pedir proposta",
     "ctaSecondary": "Ver projetos no ar",
@@ -209,6 +211,11 @@
     "verCaso": "Ver projeto",
     "verDemo": "Abrir demo",
     "live": "No ar",
+    "liveGroup": "No ar, vendendo agora",
+    "demoGroup": "Demos que você pode abrir",
+    "filterAll": "Todos",
+    "filterLive": "No ar",
+    "filterDemo": "Demos",
     "items": {
       "maxikiosco": {
         "title": "Maxikiosco 24/7",

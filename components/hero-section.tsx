@@ -11,10 +11,23 @@ import CountUp from "@/components/reactbits/CountUp"
 import Magnet from "@/components/reactbits/Magnet"
 import ShinyText from "@/components/reactbits/ShinyText"
 
+function useReducedMotion() {
+  const [reduced, setReduced] = useState(false)
+  useEffect(() => {
+    const mql = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const onChange = () => setReduced(mql.matches)
+    onChange()
+    mql.addEventListener("change", onChange)
+    return () => mql.removeEventListener("change", onChange)
+  }, [])
+  return reduced
+}
+
 export function HeroSection() {
   const t = useTranslations("hero")
   const rotating = t.raw("rotating") as string[]
   const trustChips = t.raw("trustChips") as string[]
+  const reducedMotion = useReducedMotion()
 
   // WebGL aurora only where it earns its cost: desktop, motion allowed.
   const [showAurora, setShowAurora] = useState(false)
@@ -58,7 +71,7 @@ export function HeroSection() {
             copies with trailing padding; -50% lands exactly on copy 3. */}
         <h1
           aria-label={t("outline")}
-          className="relative -mx-4 md:-mx-8 overflow-hidden select-none animate-fade-in-up animation-delay-100"
+          className="relative -mx-4 md:-mx-8 overflow-hidden select-none"
         >
           <div aria-hidden className="marquee-track-fast flex items-center" style={{ width: "max-content" }}>
             {[0, 1, 2, 3].map((i) => (
@@ -82,26 +95,29 @@ export function HeroSection() {
             </div>
 
             <h2 className="font-display text-[40px] sm:text-5xl lg:text-6xl font-bold tracking-[-0.03em] leading-[0.95] text-gray-100">
-              {/* Plain text + CSS fade: this line is the LCP element, and the
-                  old GSAP SplitText kept it at opacity 0 until hydration. */}
-              <span className="block animate-fade-in-up">{t("h2_line1")}</span>
+              {/* Keep this line painted on first paint: it is the LCP element.
+                  No opacity-0 intro animation, no GSAP SplitText. */}
+              <span className="block">{t("h2_line1")}</span>
               <span className="block text-brand-green">
-                <RotatingText
-                  texts={rotating}
-                  rotationInterval={3600}
-                  staggerDuration={0.008}
-                  staggerFrom="first"
-                  splitBy="characters"
-                  mainClassName="justify-start"
-                  splitLevelClassName="overflow-hidden pb-1.5"
-                  // Tween, not spring: a spring's settle time plus the per-char
-                  // stagger outran the rotation interval, so most glyphs were
-                  // still at opacity 0 when the next word swapped in.
-                  transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-                  initial={{ y: "110%", opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: "-110%", opacity: 0 }}
-                />
+                {reducedMotion ? (
+                  rotating[0]
+                ) : (
+                  <RotatingText
+                    texts={rotating}
+                    rotationInterval={3600}
+                    staggerDuration={0.008}
+                    staggerFrom="first"
+                    splitBy="characters"
+                    mainClassName="justify-start"
+                    splitLevelClassName="overflow-hidden pb-1.5"
+                    // First paint must be visible: this line is part of the LCP H2.
+                    // Enter stays at rest; only the outgoing word slides away.
+                    transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+                    initial={{ y: 0, opacity: 1 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: "-110%", opacity: 0 }}
+                  />
+                )}
               </span>
             </h2>
 
@@ -116,10 +132,10 @@ export function HeroSection() {
             />
 
             <div className="flex flex-col sm:flex-row gap-3 pt-2 animate-fade-in-up animation-delay-400">
-              <Magnet padding={90} magnetStrength={5} wrapperClassName="inline-flex">
+              <Magnet padding={90} magnetStrength={5} disabled={reducedMotion} wrapperClassName="inline-flex">
                 <a
                   href="#contacto"
-                  className="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-lg bg-brand-green text-black font-display font-bold text-base hover:bg-green-hover hover:shadow-[0_0_32px_rgba(34,242,58,0.5)] transition-all duration-300 active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-2 min-h-12 h-14 px-7 rounded-lg bg-brand-green text-black font-display font-bold text-base hover:bg-green-hover hover:shadow-[0_0_32px_rgba(34,242,58,0.5)] transition-all duration-300 active:scale-[0.98]"
                 >
                   {t("ctaPrimary")}
                   <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
@@ -127,7 +143,7 @@ export function HeroSection() {
               </Magnet>
               <a
                 href="#proyectos"
-                className="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-lg border border-brand-green text-brand-green font-display font-bold text-base hover:bg-brand-green/10 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 min-h-12 h-14 px-7 rounded-lg border border-brand-green text-brand-green font-display font-bold text-base hover:bg-brand-green/10 transition-all duration-300"
               >
                 {t("ctaSecondary")}
                 <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
@@ -181,13 +197,14 @@ function parseMetric(value: string) {
 
 function MetricItem({ mk, index }: { mk: "m1" | "m2" | "m3" | "m4"; index: number }) {
   const t = useTranslations("hero.metrics")
+  const reducedMotion = useReducedMotion()
   const value = t(`${mk}.value`)
   const parsed = parseMetric(value)
 
   return (
     <div className="bg-gray-950 px-6 py-6 lg:py-8 flex flex-col items-start gap-1">
       <span className="font-display font-bold text-3xl lg:text-4xl text-gray-100 tracking-tight tabular-nums">
-        {parsed ? (
+        {parsed && !reducedMotion ? (
           <>
             {parsed.prefix}
             <CountUp
@@ -202,7 +219,7 @@ function MetricItem({ mk, index }: { mk: "m1" | "m2" | "m3" | "m4"; index: numbe
           value
         )}
       </span>
-      <span className="font-mono text-[11px] uppercase tracking-wider text-gray-500">
+      <span className="font-mono text-[11px] uppercase tracking-wider text-gray-300">
         {t(`${mk}.label`)}
       </span>
     </div>
@@ -227,12 +244,14 @@ function ProductShowcase() {
   const [active, setActive] = useState(0)
 
   // Fast rotation, paused while the visitor hovers the frame.
+  const reducedMotion = useReducedMotion()
+  const [failed, setFailed] = useState<Partial<Record<(typeof SHOWCASE_SLIDES)[number]["key"], boolean>>>({})
   const [paused, setPaused] = useState(false)
   useEffect(() => {
-    if (paused) return
+    if (paused || reducedMotion) return
     const id = setInterval(() => setActive((i) => (i + 1) % SHOWCASE_SLIDES.length), 2600)
     return () => clearInterval(id)
-  }, [paused])
+  }, [paused, reducedMotion])
 
   const slide = SHOWCASE_SLIDES[active]
 
@@ -285,17 +304,29 @@ function ProductShowcase() {
           >
             {/* All slides stay mounted; opacity crossfades between them. */}
             {SHOWCASE_SLIDES.map((sl, i) => (
-              <Image
-                key={sl.key}
-                src={sl.image}
-                alt={tPortfolio(`items.${sl.key}.title`)}
-                fill
-                priority={i === 0}
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className={`object-cover object-top transition-opacity duration-700 ease-out ${
-                  i === active ? "opacity-100" : "opacity-0"
-                }`}
-              />
+              failed[sl.key] ? (
+                <div
+                  key={sl.key}
+                  className={`absolute inset-0 flex items-center justify-center bg-[#111111] font-mono text-sm text-gray-300 ${
+                    i === active ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {sl.domain}
+                </div>
+              ) : (
+                <Image
+                  key={sl.key}
+                  src={sl.image}
+                  alt={tPortfolio(`items.${sl.key}.title`)}
+                  fill
+                  priority={i === 0}
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  onError={() => setFailed((prev) => ({ ...prev, [sl.key]: true }))}
+                  className={`object-cover object-top transition-opacity duration-700 ease-out ${
+                    i === active ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              )
             ))}
             {/* Legibility scrim for the caption strip */}
             <div
@@ -332,7 +363,7 @@ function ProductShowcase() {
         {milestones.map((m) => (
           <span key={m} className="inline-flex items-center gap-1.5">
             <Check className="h-3.5 w-3.5 text-brand-green" strokeWidth={2.5} />
-            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-gray-500">{m}</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-gray-300">{m}</span>
           </span>
         ))}
         <span aria-hidden className="hidden sm:block h-3 w-px bg-gray-800" />
@@ -344,8 +375,9 @@ function ProductShowcase() {
         </span>
       </div>
 
-      <p className="relative mt-3 text-center text-[13px] text-gray-500">
-        {t("caption")}</p>
+      <p className="relative mt-3 text-center text-[13px] text-gray-300">
+        {t("caption")}
+      </p>
 
     </div>
   )
