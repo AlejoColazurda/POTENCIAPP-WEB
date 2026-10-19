@@ -408,6 +408,29 @@
     "privacyNote": "Este chat usa IA (Google Gemini). No compartas contraseñas ni datos sensibles.",
     "privacyLink": "Privacidad"
   },
+  "studioLook": {
+    "eyebrow": "Estudio",
+    "title": "El mismo look frío",
+    "accent": "en cada entrega.",
+    "body": "Stills de sistema: mesa de contrato, sillas vacías, portadas sin tipografía inventada. El video del hero llega cuando haya loop curado.",
+    "frames": {
+      "seguridad": {
+        "label": "Seguridad",
+        "tag": "16:9",
+        "alt": "Cerradura sobre metal oscuro, sin marcas ni números"
+      },
+      "tiendas": {
+        "label": "Tiendas",
+        "tag": "16:9",
+        "alt": "Mostrador vacío en estudio oscuro, sin precios"
+      },
+      "resumen": {
+        "label": "Resumen",
+        "tag": "16:9",
+        "alt": "Hojas en blanco sobre escritorio oscuro, sin titulares"
+      }
+    }
+  },
   "faq": {
     "eyebrow": "Preguntas frecuentes",
     "title": "Lo que todo el mundo pregunta antes de firmar.",

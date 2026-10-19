@@ -408,6 +408,29 @@
     "privacyNote": "Ce chat utilise l'IA (Google Gemini). Ne partagez ni mots de passe ni données sensibles.",
     "privacyLink": "Confidentialité"
   },
+  "studioLook": {
+    "eyebrow": "Studio",
+    "title": "Le même look froid",
+    "accent": "à chaque livraison.",
+    "body": "Stills système : bureau de contrat, chaises vides, couvertures sans typo inventée. La boucle du hero arrive dès qu'un take est validé.",
+    "frames": {
+      "seguridad": {
+        "label": "Sécurité",
+        "tag": "16:9",
+        "alt": "Serrure sur métal sombre, sans marques ni chiffres"
+      },
+      "tiendas": {
+        "label": "Boutiques",
+        "tag": "16:9",
+        "alt": "Comptoir vide en studio sombre, sans prix"
+      },
+      "resumen": {
+        "label": "Résumé",
+        "tag": "16:9",
+        "alt": "Feuilles blanches sur un bureau sombre, sans titres"
+      }
+    }
+  },
   "faq": {
     "eyebrow": "Questions fréquentes",
     "title": "Ce que tout le monde demande avant de signer.",

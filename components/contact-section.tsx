@@ -5,6 +5,7 @@ import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { useTranslations } from "next-intl"
 import AnimatedContent from "@/components/reactbits/AnimatedContent"
 import Magnet from "@/components/reactbits/Magnet"
+import { StudioAtmosphere } from "@/components/studio-atmosphere"
 import { CONTACT_EMAIL, openFloatingChat, whatsAppUrl } from "@/lib/site"
 
 /**
@@ -21,6 +22,7 @@ export function ContactSection() {
       id="contacto"
       className="relative bg-gray-950 py-20 lg:py-32 border-t border-gray-800 overflow-hidden"
     >
+      <StudioAtmosphere plate="blog" opacity={0.16} hairline="right" />
       <div
         aria-hidden
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[520px] rounded-full bg-brand-green/[0.07] blur-[160px] pointer-events-none"

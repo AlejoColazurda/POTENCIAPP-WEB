@@ -12,6 +12,8 @@ import { PorQueSection } from "@/components/porque-section"
 import { FaqSection } from "@/components/faq-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
+import { StudioLookBand } from "@/components/studio-look-band"
+import { StudioScrollProgress } from "@/components/studio-scroll-progress"
 import { getStudioHeroMedia } from "@/lib/studio-assets"
 
 /**
@@ -30,6 +32,7 @@ export default async function HomePage({
 
   return (
     <div className="min-h-screen bg-gray-950">
+      <StudioScrollProgress />
       <Header />
       <main>
         <HeroSection studioHero={studioHero} />
@@ -43,6 +46,7 @@ export default async function HomePage({
         <PorQueSection />
         {/* Hueco reservado: teasers Precios / Equipo / Blog.
             feat/precios, feat/equipo y feat/blog-unified montan los bloques acá. */}
+        <StudioLookBand />
         <FaqSection />
         <ContactSection />
       </main>

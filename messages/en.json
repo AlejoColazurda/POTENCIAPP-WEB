@@ -408,6 +408,29 @@
     "privacyNote": "This chat uses AI (Google Gemini). Don't share passwords or sensitive data.",
     "privacyLink": "Privacy"
   },
+  "studioLook": {
+    "eyebrow": "Studio",
+    "title": "The same cold look",
+    "accent": "in every delivery.",
+    "body": "System stills: contract desk, empty chairs, covers with no invented type. The hero loop lands when a curated take is ready.",
+    "frames": {
+      "seguridad": {
+        "label": "Security",
+        "tag": "16:9",
+        "alt": "Lock hardware on dark metal, no brands or numbers"
+      },
+      "tiendas": {
+        "label": "Stores",
+        "tag": "16:9",
+        "alt": "Empty checkout counter in a dark studio, no prices"
+      },
+      "resumen": {
+        "label": "Digest",
+        "tag": "16:9",
+        "alt": "Blank sheets on a dark desk, no headlines"
+      }
+    }
+  },
   "faq": {
     "eyebrow": "FAQ",
     "title": "What everyone asks before signing.",

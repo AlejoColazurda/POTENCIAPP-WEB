@@ -6,6 +6,7 @@ import { SectionHeading } from "./services-section"
 import { BrandMark } from "@/components/brand"
 import SpotlightCard from "@/components/reactbits/SpotlightCard"
 import AnimatedContent from "@/components/reactbits/AnimatedContent"
+import { StudioAtmosphere } from "@/components/studio-atmosphere"
 
 export function PorQueSection() {
   const t = useTranslations("porque")
@@ -14,8 +15,9 @@ export function PorQueSection() {
   const stats = t.raw("stats") as { value: string; label: string }[]
 
   return (
-    <section className="relative bg-gray-950 py-20 lg:py-32 border-t border-gray-800">
-      <div className="max-w-[1280px] mx-auto px-4 md:px-8">
+    <section className="relative bg-gray-950 py-20 lg:py-32 border-t border-gray-800 overflow-hidden">
+      <StudioAtmosphere plate="equipo" opacity={0.17} hairline="right" />
+      <div className="relative max-w-[1280px] mx-auto px-4 md:px-8">
         <SectionHeading
           eyebrow={t("eyebrow")}
           title={

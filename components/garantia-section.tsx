@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl"
 import CardSwap, { Card } from "@/components/reactbits/CardSwap"
 import AnimatedContent from "@/components/reactbits/AnimatedContent"
 import Magnet from "@/components/reactbits/Magnet"
+import { StudioAtmosphere } from "@/components/studio-atmosphere"
 
 type ItemKey = "contrato" | "precio" | "garantia" | "respaldo"
 
@@ -39,6 +40,7 @@ export function GarantiaSection() {
       id="garantia"
       className="relative bg-gray-950 pt-20 pb-20 lg:pt-32 lg:pb-32 border-t border-gray-800 overflow-hidden"
     >
+      <StudioAtmosphere plate="precios" opacity={0.14} hairline="left" />
       <div
         aria-hidden
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[720px] rounded-full bg-brand-green/[0.05] blur-[170px] pointer-events-none"
