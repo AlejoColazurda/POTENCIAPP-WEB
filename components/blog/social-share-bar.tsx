@@ -2,128 +2,78 @@
 
 import { useState } from "react"
 import { useLocale, useTranslations } from "next-intl"
-import { Share2, Check, Copy, MessageSquare, Instagram } from "lucide-react"
+import { Check, Copy } from "lucide-react"
 import type { BlogPost } from "@/lib/blog/types"
 import { blogPostUrl } from "@/lib/blog/urls"
-import { StoryExportModal } from "./story-export-modal"
+import { whatsAppUrl } from "@/lib/site"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
 
 interface SocialShareBarProps {
   post: BlogPost
   className?: string
 }
 
+const shareBtn =
+  "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-xl border border-[#1A1A1A] bg-[#111111] px-3 text-sm font-medium text-[#F5F5F5] transition hover:border-[#22F23A]/40 hover:text-white"
+
 export function SocialShareBar({ post, className = "" }: SocialShareBarProps) {
   const [copied, setCopied] = useState(false)
-  const [isStoryModalOpen, setIsStoryModalOpen] = useState(false)
-
   const t = useTranslations("blogUi")
-  // Share the page being read, in the reader's language.
-  const articleUrl = blogPostUrl(post.slug, useLocale())
+  const locale = useLocale()
+  const articleUrl = blogPostUrl(post.slug, locale)
   const encodedUrl = encodeURIComponent(articleUrl)
-  const encodedTitle = encodeURIComponent(post.title)
 
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(articleUrl)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
-
-  const handleCopyDiscordFormat = () => {
-    const discordText = `**${post.title}**\n${post.summary}\n🔗 ${t("readOn")}: ${articleUrl}`
-    navigator.clipboard.writeText(discordText)
+  const handleCopyLink = async () => {
+    await navigator.clipboard.writeText(articleUrl)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
 
   return (
-    <>
-      <div
-        className={`flex flex-wrap items-center gap-2 p-3 rounded-2xl bg-gray-900/90 border border-gray-800 backdrop-blur-md shadow-lg ${className}`}
+    <div className={`flex flex-wrap items-center gap-2 ${className}`}>
+      <button type="button" onClick={handleCopyLink} className={shareBtn} title={t("copyLink")}>
+        {copied ? (
+          <>
+            <Check className="h-4 w-4 text-[#22F23A]" aria-hidden />
+            <span className="text-[#22F23A]">{t("copied")}</span>
+          </>
+        ) : (
+          <>
+            <Copy className="h-4 w-4" aria-hidden />
+            <span>{t("copyLink")}</span>
+          </>
+        )}
+      </button>
+
+      <a
+        href={whatsAppUrl(t("waMessage", { title: post.title }))}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={shareBtn}
       >
-        <div className="flex items-center gap-1.5 px-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
-          <Share2 className="w-3.5 h-3.5 text-[#22F23A]" />
-          <span>{t("share")}</span>
-        </div>
+        <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
+        <span>{t("whatsapp")}</span>
+      </a>
 
-        {/* Twitter / X */}
-        <a
-          href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}&via=potenciapp`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-xs font-medium text-gray-200 hover:text-white transition"
-          title={t("shareOn", { network: "X" })}
-        >
-          <span>𝕏 Twitter</span>
-        </a>
+      <a
+        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={shareBtn}
+        title={t("shareOn", { network: "LinkedIn" })}
+      >
+        LinkedIn
+      </a>
 
-        {/* LinkedIn */}
-        <a
-          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-xs font-medium text-gray-200 hover:text-white transition"
-          title={t("shareOn", { network: "LinkedIn" })}
-        >
-          <span>in LinkedIn</span>
-        </a>
-
-        {/* Discord Formatter */}
-        <button
-          onClick={handleCopyDiscordFormat}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-xs font-medium text-gray-200 hover:text-white transition"
-          title={t("discordTitle")}
-        >
-          <MessageSquare className="w-3.5 h-3.5 text-indigo-400" />
-          <span>Discord</span>
-        </button>
-
-        {/* Reddit */}
-        <a
-          href={`https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-xs font-medium text-gray-200 hover:text-white transition"
-          title={t("shareOn", { network: "Reddit" })}
-        >
-          <span className="text-orange-400">🔴 Reddit</span>
-        </a>
-
-        {/* Instagram / Facebook Story Exporter */}
-        <button
-          onClick={() => setIsStoryModalOpen(true)}
-          className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-pink-500/20 to-purple-500/20 hover:from-pink-500/30 hover:to-purple-500/30 border border-pink-500/40 text-xs font-medium text-pink-300 transition"
-          title={t("storyTitle")}
-        >
-          <Instagram className="w-3.5 h-3.5 text-pink-400" />
-          <span>{t("storyButton")}</span>
-        </button>
-
-        {/* Copy Link */}
-        <button
-          onClick={handleCopyLink}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-xs font-medium text-gray-200 hover:text-white transition ml-auto"
-          title={t("copyLink")}
-        >
-          {copied ? (
-            <>
-              <Check className="w-3.5 h-3.5 text-[#22F23A]" />
-              <span className="text-[#22F23A]">{t("copied")}</span>
-            </>
-          ) : (
-            <>
-              <Copy className="w-3.5 h-3.5" />
-              <span>{t("copyLink")}</span>
-            </>
-          )}
-        </button>
-      </div>
-
-      {/* Story Creator Modal */}
-      <StoryExportModal
-        post={post}
-        isOpen={isStoryModalOpen}
-        onClose={() => setIsStoryModalOpen(false)}
-      />
-    </>
+      <a
+        href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={shareBtn}
+        title={t("shareOn", { network: "Facebook" })}
+      >
+        Facebook
+      </a>
+    </div>
   )
 }

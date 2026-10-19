@@ -1,109 +1,73 @@
 "use client"
 
-import { motion } from "motion/react"
 import { useLocale, useTranslations } from "next-intl"
-import { Clock, ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Clock } from "lucide-react"
+import { Link } from "@/i18n/navigation"
+import { cn } from "@/lib/utils"
 import type { BlogPost } from "@/lib/blog/types"
-import { getCategoryInfo } from "@/lib/blog/categories"
 import { formatBlogDate } from "@/lib/blog/urls"
+import { BlogCover } from "./cover"
 
 interface BlogCardProps {
   post: BlogPost
-  onSelect: (post: BlogPost) => void
+  featured?: boolean
 }
 
-export function BlogCard({ post, onSelect }: BlogCardProps) {
-  const categoryInfo = getCategoryInfo(post.category)
+export function BlogCard({ post, featured = false }: BlogCardProps) {
   const t = useTranslations("blogUi")
   const locale = useLocale()
+  const authorName = post.author.name?.trim() || t("roleTeam")
 
   return (
-    <motion.article
-      layoutId={`card-container-${post.slug}`}
-      onClick={() => onSelect(post)}
-      className="group relative flex flex-col h-full bg-[#111111] hover:bg-[#151515] rounded-2xl border border-[#1A1A1A] hover:border-[#22F23A]/50 transition-all duration-300 overflow-hidden cursor-pointer shadow-lg hover:shadow-[0_0_30px_rgba(34,242,58,0.15)] focus:outline-none focus:ring-2 focus:ring-[#22F23A]"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault()
-          onSelect(post)
-        }
-      }}
+    <Link
+      href={`/blog/${post.slug}`}
+      className={cn(
+        "group flex h-full overflow-hidden rounded-2xl border border-[#1A1A1A] bg-[#111111] shadow-lg transition-colors hover:border-[#22F23A]/50 focus-visible:outline-none",
+        featured && "lg:grid lg:grid-cols-2",
+      )}
     >
-      {/* Cover Image Container */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-gray-950">
-        <motion.img
-          layoutId={`card-image-${post.slug}`}
-          src={post.coverImage}
-          alt={post.title}
-          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-80" />
+      <BlogCover
+        src={post.coverImage}
+        alt={post.title}
+        className={featured ? "lg:h-full lg:min-h-[280px]" : undefined}
+        imgClassName="transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+      />
 
-        {/* Category Pill */}
-        <div className="absolute top-3 left-3 flex items-center gap-2">
-          <span
-            className="px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md border border-white/10"
-            style={{
-              backgroundColor: `${categoryInfo.color}18`,
-              color: categoryInfo.color,
-              borderColor: `${categoryInfo.color}40`,
-            }}
-          >
-            {t(`categories.${post.category}.short`)}
-          </span>
-        </div>
-
-      </div>
-
-      {/* Card Content Body */}
-      <div className="flex flex-col flex-grow p-5 sm:p-6 justify-between">
+      <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
         <div>
-          {/* Metadata info */}
-          <div className="flex items-center gap-3 text-xs text-gray-400 mb-3">
-            <span className="flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5 text-gray-500" />
-              <span>{post.readingTime}</span>
+          <div className="mb-3 flex flex-wrap items-center gap-3 text-xs text-[#B8B8B8]">
+            <span className="rounded-full border border-[#22F23A]/30 bg-[#22F23A]/10 px-3 py-1 font-semibold text-[#22F23A]">
+              {t(`categories.${post.category}.short`)}
             </span>
-            <span>•</span>
-            <time dateTime={post.publishedAt}>
-              {formatBlogDate(post.publishedAt, locale, "short")}
-            </time>
+            <span className="inline-flex items-center gap-1">
+              <Clock className="h-3.5 w-3.5" aria-hidden />
+              <span>{t("readingTime", { time: post.readingTime })}</span>
+            </span>
+            <time dateTime={post.publishedAt}>{formatBlogDate(post.publishedAt, locale, featured ? "long" : "short")}</time>
           </div>
 
-          {/* Title */}
-          <motion.h3
-            layoutId={`card-title-${post.slug}`}
-            className="text-lg sm:text-xl font-bold text-white group-hover:text-[#22F23A] transition-colors duration-200 font-display line-clamp-2 mb-2.5 leading-snug"
+          <h3
+            className={cn(
+              "font-display font-bold leading-snug text-[#F5F5F5] transition-colors group-hover:text-[#22F23A]",
+              featured ? "text-2xl sm:text-3xl" : "mb-2.5 line-clamp-2 text-lg sm:text-xl",
+            )}
           >
             {post.title}
-          </motion.h3>
+          </h3>
 
-          {/* Summary / Excerpt */}
-          <p className="text-sm text-gray-400 line-clamp-2 leading-relaxed">
+          <p className={cn("mt-3 text-sm leading-relaxed text-[#B8B8B8]", featured ? "line-clamp-3" : "line-clamp-2")}>
             {post.summary}
           </p>
         </div>
 
-        {/* Bottom CTA / Author footer */}
-        <div className="flex items-center justify-between pt-5 mt-4 border-t border-[#1A1A1A]">
-          <div className="flex items-center gap-2.5">
-            <img
-              src={post.author.avatar}
-              alt={post.author.name}
-              className="w-6 h-6 rounded-full object-cover ring-1 ring-gray-700"
-            />
-            <span className="text-xs text-gray-300 font-medium truncate max-w-[150px]">
-              {post.author.name}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1 text-xs font-semibold text-[#22F23A] group-hover:translate-x-0.5 transition-transform">
-            <span>{t("read")}</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </div>
+        <div className="mt-4 flex items-center justify-between border-t border-[#1A1A1A] pt-5">
+          <span className="truncate text-xs font-medium text-[#B8B8B8]">{authorName}</span>
+          <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#22F23A]">
+            {t("read")}
+            <ArrowUpRight className="h-4 w-4" aria-hidden />
+          </span>
         </div>
       </div>
-    </motion.article>
+    </Link>
   )
 }

@@ -15,6 +15,8 @@
     "menu": "Menu",
     "close": "Fermer",
     "garantia": "Garantie",
+    "precios": "Tarifs",
+    "equipo": "Équipe",
     "blog": "Blog"
   },
   "hero": {
@@ -22,8 +24,7 @@
     "partnerBadge": "Contrat · Prix ferme · Garantie",
     "outline": "BOOSTONS",
     "h2_line1": "Votre logiciel, avec",
-    "h2_accent": "Sans plafond.",
-    "subheading": "Nous développons <bold>sur mesure et à partir de zéro</bold> des apps, des systèmes et des boutiques en ligne faits exactement pour votre entreprise. Et si vous vendez déjà sur Tiendanube, Empretienda, WordPress ou Mercado Libre, nous vous aidons à grandir là. Le tout avec contrat, prix ferme et garantie.",
+    "subheading": "Apps, e-commerce et systèmes sur mesure pour entreprises et commerces. Nous signons <bold>le périmètre, les jalons et les dates</bold> avant d'écrire une ligne de code, et nous garantissons par écrit ce que nous livrons.",
     "ctaPrimary": "Demander une proposition",
     "ctaSecondary": "Voir les projets en ligne",
     "metrics": {
@@ -235,6 +236,11 @@
     "verCaso": "Voir le projet",
     "verDemo": "Ouvrir la démo",
     "live": "En ligne",
+    "liveGroup": "En ligne, qui vendent maintenant",
+    "demoGroup": "Démos que vous pouvez ouvrir",
+    "filterAll": "Tous",
+    "filterLive": "En ligne",
+    "filterDemo": "Démos",
     "items": {
       "maxikiosco": {
         "title": "Maxikiosco 24/7",
@@ -589,35 +595,35 @@
     "author": "Équipe PotenciApp"
   },
   "blogUi": {
-    "metaTitle": "Blog PotenciApp | Sécurité et vente en ligne pour les petites entreprises",
-    "metaDescription": "Guides pratiques pour commerces et PME : arnaques, comptes piratés, boutiques en ligne, Mercado Libre et les actualités du mois qui comptent pour vous.",
-    "eyebrow": "Blog PotenciApp",
-    "heroTitle": "Sécurité et vente en ligne, expliquées pour votre commerce.",
-    "heroSubtitle": "Des guides courts et le résumé des actualités du mois pour protéger votre boutique, vos comptes et vos paiements. Sans jargon, avec des étapes à appliquer dès aujourd'hui.",
+    "metaTitle": "Blog PotenciApp | Sécurité et boutiques pour commerces",
+    "metaDescription": "Guides courts pour protéger votre boutique, vos comptes et vos encaissements. Sans jargon.",
+    "eyebrow": "Blog",
+    "heroTitle": "Sécurité et boutiques, expliquées pour votre commerce.",
+    "heroSubtitle": "Guides courts et le brief du mois. Des étapes applicables aujourd’hui.",
     "homeAria": "PotenciApp : aller à l'accueil",
     "navAria": "Navigation du blog",
     "backToSite": "Retour au site principal",
     "allArticles": "Tous les articles",
-    "searchPlaceholder": "Rechercher par thème ou mot-clé…",
+    "searchPlaceholder": "Rechercher un sujet",
     "clear": "Effacer",
     "all": "Tous",
     "emptyTitle": "Aucun article pour ce filtre",
-    "emptyBody": "Essayez de retirer la recherche ou la catégorie pour voir tous les articles.",
+    "emptyBody": "Effacez la recherche ou la catégorie pour voir le reste.",
     "resetFilters": "Réinitialiser les filtres",
     "read": "Lire",
     "back": "Retour",
     "closeArticle": "Fermer l'article",
-    "swipeHint": "👉 Glissez vers la droite",
-    "swipeHintLong": "pour le froisser comme du papier",
+    "swipeHint": "",
+    "swipeHintLong": "",
     "readingTime": "{time} de lecture",
     "topics": "Thèmes :",
-    "onlySpanish": "Cet article n'est pas encore traduit. Vous le lisez en espagnol.",
-    "ctaBadge": "⚡ LOGICIEL AVEC CONTRAT ET GARANTIE",
-    "ctaTitle": "Vous voulez qu'on le mette en place dans votre entreprise ?",
-    "ctaBody": "Chez PotenciApp, nous développons des applications, des systèmes et des boutiques en ligne sur mesure, avec un périmètre fixé, un contrat signé et une garantie après livraison.",
-    "whatsapp": "Écrire sur WhatsApp",
-    "waMessage": "Bonjour PotenciApp, j'ai lu l'article \"{title}\" et j'ai une question.",
-    "keepExploring": "Continuer à explorer le blog",
+    "onlySpanish": "Cet article est en espagnol.",
+    "ctaBadge": "Sous contrat et garantie",
+    "ctaTitle": "Vous voulez qu’on l’implémente sous contrat ?",
+    "ctaBody": "Périmètre fermé, prix écrit, garantie 90 jours sur ce que nous livrons.",
+    "whatsapp": "Parler sur WhatsApp",
+    "waMessage": "Bonjour PotenciApp, j’ai lu « {title} » et je veux une proposition.",
+    "keepExploring": "Plus d’articles",
     "notFound": "Article introuvable",
     "share": "Partager :",
     "shareOn": "Partager sur {network}",
@@ -626,7 +632,7 @@
     "storyButton": "Story (9:16)",
     "storyTitle": "Créer une story pour Instagram et Facebook",
     "copyLink": "Copier le lien",
-    "copied": "Copié !",
+    "copied": "Copié",
     "copyCode": "Copier le code",
     "codeCopied": "Copié",
     "closeModal": "Fermer",
@@ -639,20 +645,20 @@
     "download": "Télécharger la story (PNG)",
     "captionCopied": "Texte copié !",
     "copyCaption": "Copier le texte et les hashtags",
-    "storyCta": "👆 LIEN EN BIO POUR TOUT LIRE",
-    "caption": "🔥 NOUVEL ARTICLE SUR LE BLOG POTENCIAPP",
-    "captionLink": "👉 Lien dans notre bio ou sur :",
+    "storyCta": "Lire l’article",
+    "caption": "Nouvel article sur le blog PotenciApp",
+    "captionLink": "Lire :",
     "themeNeon": "Vert néon",
     "roleTeam": "PotenciApp",
-    "roleAi": "Rédigé avec l'IA et relu par l'équipe",
+    "roleAi": "Rédigé avec l’IA, relu par l’équipe",
     "categories": {
       "security": {
-        "label": "Cybersécurité pour les commerces",
+        "label": "Sécurité",
         "short": "Sécurité"
       },
       "news": {
-        "label": "Résumé du mois",
-        "short": "Résumé du mois"
+        "label": "Brief du mois",
+        "short": "Brief"
       },
       "ai-agents": {
         "label": "IA et automatisation",
@@ -673,7 +679,19 @@
       "startups-scale": {
         "label": "Croissance et startups",
         "short": "Croissance"
+      },
+      "stores": {
+        "label": "Boutiques",
+        "short": "Boutiques"
       }
-    }
+    },
+    "emptyCatalogTitle": "Aucune note publiée pour le moment",
+    "emptyCatalogBody": "Elles apparaîtront ici dès publication. En attendant, demandez une proposition.",
+    "storyEnabled": "false"
+  },
+  "blogTeaser": {
+    "eyebrow": "Blog",
+    "title": "Des notes applicables.",
+    "cta": "Voir le blog"
   }
 }

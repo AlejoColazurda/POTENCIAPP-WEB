@@ -1,8 +1,9 @@
 import type { Locale } from "@/i18n/routing"
 
+export type PublicBlogCategory = "security" | "stores" | "news"
+
 export type BlogCategory =
-  | "security"
-  | "news"
+  | PublicBlogCategory
   | "ai-agents"
   | "mobile-apps"
   | "web-engineering"

@@ -3,6 +3,8 @@ title: Cómo proteger tu tienda online en Tiendanube o Empretienda: checklist de
 description: Accesos de empleados, verificación en dos pasos, el email que nadie cuida y las apps que instalaste y te olvidaste. Diez puntos para revisar tu tienda en una hora.
 date: 2026-10-01
 tag: E-commerce
+category: security
+author: Equipo PotenciApp
 ---
 
 Las plataformas como Tiendanube y Empretienda se encargan de mucha seguridad por vos: los servidores, el certificado SSL, los pagos. Lo que **no** pueden cuidar es cómo se accede a tu panel. Y ahí es donde aparecen casi todos los problemas: una contraseña repetida, un ex empleado que todavía puede entrar o un email sin protección.

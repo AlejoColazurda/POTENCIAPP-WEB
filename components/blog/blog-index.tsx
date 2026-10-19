@@ -1,12 +1,16 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useMemo, useState } from "react"
 import { useTranslations } from "next-intl"
-import { Search, Newspaper } from "lucide-react"
-import type { BlogPost, BlogCategory } from "@/lib/blog/types"
-import { BLOG_CATEGORIES } from "@/lib/blog/categories"
+import { Search } from "lucide-react"
+import { Link } from "@/i18n/navigation"
+import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/ui/empty"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { whatsAppUrl } from "@/lib/site"
+import { PUBLIC_BLOG_CATEGORIES } from "@/lib/blog/categories"
+import type { BlogCategory, BlogPost } from "@/lib/blog/types"
 import { BlogCard } from "./blog-card"
-import { ExpandedArticleModal } from "./expanded-article-modal"
 
 interface BlogIndexProps {
   initialPosts: BlogPost[]
@@ -15,136 +19,147 @@ interface BlogIndexProps {
 
 export function BlogIndex({ initialPosts }: BlogIndexProps) {
   const t = useTranslations("blogUi")
-  const [posts] = useState<BlogPost[]>(initialPosts)
+  const tBlog = useTranslations("blog")
+  const tNav = useTranslations("nav")
   const [selectedCategory, setSelectedCategory] = useState<BlogCategory | "all">("all")
   const [searchQuery, setSearchQuery] = useState("")
-  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null)
 
   const filteredPosts = useMemo(() => {
-    return posts.filter((post) => {
-      // Category match
+    return initialPosts.filter((post) => {
       if (selectedCategory !== "all" && post.category !== selectedCategory) {
         return false
       }
 
-      // Search query match
       if (searchQuery.trim().length > 0) {
         const q = searchQuery.toLowerCase().trim()
         const inTitle = post.title.toLowerCase().includes(q)
         const inSummary = post.summary.toLowerCase().includes(q)
-        const inTags = post.tags.some((t) => t.toLowerCase().includes(q))
+        const inTags = post.tags.some((tag) => tag.toLowerCase().includes(q))
         if (!inTitle && !inSummary && !inTags) return false
       }
 
       return true
     })
-  }, [posts, selectedCategory, searchQuery])
+  }, [initialPosts, selectedCategory, searchQuery])
 
-  // Only categories that have articles: an empty pill is a dead end.
-  const categoryKeys = (Object.keys(BLOG_CATEGORIES) as BlogCategory[]).filter((key) =>
-    posts.some((p) => p.category === key),
+  const categoryKeys = PUBLIC_BLOG_CATEGORIES.filter((key) =>
+    initialPosts.some((post) => post.category === key),
   )
+
+  const featured =
+    filteredPosts.find((post) => post.featured) ?? filteredPosts[0] ?? null
+  const rest = featured ? filteredPosts.filter((post) => post.slug !== featured.slug) : []
+
+  if (initialPosts.length === 0) {
+    return (
+      <Empty className="rounded-2xl border border-[#1A1A1A] bg-[#111111]">
+        <EmptyHeader>
+          <EmptyTitle className="text-[#F5F5F5]">{t("emptyCatalogTitle")}</EmptyTitle>
+          <EmptyDescription className="text-[#B8B8B8]">{t("emptyCatalogBody")}</EmptyDescription>
+        </EmptyHeader>
+        <EmptyContent>
+          <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center">
+            <Button asChild className="min-h-11 bg-[#22F23A] text-black hover:bg-[#1AD832]">
+              <Link href="/#contacto">{tNav("ctaLong")}</Link>
+            </Button>
+            <Button asChild variant="outline" className="min-h-11 border-[#1A1A1A] text-[#F5F5F5]">
+              <a href={whatsAppUrl(tBlog("waGreeting"))} target="_blank" rel="noopener noreferrer">
+                {t("whatsapp")}
+              </a>
+            </Button>
+          </div>
+        </EmptyContent>
+      </Empty>
+    )
+  }
 
   return (
     <div className="w-full">
-      {/* Header Controls: Search & Category Chips */}
       <div className="mb-10 space-y-6">
-        {/* Search Bar & Quick Toggles */}
-        <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
-          <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={t("searchPlaceholder")}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#111111] border border-[#1A1A1A] text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#22F23A] transition"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 hover:text-white"
-              >
-                {t("clear")}
-              </button>
-            )}
-          </div>
-
+        <div className="relative w-full">
+          <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#B8B8B8]" aria-hidden />
+          <Input
+            type="search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder={t("searchPlaceholder")}
+            className="h-11 min-h-11 w-full rounded-xl border-[#1A1A1A] bg-[#111111] pl-10 text-[#F5F5F5] placeholder:text-[#B8B8B8]"
+          />
+          {searchQuery ? (
+            <button
+              type="button"
+              onClick={() => setSearchQuery("")}
+              className="absolute right-2 top-1/2 inline-flex h-11 min-w-11 -translate-y-1/2 items-center justify-center text-sm text-[#B8B8B8] hover:text-[#F5F5F5]"
+            >
+              {t("clear")}
+            </button>
+          ) : null}
         </div>
 
-        {/* Category Pills Slider */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+        <div className="no-scrollbar flex items-center gap-2 overflow-x-auto">
           <button
+            type="button"
             onClick={() => setSelectedCategory("all")}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition border ${
+            className={`inline-flex min-h-11 items-center whitespace-nowrap rounded-xl border px-4 text-sm font-semibold transition ${
               selectedCategory === "all"
-                ? "bg-white text-black border-white shadow-sm"
-                : "bg-[#111111] text-gray-400 border-[#1A1A1A] hover:text-white hover:border-gray-700"
+                ? "border-[#22F23A] bg-[#22F23A] text-black"
+                : "border-[#1A1A1A] bg-[#111111] text-[#B8B8B8] hover:text-[#F5F5F5]"
             }`}
           >
-            {t("all")} ({posts.length})
+            {t("all")}
           </button>
 
           {categoryKeys.map((catKey) => {
-            const cat = BLOG_CATEGORIES[catKey]
-            const count = posts.filter((p) => p.category === catKey).length
             const isSelected = selectedCategory === catKey
-
             return (
               <button
                 key={catKey}
+                type="button"
                 onClick={() => setSelectedCategory(catKey)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition border ${
+                className={`inline-flex min-h-11 items-center whitespace-nowrap rounded-xl border px-4 text-sm font-semibold transition ${
                   isSelected
-                    ? "bg-[#22F23A]/15 border-[#22F23A] text-[#22F23A]"
-                    : "bg-[#111111] text-gray-400 border-[#1A1A1A] hover:text-white hover:border-gray-700"
+                    ? "border-[#22F23A] bg-[#22F23A] text-black"
+                    : "border-[#1A1A1A] bg-[#111111] text-[#B8B8B8] hover:text-[#F5F5F5]"
                 }`}
               >
-                <span
-                  className="w-2 h-2 rounded-full"
-                  style={{ backgroundColor: cat.color }}
-                />
-                <span>{t(`categories.${catKey}.short`)}</span>
-                <span className="text-[10px] opacity-60">({count})</span>
+                {t(`categories.${catKey}.short`)}
               </button>
             )
           })}
         </div>
       </div>
 
-      {/* Grid of Articles */}
-      {filteredPosts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredPosts.map((post) => (
-            <div key={post.slug} className="h-full">
-              <BlogCard post={post} onSelect={setSelectedPost} />
+      {filteredPosts.length > 0 && featured ? (
+        <div className="space-y-8">
+          <BlogCard post={featured} featured />
+          {rest.length > 0 ? (
+            <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {rest.map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))}
             </div>
-          ))}
+          ) : null}
         </div>
       ) : (
-        <div className="p-12 text-center rounded-2xl bg-[#111111] border border-[#1A1A1A] space-y-4">
-          <Newspaper className="w-12 h-12 text-gray-600 mx-auto" />
-          <h3 className="text-lg font-bold text-white">{t("emptyTitle")}</h3>
-          <p className="text-sm text-gray-400 max-w-sm mx-auto">
-            {t("emptyBody")}
-          </p>
-          <button
-            onClick={() => {
-              setSelectedCategory("all")
-              setSearchQuery("")
-            }}
-            className="px-4 py-2 rounded-xl bg-[#22F23A] text-black text-xs font-bold hover:bg-[#1AD832] transition"
-          >
-            {t("resetFilters")}
-          </button>
-        </div>
+        <Empty className="rounded-2xl border border-[#1A1A1A] bg-[#111111]">
+          <EmptyHeader>
+            <EmptyTitle className="text-[#F5F5F5]">{t("emptyTitle")}</EmptyTitle>
+            <EmptyDescription className="text-[#B8B8B8]">{t("emptyBody")}</EmptyDescription>
+          </EmptyHeader>
+          <EmptyContent>
+            <Button
+              type="button"
+              onClick={() => {
+                setSelectedCategory("all")
+                setSearchQuery("")
+              }}
+              className="min-h-11 bg-[#22F23A] text-black hover:bg-[#1AD832]"
+            >
+              {t("resetFilters")}
+            </Button>
+          </EmptyContent>
+        </Empty>
       )}
-
-      {/* Expanded Article Modal (Screen Eating Morph + Paper Crumple Swipe) */}
-      <ExpandedArticleModal
-        post={selectedPost}
-        onClose={() => setSelectedPost(null)}
-      />
     </div>
   )
 }

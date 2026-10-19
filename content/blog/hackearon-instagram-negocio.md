@@ -3,6 +3,8 @@ title: Me hackearon el Instagram del negocio: qué hacer en las primeras horas
 description: Una guía paso a paso para recuperar la cuenta, avisarle a tus clientes y cerrar la puerta para que no vuelva a pasar.
 date: 2026-09-24
 tag: Redes sociales
+category: security
+author: Equipo PotenciApp
 ---
 
 Perder el Instagram del negocio no es solo perder seguidores: es perder el canal por el que te llegan pedidos, y darle a un desconocido una cuenta con tu nombre para estafar a tus clientes. Lo que hagas en las primeras horas hace mucha diferencia.

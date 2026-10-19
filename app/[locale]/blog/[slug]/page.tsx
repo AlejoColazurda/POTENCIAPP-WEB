@@ -1,20 +1,23 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { getTranslations, setRequestLocale } from "next-intl/server"
-import { BlogHeader } from "@/components/blog/blog-header"
+import { Calendar, Clock } from "lucide-react"
+import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { getPostBySlug, getAllPosts } from "@/lib/blog/service"
-import { generateBlogPostingJsonLd } from "@/lib/blog/seo"
-import { getCategoryInfo } from "@/lib/blog/categories"
+import { getAllPosts, getPostBySlug } from "@/lib/blog/service"
+import { blogPostOgImage, generateBlogPostingJsonLd } from "@/lib/blog/seo"
 import { blogPostUrl, formatBlogDate } from "@/lib/blog/urls"
 import { whatsAppUrl } from "@/lib/site"
 import { SocialShareBar } from "@/components/blog/social-share-bar"
 import { MarkdownContent } from "@/components/blog/markdown-content"
+import { BlogCover } from "@/components/blog/cover"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { routing } from "@/i18n/routing"
-import { ArrowLeft, Clock, Calendar, MessageCircle, ChevronRight } from "lucide-react"
 import { Link } from "@/i18n/navigation"
 
-// New posts approved in /admin also call revalidatePath; this is the safety net.
 export const revalidate = 300
 
 interface BlogPostPageProps {
@@ -27,7 +30,7 @@ export async function generateStaticParams() {
     posts.map((post) => ({
       locale,
       slug: post.slug,
-    }))
+    })),
   )
 }
 
@@ -40,12 +43,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     return { title: `${t("notFound")} | PotenciApp` }
   }
 
-  // A translated page is its own canonical; an untranslated one (Spanish text
-  // under /en, /pt, /fr) points at the Spanish URL so Google indexes it once.
-  const canonical = blogPostUrl(post.slug, post.locale)
-  const languages = Object.fromEntries(
-    (post.availableLocales ?? ["es"]).map((l) => [l, blogPostUrl(post.slug, l)]),
-  )
+  const canonical = blogPostUrl(post.slug, "es")
+  const languages = Object.fromEntries(routing.locales.map((l) => [l, blogPostUrl(post.slug, l)]))
+  const og = blogPostOgImage(post.coverImage, post.title)
 
   return {
     title: `${post.title} | Blog PotenciApp`,
@@ -65,13 +65,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       modifiedTime: post.updatedAt || post.publishedAt,
       authors: [post.author.name],
       tags: post.tags,
-      images: [{ url: post.coverImage, width: 1200, height: 630, alt: post.title }],
+      images: [og],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.summary,
-      images: [post.coverImage],
+      images: [og.url],
     },
   }
 }
@@ -88,160 +88,104 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const t = await getTranslations("blogUi")
   const jsonLd = generateBlogPostingJsonLd(post)
-  const categoryInfo = getCategoryInfo(post.category)
+  const authorName = post.author.name?.trim() || t("roleTeam")
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-gray-100 flex flex-col justify-between selection:bg-[#22F23A] selection:text-black">
-      {/* Schema.org BlogPosting Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <div className="flex min-h-screen flex-col justify-between bg-[#0A0A0A] text-[#F5F5F5] selection:bg-[#22F23A] selection:text-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <BlogHeader />
+      <Header />
 
-      <main className="flex-1 pt-24 sm:pt-32 pb-20">
-        <article className="max-w-[880px] mx-auto px-4 sm:px-8 space-y-8">
-          {/* Back link */}
-          <div>
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#111111] hover:bg-[#1A1A1A] border border-[#222222] text-xs font-semibold text-gray-300 hover:text-white transition group"
-            >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform text-[#22F23A]" />
-              <span>{t("allArticles")}</span>
-            </Link>
-          </div>
+      <main className="flex-1 px-4 pb-20 pt-24 sm:px-8 sm:pt-32">
+        <article className="mx-auto max-w-3xl space-y-8">
+          <nav aria-label="breadcrumb">
+            <ol className="flex flex-wrap items-center gap-2 text-sm text-[#B8B8B8]">
+              <li>
+                <Link href="/blog" className="underline-offset-4 hover:text-[#22F23A] hover:underline">
+                  {t("eyebrow")}
+                </Link>
+              </li>
+              <li aria-hidden className="text-[#1A1A1A]">
+                /
+              </li>
+              <li className="text-[#F5F5F5]">{post.title}</li>
+            </ol>
+          </nav>
 
-          {/* Category & Metadata Header */}
           <div className="flex flex-wrap items-center gap-3">
-            <span
-              className="px-3 py-1 rounded-full text-xs font-semibold border"
-              style={{
-                backgroundColor: `${categoryInfo.color}15`,
-                color: categoryInfo.color,
-                borderColor: `${categoryInfo.color}40`,
-              }}
-            >
+            <span className="rounded-full border border-[#22F23A]/30 bg-[#22F23A]/10 px-3 py-1 text-xs font-semibold text-[#22F23A]">
               {t(`categories.${post.category}.label`)}
             </span>
-
-            <div className="flex items-center gap-1.5 text-xs text-gray-400">
-              <Clock className="w-3.5 h-3.5 text-gray-500" />
+            <div className="flex items-center gap-1.5 text-sm text-[#B8B8B8]">
+              <Clock className="h-3.5 w-3.5" aria-hidden />
               <span>{t("readingTime", { time: post.readingTime })}</span>
             </div>
-
-            <div className="flex items-center gap-1.5 text-xs text-gray-400">
-              <Calendar className="w-3.5 h-3.5 text-gray-500" />
-              <time dateTime={post.publishedAt}>
-                {formatBlogDate(post.publishedAt, locale)}
-              </time>
+            <div className="flex items-center gap-1.5 text-sm text-[#B8B8B8]">
+              <Calendar className="h-3.5 w-3.5" aria-hidden />
+              <time dateTime={post.publishedAt}>{formatBlogDate(post.publishedAt, locale)}</time>
             </div>
-
           </div>
 
-          {/* Title */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white font-display tracking-tight leading-tight">
+          <h1 className="font-display text-3xl font-black leading-tight tracking-tight text-[#F5F5F5] sm:text-4xl md:text-5xl">
             {post.title}
           </h1>
 
-          {/* Author Card */}
-          <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-[#111111] border border-[#1A1A1A]">
-            <img
-              src={post.author.avatar}
-              alt={post.author.name}
-              className="w-12 h-12 rounded-full object-cover ring-2 ring-[#22F23A]/40"
-            />
-            <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-white">{post.author.name}</span>
-                {post.author.handle && (
-                  <span className="text-xs text-gray-400">{post.author.handle}</span>
-                )}
-              </div>
-              <span className="text-xs text-gray-400">{t(post.aiAssisted ? "roleAi" : "roleTeam")}</span>
-            </div>
+          <div className="text-sm text-[#B8B8B8]">
+            <p className="font-semibold text-[#F5F5F5]">{authorName}</p>
+            <p>{t(post.aiAssisted ? "roleAi" : "roleTeam")}</p>
           </div>
 
-          {/* Hero Cover Image */}
-          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border border-[#1A1A1A] shadow-2xl">
-            <img
-              src={post.coverImage}
-              alt={post.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <BlogCover src={post.coverImage} alt={post.title} className="rounded-2xl border border-[#1A1A1A]" />
 
-          {/* Top Social Republication & Story Exporter */}
-          <SocialShareBar post={post} />
-
-          {!post.translated && (
-            <p className="px-4 py-3 rounded-xl bg-yellow-500/10 border border-yellow-500/30 text-sm text-yellow-200">
+          {!post.translated ? (
+            <p className="rounded-xl border border-[#1A1A1A] bg-[#111111] px-4 py-3 text-sm text-[#B8B8B8]">
               {t("onlySpanish")}
             </p>
-          )}
+          ) : null}
 
-          {/* Summary Callout Box */}
-          <div className="p-5 rounded-2xl bg-[#111111] border-l-4 border-l-[#22F23A] border-y border-r border-[#1A1A1A] text-gray-300 font-medium leading-relaxed italic">
+          <p className="rounded-2xl border border-[#1A1A1A] border-l-4 border-l-[#22F23A] bg-[#111111] p-5 text-base leading-relaxed text-[#B8B8B8]">
             {post.summary}
-          </div>
+          </p>
 
-          {/* Main Markdown Body Content */}
-          <MarkdownContent content={post.content} />
+          <MarkdownContent content={post.content} className="text-[#B8B8B8]" />
 
-          {/* Tags */}
-          <div className="flex flex-wrap items-center gap-2 pt-6 border-t border-[#1A1A1A]">
-            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider mr-2">
-              {t("topics")}
-            </span>
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-3 py-1 rounded-full text-xs font-medium bg-[#111111] text-gray-300 border border-[#1A1A1A]"
-              >
-                #{tag}
-              </span>
-            ))}
-          </div>
-
-          {/* Bottom Social Share Bar */}
-          <div className="pt-2">
-            <SocialShareBar post={post} />
-          </div>
-
-          {/* Conversion CTA to PotenciApp */}
-          <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#111111] via-[#0E0E0E] to-[#0A0A0A] border border-[#22F23A]/30 overflow-hidden shadow-2xl">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#22F23A]/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="relative z-10 space-y-4">
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#22F23A]/10 text-[#22F23A] border border-[#22F23A]/30">
-                {t("ctaBadge")}
-              </span>
-              <h3 className="text-xl sm:text-3xl font-black text-white font-display">
-                {t("ctaTitle")}
-              </h3>
-              <p className="text-sm text-gray-400 max-w-xl">
-                {t("ctaBody")}
-              </p>
-              <div className="flex flex-wrap items-center gap-3 pt-2">
-                <a
-                  href={whatsAppUrl(t("waMessage", { title: post.title }))}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#22F23A] text-black font-bold hover:bg-[#1AD832] transition shadow-lg shadow-green-500/20"
+          {post.tags.length > 0 ? (
+            <div className="flex flex-wrap items-center gap-2 border-t border-[#1A1A1A] pt-6">
+              {post.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-[#1A1A1A] bg-[#111111] px-3 py-1 text-xs font-medium text-[#B8B8B8]"
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>{t("whatsapp")}</span>
-                </a>
-                <Link
-                  href="/blog"
-                  className="flex items-center gap-1.5 px-5 py-3 rounded-xl bg-[#1A1A1A] hover:bg-[#222222] text-sm font-semibold text-gray-200 transition"
-                >
-                  <span>{t("allArticles")}</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
+                  {tag}
+                </span>
+              ))}
             </div>
-          </div>
+          ) : null}
+
+          <SocialShareBar post={post} />
+
+          <Card className="border-[#1A1A1A] bg-[#111111]">
+            <CardContent className="space-y-4 p-6 sm:p-8">
+              <Badge className="border-transparent bg-[#22F23A] text-black">{t("ctaBadge")}</Badge>
+              <h2 className="font-display text-xl font-bold text-[#F5F5F5] sm:text-2xl">{t("ctaTitle")}</h2>
+              <p className="max-w-xl text-sm text-[#B8B8B8]">{t("ctaBody")}</p>
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <Button asChild className="min-h-11 bg-[#22F23A] text-black hover:bg-[#1AD832]">
+                  <a
+                    href={whatsAppUrl(t("waMessage", { title: post.title }))}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <WhatsAppIcon className="h-4 w-4" />
+                    {t("whatsapp")}
+                  </a>
+                </Button>
+                <Button asChild variant="outline" className="min-h-11 border-[#1A1A1A] text-[#F5F5F5]">
+                  <Link href="/blog">{t("keepExploring")}</Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </article>
       </main>
 

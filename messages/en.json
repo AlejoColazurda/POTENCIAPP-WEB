@@ -15,6 +15,8 @@
     "menu": "Menu",
     "close": "Close",
     "garantia": "Warranty",
+    "precios": "Pricing",
+    "equipo": "Team",
     "blog": "Blog"
   },
   "hero": {
@@ -22,8 +24,7 @@
     "partnerBadge": "Contract · Fixed price · Warranty",
     "outline": "WE BOOST",
     "h2_line1": "Your software, with",
-    "h2_accent": "No ceiling.",
-    "subheading": "We build <bold>custom software from scratch</bold>: apps, systems and online stores made exactly for your business. And if you already sell on Tiendanube, Empretienda, WordPress or Mercado Libre, we help you grow there. All under contract, fixed price and warranty.",
+    "subheading": "Custom apps, e-commerce and systems for companies and retailers. We sign off on <bold>scope, milestones and dates</bold> before writing a line of code, and we back what we deliver in writing.",
     "ctaPrimary": "Request a proposal",
     "ctaSecondary": "See live projects",
     "metrics": {
@@ -235,6 +236,11 @@
     "verCaso": "View project",
     "verDemo": "Open demo",
     "live": "Live",
+    "liveGroup": "Live, selling now",
+    "demoGroup": "Demos you can open",
+    "filterAll": "All",
+    "filterLive": "Live",
+    "filterDemo": "Demos",
     "items": {
       "maxikiosco": {
         "title": "Maxikiosco 24/7",
@@ -589,35 +595,35 @@
     "author": "PotenciApp team"
   },
   "blogUi": {
-    "metaTitle": "PotenciApp Blog | Security and online sales for small businesses",
-    "metaDescription": "Practical guides for shops and small businesses: scams, hijacked accounts, online stores, Mercado Libre and the month's news that actually affects you.",
-    "eyebrow": "PotenciApp Blog",
-    "heroTitle": "Security and online sales, explained for your business.",
-    "heroSubtitle": "Short guides and a monthly news roundup to protect your store, your accounts and your payments. No jargon, just steps you can apply today.",
+    "metaTitle": "PotenciApp Blog | Security and stores for retailers",
+    "metaDescription": "Short guides to protect your store, accounts and payments. No jargon.",
+    "eyebrow": "Blog",
+    "heroTitle": "Security and stores, explained for your shop.",
+    "heroSubtitle": "Short guides and the monthly briefing. Steps you can apply today.",
     "homeAria": "PotenciApp: go to home",
     "navAria": "Blog navigation",
     "backToSite": "Back to main site",
     "allArticles": "All articles",
-    "searchPlaceholder": "Search by topic or keyword…",
+    "searchPlaceholder": "Search by topic",
     "clear": "Clear",
     "all": "All",
-    "emptyTitle": "No articles match this filter",
-    "emptyBody": "Try removing the search or category to see every article.",
+    "emptyTitle": "No articles for this filter",
+    "emptyBody": "Clear the search or category to see the rest.",
     "resetFilters": "Reset filters",
     "read": "Read",
     "back": "Back",
     "closeArticle": "Close article",
-    "swipeHint": "👉 Swipe right",
-    "swipeHintLong": "to crumple it like paper",
+    "swipeHint": "",
+    "swipeHintLong": "",
     "readingTime": "{time} read",
     "topics": "Topics:",
-    "onlySpanish": "This article hasn't been translated yet. You're reading it in Spanish.",
-    "ctaBadge": "⚡ SOFTWARE WITH A CONTRACT AND WARRANTY",
-    "ctaTitle": "Want us to set this up for your business?",
-    "ctaBody": "At PotenciApp we build custom apps, systems and online stores with a fixed scope, a signed contract and a post-delivery warranty.",
+    "onlySpanish": "This article is in Spanish.",
+    "ctaBadge": "Under contract and warranty",
+    "ctaTitle": "Want us to implement this under contract?",
+    "ctaBody": "Closed scope, written price, 90-day warranty on what we deliver.",
     "whatsapp": "Chat on WhatsApp",
-    "waMessage": "Hi PotenciApp, I read the article \"{title}\" and have a question.",
-    "keepExploring": "Keep exploring the blog",
+    "waMessage": "Hi PotenciApp — I read “{title}” and I want a proposal.",
+    "keepExploring": "More articles",
     "notFound": "Article not found",
     "share": "Share:",
     "shareOn": "Share on {network}",
@@ -626,7 +632,7 @@
     "storyButton": "Story (9:16)",
     "storyTitle": "Create a story for Instagram and Facebook",
     "copyLink": "Copy link",
-    "copied": "Copied!",
+    "copied": "Copied",
     "copyCode": "Copy code",
     "codeCopied": "Copied",
     "closeModal": "Close",
@@ -639,20 +645,20 @@
     "download": "Download story (PNG)",
     "captionCopied": "Text copied!",
     "copyCaption": "Copy caption and hashtags",
-    "storyCta": "👆 LINK IN BIO TO READ IT ALL",
-    "caption": "🔥 NEW ARTICLE ON THE POTENCIAPP BLOG",
-    "captionLink": "👉 Link in our bio or at:",
+    "storyCta": "Read the article",
+    "caption": "New article on the PotenciApp blog",
+    "captionLink": "Read:",
     "themeNeon": "Neon green",
     "roleTeam": "PotenciApp",
-    "roleAi": "Drafted with AI and reviewed by the team",
+    "roleAi": "Drafted with AI, reviewed by the team",
     "categories": {
       "security": {
-        "label": "Cybersecurity for businesses",
+        "label": "Security",
         "short": "Security"
       },
       "news": {
-        "label": "Monthly roundup",
-        "short": "Monthly roundup"
+        "label": "Monthly briefing",
+        "short": "Briefing"
       },
       "ai-agents": {
         "label": "AI and automation",
@@ -673,7 +679,19 @@
       "startups-scale": {
         "label": "Growth and startups",
         "short": "Growth"
+      },
+      "stores": {
+        "label": "Stores",
+        "short": "Stores"
       }
-    }
+    },
+    "emptyCatalogTitle": "No notes published yet",
+    "emptyCatalogBody": "When we publish, they will show up here. Meanwhile, request a proposal.",
+    "storyEnabled": "false"
+  },
+  "blogTeaser": {
+    "eyebrow": "Blog",
+    "title": "Notes you can apply.",
+    "cta": "View the blog"
   }
 }

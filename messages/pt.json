@@ -15,6 +15,8 @@
     "menu": "Menu",
     "close": "Fechar",
     "garantia": "Garantia",
+    "precios": "Preços",
+    "equipo": "Equipe",
     "blog": "Blog"
   },
   "hero": {
@@ -22,8 +24,7 @@
     "partnerBadge": "Contrato · Preço fechado · Garantia",
     "outline": "POTENCIAMOS",
     "h2_line1": "Seu software, com",
-    "h2_accent": "Sem teto.",
-    "subheading": "Desenvolvemos <bold>sob medida e do zero</bold> apps, sistemas e lojas online feitos exatamente para o seu negócio. E se você já vende na Tiendanube, Empretienda, WordPress ou Mercado Livre, ajudamos você a crescer ali. Tudo com contrato, preço fechado e garantia.",
+    "subheading": "Apps, e-commerce e sistemas sob medida para empresas e comércios. Assinamos <bold>escopo, marcos e datas</bold> antes de escrever uma linha de código, e respaldamos por escrito o que entregamos.",
     "ctaPrimary": "Pedir proposta",
     "ctaSecondary": "Ver projetos no ar",
     "metrics": {
@@ -235,6 +236,11 @@
     "verCaso": "Ver projeto",
     "verDemo": "Abrir demo",
     "live": "No ar",
+    "liveGroup": "No ar, vendendo agora",
+    "demoGroup": "Demos que você pode abrir",
+    "filterAll": "Todos",
+    "filterLive": "No ar",
+    "filterDemo": "Demos",
     "items": {
       "maxikiosco": {
         "title": "Maxikiosco 24/7",
@@ -589,35 +595,35 @@
     "author": "Equipe PotenciApp"
   },
   "blogUi": {
-    "metaTitle": "Blog da PotenciApp | Segurança e vendas online para pequenos negócios",
-    "metaDescription": "Guias práticos para lojas e pequenas empresas: golpes, contas invadidas, lojas virtuais, Mercado Livre e as notícias do mês que fazem diferença para você.",
-    "eyebrow": "Blog da PotenciApp",
-    "heroTitle": "Segurança e vendas online, explicadas para o seu negócio.",
-    "heroSubtitle": "Guias curtos e o resumo de notícias do mês para proteger sua loja, suas contas e seus recebimentos. Sem jargão, com passos que você aplica hoje.",
+    "metaTitle": "Blog da PotenciApp | Segurança e lojas para comércios",
+    "metaDescription": "Guias curtas para proteger sua loja, suas contas e seus pagamentos. Sem jargão.",
+    "eyebrow": "Blog",
+    "heroTitle": "Segurança e lojas, explicadas para o seu comércio.",
+    "heroSubtitle": "Guias curtas e o resumo do mês. Passos que você pode aplicar hoje.",
     "homeAria": "PotenciApp: ir para o início",
     "navAria": "Navegação do blog",
     "backToSite": "Voltar ao site principal",
     "allArticles": "Todos os artigos",
-    "searchPlaceholder": "Buscar por tema ou palavra-chave…",
+    "searchPlaceholder": "Buscar por tema",
     "clear": "Limpar",
     "all": "Todos",
-    "emptyTitle": "Nenhum artigo para este filtro",
-    "emptyBody": "Tente remover a busca ou a categoria para ver todos os artigos.",
-    "resetFilters": "Limpar filtros",
+    "emptyTitle": "Não há artigos para este filtro",
+    "emptyBody": "Limpe a busca ou a categoria para ver o restante.",
+    "resetFilters": "Redefinir filtros",
     "read": "Ler",
     "back": "Voltar",
     "closeArticle": "Fechar artigo",
-    "swipeHint": "👉 Deslize para a direita",
-    "swipeHintLong": "para amassar como papel",
+    "swipeHint": "",
+    "swipeHintLong": "",
     "readingTime": "{time} de leitura",
     "topics": "Temas:",
-    "onlySpanish": "Este artigo ainda não foi traduzido. Você está lendo em espanhol.",
-    "ctaBadge": "⚡ SOFTWARE COM CONTRATO E GARANTIA",
-    "ctaTitle": "Quer que a gente implemente isso no seu negócio?",
-    "ctaBody": "Na PotenciApp desenvolvemos apps, sistemas e lojas virtuais sob medida, com escopo fechado, contrato assinado e garantia pós-entrega.",
-    "whatsapp": "Falar pelo WhatsApp",
-    "waMessage": "Olá PotenciApp, li o artigo \"{title}\" e quero fazer uma pergunta.",
-    "keepExploring": "Continuar explorando o blog",
+    "onlySpanish": "Este artigo está em espanhol.",
+    "ctaBadge": "Com contrato e garantia",
+    "ctaTitle": "Quer que a gente implemente isso com contrato?",
+    "ctaBody": "Escopo fechado, preço por escrito e 90 dias de garantia sobre o que entregamos.",
+    "whatsapp": "Falar no WhatsApp",
+    "waMessage": "Olá PotenciApp, li «{title}» e quero uma proposta.",
+    "keepExploring": "Mais artigos",
     "notFound": "Artigo não encontrado",
     "share": "Compartilhar:",
     "shareOn": "Compartilhar no {network}",
@@ -626,7 +632,7 @@
     "storyButton": "Story (9:16)",
     "storyTitle": "Criar um story para Instagram e Facebook",
     "copyLink": "Copiar link",
-    "copied": "Copiado!",
+    "copied": "Copiado",
     "copyCode": "Copiar código",
     "codeCopied": "Copiado",
     "closeModal": "Fechar",
@@ -639,20 +645,20 @@
     "download": "Baixar story (PNG)",
     "captionCopied": "Texto copiado!",
     "copyCaption": "Copiar legenda e hashtags",
-    "storyCta": "👆 LINK NA BIO PARA LER TUDO",
-    "caption": "🔥 NOVO ARTIGO NO BLOG DA POTENCIAPP",
-    "captionLink": "👉 Link na nossa bio ou em:",
+    "storyCta": "Ler o artigo",
+    "caption": "Novo artigo no blog da PotenciApp",
+    "captionLink": "Ler:",
     "themeNeon": "Verde neon",
     "roleTeam": "PotenciApp",
     "roleAi": "Redigido com IA e revisado pela equipe",
     "categories": {
       "security": {
-        "label": "Cibersegurança para negócios",
+        "label": "Segurança",
         "short": "Segurança"
       },
       "news": {
         "label": "Resumo do mês",
-        "short": "Resumo do mês"
+        "short": "Resumo"
       },
       "ai-agents": {
         "label": "IA e automação",
@@ -673,7 +679,19 @@
       "startups-scale": {
         "label": "Crescimento e startups",
         "short": "Crescimento"
+      },
+      "stores": {
+        "label": "Lojas",
+        "short": "Lojas"
       }
-    }
+    },
+    "emptyCatalogTitle": "Ainda não há notas publicadas",
+    "emptyCatalogBody": "Quando publicarmos, elas aparecem aqui. Enquanto isso, peça uma proposta.",
+    "storyEnabled": "false"
+  },
+  "blogTeaser": {
+    "eyebrow": "Blog",
+    "title": "Notas que você pode aplicar.",
+    "cta": "Ver o blog"
   }
 }

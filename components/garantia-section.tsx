@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { FileSignature, Tag, ShieldCheck, Receipt, ArrowRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 import CardSwap, { Card } from "@/components/reactbits/CardSwap"
@@ -21,11 +22,22 @@ const ITEMS: { key: ItemKey; icon: React.ReactNode }[] = [
  */
 export function GarantiaSection() {
   const t = useTranslations("garantia")
+  const [reducedMotion, setReducedMotion] = useState(false)
+
+  useEffect(() => {
+    const mql = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const onChange = () => setReducedMotion(mql.matches)
+    onChange()
+    mql.addEventListener("change", onChange)
+    return () => mql.removeEventListener("change", onChange)
+  }, [])
+
+  const useSwap = !reducedMotion
 
   return (
     <section
       id="garantia"
-      className="relative bg-gray-950 pt-20 pb-20 lg:pt-32 lg:pb-44 border-t border-gray-800 overflow-hidden"
+      className="relative bg-gray-950 pt-20 pb-20 lg:pt-32 lg:pb-32 border-t border-gray-800 overflow-hidden"
     >
       <div
         aria-hidden
@@ -51,10 +63,10 @@ export function GarantiaSection() {
                 {t("subtitle")}
               </p>
 
-              <Magnet padding={80} magnetStrength={6} wrapperClassName="mt-9 inline-flex">
+              <Magnet padding={80} magnetStrength={6} disabled={reducedMotion} wrapperClassName="mt-9 inline-flex">
                 <a
                   href="#contacto"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-brand-green text-black font-display font-bold text-base hover:bg-green-hover hover:shadow-[0_0_32px_rgba(34,242,58,0.45)] transition-all duration-300 active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-2 min-h-12 px-6 py-3.5 rounded-lg bg-brand-green text-black font-display font-bold text-base hover:bg-green-hover hover:shadow-[0_0_32px_rgba(34,242,58,0.45)] transition-all duration-300 active:scale-[0.98]"
                 >
                   {t("cta")}
                   <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
@@ -63,32 +75,34 @@ export function GarantiaSection() {
             </div>
           </AnimatedContent>
 
-          {/* CardSwap anchors itself bottom-right and overflows its container by
-              design, which pushes it off a phone screen. Desktop gets the 3D
-              stack; below lg the same four cards render as a plain grid. */}
-          <div className="hidden lg:block relative h-[560px]">
-            <CardSwap
-              width={420}
-              height={400}
-              cardDistance={54}
-              verticalDistance={62}
-              delay={4600}
-              pauseOnHover
-              skewAmount={5}
-              easing="elastic"
-            >
-              {ITEMS.map(({ key, icon }) => (
-                <Card
-                  key={key}
-                  customClass="overflow-hidden border border-gray-800 bg-gray-900 shadow-[0_24px_64px_-12px_rgba(0,0,0,0.85)]"
-                >
-                  <CommitmentBody itemKey={key} icon={icon} className="h-full p-7" />
-                </Card>
-              ))}
-            </CardSwap>
-          </div>
+          {/* Desktop 3D stack stays inside this box so it cannot overlap the
+              footer or create page-level scroll-x. Mobile and reduced-motion
+              use the same plain grid. */}
+          {useSwap && (
+            <div className="hidden lg:block relative isolate min-h-[420px] h-[560px] overflow-hidden">
+              <CardSwap
+                width={420}
+                height={400}
+                cardDistance={40}
+                verticalDistance={48}
+                delay={4600}
+                pauseOnHover
+                skewAmount={4}
+                easing="linear"
+              >
+                {ITEMS.map(({ key, icon }) => (
+                  <Card
+                    key={key}
+                    customClass="overflow-hidden border border-gray-800 bg-gray-900 shadow-[0_24px_64px_-12px_rgba(0,0,0,0.85)]"
+                  >
+                    <CommitmentBody itemKey={key} icon={icon} className="h-full p-7" />
+                  </Card>
+                ))}
+              </CardSwap>
+            </div>
+          )}
 
-          <div className="lg:hidden grid gap-4 sm:grid-cols-2">
+          <div className={`${useSwap ? "lg:hidden" : ""} grid gap-4 sm:grid-cols-2`}>
             {ITEMS.map(({ key, icon }, i) => (
               <AnimatedContent
                 key={key}

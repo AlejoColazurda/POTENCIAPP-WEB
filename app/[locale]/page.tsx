@@ -9,6 +9,7 @@ import { MarqueeBand } from "@/components/marquee-band"
 import { GarantiaSection } from "@/components/garantia-section"
 import { ProcesoSection } from "@/components/proceso-section"
 import { PorQueSection } from "@/components/porque-section"
+import { BlogTeaser } from "@/components/blog-teaser"
 import { FaqSection } from "@/components/faq-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
@@ -55,6 +56,9 @@ export default async function HomePage({
         <GarantiaSection />
         <ProcesoSection />
         <PorQueSection />
+        {/* Hueco reservado: teasers Precios / Equipo.
+            feat/precios y feat/equipo montan los bloques acá, antes del blog. */}
+        <BlogTeaser locale={locale} />
         <FaqSection />
         <ContactSection />
       </main>

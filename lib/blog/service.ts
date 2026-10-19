@@ -26,12 +26,6 @@ import type { BlogCategory, BlogFilterOptions, BlogPost } from "./types"
 const BLOG_DIR = path.join(process.cwd(), "content", "blog")
 const TRANSLATED_LOCALES = routing.locales.filter((l) => l !== "es")
 
-const DEFAULT_COVERS: Partial<Record<BlogCategory, string>> = {
-  security: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1400&q=80",
-  news: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1400&q=80",
-}
-const FALLBACK_COVER = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1400&q=80"
-
 const TEAM_AVATAR = "/potenciapp-isologo.png"
 const DEFAULT_AUTHOR = "Equipo PotenciApp"
 const TEAM_NAME: Record<Locale, string> = {
@@ -70,7 +64,7 @@ function toPost(s: Source, locale: Locale): BlogPost {
     title: text.title,
     summary: text.summary,
     content: text.body,
-    coverImage: s.cover || DEFAULT_COVERS[category] || FALLBACK_COVER,
+    coverImage: s.cover,
     category,
     tags: s.tag ? [s.tag] : [],
     publishedAt: s.publishedAt,
@@ -89,10 +83,10 @@ function toPost(s: Source, locale: Locale): BlogPost {
     availableLocales: ["es", ...TRANSLATED_LOCALES.filter((l) => s.translations[l])],
     aiAssisted: s.aiAssisted,
     storyCard: {
-      headline: text.title.slice(0, 60).toUpperCase(),
+      headline: text.title.slice(0, 60),
       tagline: text.summary.slice(0, 110),
       accentColor: BLOG_CATEGORIES[category].color,
-      badgeText: "⚡ POTENCIAPP",
+      badgeText: "PotenciApp",
       stickers: s.tag ? [`#${s.tag.replace(/\s+/g, "")}`] : [],
     },
   }

@@ -1,17 +1,27 @@
-import type { BlogCategory, CategoryInfo } from "./types"
+import type { BlogCategory, CategoryInfo, PublicBlogCategory } from "./types"
+
+/** Categories shown as public pills. Empty ones stay hidden. */
+export const PUBLIC_BLOG_CATEGORIES: readonly PublicBlogCategory[] = ["security", "stores", "news"]
 
 export const BLOG_CATEGORIES: Record<BlogCategory, CategoryInfo> = {
   security: {
     id: "security",
-    label: "Ciberseguridad para comercios",
+    label: "Seguridad",
     labelShort: "Seguridad",
     description: "Estafas, cuentas robadas y cómo proteger tu tienda y tus cobros.",
     color: "#EF4444",
   },
+  stores: {
+    id: "stores",
+    label: "Tiendas",
+    labelShort: "Tiendas",
+    description: "Tiendas online: accesos, cobros y operación del panel.",
+    color: "#22F23A",
+  },
   news: {
     id: "news",
     label: "Resumen del mes",
-    labelShort: "Resumen del mes",
+    labelShort: "Resumen",
     description: "Las noticias del mes que le cambian algo a un comercio o pyme.",
     color: "#38BDF8",
   },
@@ -36,7 +46,7 @@ export const BLOG_CATEGORIES: Record<BlogCategory, CategoryInfo> = {
     description: "Next.js, infraestructura serverless, microservicios y escalabilidad.",
     color: "#A855F7",
   },
-  "automation": {
+  automation: {
     id: "automation",
     label: "Automatizaciones de Negocio",
     labelShort: "Automatización",
@@ -54,4 +64,8 @@ export const BLOG_CATEGORIES: Record<BlogCategory, CategoryInfo> = {
 
 export function getCategoryInfo(categoryId: BlogCategory): CategoryInfo {
   return BLOG_CATEGORIES[categoryId] || BLOG_CATEGORIES.security
+}
+
+export function isPublicBlogCategory(category: BlogCategory): category is PublicBlogCategory {
+  return (PUBLIC_BLOG_CATEGORIES as readonly string[]).includes(category)
 }
