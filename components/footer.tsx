@@ -6,7 +6,7 @@ import { Link, usePathname } from "@/i18n/navigation"
 import { BrandWordmark } from "@/components/brand"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { CONTACT_EMAIL, WA_PHONE } from "@/lib/site"
-import { NAV_PAGE_LINKS, homeSectionHref } from "@/components/header"
+import { NAV_PAGE_LINKS, homeSectionHref } from "@/lib/nav"
 
 const social = [
   { label: "WhatsApp", href: `https://wa.me/${WA_PHONE}`, Icon: WhatsAppIcon, iconClass: "text-[#25D366]" },

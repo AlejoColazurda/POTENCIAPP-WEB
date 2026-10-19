@@ -541,5 +541,33 @@
         "p": "Vous pouvez à tout moment demander l'accès, la correction ou la suppression des données envoyées, en écrivant à contacto@potenciapp.com. Les données liées à la facturation sont conservées le temps exigé par la loi argentine."
       }
     ]
+  },
+  "equipo": {
+    "metaTitle": "Équipe | PotenciApp",
+    "metaDescription": "Qui construit chez PotenciApp. Nous publions des noms et photos réels ; sinon, cette page le dit.",
+    "eyebrow": "Équipe",
+    "title": "Des personnes réelles, quand elles sont prêtes.",
+    "lead": "Nous ne remplirons pas cette page avec des visages stock. Nom, rôle, une ligne et photo : alors seulement.",
+    "empty": {
+      "title": "Le roster n’est pas encore publié.",
+      "body": "PotenciApp opère depuis Baradero (Buenos Aires) et à distance. Pour parler à qui signe le contrat, demandez une proposition."
+    },
+    "cta": {
+      "primary": "Demander une proposition",
+      "whatsapp": "WhatsApp"
+    },
+    "waGreeting": "Bonjour PotenciApp, j’ai vu /equipe et je veux une proposition.",
+    "roles": {
+      "founder": "Fondateur",
+      "engineering": "Ingénierie",
+      "design": "Design",
+      "ops": "Opérations"
+    },
+    "teaser": {
+      "eyebrow": "Équipe",
+      "title": "Qui le signe.",
+      "cta": "Voir l’équipe",
+      "emptyCta": "Comment nous travaillons"
+    }
   }
 }
