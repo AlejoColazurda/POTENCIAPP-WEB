@@ -8,17 +8,9 @@ import { cn } from "@/lib/utils"
 import { BrandWordmark } from "@/components/brand"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { SectionNav } from "@/components/section-nav"
-import { routing } from "@/i18n/routing"
+import { NAV_PAGE_LINKS, homeSectionHref } from "@/lib/nav"
 
-/**
- * Feature branches flip their key to true when the route exists.
- * Do not add hrefs while the flag is false — those URLs 404 on this branch.
- */
-export const NAV_PAGE_LINKS = {
-  precios: false,
-  equipo: false,
-  blog: false,
-} as const
+export { NAV_PAGE_LINKS, homeSectionHref }
 
 const SECTION_ITEMS = [
   { key: "soluciones", id: "soluciones" },
@@ -31,12 +23,6 @@ const PAGE_ITEMS = [
   { key: "equipo", href: "/equipo" },
   { key: "blog", href: "/blog" },
 ] as const
-
-export function homeSectionHref(pathname: string, locale: string, id: string) {
-  if (pathname === "/") return `#${id}`
-  const prefix = locale === routing.defaultLocale ? "" : `/${locale}`
-  return `${prefix}/#${id}`
-}
 
 export function Header() {
   const t = useTranslations("nav")
@@ -122,16 +108,23 @@ export function Header() {
         )}
       >
         <nav className="flex flex-col px-4 py-4 gap-2" aria-label="Mobile">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex min-h-11 items-center text-base font-medium text-gray-300 hover:text-brand-green py-3 border-b border-gray-800 last:border-b-0 transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const className =
+              "flex min-h-11 items-center text-base font-medium text-gray-300 hover:text-brand-green py-3 border-b border-gray-800 last:border-b-0 transition-colors"
+            const onClick = () => setIsMobileMenuOpen(false)
+            if (!item.href.includes("#")) {
+              return (
+                <Link key={item.href} href={item.href} onClick={onClick} className={className}>
+                  {item.label}
+                </Link>
+              )
+            }
+            return (
+              <a key={item.href} href={item.href} onClick={onClick} className={className}>
+                {item.label}
+              </a>
+            )
+          })}
           <a
             href={contactoHref}
             onClick={() => setIsMobileMenuOpen(false)}

@@ -541,5 +541,33 @@
         "p": "You can ask us at any time to access, correct or delete the data you sent us by writing to contacto@potenciapp.com. Billing-related data is kept for as long as Argentine law requires."
       }
     ]
+  },
+  "equipo": {
+    "metaTitle": "Team | PotenciApp",
+    "metaDescription": "Who builds at PotenciApp. We publish real names and photos; if they are not ready, this page says so.",
+    "eyebrow": "Team",
+    "title": "Real people, when they’re ready.",
+    "lead": "We will not fill this page with stock faces. When there is a name, a role, one line and a photo, they go here.",
+    "empty": {
+      "title": "The roster is not published yet.",
+      "body": "PotenciApp works from Baradero, Buenos Aires, and remotely. If you want to talk to whoever signs the contract, request a proposal."
+    },
+    "cta": {
+      "primary": "Request a proposal",
+      "whatsapp": "WhatsApp"
+    },
+    "waGreeting": "Hi PotenciApp — I saw /team and I want a proposal.",
+    "roles": {
+      "founder": "Founder",
+      "engineering": "Engineering",
+      "design": "Design",
+      "ops": "Operations"
+    },
+    "teaser": {
+      "eyebrow": "Team",
+      "title": "Who signs it.",
+      "cta": "View team",
+      "emptyCta": "How we work"
+    }
   }
 }

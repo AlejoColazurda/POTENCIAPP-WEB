@@ -541,5 +541,33 @@
         "p": "Podés pedirnos en cualquier momento acceder, corregir o eliminar los datos que nos hayas enviado, escribiendo a contacto@potenciapp.com. Los datos vinculados a facturación se conservan por el plazo que exige la ley argentina."
       }
     ]
+  },
+  "equipo": {
+    "metaTitle": "Equipo | PotenciApp",
+    "metaDescription": "Quién construye en PotenciApp. Publicamos nombres y fotos reales; si todavía no están, esta página lo dice.",
+    "eyebrow": "Equipo",
+    "title": "Personas reales, cuando estén.",
+    "lead": "No vamos a llenar esta página con caras de stock. Cuando haya nombre, rol, una línea y foto, van acá.",
+    "empty": {
+      "title": "El roster todavía no está publicado.",
+      "body": "PotenciApp opera desde Baradero, Buenos Aires, y en remoto. Si querés hablar con quien firma el contrato, pedí una propuesta."
+    },
+    "cta": {
+      "primary": "Pedir propuesta",
+      "whatsapp": "WhatsApp"
+    },
+    "waGreeting": "Hola PotenciApp, vi /equipo y quiero una propuesta.",
+    "roles": {
+      "founder": "Fundador",
+      "engineering": "Ingeniería",
+      "design": "Diseño",
+      "ops": "Operación"
+    },
+    "teaser": {
+      "eyebrow": "Equipo",
+      "title": "Quién lo firma.",
+      "cta": "Ver equipo",
+      "emptyCta": "Cómo trabajamos"
+    }
   }
 }

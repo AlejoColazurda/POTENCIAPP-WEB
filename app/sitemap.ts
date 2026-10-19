@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/site"
 /**
  * Do not import next-intl `routing` here. Metadata routes run outside the
  * locale layout; that import is a common `/sitemap.xml` 500.
- * /blog /precios /equipo are added by their own branches.
+ * /blog /precios are added by their own branches.
  */
 export const dynamic = "force-static"
 
@@ -30,6 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "yearly",
       priority: 0.2,
+    },
+    {
+      url: `${originFor(locale)}/equipo`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
     },
   ])
 }
