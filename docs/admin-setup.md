@@ -30,13 +30,9 @@ Cada artículo guarda quién lo creó y quién lo tocó por última vez (`create
 4. **Authentication → URL Configuration**:
    - Site URL: `https://www.potenciapp.com`
    - Redirect URLs: agregá `https://www.potenciapp.com/admin/auth/confirm` (y `http://localhost:3000/admin/auth/confirm` para desarrollo).
-5. **Authentication → Emails → Magic Link**: reemplazá el link del template por este, para que funcione aunque se abra en otro dispositivo o navegador:
-
-   ```html
-   <h2>Entrar al panel de PotenciApp</h2>
-   <p><a href="{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=email">Entrar al panel</a></p>
-   <p>El link sirve una sola vez y vence en 1 hora. Si no lo pediste, ignorá este mail.</p>
-   ```
+5. **Authentication → Emails → Templates → Magic link or OTP**:
+   - Subject: `Tu link para entrar al panel de PotenciApp`
+   - Body (pestaña *Source*): pegá entero `supabase/templates/magic-link.html`. Es el mail con la marca, y su link funciona aunque se abra en otro dispositivo o navegador.
 
    Con el template por defecto también funciona, pero solo si se abre en el mismo navegador donde se pidió.
 6. **Envío de mails (importante)**: el correo que trae Supabase de fábrica manda muy pocos mails por hora y es solo para pruebas. En **Project Settings → Authentication → SMTP Settings** configurá un SMTP propio (por ejemplo Resend o el de Google Workspace, remitente `no-reply@potenciapp.com`). Mientras tanto, un dueño puede copiar el link de acceso de un editor desde **Equipo** y mandárselo por WhatsApp.
