@@ -416,7 +416,7 @@
     "items": [
       {
         "q": "¿Cuánto cuesta un proyecto?",
-        "a": "No publicamos precios porque el alcance define el número. Lo que sí es fijo: recibís una propuesta escrita con precio cerrado antes de firmar, y ese número no se mueve. Si durante el proyecto pedís algo fuera del alcance, se cotiza aparte y también por escrito."
+        "a": "No publicamos una tarifa suelta: el alcance define el número. En Precios está el proceso, qué mueve el precio y qué incluye cada tipo de trabajo. Lo fijo: propuesta escrita con precio cerrado antes de firmar; ese número no se mueve. Fuera de alcance se cotiza aparte y por escrito."
       },
       {
         "q": "¿Qué incluye el contrato?",
@@ -539,6 +539,184 @@
       {
         "h": "Tus derechos",
         "p": "Podés pedirnos en cualquier momento acceder, corregir o eliminar los datos que nos hayas enviado, escribiendo a contacto@potenciapp.com. Los datos vinculados a facturación se conservan por el plazo que exige la ley argentina."
+      }
+    ]
+  },
+  "precios": {
+    "metaTitle": "Precios | Cómo se arma el número | PotenciApp",
+    "metaDescription": "No publicamos una tarifa suelta. Explicamos el proceso, qué mueve el precio y qué incluye cada tipo de trabajo. El número cierra en la propuesta.",
+    "eyebrow": "Precios",
+    "title": "El número no se inventa en un chat.",
+    "lead": "El alcance define el precio. Lo que es fijo: diagnóstico sin costo, propuesta por escrito y un número cerrado antes de firmar.",
+    "process": {
+      "eyebrow": "Cómo se arma el número",
+      "s1": {
+        "title": "Diagnóstico sin costo",
+        "body": "Una llamada para entender la operación. No hay cargo y no hay compromiso de firmar."
+      },
+      "s2": {
+        "title": "Propuesta escrita",
+        "body": "Alcance, etapas, fechas y precio cerrado. Lo leés antes de firmar y te queda una copia."
+      },
+      "s3": {
+        "title": "Precio cerrado",
+        "body": "El número que aceptás es el que pagás. Lo que esté fuera de alcance se cotiza aparte y por escrito."
+      }
+    },
+    "drivers": {
+      "eyebrow": "Qué mueve el precio",
+      "title": "No es un combo cerrado.",
+      "items": [
+        "Alcance y cantidad de pantallas o flujos",
+        "Integraciones (pagos, stock, WhatsApp, ERPs)",
+        "Publicación en App Store y Google Play",
+        "Campañas de Meta Ads o Google Ads",
+        "Infraestructura, servidores y seguridad"
+      ]
+    },
+    "bands": {
+      "includesLabel": "Incluye",
+      "excludesLabel": "No incluye",
+      "sitio": {
+        "title": "Actualización de sitio",
+        "line": "Renovar lo que ya está online, sin tirar lo que funciona.",
+        "includes": [
+          "Diseño",
+          "velocidad",
+          "SEO on-page",
+          "textos",
+          "WhatsApp",
+          "deploy"
+        ],
+        "excludes": [
+          "App nativa",
+          "tienda nueva desde cero",
+          "campañas ads",
+          "servidor a tu nombre si no se contrata"
+        ]
+      },
+      "tienda": {
+        "title": "Tienda online",
+        "line": "Tiendanube, Empretienda o tienda a medida que cobre de verdad.",
+        "includes": [
+          "Catálogo",
+          "pagos",
+          "envíos",
+          "dominio",
+          "carga inicial acordada",
+          "garantía 90 días sobre lo entregado"
+        ],
+        "excludes": [
+          "Stock físico",
+          "pauta publicitaria",
+          "fotos de producto",
+          "marketplace (ML) salvo que esté en el alcance"
+        ]
+      },
+      "sistema": {
+        "title": "Sistema interno",
+        "line": "ERP / CRM / TPV / panel que reemplace planillas.",
+        "includes": [
+          "Alcance cerrado de módulos",
+          "roles",
+          "deploy",
+          "capacitación al equipo"
+        ],
+        "excludes": [
+          "Licencias de terceros",
+          "carga histórica ilimitada",
+          "hardware"
+        ]
+      },
+      "app": {
+        "title": "App iOS y Android",
+        "line": "Una base React Native, dos tiendas, cuentas verificadas.",
+        "includes": [
+          "Ficha",
+          "capturas",
+          "privacidad",
+          "build firmado",
+          "review",
+          "90 días de garantía"
+        ],
+        "excludes": [
+          "Cuenta Apple/Google si va a tu nombre y no la abriste",
+          "pauta",
+          "features fuera del contrato"
+        ]
+      },
+      "ciber": {
+        "title": "Ciberseguridad e infra",
+        "line": "Auditoría, hardening y/o operación de servidores.",
+        "includes": [
+          "Informe por escrito",
+          "correcciones acordadas",
+          "backups/SSL si están en alcance",
+          "monitoreo si se contrata"
+        ],
+        "excludes": [
+          "Pentest de terceros no citado",
+          "seguro cyber",
+          "guardia 24/7 salvo contrato aparte"
+        ]
+      }
+    },
+    "rates": {
+      "enabled": false,
+      "eyebrow": "Rangos de partida",
+      "note": "Rangos informativos. El precio del contrato es el de la propuesta.",
+      "rows": [
+        {
+          "band": "sitio",
+          "from": ""
+        },
+        {
+          "band": "tienda",
+          "from": ""
+        },
+        {
+          "band": "sistema",
+          "from": ""
+        },
+        {
+          "band": "app",
+          "from": ""
+        },
+        {
+          "band": "ciber",
+          "from": ""
+        }
+      ]
+    },
+    "cta": {
+      "title": "Pedí el número por escrito.",
+      "body": "Diagnóstico sin costo. Si hay match, propuesta con alcance, fechas y precio cerrado.",
+      "primary": "Pedir propuesta",
+      "whatsapp": "WhatsApp"
+    },
+    "waGreeting": "Hola PotenciApp, vi /precios y quiero una propuesta.",
+    "teaser": {
+      "eyebrow": "Precios",
+      "title": "Tres tipos de trabajo. El número, en la propuesta.",
+      "note": "El número cierra en la propuesta.",
+      "cta": "Cómo se arma el precio"
+    },
+    "faq": [
+      {
+        "q": "¿Por qué no hay un precio en esta página?",
+        "a": "Porque el alcance define el número. Publicar una cifra suelta obliga a mentir para arriba o para abajo. Acá está el proceso y qué incluye cada tipo de trabajo."
+      },
+      {
+        "q": "¿El diagnóstico tiene costo?",
+        "a": "No. La llamada de diagnóstico no se cobra. El precio aparece en la propuesta, antes de firmar."
+      },
+      {
+        "q": "¿El precio se puede mover a mitad de proyecto?",
+        "a": "El precio del alcance firmado no. Lo que pedís de más se cotiza aparte y por escrito, o no se hace."
+      },
+      {
+        "q": "¿Facturan?",
+        "a": "Sí. Empresa registrada, factura por cada pago."
       }
     ]
   }

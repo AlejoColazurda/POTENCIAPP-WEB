@@ -416,7 +416,7 @@
     "items": [
       {
         "q": "Quanto custa um projeto?",
-        "a": "Não publicamos preços porque o escopo define o número. O que é fixo: você recebe uma proposta escrita com preço fechado antes de assinar, e esse número não se mexe. Se durante o projeto pedir algo fora do escopo, é orçado à parte e também por escrito."
+        "a": "Não publicamos uma tarifa solta: o escopo define o número. Em Preços está o processo, o que move o preço e o que cada tipo de trabalho inclui. O que é fixo: proposta escrita com preço fechado antes de assinar; esse número não se mexe. Fora do escopo se cotiza à parte e por escrito."
       },
       {
         "q": "O que o contrato inclui?",
@@ -539,6 +539,184 @@
       {
         "h": "Seus direitos",
         "p": "Você pode pedir a qualquer momento para acessar, corrigir ou excluir os dados que nos enviou, escrevendo para contacto@potenciapp.com. Dados vinculados a faturamento são mantidos pelo prazo exigido pela lei argentina."
+      }
+    ]
+  },
+  "precios": {
+    "metaTitle": "Preços | Como o número é montado | PotenciApp",
+    "metaDescription": "Não publicamos uma tarifa solta. Explicamos o processo, o que move o preço e o que cada tipo de trabalho inclui. O número fecha na proposta.",
+    "eyebrow": "Preços",
+    "title": "O número não se inventa num chat.",
+    "lead": "O escopo define o preço. O que é fixo: diagnóstico sem custo, proposta por escrito e um número fechado antes de assinar.",
+    "process": {
+      "eyebrow": "Como o número é montado",
+      "s1": {
+        "title": "Diagnóstico sem custo",
+        "body": "Uma chamada para entender a operação. Sem cobrança e sem obrigação de assinar."
+      },
+      "s2": {
+        "title": "Proposta escrita",
+        "body": "Escopo, etapas, datas e preço fechado. Você lê antes de assinar e fica com uma cópia."
+      },
+      "s3": {
+        "title": "Preço fechado",
+        "body": "O número que você aceita é o que você paga. Fora do escopo se cotiza à parte e por escrito."
+      }
+    },
+    "drivers": {
+      "eyebrow": "O que move o preço",
+      "title": "Não é um combo fechado.",
+      "items": [
+        "Escopo e quantidade de telas ou fluxos",
+        "Integrações (pagamentos, estoque, WhatsApp, ERPs)",
+        "Publicação na App Store e no Google Play",
+        "Campanhas Meta Ads ou Google Ads",
+        "Infraestrutura, servidores e segurança"
+      ]
+    },
+    "bands": {
+      "includesLabel": "Inclui",
+      "excludesLabel": "Não inclui",
+      "sitio": {
+        "title": "Atualização de site",
+        "line": "Renovar o que já está no ar sem jogar fora o que funciona.",
+        "includes": [
+          "Design",
+          "velocidade",
+          "SEO on-page",
+          "textos",
+          "WhatsApp",
+          "deploy"
+        ],
+        "excludes": [
+          "App nativo",
+          "loja nova do zero",
+          "campanhas de ads",
+          "servidor no seu nome se não estiver contratado"
+        ]
+      },
+      "tienda": {
+        "title": "Loja online",
+        "line": "Tiendanube, Empretienda ou loja sob medida que cobre de verdade.",
+        "includes": [
+          "Catálogo",
+          "pagamentos",
+          "envios",
+          "domínio",
+          "carga inicial combinada",
+          "garantia de 90 dias sobre o entregue"
+        ],
+        "excludes": [
+          "Estoque físico",
+          "verba de mídia",
+          "fotos de produto",
+          "marketplace salvo se estiver no escopo"
+        ]
+      },
+      "sistema": {
+        "title": "Sistema interno",
+        "line": "ERP / CRM / PDV / painel que substitui planilhas.",
+        "includes": [
+          "Escopo fechado de módulos",
+          "papéis",
+          "deploy",
+          "capacitação da equipe"
+        ],
+        "excludes": [
+          "Licenças de terceiros",
+          "carga histórica ilimitada",
+          "hardware"
+        ]
+      },
+      "app": {
+        "title": "App iOS e Android",
+        "line": "Uma base React Native, duas lojas, contas verificadas.",
+        "includes": [
+          "Ficha",
+          "capturas",
+          "privacidade",
+          "build assinado",
+          "review",
+          "garantia de 90 dias"
+        ],
+        "excludes": [
+          "Conta Apple/Google se for no seu nome e você não abriu",
+          "mídia",
+          "features fora do contrato"
+        ]
+      },
+      "ciber": {
+        "title": "Cibersegurança e infra",
+        "line": "Auditoria, hardening e/ou operação de servidores.",
+        "includes": [
+          "Relatório por escrito",
+          "correções combinadas",
+          "backups/SSL se estiverem no escopo",
+          "monitoramento se contratado"
+        ],
+        "excludes": [
+          "Pentest de terceiro não citado",
+          "seguro cyber",
+          "plantão 24/7 salvo contrato à parte"
+        ]
+      }
+    },
+    "rates": {
+      "enabled": false,
+      "eyebrow": "Faixas de partida",
+      "note": "Faixas informativas. O preço do contrato é o da proposta.",
+      "rows": [
+        {
+          "band": "sitio",
+          "from": ""
+        },
+        {
+          "band": "tienda",
+          "from": ""
+        },
+        {
+          "band": "sistema",
+          "from": ""
+        },
+        {
+          "band": "app",
+          "from": ""
+        },
+        {
+          "band": "ciber",
+          "from": ""
+        }
+      ]
+    },
+    "cta": {
+      "title": "Peça o número por escrito.",
+      "body": "Diagnóstico sem custo. Se houver match, proposta com escopo, datas e preço fechado.",
+      "primary": "Pedir proposta",
+      "whatsapp": "WhatsApp"
+    },
+    "waGreeting": "Olá PotenciApp, vi /preços e quero uma proposta.",
+    "teaser": {
+      "eyebrow": "Preços",
+      "title": "Três tipos de trabalho. O número, na proposta.",
+      "note": "O número fecha na proposta.",
+      "cta": "Como o preço é montado"
+    },
+    "faq": [
+      {
+        "q": "Por que não há um preço nesta página?",
+        "a": "Porque o escopo define o número. Publicar uma cifra solta obriga a mentir para cima ou para baixo. Aqui está o processo e o que cada tipo de trabalho inclui."
+      },
+      {
+        "q": "O diagnóstico tem custo?",
+        "a": "Não. A chamada de diagnóstico não é cobrada. O preço aparece na proposta, antes de assinar."
+      },
+      {
+        "q": "O preço pode se mexer no meio do projeto?",
+        "a": "O preço do escopo assinado não. O que você pede a mais se cotiza à parte e por escrito, ou não se faz."
+      },
+      {
+        "q": "Faturam?",
+        "a": "Sim. Empresa registrada, fatura por cada pagamento."
       }
     ]
   }
