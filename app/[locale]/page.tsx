@@ -27,7 +27,7 @@ export default async function HomePage({
   setRequestLocale(locale)
 
   return (
-    <div className="min-h-screen bg-gray-950 overflow-x-hidden">
+    <div className="min-h-screen bg-gray-950">
       <Header />
       <main>
         <HeroSection />

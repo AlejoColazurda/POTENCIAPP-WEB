@@ -104,19 +104,19 @@ export function Footer() {
             </div>
           ))}
 
-          <div className="col-span-2 md:col-span-2">
+          <div className="col-span-2 md:col-span-2 min-w-0">
             <h4 className="font-mono text-[11px] uppercase tracking-wider text-gray-100 mb-4">
               {t("conecta")}
             </h4>
             <ul className="space-y-3">
               {social.map(({ label, href, Icon, iconClass }) => (
-                <li key={label}>
+                <li key={label} className="min-w-0">
                   <a
                     href={href}
-                    className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-gray-100 transition-colors group"
+                    className="flex items-center gap-2 text-sm text-gray-300 hover:text-gray-100 transition-colors group min-w-0"
                   >
-                    <Icon className={`h-4 w-4 transition-colors ${iconClass}`} />
-                    {label}
+                    <Icon className={`h-4 w-4 shrink-0 transition-colors ${iconClass}`} />
+                    <span className="break-all">{label}</span>
                   </a>
                 </li>
               ))}

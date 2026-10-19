@@ -145,7 +145,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
           }
         >
           <div
-            className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-20 opacity-0 group-hover:opacity-100"
+            className="chroma-card-spotlight absolute inset-0 pointer-events-none transition-opacity duration-500 z-20 opacity-0 group-hover:opacity-100"
             style={{
               background:
                 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 70%)'
@@ -182,7 +182,7 @@ const ChromaGrid: React.FC<ChromaGridProps> = ({
             {c.tags && c.tags.length > 0 && (
               <div className="mt-3 flex flex-wrap gap-x-2 gap-y-1">
                 {c.tags.map(tag => (
-                  <span key={tag} className="font-mono text-[10px] uppercase tracking-wider text-gray-400">
+                  <span key={tag} className="font-mono text-[10px] uppercase tracking-wider text-gray-300">
                     {tag}
                   </span>
                 ))}

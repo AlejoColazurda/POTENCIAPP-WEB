@@ -28,6 +28,16 @@ export function HeroSection() {
   const rotating = t.raw("rotating") as string[]
   const trustChips = t.raw("trustChips") as string[]
   const reducedMotion = useReducedMotion()
+  // LCP: first rotating word is HTML. RotatingText mounts only after we know
+  // motion is allowed — never flash an animation for prefers-reduced-motion.
+  const [canRotate, setCanRotate] = useState(false)
+  useEffect(() => {
+    const mql = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const apply = () => setCanRotate(!mql.matches)
+    apply()
+    mql.addEventListener("change", apply)
+    return () => mql.removeEventListener("change", apply)
+  }, [])
 
   // WebGL aurora only where it earns its cost: desktop, motion allowed.
   const [showAurora, setShowAurora] = useState(false)
@@ -99,7 +109,7 @@ export function HeroSection() {
                   No opacity-0 intro animation, no GSAP SplitText. */}
               <span className="block">{t("h2_line1")}</span>
               <span className="block text-brand-green">
-                {reducedMotion ? (
+                {!canRotate ? (
                   rotating[0]
                 ) : (
                   <RotatingText
@@ -110,8 +120,8 @@ export function HeroSection() {
                     splitBy="characters"
                     mainClassName="justify-start"
                     splitLevelClassName="overflow-hidden pb-1.5"
-                    // First paint must be visible: this line is part of the LCP H2.
-                    // Enter stays at rest; only the outgoing word slides away.
+                    // First paint is the static rotating[0] above. After mount,
+                    // enter stays at rest; only the outgoing word slides away.
                     transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
                     initial={{ y: 0, opacity: 1 }}
                     animate={{ y: 0, opacity: 1 }}
