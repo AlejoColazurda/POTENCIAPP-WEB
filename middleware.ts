@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server"
 import createMiddleware from "next-intl/middleware"
 import { createServerClient } from "@supabase/ssr"
 import { routing } from "./i18n/routing"
+import { SUPABASE_ANON_KEY, SUPABASE_URL } from "./lib/supabase-env"
 
 const intl = createMiddleware(routing)
 
@@ -12,8 +13,8 @@ const intl = createMiddleware(routing)
  * and the admin would be logged out after the first token expiry.
  */
 async function refreshAdminSession(request: NextRequest) {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const url = SUPABASE_URL
+  const anon = SUPABASE_ANON_KEY
   let response = NextResponse.next({ request })
   if (!url || !anon) return response
 

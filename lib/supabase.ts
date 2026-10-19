@@ -2,6 +2,7 @@ import "server-only"
 import { cookies } from "next/headers"
 import { createClient, type SupabaseClient } from "@supabase/supabase-js"
 import { createServerClient } from "@supabase/ssr"
+import { SUPABASE_ANON_KEY, SUPABASE_SERVICE_KEY, SUPABASE_URL } from "@/lib/supabase-env"
 
 /**
  * Supabase access for the blog admin. Three clients, all server-side:
@@ -18,9 +19,9 @@ import { createServerClient } from "@supabase/ssr"
  * blog falls back to the Markdown files in content/blog/.
  */
 
-const URL = process.env.NEXT_PUBLIC_SUPABASE_URL
-const ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-const SERVICE = process.env.SUPABASE_SERVICE_ROLE_KEY
+const URL = SUPABASE_URL
+const ANON = SUPABASE_ANON_KEY
+const SERVICE = SUPABASE_SERVICE_KEY
 
 export function isSupabaseConfigured() {
   return Boolean(URL && ANON && SERVICE)
