@@ -4,12 +4,14 @@ import { useTranslations } from "next-intl"
 import { BrandMark } from "@/components/brand"
 import ScrollFloat from "@/components/reactbits/ScrollFloat"
 import AnimatedContent from "@/components/reactbits/AnimatedContent"
+import { StudioAtmosphere } from "@/components/studio-atmosphere"
 
 export function ValueSection() {
   const t = useTranslations("value")
 
   return (
     <section className="relative bg-gray-950 py-20 lg:py-32 overflow-hidden">
+      <StudioAtmosphere plate="precios" opacity={0.18} hairline="left" />
       {/* Value prop */}
       <div className="relative max-w-[1280px] mx-auto px-4 md:px-8 text-center">
         <AnimatedContent distance={50} duration={0.9} threshold={0.15}>

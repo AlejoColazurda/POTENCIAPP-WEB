@@ -179,12 +179,22 @@ export function HeroSection({ studioHero }: { studioHero: StudioHeroMedia }) {
       )}
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-gray-950/50 via-gray-950/40 to-gray-950 pointer-events-none"
+        className={`absolute inset-0 pointer-events-none ${
+          hasPoster
+            ? "bg-gradient-to-b from-gray-950/35 via-gray-950/55 to-gray-950"
+            : "bg-gradient-to-b from-gray-950/50 via-gray-950/40 to-gray-950"
+        }`}
       />
       <div
         aria-hidden
         className="absolute top-1/4 right-[8%] w-[480px] h-[480px] rounded-full bg-brand-green/10 blur-[140px] pointer-events-none"
       />
+      {hasPoster ? (
+        <span
+          aria-hidden
+          className="absolute left-0 top-[22%] h-[36%] w-px bg-brand-green/60 shadow-[0_0_14px_rgba(34,242,58,0.4)] pointer-events-none"
+        />
+      ) : null}
 
       <div className="relative mx-auto max-w-[1280px] px-4 md:px-8">
         <div className="flex items-center gap-3 mb-6 animate-fade-in-up">

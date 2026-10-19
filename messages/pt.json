@@ -408,6 +408,29 @@
     "privacyNote": "Este chat usa IA (Google Gemini). Não compartilhe senhas nem dados sensíveis.",
     "privacyLink": "Privacidade"
   },
+  "studioLook": {
+    "eyebrow": "Estúdio",
+    "title": "O mesmo look frio",
+    "accent": "em cada entrega.",
+    "body": "Stills de sistema: mesa de contrato, cadeiras vazias, capas sem tipografia inventada. O loop do hero chega quando houver take curado.",
+    "frames": {
+      "seguridad": {
+        "label": "Segurança",
+        "tag": "16:9",
+        "alt": "Fechadura em metal escuro, sem marcas nem números"
+      },
+      "tiendas": {
+        "label": "Lojas",
+        "tag": "16:9",
+        "alt": "Balcão vazio em estúdio escuro, sem preços"
+      },
+      "resumen": {
+        "label": "Resumo",
+        "tag": "16:9",
+        "alt": "Folhas em branco sobre mesa escura, sem manchetes"
+      }
+    }
+  },
   "faq": {
     "eyebrow": "Perguntas frequentes",
     "title": "O que todo mundo pergunta antes de assinar.",
