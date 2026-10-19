@@ -12,6 +12,7 @@ import { PorQueSection } from "@/components/porque-section"
 import { FaqSection } from "@/components/faq-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
+import { getStudioHeroMedia } from "@/lib/studio-assets"
 
 /**
  * Section order follows the trust arc: promise (hero, value) → what we build
@@ -25,12 +26,13 @@ export default async function HomePage({
 }) {
   const { locale } = await params
   setRequestLocale(locale)
+  const studioHero = getStudioHeroMedia()
 
   return (
     <div className="min-h-screen bg-gray-950">
       <Header />
       <main>
-        <HeroSection />
+        <HeroSection studioHero={studioHero} />
         <ValueSection />
         <ServicesSection />
         <StoresSection />

@@ -7,6 +7,7 @@ import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
 import ClickSpark from "@/components/reactbits/ClickSpark"
 import { FloatingChat } from "@/components/floating-chat"
+import { studioOgImage } from "@/lib/studio-assets"
 import "../globals.css"
 
 const inter = Inter({
@@ -75,6 +76,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "meta" })
+  const og = studioOgImage("home")
   return {
     metadataBase: new URL("https://www.potenciapp.com"),
     title: t("title"),
@@ -89,13 +91,13 @@ export async function generateMetadata({
       type: "website",
       locale,
       siteName: "PotenciApp",
-      images: [{ url: "/og.png", width: 1200, height: 630, alt: "PotenciApp" }],
+      images: [{ url: og, width: 1200, height: 630, alt: "PotenciApp" }],
     },
     twitter: {
       card: "summary_large_image",
       title: t("ogTitle"),
       description: t("ogDescription"),
-      images: ["/og.png"],
+      images: [og],
     },
   }
 }

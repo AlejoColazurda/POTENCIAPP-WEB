@@ -2,7 +2,7 @@
 
 import { ArrowDown, ArrowRight, Check, ShieldCheck, Sparkles } from "lucide-react"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useTranslations } from "next-intl"
 import { BrandMark } from "@/components/brand"
 import Aurora from "@/components/reactbits/Aurora"
@@ -10,6 +10,11 @@ import RotatingText from "@/components/reactbits/RotatingText"
 import CountUp from "@/components/reactbits/CountUp"
 import Magnet from "@/components/reactbits/Magnet"
 import ShinyText from "@/components/reactbits/ShinyText"
+
+export type StudioHeroMedia = {
+  poster: string | null
+  video: string | null
+}
 
 function useReducedMotion() {
   const [reduced, setReduced] = useState(false)
@@ -23,11 +28,120 @@ function useReducedMotion() {
   return reduced
 }
 
-export function HeroSection() {
+function useSaveData() {
+  const [saveData, setSaveData] = useState(false)
+  useEffect(() => {
+    const conn = (
+      navigator as Navigator & {
+        connection?: {
+          saveData?: boolean
+          addEventListener?(type: "change", listener: () => void): void
+          removeEventListener?(type: "change", listener: () => void): void
+        }
+      }
+    ).connection
+    if (!conn) return
+    const apply = () => setSaveData(Boolean(conn.saveData))
+    apply()
+    conn.addEventListener?.("change", apply)
+    return () => conn.removeEventListener?.("change", apply)
+  }, [])
+  return saveData
+}
+
+/**
+ * Curated studio still + loop behind the H2. Mounts nothing when paths are
+ * missing. Reduced-motion / Save-Data = still. Video pauses offscreen.
+ * LCP stays the HTML heading — no fetchPriority/high, no Image priority.
+ */
+function StudioHeroLayer({
+  poster,
+  video,
+  onPosterError,
+}: {
+  poster: string
+  video: string | null
+  onPosterError: () => void
+}) {
+  const reducedMotion = useReducedMotion()
+  const saveData = useSaveData()
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [videoError, setVideoError] = useState(false)
+  const [canPlay, setCanPlay] = useState(false)
+  const [inView, setInView] = useState(true)
+
+  const allowVideo = Boolean(video) && !reducedMotion && !saveData && !videoError
+
+  useEffect(() => {
+    const el = videoRef.current
+    if (!el || !allowVideo) return
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.intersectionRatio >= 0.25)
+      },
+      { threshold: [0, 0.25, 1] },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [allowVideo])
+
+  useEffect(() => {
+    const el = videoRef.current
+    if (!el || !allowVideo) return
+    el.muted = true
+    if (inView) {
+      void el.play().catch(() => {
+        /* muted autoplay should succeed; poster stays if the UA blocks it */
+      })
+    } else {
+      el.pause()
+    }
+  }, [allowVideo, inView])
+
+  const mediaClass =
+    "absolute inset-0 h-full w-full object-cover object-center lg:object-[50%_45%]"
+
+  return (
+    <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden">
+      {/* eslint-disable-next-line @next/next/no-img-element -- decorative still; must not steal H2 LCP */}
+      <img
+        src={poster}
+        alt=""
+        decoding="async"
+        fetchPriority="low"
+        onError={onPosterError}
+        className={`${mediaClass} ${canPlay && allowVideo ? "opacity-0" : "opacity-[0.22]"}`}
+      />
+      {allowVideo && video ? (
+        <video
+          ref={videoRef}
+          muted
+          loop
+          playsInline
+          preload="none"
+          poster={poster}
+          aria-hidden="true"
+          className={`${mediaClass} ${canPlay ? "opacity-[0.22]" : "opacity-0"}`}
+          onCanPlay={() => setCanPlay(true)}
+          onError={() => {
+            setVideoError(true)
+            setCanPlay(false)
+          }}
+        >
+          <source src={video} type="video/webm" />
+        </video>
+      ) : null}
+    </div>
+  )
+}
+
+export function HeroSection({ studioHero }: { studioHero: StudioHeroMedia }) {
   const t = useTranslations("hero")
   const rotating = t.raw("rotating") as string[]
   const trustChips = t.raw("trustChips") as string[]
   const reducedMotion = useReducedMotion()
+  const [posterFailed, setPosterFailed] = useState(false)
+  const hasPoster = Boolean(studioHero.poster) && !posterFailed
   // LCP: first rotating word is HTML. RotatingText mounts only after we know
   // motion is allowed — never flash an animation for prefers-reduced-motion.
   const [canRotate, setCanRotate] = useState(false)
@@ -40,6 +154,7 @@ export function HeroSection() {
   }, [])
 
   // WebGL aurora only where it earns its cost: desktop, motion allowed.
+  // Studio poster/video replace it when the curated files exist.
   const [showAurora, setShowAurora] = useState(false)
   useEffect(() => {
     setShowAurora(
@@ -49,8 +164,15 @@ export function HeroSection() {
 
   return (
     <section className="relative isolate overflow-hidden bg-gray-950 pt-32 pb-16 lg:pt-40 lg:pb-24">
-      {/* WebGL aurora in brand green — replaces the old background video */}
-      {showAurora && (
+      {hasPoster && studioHero.poster ? (
+        <StudioHeroLayer
+          poster={studioHero.poster}
+          video={studioHero.video}
+          onPosterError={() => setPosterFailed(true)}
+        />
+      ) : null}
+      {/* WebGL aurora in brand green — current look when the studio kit is empty */}
+      {showAurora && !hasPoster && (
         <div aria-hidden className="absolute inset-x-0 top-0 h-[68%] opacity-35 pointer-events-none">
           <Aurora colorStops={["#062B0B", "#22F23A", "#062B0B"]} amplitude={0.75} blend={0.75} speed={0.35} />
         </div>
