@@ -693,5 +693,18 @@
     "eyebrow": "Blog",
     "title": "Des notes applicables.",
     "cta": "Voir le blog"
+  },
+  "status": {
+    "notFoundEyebrow": "Page introuvable",
+    "notFoundTitle": "Cette page n'existe pas (ou a déménagé).",
+    "notFoundBody": "Le lien est peut-être mal écrit ou le contenu n'existe plus. Vous pouvez continuer à naviguer d'ici.",
+    "errorEyebrow": "Un problème est survenu",
+    "errorTitle": "Nous n'avons pas pu charger cette page.",
+    "errorBody": "C'est enregistré. Réessayez dans quelques secondes ; si cela continue, écrivez-nous.",
+    "retry": "Réessayer",
+    "home": "Aller à l'accueil",
+    "blog": "Voir le blog",
+    "contact": "Écrire sur WhatsApp",
+    "waMessage": "Bonjour PotenciApp, j'ai trouvé une page qui ne fonctionne pas sur le site."
   }
 }

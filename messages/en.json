@@ -693,5 +693,18 @@
     "eyebrow": "Blog",
     "title": "Notes you can apply.",
     "cta": "View the blog"
+  },
+  "status": {
+    "notFoundEyebrow": "Page not found",
+    "notFoundTitle": "This page doesn't exist (or it moved).",
+    "notFoundBody": "The link may be mistyped or the content may be gone. You can keep browsing from here.",
+    "errorEyebrow": "Something went wrong",
+    "errorTitle": "We had a problem loading this page.",
+    "errorBody": "It has been logged. Try again in a few seconds; if it keeps happening, message us.",
+    "retry": "Try again",
+    "home": "Go to home",
+    "blog": "Visit the blog",
+    "contact": "Message us on WhatsApp",
+    "waMessage": "Hi PotenciApp, I found a page that isn't working on the site."
   }
 }
