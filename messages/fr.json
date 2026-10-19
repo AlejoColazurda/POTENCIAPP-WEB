@@ -416,7 +416,7 @@
     "items": [
       {
         "q": "Combien coûte un projet ?",
-        "a": "Nous ne publions pas de prix car le périmètre détermine le montant. Ce qui est fixe : vous recevez une proposition écrite à prix ferme avant de signer, et ce montant ne bouge pas. Toute demande hors périmètre en cours de projet est chiffrée à part et également par écrit."
+        "a": "Nous ne publions pas un tarif isolé : le périmètre fixe le montant. Sur Tarifs : le process, ce qui fait bouger le prix, et ce que chaque type de travail inclut. Ce qui est fixe : proposition écrite avec prix fermé avant signature ; ce montant ne bouge pas. Hors périmètre : devis séparé et écrit."
       },
       {
         "q": "Que contient le contrat ?",
@@ -539,6 +539,184 @@
       {
         "h": "Vos droits",
         "p": "Vous pouvez à tout moment demander l'accès, la correction ou la suppression des données envoyées, en écrivant à contacto@potenciapp.com. Les données liées à la facturation sont conservées le temps exigé par la loi argentine."
+      }
+    ]
+  },
+  "precios": {
+    "metaTitle": "Tarifs | Comment le montant se construit | PotenciApp",
+    "metaDescription": "Nous ne publions pas un tarif isolé. Nous expliquons le process, ce qui fait bouger le prix et ce que chaque type de travail inclut. Le montant se ferme dans la proposition.",
+    "eyebrow": "Tarifs",
+    "title": "Le montant ne s’invente pas dans un chat.",
+    "lead": "Le périmètre fixe le prix. Ce qui est fixe : diagnostic sans coût, proposition écrite, montant fermé avant signature.",
+    "process": {
+      "eyebrow": "Comment le montant se construit",
+      "s1": {
+        "title": "Diagnostic sans coût",
+        "body": "Un appel pour comprendre l’opération. Sans frais, sans obligation de signer."
+      },
+      "s2": {
+        "title": "Proposition écrite",
+        "body": "Périmètre, étapes, dates et prix fermé. Vous le lisez avant de signer et vous en gardez une copie."
+      },
+      "s3": {
+        "title": "Prix fermé",
+        "body": "Le montant accepté est le montant payé. Hors périmètre : devis séparé et écrit."
+      }
+    },
+    "drivers": {
+      "eyebrow": "Ce qui fait bouger le prix",
+      "title": "Ce n’est pas un combo figé.",
+      "items": [
+        "Périmètre et nombre d’écrans ou de flux",
+        "Intégrations (paiements, stock, WhatsApp, ERP)",
+        "Publication App Store et Google Play",
+        "Campagnes Meta Ads ou Google Ads",
+        "Infrastructure, serveurs et sécurité"
+      ]
+    },
+    "bands": {
+      "includesLabel": "Inclus",
+      "excludesLabel": "Non inclus",
+      "sitio": {
+        "title": "Mise à jour de site",
+        "line": "Rafraîchir ce qui est déjà en ligne sans jeter ce qui marche.",
+        "includes": [
+          "Design",
+          "perf",
+          "SEO on-page",
+          "textes",
+          "WhatsApp",
+          "déploiement"
+        ],
+        "excludes": [
+          "App native",
+          "boutique neuve",
+          "campagnes ads",
+          "serveur à votre nom sauf contrat"
+        ]
+      },
+      "tienda": {
+        "title": "Boutique en ligne",
+        "line": "Tiendanube, Empretienda ou boutique sur mesure qui encaisse vraiment.",
+        "includes": [
+          "Catalogue",
+          "paiements",
+          "livraisons",
+          "domaine",
+          "charge initiale convenue",
+          "garantie 90 jours sur livré"
+        ],
+        "excludes": [
+          "Stock physique",
+          "budget pubs",
+          "photos produit",
+          "marketplaces hors périmètre"
+        ]
+      },
+      "sistema": {
+        "title": "Système interne",
+        "line": "ERP / CRM / caisse / panel qui remplace les tableurs.",
+        "includes": [
+          "Périmètre fermé de modules",
+          "rôles",
+          "déploiement",
+          "formation"
+        ],
+        "excludes": [
+          "Licences tierces",
+          "import historique illimité",
+          "matériel"
+        ]
+      },
+      "app": {
+        "title": "App iOS et Android",
+        "line": "Une base React Native, deux stores, comptes vérifiés.",
+        "includes": [
+          "Fiche",
+          "captures",
+          "confidentialité",
+          "build signé",
+          "review",
+          "garantie 90 jours"
+        ],
+        "excludes": [
+          "Compte Apple/Google à votre nom si vous ne l’avez pas ouvert",
+          "pubs",
+          "features hors contrat"
+        ]
+      },
+      "ciber": {
+        "title": "Cybersécurité et infra",
+        "line": "Audit, durcissement et/ou exploitation de serveurs.",
+        "includes": [
+          "Rapport écrit",
+          "corrections convenues",
+          "backups/SSL si au périmètre",
+          "monitoring si contracté"
+        ],
+        "excludes": [
+          "Pentest tiers non nommé",
+          "assurance cyber",
+          "astreinte 24/7 sauf contrat séparé"
+        ]
+      }
+    },
+    "rates": {
+      "enabled": false,
+      "eyebrow": "Fourchettes de départ",
+      "note": "Fourchettes indicatives. Le prix du contrat est celui de la proposition.",
+      "rows": [
+        {
+          "band": "sitio",
+          "from": ""
+        },
+        {
+          "band": "tienda",
+          "from": ""
+        },
+        {
+          "band": "sistema",
+          "from": ""
+        },
+        {
+          "band": "app",
+          "from": ""
+        },
+        {
+          "band": "ciber",
+          "from": ""
+        }
+      ]
+    },
+    "cta": {
+      "title": "Demandez le montant par écrit.",
+      "body": "Diagnostic sans coût. S’il y a match, proposition avec périmètre, dates et prix fermé.",
+      "primary": "Demander une proposition",
+      "whatsapp": "WhatsApp"
+    },
+    "waGreeting": "Bonjour PotenciApp, j’ai vu /tarifs et je veux une proposition.",
+    "teaser": {
+      "eyebrow": "Tarifs",
+      "title": "Trois types de travail. Le montant, dans la proposition.",
+      "note": "Le montant se ferme dans la proposition.",
+      "cta": "Comment le prix se construit"
+    },
+    "faq": [
+      {
+        "q": "Pourquoi n’y a-t-il pas de prix sur cette page ?",
+        "a": "Parce que le périmètre fixe le montant. Publier un chiffre isolé oblige à mentir à la hausse ou à la baisse. Ici, le process et ce que chaque type de travail inclut."
+      },
+      {
+        "q": "Le diagnostic a-t-il un coût ?",
+        "a": "Non. L’appel de diagnostic n’est pas facturé. Le prix apparaît dans la proposition, avant de signer."
+      },
+      {
+        "q": "Le prix peut-il bouger en cours de projet ?",
+        "a": "Le prix du périmètre signé non. Ce que vous demandez en plus se chiffre à part et par écrit, ou ne se fait pas."
+      },
+      {
+        "q": "Facturez-vous ?",
+        "a": "Oui. Société enregistrée, une facture pour chaque paiement."
       }
     ]
   }

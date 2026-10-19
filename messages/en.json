@@ -416,7 +416,7 @@
     "items": [
       {
         "q": "How much does a project cost?",
-        "a": "We don't publish prices because scope sets the number. What is fixed: you get a written proposal with a closed price before signing, and that number doesn't move. If you ask for something outside the scope mid-project, it's quoted separately and also in writing."
+        "a": "We don’t publish a loose rate: scope sets the number. On Pricing you’ll find the process, what moves the price, and what each kind of work includes. What’s fixed: a written proposal with a closed price before you sign; that number doesn’t move. Out of scope is quoted separately and in writing."
       },
       {
         "q": "What's in the contract?",
@@ -539,6 +539,184 @@
       {
         "h": "Your rights",
         "p": "You can ask us at any time to access, correct or delete the data you sent us by writing to contacto@potenciapp.com. Billing-related data is kept for as long as Argentine law requires."
+      }
+    ]
+  },
+  "precios": {
+    "metaTitle": "Pricing | How the number is built | PotenciApp",
+    "metaDescription": "We don’t publish a loose rate. We explain the process, what moves the price, and what each kind of work includes. The number closes in the proposal.",
+    "eyebrow": "Pricing",
+    "title": "The number isn’t invented in a chat.",
+    "lead": "Scope sets the price. What’s fixed: diagnosis at no cost, a written proposal, and a closed number before you sign.",
+    "process": {
+      "eyebrow": "How the number is built",
+      "s1": {
+        "title": "Diagnosis at no cost",
+        "body": "One call to understand the operation. No fee, no obligation to sign."
+      },
+      "s2": {
+        "title": "Written proposal",
+        "body": "Scope, stages, dates and a closed price. You read it before signing and you keep a copy."
+      },
+      "s3": {
+        "title": "Closed price",
+        "body": "The number you accept is the number you pay. Anything outside scope is quoted separately and in writing."
+      }
+    },
+    "drivers": {
+      "eyebrow": "What moves the price",
+      "title": "It isn’t a fixed combo.",
+      "items": [
+        "Scope and number of screens or flows",
+        "Integrations (payments, stock, WhatsApp, ERPs)",
+        "App Store and Google Play publishing",
+        "Meta Ads or Google Ads campaigns",
+        "Infrastructure, servers and security"
+      ]
+    },
+    "bands": {
+      "includesLabel": "Includes",
+      "excludesLabel": "Does not include",
+      "sitio": {
+        "title": "Website update",
+        "line": "Refresh what is already online without throwing away what works.",
+        "includes": [
+          "Design",
+          "performance",
+          "on-page SEO",
+          "copy",
+          "WhatsApp",
+          "deploy"
+        ],
+        "excludes": [
+          "Native app",
+          "a brand-new store",
+          "ad campaigns",
+          "a server in your name unless contracted"
+        ]
+      },
+      "tienda": {
+        "title": "Online store",
+        "line": "Tiendanube, Empretienda or a custom store that actually charges.",
+        "includes": [
+          "Catalog",
+          "payments",
+          "shipping",
+          "domain",
+          "agreed initial load",
+          "90-day warranty on what we delivered"
+        ],
+        "excludes": [
+          "Physical stock",
+          "ad spend",
+          "product photos",
+          "marketplaces unless in scope"
+        ]
+      },
+      "sistema": {
+        "title": "Internal system",
+        "line": "ERP / CRM / POS / dashboard that replaces spreadsheets.",
+        "includes": [
+          "Closed module scope",
+          "roles",
+          "deploy",
+          "team training"
+        ],
+        "excludes": [
+          "Third-party licenses",
+          "unlimited historical import",
+          "hardware"
+        ]
+      },
+      "app": {
+        "title": "iOS and Android app",
+        "line": "One React Native codebase, two stores, verified accounts.",
+        "includes": [
+          "Listing",
+          "screenshots",
+          "privacy",
+          "signed build",
+          "review",
+          "90-day warranty"
+        ],
+        "excludes": [
+          "Apple/Google account if it is yours and you have not opened it",
+          "ads",
+          "features outside the contract"
+        ]
+      },
+      "ciber": {
+        "title": "Cybersecurity and infra",
+        "line": "Audit, hardening and/or running servers.",
+        "includes": [
+          "Written report",
+          "agreed fixes",
+          "backups/SSL if in scope",
+          "monitoring if contracted"
+        ],
+        "excludes": [
+          "An unnamed third-party pentest",
+          "cyber insurance",
+          "24/7 on-call unless a separate contract"
+        ]
+      }
+    },
+    "rates": {
+      "enabled": false,
+      "eyebrow": "Starting ranges",
+      "note": "Informational ranges. The contract price is the one in the proposal.",
+      "rows": [
+        {
+          "band": "sitio",
+          "from": ""
+        },
+        {
+          "band": "tienda",
+          "from": ""
+        },
+        {
+          "band": "sistema",
+          "from": ""
+        },
+        {
+          "band": "app",
+          "from": ""
+        },
+        {
+          "band": "ciber",
+          "from": ""
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ask for the number in writing.",
+      "body": "Diagnosis at no cost. If it’s a fit, a proposal with scope, dates and a closed price.",
+      "primary": "Request a proposal",
+      "whatsapp": "WhatsApp"
+    },
+    "waGreeting": "Hi PotenciApp — I saw /pricing and I want a proposal.",
+    "teaser": {
+      "eyebrow": "Pricing",
+      "title": "Three kinds of work. The number, in the proposal.",
+      "note": "The number closes in the proposal.",
+      "cta": "How the price is built"
+    },
+    "faq": [
+      {
+        "q": "Why is there no price on this page?",
+        "a": "Because scope sets the number. Publishing a loose figure forces us to lie up or down. Here is the process and what each kind of work includes."
+      },
+      {
+        "q": "Does the diagnosis have a cost?",
+        "a": "No. The diagnosis call is not charged. The price appears in the proposal, before you sign."
+      },
+      {
+        "q": "Can the price move mid-project?",
+        "a": "The price of the signed scope does not. Extra requests are quoted separately and in writing, or they are not done."
+      },
+      {
+        "q": "Do you invoice?",
+        "a": "Yes. A registered company, an invoice for every payment."
       }
     ]
   }

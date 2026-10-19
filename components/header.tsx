@@ -15,7 +15,7 @@ import { routing } from "@/i18n/routing"
  * Do not add hrefs while the flag is false — those URLs 404 on this branch.
  */
 export const NAV_PAGE_LINKS = {
-  precios: false,
+  precios: true,
   equipo: false,
   blog: false,
 } as const
@@ -122,16 +122,27 @@ export function Header() {
         )}
       >
         <nav className="flex flex-col px-4 py-4 gap-2" aria-label="Mobile">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex min-h-11 items-center text-base font-medium text-gray-300 hover:text-brand-green py-3 border-b border-gray-800 last:border-b-0 transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) =>
+            item.href.includes("#") ? (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex min-h-11 items-center text-base font-medium text-gray-300 hover:text-brand-green py-3 border-b border-gray-800 last:border-b-0 transition-colors"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex min-h-11 items-center text-base font-medium text-gray-300 hover:text-brand-green py-3 border-b border-gray-800 last:border-b-0 transition-colors"
+              >
+                {item.label}
+              </Link>
+            ),
+          )}
           <a
             href={contactoHref}
             onClick={() => setIsMobileMenuOpen(false)}

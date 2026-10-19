@@ -4,7 +4,30 @@ import { useState, useId } from "react"
 import { Plus } from "lucide-react"
 import { openFloatingChat } from "@/lib/site"
 import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
 import AnimatedContent from "@/components/reactbits/AnimatedContent"
+
+function FaqAnswer({ text, index }: { text: string; index: number }) {
+  const tNav = useTranslations("nav")
+  if (index !== 0) return text
+
+  const label = tNav("precios")
+  const at = text.indexOf(label)
+  if (at === -1) return text
+
+  return (
+    <>
+      {text.slice(0, at)}
+      <Link
+        href="/precios"
+        className="text-brand-green font-semibold hover:underline underline-offset-4"
+      >
+        {label}
+      </Link>
+      {text.slice(at + label.length)}
+    </>
+  )
+}
 
 export function FaqSection() {
   const t = useTranslations("faq")
@@ -63,7 +86,7 @@ export function FaqSection() {
                 >
                   <div className="overflow-hidden">
                     <p className="pb-6 lg:pb-7 pr-12 text-base text-gray-300 leading-relaxed">
-                      {f.a}
+                      <FaqAnswer text={f.a} index={i} />
                     </p>
                   </div>
                 </div>

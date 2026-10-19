@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react"
-import { Link } from "@/i18n/navigation"
+import { Link, usePathname } from "@/i18n/navigation"
 
 type Item = { label: string; href: string }
 
@@ -24,6 +24,7 @@ function isPagePath(href: string) {
  * (`/#faq#contacto`). Page hrefs use next-intl Link for locale prefixes.
  */
 export function SectionNav({ items }: { items: Item[] }) {
+  const pathname = usePathname()
   const [active, setActive] = useState(-1)
   const listRef = useRef<HTMLUListElement>(null)
   const [pill, setPill] = useState<{ left: number; width: number } | null>(null)
@@ -63,10 +64,13 @@ export function SectionNav({ items }: { items: Item[] }) {
     }
   }, [items])
 
+  const pathActive = items.findIndex((it) => isPagePath(it.href) && it.href === pathname)
+  const current = pathActive >= 0 ? pathActive : active
+
   useLayoutEffect(() => {
-    const li = listRef.current?.querySelectorAll("li")[active]
+    const li = listRef.current?.querySelectorAll("li")[current]
     setPill(li ? { left: li.offsetLeft, width: li.offsetWidth } : null)
-  }, [active, items])
+  }, [current, items])
 
   return (
     <ul ref={listRef} className="relative flex items-center gap-1">
@@ -77,16 +81,16 @@ export function SectionNav({ items }: { items: Item[] }) {
       />
       {items.map((item, i) => {
         const className = `flex min-h-11 items-center rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green ${
-          i === active ? "text-brand-green" : "text-gray-300 hover:text-gray-100"
+          i === current ? "text-brand-green" : "text-gray-300 hover:text-gray-100"
         }`
         return (
           <li key={item.href} className="relative">
             {isPagePath(item.href) ? (
-              <Link href={item.href} aria-current={i === active ? "page" : undefined} className={className}>
+              <Link href={item.href} aria-current={i === current ? "page" : undefined} className={className}>
                 {item.label}
               </Link>
             ) : (
-              <a href={item.href} aria-current={i === active ? "true" : undefined} className={className}>
+              <a href={item.href} aria-current={i === current ? "true" : undefined} className={className}>
                 {item.label}
               </a>
             )}
