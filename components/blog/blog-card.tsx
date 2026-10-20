@@ -22,13 +22,14 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
     <Link
       href={`/blog/${post.slug}`}
       className={cn(
-        "group flex h-full overflow-hidden rounded-2xl border border-[#1A1A1A] bg-[#111111] shadow-lg transition-colors hover:border-[#22F23A]/50 focus-visible:outline-none",
+        "group flex h-full flex-col overflow-hidden rounded-2xl border border-[#1A1A1A] bg-[#111111] shadow-lg transition-colors hover:border-[#22F23A]/50 focus-visible:outline-none",
         featured && "lg:grid lg:grid-cols-2",
       )}
     >
       <BlogCover
         src={post.coverImage}
         alt={post.title}
+        label={t(`categories.${post.category}.label`)}
         className={featured ? "lg:h-full lg:min-h-[280px]" : undefined}
         imgClassName="transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
       />

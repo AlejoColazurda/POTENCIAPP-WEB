@@ -135,7 +135,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <p>{t(post.aiAssisted ? "roleAi" : "roleTeam")}</p>
           </div>
 
-          <BlogCover src={post.coverImage} alt={post.title} className="rounded-2xl border border-[#1A1A1A]" />
+          <BlogCover
+            src={post.coverImage}
+            alt={post.title}
+            label={t(`categories.${post.category}.label`)}
+            className="rounded-2xl border border-[#1A1A1A]"
+          />
 
           {!post.translated ? (
             <p className="rounded-xl border border-[#1A1A1A] bg-[#111111] px-4 py-3 text-sm text-[#B8B8B8]">

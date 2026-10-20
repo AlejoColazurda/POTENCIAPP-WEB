@@ -3,6 +3,7 @@ title: Estafas por WhatsApp y Mercado Pago: cómo detectarlas antes de perder pl
 description: Comprobantes falsos, robo de cuentas con el código de 6 dígitos y links que imitan a Mercado Pago. Qué buscar y qué configurar hoy en tu comercio.
 date: 2026-10-08
 tag: Estafas
+cover: /blog/covers/estafas-whatsapp-mercado-pago.jpg
 category: security
 author: Equipo PotenciApp
 ---
