@@ -32,8 +32,19 @@ async function refreshAdminSession(request: NextRequest) {
   return response
 }
 
+// /en/admin, /pt/admin/login…: the panel has no locale prefix. Visitors who
+// browse the site in another language (NEXT_LOCALE cookie) end up here.
+const LOCALIZED_ADMIN = new RegExp(`^/(?:${routing.locales.join("|")})(/admin(?:/.*)?)$`)
+
 export default function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname === "/admin" || request.nextUrl.pathname.startsWith("/admin/")) {
+  const { pathname } = request.nextUrl
+  const localized = pathname.match(LOCALIZED_ADMIN)
+  if (localized) {
+    const url = request.nextUrl.clone()
+    url.pathname = localized[1]
+    return NextResponse.redirect(url)
+  }
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) {
     return refreshAdminSession(request)
   }
   return intl(request)
