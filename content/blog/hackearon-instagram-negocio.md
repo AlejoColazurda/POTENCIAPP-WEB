@@ -3,6 +3,7 @@ title: Me hackearon el Instagram del negocio: qué hacer en las primeras horas
 description: Una guía paso a paso para recuperar la cuenta, avisarle a tus clientes y cerrar la puerta para que no vuelva a pasar.
 date: 2026-09-24
 tag: Redes sociales
+cover: /blog/covers/hackearon-instagram-negocio.jpg
 category: security
 author: Equipo PotenciApp
 ---

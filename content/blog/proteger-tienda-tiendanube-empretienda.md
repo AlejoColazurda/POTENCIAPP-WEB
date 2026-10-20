@@ -3,6 +3,7 @@ title: Cómo proteger tu tienda online en Tiendanube o Empretienda: checklist de
 description: Accesos de empleados, verificación en dos pasos, el email que nadie cuida y las apps que instalaste y te olvidaste. Diez puntos para revisar tu tienda en una hora.
 date: 2026-10-01
 tag: E-commerce
+cover: /blog/covers/proteger-tienda-tiendanube-empretienda.jpg
 category: security
 author: Equipo PotenciApp
 ---
