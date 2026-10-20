@@ -132,7 +132,7 @@ const PROJECTS: Project[] = [
 export function PortfolioSection() {
   const t = useTranslations("portfolio")
 
-  const items: ChromaItem[] = PROJECTS.map((p) => ({
+  const toItem = (p: Project): ChromaItem => ({
     image: p.image,
     title: t(`items.${p.key}.title`),
     subtitle: t(`items.${p.key}.category`),
@@ -140,12 +140,16 @@ export function PortfolioSection() {
     handle: p.handle,
     url: p.url,
     badge: p.live ? t("live") : undefined,
+    cta: p.live ? t("verCaso") : t("verDemo"),
     tags: p.tags,
     borderColor: p.live ? "#22F23A" : "#2A2A2A",
     gradient: p.live
       ? "linear-gradient(160deg, rgba(34,242,58,0.16), #0A0A0A 62%)"
       : "linear-gradient(160deg, #1A1A1A, #0A0A0A 62%)",
-  }))
+  })
+
+  const liveItems = PROJECTS.filter((p) => p.live).map(toItem)
+  const demoItems = PROJECTS.filter((p) => !p.live).map(toItem)
 
   return (
     <section
@@ -177,9 +181,20 @@ export function PortfolioSection() {
           </div>
         </AnimatedContent>
 
-        {/* ChromaGrid desaturates everything outside the cursor spotlight, so the
-            project the visitor is pointing at is the only one in full colour. */}
-        <ChromaGrid items={items} radius={340} damping={0.4} fadeOut={0.5} />
+        <div className="space-y-14">
+          <div>
+            <h3 className="font-display text-xl font-semibold tracking-tight text-gray-100 mb-6">
+              {t("liveGroup")}
+            </h3>
+            <ChromaGrid className="chroma-grid-brand" items={liveItems} radius={340} damping={0.4} fadeOut={0.5} />
+          </div>
+          <div>
+            <h3 className="font-display text-xl font-semibold tracking-tight text-gray-100 mb-6">
+              {t("demoGroup")}
+            </h3>
+            <ChromaGrid className="chroma-grid-brand" items={demoItems} radius={340} damping={0.4} fadeOut={0.5} />
+          </div>
+        </div>
 
         {/* No link to the raw demos index on purpose: the grid above IS the
             curated selection. The slot sells the next step instead. */}
@@ -187,7 +202,7 @@ export function PortfolioSection() {
           <p className="text-base text-gray-300">{t("ctaLine")}</p>
           <a
             href="#contacto"
-            className="group inline-flex items-center gap-2 h-12 px-6 rounded-lg border border-brand-green text-brand-green font-display font-semibold text-sm hover:bg-brand-green/10 transition-all duration-300"
+            className="group inline-flex items-center gap-2 min-h-11 h-12 px-6 rounded-lg border border-brand-green text-brand-green font-display font-semibold text-sm hover:bg-brand-green/10 transition-all duration-300"
           >
             {t("ctaButton")}
             <ArrowUpRight

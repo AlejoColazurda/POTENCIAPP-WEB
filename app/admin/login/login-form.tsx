@@ -1,0 +1,40 @@
+"use client"
+
+import { useActionState } from "react"
+import { requestLoginLink } from "../actions"
+
+export function LoginForm() {
+  const [state, action, pending] = useActionState(requestLoginLink, null)
+
+  if (state?.ok) {
+    return (
+      <p className="mt-6 rounded-lg border border-brand-green/30 bg-brand-green/10 p-4 text-sm leading-relaxed text-gray-100">
+        {state.ok}
+      </p>
+    )
+  }
+
+  return (
+    <form action={action} className="mt-6 space-y-4">
+      <label className="block">
+        <span className="text-sm text-gray-300">Email</span>
+        <input
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          className="mt-1 h-11 w-full rounded-lg border border-gray-800 bg-gray-900 px-3 text-base text-gray-100 focus:border-brand-green focus:outline-none"
+        />
+      </label>
+      {state?.error && <p className="text-sm text-red-400">{state.error}</p>}
+      <button
+        type="submit"
+        disabled={pending}
+        className="h-11 w-full rounded-lg bg-brand-green font-semibold text-black transition-colors hover:bg-green-hover disabled:opacity-50"
+      >
+        {pending ? "Enviando…" : "Enviarme el link de acceso"}
+      </button>
+      <p className="text-xs text-gray-500">Sin contraseña: te llega un link por email que sirve una sola vez.</p>
+    </form>
+  )
+}

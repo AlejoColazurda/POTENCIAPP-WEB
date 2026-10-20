@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "PotenciApp | Software, ciberseguridad e infraestructura con contrato y garantía",
-    "description": "Empresa completa de software y marketing digital: apps iOS y Android, tiendas en Tiendanube y Empretienda, anuncios en Meta Ads y Google Ads, actualización de sitios, sistemas, IA, ciberseguridad e infraestructura cloud. Contrato, precio cerrado, factura y 90 días de garantía.",
+    "description": "Software, tiendas online y marketing para que tu negocio venda más: apps iOS y Android, sistemas, tiendas a medida, en Tiendanube, Empretienda y Mercado Libre, anuncios en Meta Ads, Google Ads y Mercado Libre Ads, IA y ciberseguridad. Contrato, precio cerrado, factura y garantía.",
     "ogTitle": "PotenciApp | Software que se firma, se entrega y se garantiza.",
     "ogDescription": "Apps, e-commerce, sistemas, ciberseguridad e infraestructura cloud. Contrato, precio cerrado, factura y 90 días de garantía."
   },
@@ -14,14 +14,16 @@
     "ctaLong": "Pedir propuesta",
     "menu": "Menú",
     "close": "Cerrar",
-    "garantia": "Garantía"
+    "garantia": "Garantía",
+    "precios": "Precios",
+    "equipo": "Equipo",
+    "blog": "Blog"
   },
   "hero": {
     "statusBadge": "Respondemos en 24 h hábiles",
     "partnerBadge": "Contrato · Precio cerrado · Garantía",
     "outline": "POTENCIAMOS",
     "h2_line1": "Tu software, con",
-    "h2_accent": "Sin techo.",
     "subheading": "Apps, e-commerce y sistemas a medida para empresas y comercios. Firmamos <bold>alcance, hitos y fechas</bold> antes de escribir una línea de código, y respaldamos lo que entregamos por escrito.",
     "ctaPrimary": "Pedir propuesta",
     "ctaSecondary": "Ver proyectos en vivo",
@@ -80,8 +82,8 @@
   },
   "services": {
     "eyebrow": "Soluciones",
-    "title": "Una empresa completa, división por división.",
-    "subtitle": "Del código a las ventas: apps, tiendas online, anuncios en Meta y Google, sistemas, IA, ciberseguridad y servidores. Todo con contrato, precio cerrado y garantía.",
+    "title": "Desarrollamos desde cero. Y potenciamos lo que ya tenés.",
+    "subtitle": "Nuestro fuerte es el software a medida: apps, sistemas y tiendas que no dependen de ninguna plataforma. Sumamos marketing, Mercado Libre, IA y seguridad para que tu negocio venda más.",
     "verMas": "Ver más",
     "cards": {
       "apps": {
@@ -103,46 +105,56 @@
         "desc": "Agentes que automatizan procesos reales: atención, ventas, análisis. Modelos open + APIs propietarias."
       },
       "ecommerce": {
-        "eyebrow": "03 · Venta",
+        "eyebrow": "03 · Venta online",
         "title": "Tiendas online",
-        "desc": "Creamos tu tienda en Tiendanube o Empretienda, o una a medida: catálogo, medios de pago, envíos y dominio propio. Como las que ya venden en producción.",
+        "desc": "Desarrollamos tu tienda desde cero, a medida: catálogo, Mercado Pago, envíos y dominio propio, sin límites de plataforma. Si preferís, la armamos en Tiendanube, Empretienda, Shopify o WooCommerce.",
         "chips": [
+          "A medida",
           "Tiendanube",
           "Empretienda",
-          "A medida",
-          "Mercado Pago",
-          "Envíos"
+          "Shopify",
+          "WooCommerce"
+        ]
+      },
+      "mercadolibre": {
+        "eyebrow": "04 · Marketplace",
+        "title": "Mercado Libre",
+        "desc": "Armamos y ordenamos tu cuenta de vendedor, optimizamos tus publicaciones y gestionamos tus campañas de Mercado Libre Ads para que vendas más.",
+        "chips": [
+          "Cuenta de vendedor",
+          "Publicaciones",
+          "Mercado Libre Ads",
+          "Reputación"
         ]
       },
       "marketing": {
-        "eyebrow": "04 · Marketing",
-        "title": "Anuncios en Meta y Google",
-        "desc": "Campañas en Meta Ads (Facebook e Instagram) y Google Ads desde cuentas publicitarias verificadas: píxel, conversiones y reportes claros de cada peso invertido.",
+        "eyebrow": "05 · Crecimiento",
+        "title": "Anuncios que venden",
+        "desc": "Meta Ads, Google Ads y Mercado Libre Ads desde cuentas publicitarias verificadas. Gestión mensual, medición de conversiones y reportes claros de cada peso invertido.",
         "chips": [
           "Meta Ads",
           "Google Ads",
-          "Instagram",
-          "Píxel",
+          "Mercado Libre Ads",
           "Conversiones"
         ]
       },
       "sitios": {
-        "eyebrow": "05 · Web",
-        "title": "Actualización de sitios",
-        "desc": "Renovamos tu sitio actual: diseño, velocidad, SEO, textos y WhatsApp. Sin empezar de cero y sin perder lo que ya funciona."
+        "eyebrow": "06 · Web",
+        "title": "Sitios web",
+        "desc": "Diseñamos tu sitio desde cero o renovamos el que ya tenés, esté en WordPress, Wix o hecho a medida: diseño, velocidad, SEO, textos y WhatsApp."
       },
       "sistemas": {
-        "eyebrow": "06 · Backoffice",
+        "eyebrow": "07 · Backoffice",
         "title": "Sistemas internos",
         "desc": "ERPs, CRMs y dashboards a medida. Reemplazá 5 planillas y 3 SaaS por una herramienta tuya."
       },
       "automatizaciones": {
-        "eyebrow": "07 · Operación",
+        "eyebrow": "08 · Operación",
         "title": "Automatizaciones",
         "desc": "Flujos que conectan lo que ya usás. n8n, Zapier, custom workers — sin tocar tu stack."
       },
       "ciberseguridad": {
-        "eyebrow": "08 · Seguridad",
+        "eyebrow": "09 · Seguridad",
         "title": "Ciberseguridad",
         "desc": "Auditamos, endurecemos y protegemos lo que ya tenés online: accesos, datos, backups y certificados.",
         "chips": [
@@ -154,7 +166,7 @@
         ]
       },
       "infraestructura": {
-        "eyebrow": "09 · Infraestructura",
+        "eyebrow": "10 · Infraestructura",
         "title": "Infraestructura y cloud",
         "desc": "Arquitectura de software, servidores, redes y despliegues. Montamos, monitoreamos y mantenemos tu infraestructura completa.",
         "chips": [
@@ -167,11 +179,26 @@
         ]
       },
       "consultoria": {
-        "eyebrow": "10 · Estrategia",
+        "eyebrow": "11 · Estrategia",
         "title": "Arquitectura y consultoría",
         "desc": "¿Construir, comprar o tercerizar? Auditamos tu stack, diseñamos la arquitectura y dejamos un roadmap aplicable en 2 semanas."
       }
-    }
+    },
+    "platformsTitle": "¿Ya usás una plataforma? También trabajamos con ella.",
+    "platformsSubtitle": "Nuestro fuerte es desarrollar a medida, desde cero. Pero si tu negocio ya está en una plataforma, lo mejoramos ahí, sin obligarte a migrar.",
+    "platforms": [
+      "Tiendanube",
+      "Empretienda",
+      "Shopify",
+      "WooCommerce",
+      "WordPress",
+      "Mercado Libre",
+      "Wix",
+      "Mercado Pago",
+      "Meta Ads",
+      "Google Ads",
+      "Mercado Libre Ads"
+    ]
   },
   "stores": {
     "eyebrow": "Apps nativas",
@@ -209,6 +236,11 @@
     "verCaso": "Ver proyecto",
     "verDemo": "Abrir demo",
     "live": "En vivo",
+    "liveGroup": "En vivo, vendiendo ahora",
+    "demoGroup": "Demos que podés abrir",
+    "filterAll": "Todos",
+    "filterLive": "En vivo",
+    "filterDemo": "Demos",
     "items": {
       "maxikiosco": {
         "title": "Maxikiosco 24/7",
@@ -281,10 +313,11 @@
   },
   "band": [
     "Software a medida",
-    "Ciberseguridad",
-    "Infraestructura cloud",
+    "Mercado Libre",
+    "Marketing digital",
+    "Tiendas online",
     "Apps iOS y Android",
-    "E-commerce",
+    "Ciberseguridad",
     "IA aplicada"
   ],
   "garantia": {
@@ -387,13 +420,13 @@
     "close": "Cerrar chat",
     "send": "Enviar",
     "thinking": "Escribiendo...",
-    "greeting": "¡Hola! Soy el asistente de PotenciApp. Contame qué necesitás — tienda online, anuncios en Meta o Google, apps, sistemas — y te oriento.",
+    "greeting": "¡Hola! Soy el asistente de PotenciApp. Desarrollamos software, apps y tiendas a medida, y te ayudamos a vender más. Contame qué querés lograr y te oriento.",
     "placeholder": "Escribí tu consulta...",
     "suggestions": [
-      "Quiero una tienda en Tiendanube o Empretienda",
-      "Quiero hacer anuncios en Meta y Google",
-      "Necesito actualizar mi sitio",
-      "Necesito una app publicada en las tiendas"
+      "Quiero una tienda o una app desarrollada a medida",
+      "Necesito un sistema para mi negocio",
+      "Quiero vender más en Mercado Libre",
+      "Quiero anuncios que vendan en Meta, Google o Mercado Libre"
     ],
     "fallbackMessage": "Ahora mismo no puedo responder por acá. Seguimos por WhatsApp y te contesta el equipo en menos de 24 h hábiles.",
     "fallbackCta": "Continuar en WhatsApp",
@@ -410,6 +443,14 @@
       {
         "q": "¿Cuánto cuesta un proyecto?",
         "a": "No publicamos precios porque el alcance define el número. Lo que sí es fijo: recibís una propuesta escrita con precio cerrado antes de firmar, y ese número no se mueve. Si durante el proyecto pedís algo fuera del alcance, se cotiza aparte y también por escrito."
+      },
+      {
+        "q": "¿Solo hacen tiendas en Empretienda o Tiendanube?",
+        "a": "No. Nuestro fuerte es el desarrollo a medida, desde cero: apps, sistemas y tiendas hechas exactamente para tu negocio. Si ya usás una plataforma como Tiendanube, Empretienda, Shopify, WooCommerce, WordPress o Mercado Libre, también trabajamos con ella. Además hacemos anuncios en Meta, Google y Mercado Libre, IA, ciberseguridad e infraestructura."
+      },
+      {
+        "q": "¿Trabajan con Mercado Libre?",
+        "a": "Sí. Armamos y ordenamos tu cuenta de vendedor, optimizamos las publicaciones y gestionamos campañas de Mercado Libre Ads. Si además tenés tienda propia, conectamos los dos canales para que crezcan juntos."
       },
       {
         "q": "¿Qué incluye el contrato?",
@@ -534,5 +575,136 @@
         "p": "Podés pedirnos en cualquier momento acceder, corregir o eliminar los datos que nos hayas enviado, escribiendo a contacto@potenciapp.com. Los datos vinculados a facturación se conservan por el plazo que exige la ley argentina."
       }
     ]
+  },
+  "blog": {
+    "eyebrow": "Blog · Ciberseguridad",
+    "title": "Seguridad práctica para comercios y pymes.",
+    "subtitle": "Guías cortas para proteger tu tienda, tus cuentas y tus cobros. Sin tecnicismos, con pasos que podés aplicar hoy.",
+    "metaTitle": "Blog de ciberseguridad para comercios | PotenciApp",
+    "metaDescription": "Guías prácticas de ciberseguridad para comercios y pymes: estafas por WhatsApp y Mercado Pago, seguridad en Tiendanube y Empretienda, cuentas de Instagram y más.",
+    "readMore": "Leer artículo",
+    "minutes": "{n} min de lectura",
+    "back": "Todos los artículos",
+    "home": "Inicio",
+    "spanishOnly": "",
+    "ctaTitle": "¿Querés que revisemos la seguridad de tu negocio?",
+    "ctaBody": "Auditamos tus cuentas, tu tienda y tus accesos, y te entregamos un informe por escrito con lo que hay que corregir.",
+    "ctaPrimary": "Pedir propuesta",
+    "ctaWhatsApp": "Escribinos por WhatsApp",
+    "waGreeting": "Hola PotenciApp, leí el blog y quiero revisar la seguridad de mi negocio.",
+    "author": "Equipo PotenciApp"
+  },
+  "blogUi": {
+    "metaTitle": "Blog de PotenciApp | Seguridad y tiendas para comercios",
+    "metaDescription": "Guías cortas para proteger tu tienda, tus cuentas y tus cobros. Sin tecnicismos.",
+    "eyebrow": "Blog",
+    "heroTitle": "Seguridad y tiendas, explicadas para tu comercio.",
+    "heroSubtitle": "Guías cortas y el resumen del mes. Pasos que podés aplicar hoy.",
+    "homeAria": "PotenciApp: ir al inicio",
+    "navAria": "Navegación del blog",
+    "backToSite": "Volver a la web principal",
+    "allArticles": "Todos los artículos",
+    "searchPlaceholder": "Buscar por tema",
+    "clear": "Limpiar",
+    "all": "Todos",
+    "emptyTitle": "No hay artículos para este filtro",
+    "emptyBody": "Sacá la búsqueda o la categoría para ver el resto.",
+    "resetFilters": "Restablecer filtros",
+    "read": "Leer",
+    "back": "Volver",
+    "closeArticle": "Cerrar artículo",
+    "swipeHint": "",
+    "swipeHintLong": "",
+    "readingTime": "{time} de lectura",
+    "topics": "Temas:",
+    "onlySpanish": "Este artículo está en español.",
+    "ctaBadge": "Con contrato y garantía",
+    "ctaTitle": "¿Querés que lo implementemos con contrato?",
+    "ctaBody": "Alcance cerrado, precio por escrito y 90 días de garantía sobre lo que entregamos.",
+    "whatsapp": "Hablar por WhatsApp",
+    "waMessage": "Hola PotenciApp, leí «{title}» y quiero una propuesta.",
+    "keepExploring": "Más artículos",
+    "notFound": "Artículo no encontrado",
+    "share": "Compartir:",
+    "shareOn": "Compartir en {network}",
+    "discordTitle": "Copiar texto listo para Discord",
+    "readOn": "Leer en PotenciApp",
+    "storyButton": "Historia (9:16)",
+    "storyTitle": "Crear una historia para Instagram y Facebook",
+    "copyLink": "Copiar enlace",
+    "copied": "Copiado",
+    "copyCode": "Copiar código",
+    "codeCopied": "Copiado",
+    "closeModal": "Cerrar",
+    "resolution": "Resolución HD: 1080 x 1920 (9:16)",
+    "storyGenTitle": "Generador de historias",
+    "storyGenBody": "Exportá una imagen de 1080x1920 lista para publicar en Instagram Stories y Facebook Stories.",
+    "styleLabel": "Estilo y color",
+    "linkSticker": "Compatible con el sticker de enlace de Instagram",
+    "generating": "Generando…",
+    "download": "Descargar historia (PNG)",
+    "captionCopied": "¡Texto copiado!",
+    "copyCaption": "Copiar texto y hashtags",
+    "storyCta": "Leer el artículo",
+    "caption": "Nuevo artículo en el blog de PotenciApp",
+    "captionLink": "Leer:",
+    "themeNeon": "Verde neón",
+    "roleTeam": "PotenciApp",
+    "roleAi": "Redactado con IA y revisado por el equipo",
+    "categories": {
+      "security": {
+        "label": "Seguridad",
+        "short": "Seguridad"
+      },
+      "news": {
+        "label": "Resumen del mes",
+        "short": "Resumen"
+      },
+      "ai-agents": {
+        "label": "IA y automatización",
+        "short": "IA"
+      },
+      "mobile-apps": {
+        "label": "Desarrollo mobile (iOS y Android)",
+        "short": "Apps"
+      },
+      "web-engineering": {
+        "label": "Ingeniería web y cloud",
+        "short": "Web y cloud"
+      },
+      "automation": {
+        "label": "Automatizaciones de negocio",
+        "short": "Automatización"
+      },
+      "startups-scale": {
+        "label": "Crecimiento y startups",
+        "short": "Crecimiento"
+      },
+      "stores": {
+        "label": "Tiendas",
+        "short": "Tiendas"
+      }
+    },
+    "emptyCatalogTitle": "Todavía no hay notas publicadas",
+    "emptyCatalogBody": "Cuando publiquemos, van a aparecer acá. Mientras, pedí una propuesta.",
+    "storyEnabled": "false"
+  },
+  "blogTeaser": {
+    "eyebrow": "Blog",
+    "title": "Notas que podés aplicar.",
+    "cta": "Ver el blog"
+  },
+  "status": {
+    "notFoundEyebrow": "Página no encontrada",
+    "notFoundTitle": "Esta página no existe (o se mudó).",
+    "notFoundBody": "Puede que el link esté mal escrito o que el contenido ya no esté. Desde acá podés seguir navegando.",
+    "errorEyebrow": "Algo falló",
+    "errorTitle": "Tuvimos un problema al cargar esta página.",
+    "errorBody": "Ya quedó registrado. Probá de nuevo en unos segundos; si sigue pasando, escribinos.",
+    "retry": "Reintentar",
+    "home": "Ir al inicio",
+    "blog": "Ver el blog",
+    "contact": "Escribinos por WhatsApp",
+    "waMessage": "Hola PotenciApp, encontré una página que no funciona en el sitio."
   }
 }
