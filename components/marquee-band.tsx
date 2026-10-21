@@ -1,40 +1,36 @@
 "use client"
 
 import { useTranslations } from "next-intl"
-import ScrollVelocity from "@/components/reactbits/ScrollVelocity"
 
 /**
- * Full-bleed band whose two rows drift in opposite directions and speed up with
- * scroll velocity. Purely decorative — hidden from assistive tech.
+ * The one full-bleed brand-green moment of the page: the divisions drift in
+ * two rows, opposite directions, pure CSS (no per-frame JS). Decorative only.
  */
 export function MarqueeBand() {
   const t = useTranslations()
   const words = t.raw("band") as string[]
-  const line = words.join(" · ") + " · "
+
+  const row = (reverse: boolean) => (
+    <div className={`${reverse ? "marquee-track-reverse" : "marquee-track"} flex items-center`} style={{ width: "max-content" }}>
+      {[0, 1].map((copy) => (
+        <div key={copy} className="flex items-center">
+          {words.map((w) => (
+            <span key={`${copy}-${w}`} className="flex items-center whitespace-nowrap pr-8 lg:pr-12">
+              <span className="font-ed-display font-medium uppercase tracking-[-0.03em] text-[clamp(28px,4.4vw,68px)] leading-[1.15]">
+                {w}
+              </span>
+              <span className="ml-8 lg:ml-12 inline-block h-3 w-3 lg:h-4 lg:w-4 bg-ink" />
+            </span>
+          ))}
+        </div>
+      ))}
+    </div>
+  )
 
   return (
-    <div
-      aria-hidden
-      className="relative bg-gray-950 border-y border-gray-800 py-10 lg:py-14 overflow-hidden select-none"
-    >
-      <div
-        aria-hidden
-        className="absolute inset-y-0 left-0 w-32 lg:w-56 bg-gradient-to-r from-gray-950 to-transparent z-10 pointer-events-none"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-y-0 right-0 w-32 lg:w-56 bg-gradient-to-l from-gray-950 to-transparent z-10 pointer-events-none"
-      />
-
-      <ScrollVelocity
-        texts={[line, line]}
-        velocity={48}
-        numCopies={6}
-        damping={44}
-        stiffness={380}
-        className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.3] tracking-[-0.03em] text-outline"
-        parallaxClassName="py-2"
-      />
+    <div aria-hidden className="relative select-none overflow-hidden bg-brand-green text-ink py-6 lg:py-8">
+      {row(false)}
+      <div className="ed-outline" style={{ ["--ed-outline-fill" as string]: "var(--brand-green)", WebkitTextStrokeColor: "var(--color-ink)" }}>{row(true)}</div>
     </div>
   )
 }

@@ -3,7 +3,7 @@
     "title": "PotenciApp | Logiciel, cybersécurité et infrastructure avec contrat et garantie",
     "description": "Logiciel, boutiques en ligne et marketing pour que votre entreprise vende plus : apps iOS et Android, systèmes, boutiques sur mesure, Tiendanube, Empretienda et Mercado Libre, publicités Meta Ads, Google Ads et Mercado Libre Ads, IA et cybersécurité. Contrat, prix ferme, facturation et garantie.",
     "ogTitle": "PotenciApp | Un logiciel qui se signe, se livre et se garantit.",
-    "ogDescription": "Apps, e-commerce, systèmes, cybersécurité et infrastructure cloud. Contrat, prix ferme, facturation et 90 jours de garantie."
+    "ogDescription": "Apps, e-commerce, systèmes, cybersécurité et infrastructure cloud. Contrat, prix ferme, facturation et garantie écrite."
   },
   "nav": {
     "soluciones": "Solutions",
@@ -20,7 +20,7 @@
     "blog": "Blog"
   },
   "hero": {
-    "statusBadge": "Réponse sous 24 h ouvrées",
+    "statusBadge": "Projets en cours · 2026",
     "partnerBadge": "Contrat · Prix ferme · Garantie",
     "outline": "BOOSTONS",
     "h2_line1": "Votre logiciel, avec",
@@ -33,16 +33,12 @@
         "label": "projets livrés"
       },
       "m2": {
-        "value": "8",
-        "label": "clients en production"
+        "value": "100%",
+        "label": "projets sous contrat signé"
       },
       "m3": {
-        "value": "90 jours",
-        "label": "garantie après livraison"
-      },
-      "m4": {
-        "value": "24 h",
-        "label": "délai de réponse garanti"
+        "value": "iOS + Android",
+        "label": "apps publiées depuis des comptes vérifiés"
       }
     },
     "rotating": [
@@ -71,14 +67,14 @@
       "La proposition, par écrit",
       "Prix ferme",
       "Facture légale",
-      "90 jours de garantie"
+      "Garantie écrite"
     ]
   },
   "value": {
     "eyebrow": "Notre façon de travailler",
     "title": "Commander un logiciel ne devrait pas être un acte de foi.",
     "accent": "Alors on le met par écrit.",
-    "body": "Chaque projet démarre avec un contrat qui fixe le périmètre, les jalons et les dates, et un prix ferme qui ne bouge pas. Nous facturons légalement, nous répondons sous 24 heures ouvrées et nous assumons ce que nous livrons avec 90 jours de garantie. Rien de tout cela n'est une faveur : c'est la base."
+    "body": "Chaque projet démarre avec un contrat qui fixe le périmètre, les jalons et les dates, et un prix ferme qui ne bouge pas. Nous facturons légalement, vous avez un contact direct avec celui qui construit, et nous garantissons par écrit ce que nous livrons. Rien de tout cela n'est une faveur : c'est la base."
   },
   "services": {
     "eyebrow": "Solutions",
@@ -338,14 +334,14 @@
         "desc": "Le montant que vous validez est celui que vous payez. Toute demande hors périmètre est chiffrée à part et par écrit avant d'y toucher."
       },
       "garantia": {
-        "tag": "90 jours",
-        "title": "90 jours de garantie après livraison",
-        "desc": "Toute anomalie de ce que nous avons livré est corrigée sans frais pendant les 90 jours suivant la livraison. Ce n'est pas un geste commercial : c'est au contrat."
+        "tag": "Dans le contrat",
+        "title": "Garantie écrite après livraison",
+        "desc": "Tout défaut de ce que nous livrons est corrigé sans frais pendant la période de garantie fixée au contrat. Ce n'est pas une courtoisie : c'est signé."
       },
       "respaldo": {
-        "tag": "Facture + réponse sous 24 h",
+        "tag": "Facture + contact direct",
         "title": "Société enregistrée, avec facturation",
-        "desc": "Nous facturons légalement chaque paiement et répondons sous 24 heures ouvrées. Vous avez un justificatif, un interlocuteur identifié et un recours."
+        "desc": "Nous facturons légalement chaque paiement et, pendant le projet, vous parlez à celui qui construit, pas à une boîte générique. Vous avez un justificatif, un interlocuteur et quelqu'un à qui réclamer."
       }
     }
   },
@@ -369,8 +365,8 @@
       "s3": {
         "num": "03",
         "title": "Livraison et garantie",
-        "desc": "Mise en production, remise de tous les accès et formation de votre équipe. Les 90 jours de garantie démarrent à partir de là.",
-        "tag": "90 JOURS DE GARANTIE"
+        "desc": "Mise en production, remise des accès et formation de votre équipe. À partir de là court la garantie que nous avons signée.",
+        "tag": "GARANTIE ÉCRITE"
       }
     }
   },
@@ -391,27 +387,10 @@
       "Un contrat signé avec périmètre, jalons et dates",
       "Prix ferme ; les changements sont chiffrés à part et par écrit",
       "Société enregistrée, avec une facture pour chaque paiement",
-      "90 jours de garantie après livraison sur ce que nous avons fait",
+      "Garantie écrite après livraison sur ce que nous avons fait",
       "Des projets en ligne à ouvrir et tester avant de signer"
     ],
-    "stats": [
-      {
-        "value": "+40",
-        "label": "Projets livrés"
-      },
-      {
-        "value": "90 jours",
-        "label": "Garantie après livraison"
-      },
-      {
-        "value": "24 h",
-        "label": "Réponse garantie"
-      },
-      {
-        "value": "100%",
-        "label": "Projets sous contrat signé"
-      }
-    ]
+    "stats": []
   },
   "assistant": {
     "title": "Assistant PotenciApp",
@@ -428,7 +407,7 @@
       "Je veux vendre plus sur Mercado Libre",
       "Je veux des publicités qui vendent sur Meta, Google ou Mercado Libre"
     ],
-    "fallbackMessage": "Je ne peux pas répondre ici pour le moment. Continuons sur WhatsApp — l'équipe répond sous 24 h ouvrées.",
+    "fallbackMessage": "Je ne peux pas répondre ici pour le moment. On continue sur WhatsApp et l'équipe vous répond rapidement.",
     "fallbackCta": "Continuer sur WhatsApp",
     "waGreeting": "Bonjour PotenciApp, je viens du site.",
     "privacyNote": "Ce chat utilise l'IA (Google Gemini). Ne partagez ni mots de passe ni données sensibles.",
@@ -454,19 +433,19 @@
       },
       {
         "q": "Que contient le contrat ?",
-        "a": "Périmètre détaillé, étapes avec dates de livraison, prix ferme, modalités de paiement et les 90 jours de garantie après livraison. Vous le lisez avant de signer et vous en gardez une copie."
+        "a": "Périmètre détaillé, étapes avec dates de livraison, prix ferme, modalités de paiement et la garantie après livraison avec sa durée. Vous le lisez avant de signer et en gardez une copie."
       },
       {
-        "q": "Que couvre la garantie de 90 jours ?",
-        "a": "Toute erreur ou anomalie de ce que nous avons livré : nous la corrigeons sans frais pendant les 90 jours suivant la livraison. Elle ne couvre pas les nouvelles fonctionnalités ni les changements de périmètre, chiffrés à part."
+        "q": "Que couvre la garantie ?",
+        "a": "Toute erreur ou défaut de ce que nous avons livré : nous le corrigeons sans frais pendant la période de garantie fixée au contrat. Elle ne couvre ni les nouvelles fonctionnalités ni les changements de périmètre, devisés à part."
       },
       {
         "q": "Émettez-vous des factures ?",
         "a": "Oui. Nous sommes une société enregistrée et nous facturons chaque paiement du projet. Vous avez un justificatif du début à la fin."
       },
       {
-        "q": "Sous quel délai répondez-vous ?",
-        "a": "Sous 24 heures ouvrées, engagement inscrit au contrat. Pendant le projet, vous avez un canal direct avec la personne qui construit, pas une boîte générique."
+        "q": "Comment se passe la communication pendant le projet ?",
+        "a": "Vous avez un contact direct avec celui qui construit, pas une boîte générique. Chaque étape se termine par quelque chose qui fonctionne et que vous pouvez ouvrir et tester."
       },
       {
         "q": "Puis-je voir quelque chose que vous avez fait ?",
@@ -498,18 +477,20 @@
     "eyebrow": "Démarrer",
     "title": "Demandez votre proposition",
     "accent": "par écrit.",
-    "subtitle": "Dites-nous ce qu'il vous faut sur WhatsApp ou via l'assistant. Nous répondons sous 24 heures ouvrées avec un premier diagnostic et, si ça colle, une proposition avec périmètre, dates et prix ferme.",
+    "subtitle": "Dites-nous ce dont vous avez besoin sur WhatsApp ou via l'assistant. Nous répondons avec un diagnostic initial et, si ça colle, une proposition avec périmètre, dates et prix ferme.",
     "perks": [
       "Diagnostic sans frais",
       "Proposition à prix ferme",
-      "Garantie de 90 jours"
+      "Garantie écrite"
     ],
     "ctaWhatsApp": "Parler sur WhatsApp",
     "ctaAssistant": "Parler à l'assistant",
-    "waGreeting": "Bonjour PotenciApp, je souhaite demander une proposition."
+    "waGreeting": "Bonjour PotenciApp, je souhaite demander une proposition.",
+    "ctaBooking": "Prendre rendez-vous",
+    "ctaBookingHint": "Choisissez un jour et une heure dans notre agenda"
   },
   "footer": {
-    "tagline": "Logiciel sur mesure pour entreprises et commerces : apps, e-commerce et systèmes internes. Avec contrat, prix ferme, facturation et 90 jours de garantie.",
+    "tagline": "Logiciel sur mesure pour entreprises et commerces : apps, e-commerce et systèmes internes. Avec contrat, prix ferme, facturation et garantie écrite.",
     "operamos": "Nous opérons depuis",
     "operamosValue": "Argentine · À distance · Clients à l'étranger",
     "soluciones": "Solutions",
@@ -545,7 +526,7 @@
       },
       {
         "h": "Garantie",
-        "p": "Les livrables sont couverts par une garantie de 90 jours calendaires à compter de la livraison, couvrant la correction sans frais des erreurs ou anomalies de ce que nous avons développé. Elle ne couvre pas les nouvelles fonctionnalités, les changements de périmètre, ni les pannes causées par des modifications de tiers, un usage inapproprié ou des services externes."
+        "p": "Les livrables bénéficient d'une garantie après livraison dont la durée est fixée dans le contrat de chaque projet, couvrant la correction gratuite des erreurs ou défauts de ce que nous avons développé. Elle ne couvre pas les nouvelles fonctionnalités, les changements de périmètre, ni les pannes dues à des modifications de tiers, à un usage inapproprié ou à des services externes."
       },
       {
         "h": "Propriété",
@@ -620,7 +601,7 @@
     "onlySpanish": "Cet article est en espagnol.",
     "ctaBadge": "Sous contrat et garantie",
     "ctaTitle": "Vous voulez qu’on l’implémente sous contrat ?",
-    "ctaBody": "Périmètre fermé, prix écrit, garantie 90 jours sur ce que nous livrons.",
+    "ctaBody": "Périmètre fermé, prix écrit et garantie sur ce que nous livrons.",
     "whatsapp": "Parler sur WhatsApp",
     "waMessage": "Bonjour PotenciApp, j’ai lu « {title} » et je veux une proposition.",
     "keepExploring": "Plus d’articles",
@@ -706,5 +687,20 @@
     "blog": "Voir le blog",
     "contact": "Écrire sur WhatsApp",
     "waMessage": "Bonjour PotenciApp, j'ai trouvé une page qui ne fonctionne pas sur le site."
+  },
+  "editorial": {
+    "titleLines": [
+      "Logiciel",
+      "sur mesure,",
+      "conçu de zéro."
+    ],
+    "studio": "Studio de logiciel sur mesure",
+    "place": "Baradero, Argentine — À distance",
+    "fig": "Fig.",
+    "clause": "Clause",
+    "signClient": "Signature du client",
+    "signStudio": "Pour PotenciApp",
+    "scrollCue": "Défiler",
+    "index": "Index"
   }
 }

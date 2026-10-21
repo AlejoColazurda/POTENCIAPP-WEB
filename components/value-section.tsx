@@ -1,50 +1,31 @@
 "use client"
 
 import { useTranslations } from "next-intl"
-import { BrandMark } from "@/components/brand"
-import ScrollFloat from "@/components/reactbits/ScrollFloat"
-import AnimatedContent from "@/components/reactbits/AnimatedContent"
+import { Reveal, SectionIndex } from "@/components/editorial/reveal"
 
+/**
+ * The manifesto, set on ink. A statement, not a card: index in the margin,
+ * the sentence across nine columns, the body text offset underneath.
+ */
 export function ValueSection() {
   const t = useTranslations("value")
 
   return (
-    <section className="relative bg-gray-950 py-20 lg:py-32 overflow-hidden">
-      {/* Value prop */}
-      <div className="relative max-w-[1280px] mx-auto px-4 md:px-8 text-center">
-        <AnimatedContent distance={50} duration={0.9} threshold={0.15}>
-          <div className="inline-flex items-center justify-center mb-8">
-            <BrandMark size={56} glow />
+    <section className="relative bg-black text-gray-100">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-8 py-24 lg:py-40">
+        <Reveal className="grid grid-cols-12 gap-x-6 gap-y-10">
+          <div className="ed-rise col-span-12 lg:col-span-3">
+            <SectionIndex n="01" label={t("eyebrow")} />
           </div>
-          <div>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900 border border-gray-800 mb-6">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
-              <span className="font-mono text-[11px] uppercase tracking-wider text-gray-300">
-                {t("eyebrow")}
-              </span>
-            </span>
+
+          <h2 className="ed-rise col-span-12 lg:col-span-9 font-ed-display font-medium text-[clamp(32px,4.6vw,76px)] leading-[1.02] tracking-[-0.035em]" style={{ ["--i" as string]: 1 }}>
+            {t("title")} <span className="text-brand-green">{t("accent")}</span>
+          </h2>
+
+          <div className="ed-rise col-span-12 md:col-span-8 md:col-start-5 lg:col-span-5 lg:col-start-8 border-t border-gray-800 pt-6" style={{ ["--i" as string]: 2 }}>
+            <p className="font-ed-sans text-lg leading-[1.55] text-gray-300">{t("body")}</p>
           </div>
-        </AnimatedContent>
-
-        {/* Word-by-word float as the heading scrolls through the viewport */}
-        <ScrollFloat
-          containerClassName="max-w-[880px] mx-auto"
-          textClassName="font-display font-bold text-4xl sm:text-5xl lg:text-[56px] leading-[1.05] tracking-[-0.02em] text-gray-100"
-          accent={t("accent")}
-          accentClassName="text-brand-green"
-          animationDuration={1}
-          stagger={0.024}
-          scrollStart="center bottom+=40%"
-          scrollEnd="bottom bottom-=20%"
-        >
-          {t("title")}
-        </ScrollFloat>
-
-        <AnimatedContent distance={40} duration={0.8} delay={0.1} threshold={0.15}>
-          <p className="mt-8 text-lg text-gray-300 max-w-[640px] mx-auto leading-relaxed">
-            {t("body")}
-          </p>
-        </AnimatedContent>
+        </Reveal>
       </div>
     </section>
   )

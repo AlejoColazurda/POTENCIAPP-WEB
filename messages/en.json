@@ -3,7 +3,7 @@
     "title": "PotenciApp | Software, cybersecurity and infrastructure with contract and warranty",
     "description": "Software, online stores and marketing so your business sells more: iOS and Android apps, systems, custom stores, Tiendanube, Empretienda and Mercado Libre, Meta Ads, Google Ads and Mercado Libre Ads, AI and cybersecurity. Contract, fixed price, invoicing and warranty.",
     "ogTitle": "PotenciApp | Software that gets signed, delivered and guaranteed.",
-    "ogDescription": "Apps, e-commerce, systems, cybersecurity and cloud infrastructure. Contract, fixed price, invoicing and a 90-day warranty."
+    "ogDescription": "Apps, e-commerce, systems, cybersecurity and cloud infrastructure. Contract, fixed price, invoicing and a written warranty."
   },
   "nav": {
     "soluciones": "Solutions",
@@ -20,7 +20,7 @@
     "blog": "Blog"
   },
   "hero": {
-    "statusBadge": "We reply within 24 business hours",
+    "statusBadge": "Taking on projects · 2026",
     "partnerBadge": "Contract · Fixed price · Warranty",
     "outline": "WE BOOST",
     "h2_line1": "Your software, with",
@@ -33,16 +33,12 @@
         "label": "projects delivered"
       },
       "m2": {
-        "value": "8",
-        "label": "clients in production"
+        "value": "100%",
+        "label": "projects under a signed contract"
       },
       "m3": {
-        "value": "90 days",
-        "label": "post-delivery warranty"
-      },
-      "m4": {
-        "value": "24 h",
-        "label": "committed response time"
+        "value": "iOS + Android",
+        "label": "apps published from verified accounts"
       }
     },
     "rotating": [
@@ -71,14 +67,14 @@
       "The proposal, in writing",
       "Fixed price",
       "Legal invoicing",
-      "90-day warranty"
+      "Written warranty"
     ]
   },
   "value": {
     "eyebrow": "How we work",
     "title": "Hiring a software team shouldn't be an act of faith.",
     "accent": "So we put it in writing.",
-    "body": "Every project starts with a contract that fixes scope, milestones and dates, and a fixed price that doesn't move. We invoice legally, we answer within 24 business hours, and we stand behind what we deliver with a 90-day warranty. None of that is a favour — it's the baseline."
+    "body": "Every project starts with a contract that fixes scope, milestones and dates, and a fixed price that does not move. We invoice legally, you get a direct line to whoever is building, and we back what we deliver with a written warranty. None of that is a favor: it is the baseline."
   },
   "services": {
     "eyebrow": "Solutions",
@@ -338,14 +334,14 @@
         "desc": "The number you approve is the number you pay. If you ask for something outside the scope, it gets quoted separately and in writing before anyone touches it."
       },
       "garantia": {
-        "tag": "90 days",
-        "title": "90-day post-delivery warranty",
-        "desc": "Any fault in what we delivered gets fixed at no charge for 90 days after delivery. It isn't a courtesy — it's in the contract."
+        "tag": "In the contract",
+        "title": "Written post-delivery warranty",
+        "desc": "Any fault in what we deliver is fixed free of charge during the warranty period set in the contract. Not a courtesy: it is signed."
       },
       "respaldo": {
-        "tag": "Invoicing + 24 h response",
+        "tag": "Invoice + direct line",
         "title": "Registered company, with invoicing",
-        "desc": "We invoice every payment legally and respond within 24 business hours. You get a receipt, a named counterpart, and someone to hold accountable."
+        "desc": "We invoice every payment legally, and during the project you talk to whoever is building, not a generic inbox. You have a receipt, a contact and someone to hold accountable."
       }
     }
   },
@@ -369,8 +365,8 @@
       "s3": {
         "num": "03",
         "title": "Delivery and warranty",
-        "desc": "Production deploy, handover of every access, and training for your team. The 90-day warranty starts from there.",
-        "tag": "90-DAY WARRANTY"
+        "desc": "Production deploy, handover of access and training for your team. From there the warranty we signed runs.",
+        "tag": "WRITTEN WARRANTY"
       }
     }
   },
@@ -391,27 +387,10 @@
       "A signed contract with scope, milestones and dates",
       "Fixed price; changes are quoted separately and in writing",
       "Registered company, with an invoice for every payment",
-      "90-day post-delivery warranty on what we built",
+      "Written post-delivery warranty on what we built",
       "Live projects you can open and test before you sign"
     ],
-    "stats": [
-      {
-        "value": "+40",
-        "label": "Projects delivered"
-      },
-      {
-        "value": "90 days",
-        "label": "Post-delivery warranty"
-      },
-      {
-        "value": "24 h",
-        "label": "Committed response"
-      },
-      {
-        "value": "100%",
-        "label": "Projects under signed contract"
-      }
-    ]
+    "stats": []
   },
   "assistant": {
     "title": "PotenciApp Assistant",
@@ -428,7 +407,7 @@
       "I want to sell more on Mercado Libre",
       "I want ads that sell on Meta, Google or Mercado Libre"
     ],
-    "fallbackMessage": "I can't answer here right now. Let's continue on WhatsApp — the team replies within 24 business hours.",
+    "fallbackMessage": "I can't answer here right now. Let's continue on WhatsApp and the team will get back to you shortly.",
     "fallbackCta": "Continue on WhatsApp",
     "waGreeting": "Hi PotenciApp, coming from the website.",
     "privacyNote": "This chat uses AI (Google Gemini). Don't share passwords or sensitive data.",
@@ -454,19 +433,19 @@
       },
       {
         "q": "What's in the contract?",
-        "a": "Detailed scope, stages with delivery dates, fixed price, payment terms and the 90-day post-delivery warranty. You read it before signing and you keep a copy."
+        "a": "Detailed scope, stages with delivery dates, fixed price, payment terms and the post-delivery warranty with its term. You read it before signing and keep a copy."
       },
       {
-        "q": "What does the 90-day warranty cover?",
-        "a": "Any error or fault in what we delivered: we fix it at no charge for 90 days after delivery. It doesn't cover new features or scope changes, which are quoted separately."
+        "q": "What does the warranty cover?",
+        "a": "Any error or fault in what we delivered: we fix it free of charge during the warranty period set in the contract. It does not cover new features or scope changes, which are quoted separately."
       },
       {
         "q": "Do you issue invoices?",
         "a": "Yes. We're a registered company and we invoice every payment on the project. You have proper documentation from start to finish."
       },
       {
-        "q": "How fast do you respond?",
-        "a": "Within 24 business hours, committed in the contract. During the project you have a direct line to whoever is building, not a generic inbox."
+        "q": "How does communication work during the project?",
+        "a": "You have a direct line to whoever is building, not a generic inbox. Every stage closes with something working that you can open and test yourself."
       },
       {
         "q": "Can I see something you've built?",
@@ -498,18 +477,20 @@
     "eyebrow": "Get started",
     "title": "Request your proposal",
     "accent": "in writing.",
-    "subtitle": "Tell us what you need on WhatsApp or through the assistant. We reply within 24 business hours with an initial diagnosis and, if it's a fit, a proposal with scope, dates and a fixed price.",
+    "subtitle": "Tell us what you need on WhatsApp or through the assistant. We reply with an initial diagnosis and, if it's a match, a proposal with scope, dates and a fixed price.",
     "perks": [
       "Diagnosis at no cost",
       "Fixed-price proposal",
-      "90-day warranty"
+      "Written warranty"
     ],
     "ctaWhatsApp": "Talk on WhatsApp",
     "ctaAssistant": "Talk to the assistant",
-    "waGreeting": "Hi PotenciApp, I'd like to request a proposal."
+    "waGreeting": "Hi PotenciApp, I'd like to request a proposal.",
+    "ctaBooking": "Book a meeting",
+    "ctaBookingHint": "Pick a day and time on our calendar"
   },
   "footer": {
-    "tagline": "Custom software for companies and retailers: apps, e-commerce and internal systems. With a contract, a fixed price, invoicing and a 90-day warranty.",
+    "tagline": "Custom software for companies and retailers: apps, e-commerce and internal systems. With a contract, fixed price, invoicing and a written warranty.",
     "operamos": "We operate from",
     "operamosValue": "Argentina · Remote · Clients abroad",
     "soluciones": "Solutions",
@@ -545,7 +526,7 @@
       },
       {
         "h": "Warranty",
-        "p": "Deliverables carry a 90-calendar-day warranty from delivery, covering free correction of errors or faults in what we built. It does not cover new features, scope changes, or failures caused by third-party modifications, misuse or external services."
+        "p": "Deliverables carry a post-delivery warranty whose term is set in each project's contract, covering free correction of errors or faults in what we built. It does not cover new features, scope changes, or failures caused by third-party modifications, misuse or external services."
       },
       {
         "h": "Ownership",
@@ -620,7 +601,7 @@
     "onlySpanish": "This article is in Spanish.",
     "ctaBadge": "Under contract and warranty",
     "ctaTitle": "Want us to implement this under contract?",
-    "ctaBody": "Closed scope, written price, 90-day warranty on what we deliver.",
+    "ctaBody": "Closed scope, written price and a warranty on what we deliver.",
     "whatsapp": "Chat on WhatsApp",
     "waMessage": "Hi PotenciApp — I read “{title}” and I want a proposal.",
     "keepExploring": "More articles",
@@ -706,5 +687,20 @@
     "blog": "Visit the blog",
     "contact": "Message us on WhatsApp",
     "waMessage": "Hi PotenciApp, I found a page that isn't working on the site."
+  },
+  "editorial": {
+    "titleLines": [
+      "Custom",
+      "software,",
+      "from scratch."
+    ],
+    "studio": "Custom software studio",
+    "place": "Baradero, Argentina — Remote",
+    "fig": "Fig.",
+    "clause": "Clause",
+    "signClient": "Client signature",
+    "signStudio": "For PotenciApp",
+    "scrollCue": "Scroll",
+    "index": "Index"
   }
 }

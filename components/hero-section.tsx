@@ -1,185 +1,145 @@
 "use client"
 
-import { ArrowDown, ArrowRight, Check, ShieldCheck, Sparkles } from "lucide-react"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { ArrowRight, ArrowUpRight } from "lucide-react"
 import { useTranslations } from "next-intl"
+import { useEffect, useRef, useState } from "react"
+import { Line, Reveal } from "@/components/editorial/reveal"
 import { BrandMark } from "@/components/brand"
-import Aurora from "@/components/reactbits/Aurora"
-import RotatingText from "@/components/reactbits/RotatingText"
-import CountUp from "@/components/reactbits/CountUp"
-import Magnet from "@/components/reactbits/Magnet"
-import ShinyText from "@/components/reactbits/ShinyText"
 
-function useReducedMotion() {
-  const [reduced, setReduced] = useState(false)
-  useEffect(() => {
-    const mql = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const onChange = () => setReduced(mql.matches)
-    onChange()
-    mql.addEventListener("change", onChange)
-    return () => mql.removeEventListener("change", onChange)
-  }, [])
-  return reduced
-}
-
+/**
+ * Editorial hero. The headline is the protagonist: three designed lines on a
+ * 12-column grid, the last one underlined by the brand-green highlighter.
+ * A real production site (La Chola) sits as a cropped plate the headline
+ * runs into. One primary CTA, one quiet text link. POTENCIAMOS keeps drifting
+ * as an outlined band at the foot (it must stay an infinite marquee).
+ */
 export function HeroSection() {
   const t = useTranslations("hero")
-  const rotating = t.raw("rotating") as string[]
-  const trustChips = t.raw("trustChips") as string[]
-  const reducedMotion = useReducedMotion()
-  // LCP: first rotating word is HTML. RotatingText mounts only after we know
-  // motion is allowed — never flash an animation for prefers-reduced-motion.
-  const [canRotate, setCanRotate] = useState(false)
-  useEffect(() => {
-    const mql = window.matchMedia("(prefers-reduced-motion: reduce)")
-    const apply = () => setCanRotate(!mql.matches)
-    apply()
-    mql.addEventListener("change", apply)
-    return () => mql.removeEventListener("change", apply)
-  }, [])
-
-  // WebGL aurora only where it earns its cost: desktop, motion allowed.
-  const [showAurora, setShowAurora] = useState(false)
-  useEffect(() => {
-    setShowAurora(
-      window.matchMedia("(min-width: 1024px) and (prefers-reduced-motion: no-preference)").matches,
-    )
-  }, [])
+  const te = useTranslations("editorial")
+  const tp = useTranslations("portfolio")
+  const lines = te.raw("titleLines") as string[]
+  const longest = Math.max(...lines.map((l, i) => l.length + (i === 1 ? 1.1 : 0)))
+  const trust = t.raw("trustChips") as string[]
 
   return (
-    <section className="relative isolate overflow-hidden bg-gray-950 pt-32 pb-16 lg:pt-40 lg:pb-24">
-      {/* WebGL aurora in brand green — replaces the old background video */}
-      {showAurora && (
-        <div aria-hidden className="absolute inset-x-0 top-0 h-[68%] opacity-35 pointer-events-none">
-          <Aurora colorStops={["#062B0B", "#22F23A", "#062B0B"]} amplitude={0.75} blend={0.75} speed={0.35} />
+    <section className="relative bg-gray-950 text-gray-100 pt-16 lg:pt-20 overflow-hidden">
+      <HeroBackdrop />
+
+      {/* Meta row — the studio's colophon */}
+      <div className="relative mx-auto max-w-[1440px] px-4 md:px-8">
+        <Reveal immediate className="ed-rise grid grid-cols-2 md:grid-cols-12 gap-x-6 gap-y-1 border-b border-gray-800 py-4">
+          <p className="ed-label text-gray-100 md:col-span-4">PotenciApp® — {te("studio")}</p>
+          <p className="ed-label text-gray-400 md:col-span-4">{te("place")}</p>
+          <p className="ed-label text-gray-400 col-span-2 md:col-span-4 md:text-right flex md:justify-end items-center gap-2">
+            <span aria-hidden className="inline-block h-2 w-2 bg-brand-green" />
+            {t("statusBadge")}
+          </p>
+        </Reveal>
+      </div>
+
+      <div className="relative mx-auto max-w-[1440px] px-4 md:px-8">
+        <div className="relative grid grid-cols-12 gap-x-6 pt-10 lg:pt-14">
+          {/* Showcase: the strongest production sites, in a browser frame,
+              crossfading. Desktop: pinned to the right of the headline. */}
+          <Reveal
+            immediate
+            as="figure"
+            className="relative col-span-12 order-2 mt-10 md:col-span-5 md:col-start-8 md:mt-0 md:row-start-1 md:self-end lg:order-none"
+          >
+            <HeroShowcase />
+          </Reveal>
+
+          <Reveal immediate as="div" className="relative z-10 col-span-12 md:col-span-7 md:row-start-1 md:self-end [container-type:inline-size]">
+            {/* Size = the breakpoint cap, or whatever makes the longest line (plus the
+                indent of line 2) fit the column: EN "FROM SCRATCH." and FR "CONÇU DE
+                ZÉRO." are longer than the Spanish lines. 0.82em ≈ Unbounded Bold caps advance. */}
+            <h1
+              className="font-ed-display font-bold uppercase text-gray-100 leading-[0.88] tracking-[-0.045em] whitespace-nowrap [--h1-cap:clamp(36px,10.2vw,60px)] md:[--h1-cap:clamp(40px,5.6vw,64px)] lg:[--h1-cap:clamp(64px,5.6vw,92px)]"
+              style={{ fontSize: `min(var(--h1-cap), calc(100cqw / (0.82 * ${longest})))` }}
+            >
+              {lines.map((line, i) => (
+                <Line key={line} i={i}>
+                  {i === lines.length - 1 ? (
+                    <span className="ed-mark">{line}</span>
+                  ) : (
+                    <span className={i === 1 ? "lg:pl-[1.1em]" : undefined}>{line}</span>
+                  )}
+                </Line>
+              ))}
+            </h1>
+          </Reveal>
         </div>
-      )}
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-b from-gray-950/50 via-gray-950/40 to-gray-950 pointer-events-none"
-      />
-      <div
-        aria-hidden
-        className="absolute top-1/4 right-[8%] w-[480px] h-[480px] rounded-full bg-brand-green/10 blur-[140px] pointer-events-none"
-      />
 
-      <div className="relative mx-auto max-w-[1280px] px-4 md:px-8">
-        <div className="flex items-center gap-3 mb-6 animate-fade-in-up">
-          <BrandMark size={32} glow />
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900/80 backdrop-blur-sm border border-gray-800">
-            <span className="h-2 w-2 rounded-full bg-brand-green animate-pulse-dot" />
-            <ShinyText
-              text={t("statusBadge")}
-              speed={5}
-              className="font-mono text-xs uppercase tracking-wider text-gray-300"
-            />
-          </span>
-        </div>
-
-        {/* Infinite marquee: the word never clips, it drifts. 4 identical
-            copies with trailing padding; -50% lands exactly on copy 3. */}
-        <h1
-          aria-label={t("outline")}
-          className="relative -mx-4 md:-mx-8 overflow-hidden select-none"
-        >
-          <div aria-hidden className="marquee-track-fast flex items-center" style={{ width: "max-content" }}>
-            {[0, 1, 2, 3].map((i) => (
-              <span
-                key={i}
-                className="pr-12 lg:pr-20 font-display font-bold leading-[0.85] tracking-[-0.04em] text-outline text-[clamp(64px,14vw,170px)] whitespace-nowrap"
-              >
-                {t("outline")}
-              </span>
-            ))}
-          </div>
-        </h1>
-
-        <div className="mt-6 lg:mt-8 grid lg:grid-cols-[6fr_4fr] gap-12 lg:gap-16 items-start">
-          <div className="space-y-7">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-green/10 border border-brand-green/30 animate-fade-in-up animation-delay-100">
-              <Sparkles className="h-3.5 w-3.5 text-brand-green" strokeWidth={2.5} />
-              <span className="font-mono text-xs uppercase tracking-wider text-brand-green">
-                {t("partnerBadge")}
-              </span>
-            </div>
-
-            <h2 className="font-display text-[40px] sm:text-5xl lg:text-6xl font-bold tracking-[-0.03em] leading-[0.95] text-gray-100">
-              {/* Keep this line painted on first paint: it is the LCP element.
-                  No opacity-0 intro animation, no GSAP SplitText. */}
-              <span className="block">{t("h2_line1")}</span>
-              <span className="block text-brand-green">
-                {!canRotate ? (
-                  rotating[0]
-                ) : (
-                  <RotatingText
-                    texts={rotating}
-                    rotationInterval={3600}
-                    staggerDuration={0.008}
-                    staggerFrom="first"
-                    splitBy="characters"
-                    mainClassName="justify-start"
-                    splitLevelClassName="overflow-hidden pb-1.5"
-                    // First paint is the static rotating[0] above. After mount,
-                    // enter stays at rest; only the outgoing word slides away.
-                    transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-                    initial={{ y: 0, opacity: 1 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: "-110%", opacity: 0 }}
-                  />
-                )}
-              </span>
-            </h2>
-
+        {/* Below the headline: lead, the contract terms, the one CTA */}
+        <div className="grid grid-cols-12 gap-x-6 gap-y-10 pt-12 pb-16 lg:pt-16 lg:pb-24">
+          <Reveal immediate className="ed-rise col-span-12 md:col-span-6 lg:col-span-4" style={{ ["--i" as string]: 3 }}>
             <p
-              className="text-lg text-gray-300 max-w-xl leading-relaxed animate-fade-in-up animation-delay-300"
+              className="font-ed-sans text-lg lg:text-xl leading-[1.45] text-gray-300 [&_strong]:font-semibold [&_strong]:text-gray-100"
               dangerouslySetInnerHTML={{
-                __html: t
-                  .raw("subheading")
-                  .replace(/<bold>/g, '<strong class="text-gray-100 font-semibold">')
-                  .replace(/<\/bold>/g, "</strong>"),
+                __html: t.raw("subheading").replace(/<bold>/g, "<strong>").replace(/<\/bold>/g, "</strong>"),
               }}
             />
+          </Reveal>
 
-            <div className="flex flex-col sm:flex-row gap-3 pt-2 animate-fade-in-up animation-delay-400">
-              <Magnet padding={90} magnetStrength={5} disabled={reducedMotion} wrapperClassName="inline-flex">
-                <a
-                  href="#contacto"
-                  className="inline-flex items-center justify-center gap-2 min-h-12 h-14 px-7 rounded-lg bg-brand-green text-black font-display font-bold text-base hover:bg-green-hover hover:shadow-[0_0_32px_rgba(34,242,58,0.5)] transition-all duration-300 active:scale-[0.98]"
-                >
-                  {t("ctaPrimary")}
-                  <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
-                </a>
-              </Magnet>
-              <a
-                href="#proyectos"
-                className="inline-flex items-center justify-center gap-2 min-h-12 h-14 px-7 rounded-lg border border-brand-green text-brand-green font-display font-bold text-base hover:bg-brand-green/10 transition-all duration-300"
-              >
-                {t("ctaSecondary")}
-                <ArrowRight className="h-5 w-5" strokeWidth={2.5} />
-              </a>
-            </div>
-
-            {/* Risk-inversion strip: Fragor-style trust chips, except every one
-                of these is contractual, not marketing copy. */}
-            <ul className="flex flex-wrap items-center gap-x-4 gap-y-1.5 pt-1 animate-fade-in-up animation-delay-500">
-              {trustChips.map((chip) => (
-                <li key={chip} className="inline-flex items-center gap-1.5">
-                  <Check className="h-3.5 w-3.5 text-brand-green" strokeWidth={3} />
-                  <span className="text-[13px] text-gray-300">{chip}</span>
+          <Reveal immediate className="ed-rise col-span-12 md:col-span-6 lg:col-span-3 lg:col-start-6" style={{ ["--i" as string]: 4 }}>
+            <ol className="border-t border-gray-100/35">
+              {trust.map((item, i) => (
+                <li key={item} className="flex items-baseline gap-4 border-b border-gray-800 py-2.5">
+                  <span className="ed-label text-gray-400 w-6 shrink-0 tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-ed-sans text-[15px] text-gray-100">{item}</span>
                 </li>
               ))}
-            </ul>
-          </div>
+            </ol>
+          </Reveal>
 
-          <div className="relative animate-fade-in-up animation-delay-300">
-            <ProductShowcase />
-          </div>
+          <Reveal immediate className="ed-rise col-span-12 lg:col-span-4 lg:col-start-9 flex flex-col justify-end" style={{ ["--i" as string]: 5 }}>
+            <a
+              href="#contacto"
+              className="group flex items-center justify-between gap-6 bg-brand-green px-6 py-6 text-ink transition-colors duration-300 hover:bg-green-hover"
+            >
+              <span className="font-ed-display text-xl lg:text-2xl font-semibold tracking-[-0.02em]">
+                {t("ctaPrimary")}
+              </span>
+              <ArrowRight
+                className="h-7 w-7 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+                strokeWidth={2}
+              />
+            </a>
+            <a href="#proyectos" className="mt-4 self-start font-ed-sans text-[15px] text-gray-100 ed-link">
+              {t("ctaSecondary")} →
+            </a>
+          </Reveal>
         </div>
 
-        <div className="mt-20 lg:mt-28 grid grid-cols-2 lg:grid-cols-4 gap-px bg-gray-800 border border-gray-800 rounded-2xl overflow-hidden animate-fade-in-up animation-delay-500">
-          {(["m1", "m2", "m3", "m4"] as const).map((k, i) => (
-            <MetricItem key={k} mk={k} index={i} />
+        {/* Figures, set like a table of record — both trace to real work */}
+        <Reveal className="grid grid-cols-1 sm:grid-cols-3 border-t border-gray-100/35">
+          {(["m1", "m2", "m3"] as const).map((k, i) => (
+            <div
+              key={k}
+              className={`ed-rise py-6 lg:py-8 pr-4 border-b border-gray-800 sm:border-b-0 ${i > 0 ? "sm:border-l sm:border-gray-800 sm:pl-6" : ""}`}
+              style={{ ["--i" as string]: i }}
+            >
+              <div className="font-ed-display text-4xl lg:text-5xl font-medium tracking-[-0.04em] text-gray-100 tabular-nums">
+                {t(`metrics.${k}.value`)}
+              </div>
+              <div className="ed-label mt-2 text-gray-400">{t(`metrics.${k}.label`)}</div>
+            </div>
+          ))}
+        </Reveal>
+      </div>
+
+      {/* POTENCIAMOS — outlined, drifting, full bleed */}
+      <div aria-hidden className="border-y border-gray-800 mt-0 overflow-hidden select-none py-3 lg:py-5 bg-gray-950">
+        <div className="marquee-track flex items-center" style={{ width: "max-content" }}>
+          {[0, 1, 2, 3].map((i) => (
+            <span
+              key={i}
+              className="ed-outline pr-10 lg:pr-16 font-ed-display font-extrabold uppercase leading-[0.9] tracking-[-0.04em] text-[clamp(56px,11vw,180px)] whitespace-nowrap"
+            >
+              {t("outline")}
+              <span className="inline-block align-middle mx-6 lg:mx-10 h-[0.18em] w-[0.18em] bg-brand-green [-webkit-text-stroke:0]" />
+            </span>
           ))}
         </div>
       </div>
@@ -187,208 +147,127 @@ export function HeroSection() {
   )
 }
 
-/**
- * Metric values live in the message files as display strings ("+340%", "99,98%",
- * "12k+"). Split off the numeric core so CountUp can animate it while the
- * prefix/suffix — and the locale's decimal mark — stay exactly as translated.
- */
-function parseMetric(value: string) {
-  const match = value.match(/^([^\d]*)([\d]+(?:[.,][\d]+)?)(.*)$/)
-  if (!match) return null
-  const [, prefix, rawNumber, suffix] = match
-  const decimalSeparator = rawNumber.includes(",") ? "," : "."
-  return {
-    prefix,
-    suffix,
-    decimalSeparator,
-    to: Number.parseFloat(rawNumber.replace(",", ".")),
-  }
-}
+/** Production sites worth leading with. Titles/categories come from the portfolio messages. */
+const SHOWCASE = [
+  { key: "maxikiosco", domain: "maxikiosco247.com.ar", url: "https://maxikiosco247.com.ar", image: "/demos/maxikiosco.webp" },
+  { key: "losincreibles", domain: "losincreibles.com.ar", url: "https://www.losincreibles.com.ar", image: "/demos/losincreibles.webp" },
+  { key: "gisbert", domain: "gisbertheladeras.com.ar", url: "https://www.gisbertheladeras.com.ar", image: "/demos/gisbert.webp" },
+  { key: "newbaby", domain: "newbaby.com.ar", url: "https://www.newbaby.com.ar", image: "/demos/newbaby.webp" },
+] as const
 
-function MetricItem({ mk, index }: { mk: "m1" | "m2" | "m3" | "m4"; index: number }) {
-  const t = useTranslations("hero.metrics")
-  const reducedMotion = useReducedMotion()
-  const value = t(`${mk}.value`)
-  const parsed = parseMetric(value)
+function HeroShowcase() {
+  const t = useTranslations("hero.showcase")
+  const te = useTranslations("editorial")
+  const tp = useTranslations("portfolio")
+  const [active, setActive] = useState(0)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  // Reduced motion: no reel, the poster still stands.
+  useEffect(() => {
+    const v = videoRef.current
+    if (v && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      v.pause()
+      v.removeAttribute("autoplay")
+    }
+  }, [])
+
+  const slide = SHOWCASE[active]
 
   return (
-    <div className="bg-gray-950 px-6 py-6 lg:py-8 flex flex-col items-start gap-1">
-      <span className="font-display font-bold text-3xl lg:text-4xl text-gray-100 tracking-tight tabular-nums">
-        {parsed && !reducedMotion ? (
-          <>
-            {parsed.prefix}
-            <CountUp
-              to={parsed.to}
-              duration={2.2}
-              delay={index * 0.12}
-              decimalSeparator={parsed.decimalSeparator}
-            />
-            {parsed.suffix}
-          </>
-        ) : (
-          value
-        )}
-      </span>
-      <span className="font-mono text-[11px] uppercase tracking-wider text-gray-300">
-        {t(`${mk}.label`)}
-      </span>
-    </div>
+    <>
+      <div
+        className="ed-mask relative overflow-hidden rounded-xl border border-gray-800 bg-gray-900 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)]"
+      >
+        <div className="flex items-center gap-2 border-b border-gray-800 bg-gray-900 px-4 py-2.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
+          <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
+          <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
+          <span className="ml-3 flex min-w-0 items-center gap-2 truncate ed-label text-gray-300">
+            <BrandMark size={14} />
+            {slide.domain}
+          </span>
+          <span className="ml-auto flex items-center gap-1.5 ed-label text-brand-green">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-green animate-pulse-dot" />
+            {t("badge")}
+          </span>
+        </div>
+        <div className="relative aspect-[16/10] bg-gray-900">
+          {/* Poster = first still; the reel takes over once it can play. */}
+          <Image
+            src={SHOWCASE[0].image}
+            alt={tp(`items.${SHOWCASE[0].key}.title`)}
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 42vw"
+            className="object-cover object-top"
+          />
+          <video
+            ref={videoRef}
+            className="absolute inset-0 h-full w-full object-cover object-top opacity-0 transition-opacity duration-700 data-[ready=true]:opacity-100"
+            muted
+            loop
+            playsInline
+            autoPlay
+            preload="metadata"
+            aria-hidden
+            onTimeUpdate={(e) => {
+              // "playing" can fire before hydration (autoplay in SSR HTML), so the
+              // reveal is also armed here, on the first frames.
+              e.currentTarget.setAttribute("data-ready", "true")
+              // Keep the caption in step with the reel (4.5 s per site, 0.7 s crossfades).
+              const i = Math.min(SHOWCASE.length - 1, Math.floor((e.currentTarget.currentTime + 0.35) / 3.8))
+              if (i !== active) setActive(i)
+            }}
+            onPlaying={(e) => e.currentTarget.setAttribute("data-ready", "true")}
+          >
+            <source src="/videos/showcase-reel.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <figcaption className="mt-3 flex items-baseline justify-between gap-4 border-t border-gray-800 pt-2">
+        <span className="ed-label text-gray-100">
+          {te("fig")} {String(active + 1).padStart(2, "0")} — {tp(`items.${slide.key}.title`)}
+        </span>
+        <a
+          href={slide.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ed-label ed-link inline-flex shrink-0 items-center gap-1 text-gray-400 hover:text-gray-100"
+        >
+          {slide.domain} <ArrowUpRight className="h-3 w-3" />
+        </a>
+      </figcaption>
+    </>
   )
 }
 
-/** Production projects cycled by the hero carousel. Names and categories come
- *  from the portfolio translations so both stay in sync. */
-const SHOWCASE_SLIDES = [
-  { key: "lachola", domain: "www.lachola.ar", image: "/demos/lachola.webp" },
-  { key: "gisbert", domain: "gisbertheladeras.com.ar", image: "/demos/gisbert.webp" },
-  { key: "maxikiosco", domain: "maxikiosco247.com.ar", image: "/demos/maxikiosco.webp" },
-  { key: "newbaby", domain: "www.newbaby.com.ar", image: "/demos/newbaby.webp" },
-] as const
-
-function ProductShowcase() {
-  const t = useTranslations("hero.showcase")
-  const tPortfolio = useTranslations("portfolio")
-  const beforeItems = t.raw("beforeItems") as string[]
-  const milestones = [t("m1"), t("m2"), t("m3")] as const
-
-  const [active, setActive] = useState(0)
-
-  // Fast rotation, paused while the visitor hovers the frame.
-  const reducedMotion = useReducedMotion()
-  const [failed, setFailed] = useState<Partial<Record<(typeof SHOWCASE_SLIDES)[number]["key"], boolean>>>({})
-  const [paused, setPaused] = useState(false)
+/**
+ * Hero backdrop: the Remotion-rendered brand loop (grid, particles, outlined
+ * POTENCIAMOS) at low opacity. Only attached on desktop with motion allowed,
+ * and only after mount, so phones never download the 1.4 MB file.
+ */
+function HeroBackdrop() {
+  const ref = useRef<HTMLVideoElement>(null)
   useEffect(() => {
-    if (paused || reducedMotion) return
-    const id = setInterval(() => setActive((i) => (i + 1) % SHOWCASE_SLIDES.length), 2600)
-    return () => clearInterval(id)
-  }, [paused, reducedMotion])
-
-  const slide = SHOWCASE_SLIDES[active]
-
+    const v = ref.current
+    if (!v) return
+    const ok = window.matchMedia("(min-width: 1024px) and (prefers-reduced-motion: no-preference)").matches
+    if (!ok) return
+    v.src = "/videos/hero-bg.mp4"
+    v.play().catch(() => {})
+  }, [])
   return (
-    <div className="relative">
-      <div
-        aria-hidden
-        className="absolute -inset-10 bg-brand-green/[0.07] blur-[100px] pointer-events-none rounded-3xl"
+    <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[78%]">
+      <video
+        ref={ref}
+        className="h-full w-full object-cover opacity-0 transition-opacity duration-[1500ms] data-[ready=true]:opacity-60"
+        muted
+        loop
+        playsInline
+        preload="none"
+        onTimeUpdate={(e) => e.currentTarget.setAttribute("data-ready", "true")}
       />
-
-      {/* ANTES — the mess this software replaces */}
-      <div className="relative mb-4 flex items-center gap-3">
-        <div className="flex-1 rounded-xl border border-gray-800 bg-gray-900/80 px-4 py-3">
-          <div className="font-mono text-[10px] uppercase tracking-wider text-gray-500">
-            {t("before")}
-          </div>
-          <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1">
-            {beforeItems.map((item) => (
-              <span key={item} className="inline-flex items-center gap-1.5 text-xs text-gray-500 line-through decoration-gray-700">
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-        <ArrowDown aria-hidden className="h-5 w-5 shrink-0 text-brand-green" strokeWidth={2.5} />
-      </div>
-
-      {/* DESPUÉS — a real product PotenciApp built, in a clean browser frame.
-          Apple-style restraint: hairline border, deep shadow, faint glow. */}
-      <div className="relative rounded-2xl p-px bg-gradient-to-b from-white/15 via-gray-800 to-gray-800/40 shadow-[0_32px_80px_-16px_rgba(0,0,0,0.9),0_0_48px_-12px_rgba(34,242,58,0.18)]">
-        <div className="relative overflow-hidden rounded-[15px] bg-gray-900">
-          <div className="flex items-center gap-2 border-b border-gray-800 bg-gray-900 px-4 py-3">
-            <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
-            <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
-            <span className="h-2.5 w-2.5 rounded-full bg-gray-700" />
-            <span className="ml-3 flex items-center gap-2 truncate font-mono text-[11px] text-gray-300">
-              <BrandMark size={16} />
-              {slide.domain}
-            </span>
-            <span className="ml-auto flex items-center gap-1.5 font-mono text-[11px] text-brand-green">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-green animate-pulse-dot" />
-              {t("badge")}
-            </span>
-          </div>
-
-          <div
-            className="relative aspect-[16/10]"
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-          >
-            {/* All slides stay mounted; opacity crossfades between them. */}
-            {SHOWCASE_SLIDES.map((sl, i) => (
-              failed[sl.key] ? (
-                <div
-                  key={sl.key}
-                  className={`absolute inset-0 flex items-center justify-center bg-[#111111] font-mono text-sm text-gray-300 ${
-                    i === active ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  {sl.domain}
-                </div>
-              ) : (
-                <Image
-                  key={sl.key}
-                  src={sl.image}
-                  alt={tPortfolio(`items.${sl.key}.title`)}
-                  fill
-                  priority={i === 0}
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  onError={() => setFailed((prev) => ({ ...prev, [sl.key]: true }))}
-                  className={`object-cover object-top transition-opacity duration-700 ease-out ${
-                    i === active ? "opacity-100" : "opacity-0"
-                  }`}
-                />
-              )
-            ))}
-            {/* Legibility scrim for the caption strip */}
-            <div
-              aria-hidden
-              className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-gray-950/95 to-transparent"
-            />
-            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
-              <div key={slide.key} className="animate-fade-in">
-                <div className="font-display text-base font-semibold text-gray-100">
-                  {tPortfolio(`items.${slide.key}.title`)}
-                </div>
-                <div className="font-mono text-[10px] uppercase tracking-wider text-gray-300">
-                  {tPortfolio(`items.${slide.key}.category`)}
-                </div>
-              </div>
-              <div className="flex items-center gap-1.5 pb-1">
-                {SHOWCASE_SLIDES.map((sl, i) => (
-                  <span
-                    key={sl.key}
-                    aria-hidden
-                    className={`h-1 rounded-full transition-all duration-500 ${
-                      i === active ? "w-4 bg-brand-green" : "w-1 bg-gray-600"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Delivery milestones — one quiet strip, no boxes */}
-      <div className="relative mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-        {milestones.map((m) => (
-          <span key={m} className="inline-flex items-center gap-1.5">
-            <Check className="h-3.5 w-3.5 text-brand-green" strokeWidth={2.5} />
-            <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-gray-300">{m}</span>
-          </span>
-        ))}
-        <span aria-hidden className="hidden sm:block h-3 w-px bg-gray-800" />
-        <span className="inline-flex items-center gap-1.5">
-          <ShieldCheck className="h-3.5 w-3.5 text-brand-green" strokeWidth={2.5} />
-          <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-brand-green">
-            {t("m4")}
-          </span>
-        </span>
-      </div>
-
-      <p className="relative mt-3 text-center text-[13px] text-gray-300">
-        {t("caption")}
-      </p>
-
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-950/30 via-gray-950/55 to-gray-950" />
     </div>
   )
 }

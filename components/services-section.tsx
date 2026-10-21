@@ -1,237 +1,178 @@
 "use client"
 
-import {
-  Smartphone,
-  BrainCircuit,
-  ShoppingBag,
-  Megaphone,
-  Store,
-  RefreshCw,
-  Database,
-  Workflow,
-  Compass,
-  ShieldCheck,
-  Server,
-  ArrowRight,
-} from "lucide-react"
+import { useId, useState } from "react"
+import { ArrowRight } from "lucide-react"
 import { useTranslations } from "next-intl"
-import SpotlightCard from "@/components/reactbits/SpotlightCard"
-import AnimatedContent from "@/components/reactbits/AnimatedContent"
+import { Reveal, SectionIndex } from "@/components/editorial/reveal"
 
-type CardKey =
-  | "apps"
-  | "ia"
-  | "ecommerce"
-  | "mercadolibre"
-  | "marketing"
-  | "sitios"
-  | "sistemas"
-  | "automatizaciones"
-  | "ciberseguridad"
-  | "infraestructura"
-  | "consultoria"
+const KEYS = [
+  "apps",
+  "ia",
+  "ecommerce",
+  "mercadolibre",
+  "marketing",
+  "sitios",
+  "sistemas",
+  "automatizaciones",
+  "ciberseguridad",
+  "infraestructura",
+  "consultoria",
+] as const
 
-const ICONS: Record<CardKey, React.ReactNode> = {
-  apps: <Smartphone className="h-6 w-6" />,
-  ia: <BrainCircuit className="h-6 w-6" />,
-  ecommerce: <ShoppingBag className="h-6 w-6" />,
-  mercadolibre: <Store className="h-6 w-6" />,
-  marketing: <Megaphone className="h-6 w-6" />,
-  sitios: <RefreshCw className="h-6 w-6" />,
-  sistemas: <Database className="h-6 w-6" />,
-  automatizaciones: <Workflow className="h-6 w-6" />,
-  ciberseguridad: <ShieldCheck className="h-6 w-6" />,
-  infraestructura: <Server className="h-6 w-6" />,
-  consultoria: <Compass className="h-6 w-6" />,
-}
+type CardKey = (typeof KEYS)[number]
 
 /**
- * Eleven divisions on a 12-col grid with no row-spans: the old featured card
- * spanned two rows and left a large hole under its content.
+ * Services as an editorial index instead of a card grid: eleven numbered
+ * rows set large, each opening to its description and stack. On desktop a
+ * sticky margin keeps the number of the row under the pointer, set huge.
  */
 export function ServicesSection() {
   const t = useTranslations("services")
+  const [open, setOpen] = useState<CardKey | null>("apps")
+  const [hover, setHover] = useState<CardKey>("apps")
+  const baseId = useId()
+  const platforms = t.raw("platforms") as string[]
+  const focus = hover ?? open ?? "apps"
+  const focusIndex = KEYS.indexOf(focus)
 
   return (
-    <section id="soluciones" className="relative bg-gray-950 py-20 lg:py-32">
-      <div className="max-w-[1280px] mx-auto px-4 md:px-8">
-        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+    <section id="soluciones" className="relative bg-gray-950 text-gray-100 scroll-mt-16">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-8 py-24 lg:py-36">
+        <Reveal className="grid grid-cols-12 gap-x-6 gap-y-8">
+          <div className="ed-rise col-span-12 lg:col-span-3">
+            <SectionIndex n="02" label={t("eyebrow")} />
+          </div>
+          <h2
+            className="ed-rise col-span-12 lg:col-span-9 font-ed-display font-medium text-[clamp(32px,4.4vw,72px)] leading-[1.02] tracking-[-0.035em]"
+            style={{ ["--i" as string]: 1 }}
+          >
+            {t("title")}
+          </h2>
+          <p
+            className="ed-rise col-span-12 md:col-span-8 lg:col-span-5 lg:col-start-8 font-ed-sans text-lg leading-[1.5] text-gray-300"
+            style={{ ["--i" as string]: 2 }}
+          >
+            {t("subtitle")}
+          </p>
+        </Reveal>
 
-        <div className="mt-14 lg:mt-20 grid grid-cols-1 md:grid-cols-12 gap-6">
-          <SolutionCard cardKey="apps" className="md:col-span-7" featured />
-          <SolutionCard cardKey="ia" className="md:col-span-5" delay={0.08} />
-          <SolutionCard cardKey="ecommerce" className="md:col-span-4" delay={0.08} withChips />
-          <SolutionCard cardKey="mercadolibre" className="md:col-span-4" delay={0.16} withChips />
-          <SolutionCard cardKey="marketing" className="md:col-span-4" delay={0.24} withChips />
-          <SolutionCard cardKey="sitios" className="md:col-span-4" delay={0.08} />
-          <SolutionCard cardKey="sistemas" className="md:col-span-4" delay={0.16} />
-          <SolutionCard cardKey="automatizaciones" className="md:col-span-4" delay={0.24} />
-          <SolutionCard cardKey="ciberseguridad" className="md:col-span-6" delay={0.08} withChips />
-          <SolutionCard cardKey="infraestructura" className="md:col-span-6" delay={0.16} withChips />
-          <SolutionCard cardKey="consultoria" className="md:col-span-12" horizontal delay={0.24} />
+        <div className="mt-16 lg:mt-24 grid grid-cols-12 gap-x-6">
+          {/* Sticky margin: the number of the focused row, set huge */}
+          <div className="hidden lg:block lg:col-span-3">
+            <div aria-hidden className="sticky top-28 ed-parallax-slow">
+              <div
+                key={focus}
+                className="font-ed-display font-extrabold leading-none tracking-[-0.06em] text-[clamp(120px,12vw,210px)] ed-outline animate-fade-in"
+                style={{ opacity: 1 }}
+              >
+                {String(focusIndex + 1).padStart(2, "0")}
+              </div>
+              <div className="ed-label mt-4 text-gray-400">
+                {t(`cards.${focus}.eyebrow`).replace(/^\d+\s*·\s*/, "")}
+              </div>
+              <div className="mt-6 h-px w-full bg-gray-800">
+                <div
+                  className="h-px bg-black transition-[width] duration-500 ease-out"
+                  style={{ width: `${((focusIndex + 1) / KEYS.length) * 100}%` }}
+                />
+              </div>
+              <div className="ed-label mt-2 text-gray-400 tabular-nums">
+                {String(focusIndex + 1).padStart(2, "0")} / {KEYS.length}
+              </div>
+            </div>
+          </div>
+
+          <ol className="col-span-12 lg:col-span-9 border-t border-gray-100/35" onMouseLeave={() => setHover(open ?? "apps")}>
+            {KEYS.map((key, i) => {
+              const isOpen = open === key
+              const chips = (t.raw(`cards.${key}`) as { chips?: string[] }).chips ?? []
+              const btnId = `${baseId}-b-${key}`
+              const panelId = `${baseId}-p-${key}`
+              return (
+                <li key={key} className="border-b border-gray-800" onMouseEnter={() => setHover(key)}>
+                  <h3>
+                    <button
+                      type="button"
+                      id={btnId}
+                      aria-expanded={isOpen}
+                      aria-controls={panelId}
+                      onClick={() => {
+                        setOpen(isOpen ? null : key)
+                        setHover(key)
+                      }}
+                      className="group relative grid w-full grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 py-5 lg:py-7 text-left focus-visible:outline-none"
+                    >
+                      <span
+                        aria-hidden
+                        className={`absolute inset-x-0 bottom-0 h-[3px] origin-left bg-brand-green transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] ${
+                          isOpen ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100 group-focus-visible:scale-x-100"
+                        }`}
+                      />
+                      <span className="ed-label text-gray-400 tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                      <span
+                        className={`font-ed-display font-medium tracking-[-0.03em] leading-[1.05] text-[clamp(24px,3.1vw,48px)] transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] ${
+                          isOpen ? "lg:translate-x-3" : "group-hover:lg:translate-x-3"
+                        }`}
+                      >
+                        {t(`cards.${key}.title`)}
+                      </span>
+                      <span
+                        aria-hidden
+                        className={`font-ed-display text-2xl leading-none transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`}
+                      >
+                        +
+                      </span>
+                    </button>
+                  </h3>
+                  <div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={btnId}
+                    className="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
+                    style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="grid grid-cols-[2.5rem_1fr] gap-x-4 pb-8 lg:grid-cols-[2.5rem_1fr_1fr] lg:gap-x-10">
+                        <span />
+                        <p className="font-ed-sans text-[17px] leading-[1.55] text-gray-300 max-w-[52ch]">
+                          {t(`cards.${key}.desc`)}
+                        </p>
+                        <div className="col-start-2 mt-5 lg:col-start-3 lg:mt-0 flex flex-col justify-between gap-5">
+                          {chips.length > 0 && (
+                            <p className="ed-label text-gray-100 leading-[1.9]">{chips.join("  /  ")}</p>
+                          )}
+                          <a href="#contacto" className="group/cta inline-flex items-center gap-2 self-start font-ed-sans text-[15px] font-semibold text-gray-100 ed-link">
+                            {t("verMas")}
+                            <ArrowRight className="h-4 w-4 transition-transform group-hover/cta:translate-x-1" strokeWidth={2} />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              )
+            })}
+          </ol>
         </div>
 
-        <PlatformsStrip />
+        {/* Platforms: secondary message, set as a line of text, not chips */}
+        <Reveal className="mt-20 lg:mt-28 grid grid-cols-12 gap-x-6 gap-y-6 border-t border-gray-100/35 pt-8">
+          <div className="ed-rise col-span-12 lg:col-span-3">
+            <p className="ed-label text-gray-400">{t("platformsTitle")}</p>
+          </div>
+          <div className="ed-rise col-span-12 lg:col-span-9" style={{ ["--i" as string]: 1 }}>
+            <p className="font-ed-display font-light text-[clamp(22px,2.6vw,40px)] leading-[1.25] tracking-[-0.02em]">
+              {platforms.map((p, i) => (
+                <span key={p}>
+                  {p}
+                  {i < platforms.length - 1 && <span className="text-gray-600"> / </span>}
+                </span>
+              ))}
+            </p>
+            <p className="mt-5 max-w-[60ch] font-ed-sans text-[15px] leading-[1.55] text-gray-300">{t("platformsSubtitle")}</p>
+          </div>
+        </Reveal>
       </div>
     </section>
-  )
-}
-
-/**
- * Secondary message under the divisions: custom work is the headline, but
- * visitors already on a platform should see theirs named here.
- */
-function PlatformsStrip() {
-  const t = useTranslations("services")
-  const platforms = t.raw("platforms") as string[]
-
-  return (
-    <AnimatedContent distance={40} duration={0.8} threshold={0.1}>
-      <div className="mt-6 rounded-2xl border border-gray-800 bg-gray-900/60 p-6 md:p-8">
-        <div className="md:flex md:items-start md:justify-between md:gap-10">
-          <div className="max-w-[460px]">
-            <h3 className="font-display text-xl font-semibold tracking-tight text-gray-100">
-              {t("platformsTitle")}
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-gray-300">{t("platformsSubtitle")}</p>
-          </div>
-          <ul className="mt-5 flex flex-wrap gap-2 md:mt-0 md:max-w-[620px] md:justify-end">
-            {platforms.map((name) => (
-              <li
-                key={name}
-                className="rounded-md border border-gray-800 bg-gray-950 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-gray-300"
-              >
-                {name}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </AnimatedContent>
-  )
-}
-
-export function SectionHeading({
-  eyebrow,
-  title,
-  subtitle,
-  center,
-}: {
-  eyebrow: string
-  title: React.ReactNode
-  subtitle?: React.ReactNode
-  center?: boolean
-}) {
-  return (
-    <AnimatedContent distance={60} duration={0.9} threshold={0.15}>
-      <div className={center ? "text-center" : ""}>
-        <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900 border border-gray-800">
-          <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
-          <span className="font-mono text-[11px] uppercase tracking-wider text-gray-300">
-            {eyebrow}
-          </span>
-        </span>
-        <h2
-          className={`mt-5 font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em] text-gray-100 ${
-            center ? "max-w-[720px] mx-auto" : "max-w-[720px]"
-          }`}
-        >
-          {title}
-        </h2>
-        {subtitle && (
-          <p
-            className={`mt-5 text-lg text-gray-300 leading-relaxed ${
-              center ? "max-w-[640px] mx-auto" : "max-w-[640px]"
-            }`}
-          >
-            {subtitle}
-          </p>
-        )}
-      </div>
-    </AnimatedContent>
-  )
-}
-
-function SolutionCard({
-  cardKey,
-  className = "",
-  featured,
-  horizontal,
-  withChips,
-  delay = 0,
-}: {
-  cardKey: CardKey
-  className?: string
-  featured?: boolean
-  horizontal?: boolean
-  /** Renders the card's `chips` message array as a mono tag row. */
-  withChips?: boolean
-  delay?: number
-}) {
-  const t = useTranslations(`services.cards.${cardKey}`)
-  const tRoot = useTranslations("services")
-  const chips = withChips || featured ? (t.raw("chips") as string[]) : null
-
-  return (
-    <AnimatedContent
-      distance={50}
-      duration={0.8}
-      delay={delay}
-      threshold={0.1}
-      className={`h-full ${className}`}
-    >
-      <a href="#contacto" className="group block h-full">
-        <SpotlightCard
-          className={`h-full bg-gray-900 border rounded-2xl p-8 transition-all duration-300 flex ${
-            featured
-              ? "border-brand-green/30 shadow-[0_0_60px_-24px_rgba(34,242,58,0.55)] hover:border-brand-green"
-              : "border-gray-800 hover:border-brand-green hover:-translate-y-0.5 hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.6)]"
-          } ${horizontal ? "flex-col md:flex-row md:items-center md:gap-8" : "flex-col"}`}
-          spotlightColor="rgba(34, 242, 58, 0.18)"
-        >
-          <div
-            className={`${horizontal ? "md:flex-shrink-0" : ""} h-12 w-12 rounded-xl bg-gray-950 border border-gray-800 flex items-center justify-center text-gray-300 group-hover:text-brand-green group-hover:border-brand-green/30 transition-colors`}
-          >
-            {ICONS[cardKey]}
-          </div>
-
-          <div className={horizontal ? "flex-1 mt-6 md:mt-0" : "mt-6 flex-1"}>
-            <div className="font-mono text-[11px] uppercase tracking-wider text-gray-500">
-              {t("eyebrow")}
-            </div>
-            <h3
-              className={`mt-2 font-display font-semibold text-gray-100 tracking-tight ${
-                featured ? "text-3xl lg:text-4xl" : horizontal ? "text-2xl lg:text-3xl" : "text-2xl"
-              }`}
-            >
-              {t("title")}
-            </h3>
-            <p className="mt-3 text-base text-gray-300 leading-relaxed max-w-[560px]">
-              {t("desc")}
-            </p>
-
-            {chips && (
-              <div className="mt-5 flex flex-wrap gap-2">
-                {chips.map((chip) => (
-                  <span
-                    key={chip}
-                    className="rounded-md border border-gray-800 bg-gray-950 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-gray-300"
-                  >
-                    {chip}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div
-            className={`${horizontal ? "md:ml-auto md:flex-shrink-0" : "mt-6"} inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green group-hover:gap-2.5 transition-all`}
-          >
-            {tRoot("verMas")}
-            <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-          </div>
-        </SpotlightCard>
-      </a>
-    </AnimatedContent>
   )
 }

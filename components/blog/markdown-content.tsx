@@ -253,7 +253,53 @@ export function MarkdownContent({ content, className = "" }: MarkdownContentProp
           )
         }
 
-        // 7. Regular Paragraph
+        // 7. Pipe table: header, `| --- |` separator, rows (GFM). Articles use
+        //    them for checklists ("Qué / Por qué"); without this they rendered
+        //    as a paragraph full of bars.
+        const tableLines = trimmed.split("\n")
+        if (
+          tableLines.length >= 2 &&
+          tableLines.every((line) => line.trim().startsWith("|")) &&
+          /^\|?\s*:?-{3,}/.test(tableLines[1].trim())
+        ) {
+          const cells = (line: string) =>
+            line
+              .trim()
+              .replace(/^\|/, "")
+              .replace(/\|$/, "")
+              .split("|")
+              .map((c) => c.trim())
+          const head = cells(tableLines[0])
+          const rows = tableLines.slice(2).map(cells)
+          return (
+            <div key={blockIndex} className="my-6 overflow-x-auto rounded-2xl border border-[#1A1A1A]">
+              <table className="w-full border-collapse text-left text-sm sm:text-base">
+                <thead>
+                  <tr className="bg-[#111111]">
+                    {head.map((h, i) => (
+                      <th key={i} className="px-4 py-3 font-display font-semibold text-white border-b border-[#1A1A1A]">
+                        {parseInline(h)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map((row, r) => (
+                    <tr key={r} className="border-b border-[#1A1A1A] last:border-b-0">
+                      {head.map((_, c) => (
+                        <td key={c} className="px-4 py-3 align-top text-gray-300">
+                          {parseInline(row[c] ?? "")}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )
+        }
+
+        // 8. Regular Paragraph
         return (
           <p key={blockIndex} className="text-gray-300 leading-relaxed">
             {parseInline(trimmed)}
