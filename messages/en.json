@@ -485,7 +485,9 @@
     ],
     "ctaWhatsApp": "Talk on WhatsApp",
     "ctaAssistant": "Talk to the assistant",
-    "waGreeting": "Hi PotenciApp, I'd like to request a proposal."
+    "waGreeting": "Hi PotenciApp, I'd like to request a proposal.",
+    "ctaBooking": "Book a meeting",
+    "ctaBookingHint": "Pick a day and time on our calendar"
   },
   "footer": {
     "tagline": "Custom software for companies and retailers: apps, e-commerce and internal systems. With a contract, fixed price, invoicing and a written warranty.",

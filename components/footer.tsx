@@ -1,17 +1,18 @@
 "use client"
 
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, CalendarDays } from "lucide-react"
 import { useLocale, useTranslations } from "next-intl"
 import { Link, usePathname } from "@/i18n/navigation"
 import { BrandWordmark } from "@/components/brand"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
-import { CONTACT_EMAIL, WA_PHONE } from "@/lib/site"
+import { BOOKING_URL, CONTACT_EMAIL, WA_PHONE } from "@/lib/site"
 import { NAV_PAGE_LINKS, homeSectionHref } from "@/components/header"
 
 
 export function Footer() {
   const t = useTranslations("footer")
   const tNav = useTranslations("nav")
+  const tContact = useTranslations("contact")
   const pathname = usePathname()
   const locale = useLocale()
   const year = new Date().getFullYear()
@@ -91,7 +92,7 @@ export function Footer() {
             </div>
           ))}
 
-          <div className="col-span-2 md:col-span-12 lg:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-x-6 border-t border-gray-800">
+          <div className="col-span-2 md:col-span-12 lg:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-x-6 border-t border-gray-800">
             <h2 className="sr-only">{t("conecta")}</h2>
             <a
               href={`https://wa.me/${WA_PHONE}`}
@@ -107,12 +108,24 @@ export function Footer() {
             </a>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="group flex min-w-0 items-center justify-between gap-4 py-5 md:border-l md:border-gray-800 md:pl-6"
+              className="group flex min-w-0 items-center justify-between gap-4 border-b border-gray-800 py-5 md:border-b-0 md:border-l md:border-gray-800 md:pl-6"
             >
-              <span className="min-w-0 break-all font-ed-display text-lg md:text-base lg:text-2xl font-medium tracking-[-0.02em]">
+              <span className="min-w-0 break-all font-ed-display text-base lg:text-lg font-medium tracking-[-0.02em]">
                 {CONTACT_EMAIL}
               </span>
               <ArrowUpRight className="h-5 w-5 shrink-0 text-gray-400 transition-all group-hover:text-brand-green group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between gap-4 border-t border-gray-800 py-5 md:border-t-0 md:border-l md:pl-6"
+            >
+              <span className="flex items-center gap-3 font-ed-display text-xl lg:text-2xl font-medium tracking-[-0.02em]">
+                <CalendarDays className="h-6 w-6 text-brand-green" strokeWidth={1.75} />
+                {tContact("ctaBooking")}
+              </span>
+              <ArrowUpRight className="h-5 w-5 text-gray-400 transition-all group-hover:text-brand-green group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
           </div>
         </div>

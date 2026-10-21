@@ -1,10 +1,10 @@
 "use client"
 
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, CalendarDays } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { Line, Reveal, SectionIndex } from "@/components/editorial/reveal"
-import { CONTACT_EMAIL, openFloatingChat, whatsAppUrl } from "@/lib/site"
+import { BOOKING_URL, CONTACT_EMAIL, openFloatingChat, whatsAppUrl } from "@/lib/site"
 
 /**
  * Closing statement on ink: one word set at poster scale, the WhatsApp CTA
@@ -58,7 +58,32 @@ export function ContactSection() {
             />
           </a>
 
-          <div className="ed-rise grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-6 pt-8" style={{ ["--i" as string]: 1 }}>
+          {/* Second bar: a commercial meeting on the calendar, same weight as WhatsApp. */}
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ed-rise group relative flex items-center justify-between gap-6 overflow-hidden border-b border-gray-100/35 px-5 py-6 lg:px-8 lg:py-8"
+            style={{ ["--i" as string]: 1 }}
+          >
+            <span
+              aria-hidden
+              className="absolute inset-0 origin-left scale-x-0 bg-brand-green transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100"
+            />
+            <span className="relative flex min-w-0 items-center gap-4 lg:gap-6 transition-colors duration-300 group-hover:text-ink">
+              <CalendarDays className="h-7 w-7 lg:h-10 lg:w-10 shrink-0 text-brand-green transition-colors group-hover:text-ink" strokeWidth={1.75} />
+              <span className="min-w-0">
+                <span className="block font-ed-display text-2xl lg:text-5xl font-medium tracking-[-0.03em]">{t("ctaBooking")}</span>
+                <span className="mt-1 block ed-label text-gray-400 transition-colors group-hover:text-ink/70">{t("ctaBookingHint")}</span>
+              </span>
+            </span>
+            <ArrowUpRight
+              className="relative h-8 w-8 lg:h-12 lg:w-12 shrink-0 transition-all duration-300 group-hover:text-ink group-hover:-translate-y-1 group-hover:translate-x-1"
+              strokeWidth={1.5}
+            />
+          </a>
+
+          <div className="ed-rise grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-6 pt-8" style={{ ["--i" as string]: 2 }}>
             <button
               type="button"
               onClick={openFloatingChat}

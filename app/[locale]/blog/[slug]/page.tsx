@@ -185,7 +185,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     {t("whatsapp")}
                   </a>
                 </Button>
-                <Button asChild variant="outline" className="min-h-11 border-[#1A1A1A] text-[#F5F5F5]">
+                <Button asChild variant="outline" className="min-h-11 border-[#2A2A2A] text-[#F5F5F5] hover:border-[#22F23A] hover:bg-[#1A1A1A] hover:text-[#F5F5F5]">
                   <Link href="/blog">{t("keepExploring")}</Link>
                 </Button>
               </div>

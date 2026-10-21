@@ -485,7 +485,9 @@
     ],
     "ctaWhatsApp": "Parler sur WhatsApp",
     "ctaAssistant": "Parler à l'assistant",
-    "waGreeting": "Bonjour PotenciApp, je souhaite demander une proposition."
+    "waGreeting": "Bonjour PotenciApp, je souhaite demander une proposition.",
+    "ctaBooking": "Prendre rendez-vous",
+    "ctaBookingHint": "Choisissez un jour et une heure dans notre agenda"
   },
   "footer": {
     "tagline": "Logiciel sur mesure pour entreprises et commerces : apps, e-commerce et systèmes internes. Avec contrat, prix ferme, facturation et garantie écrite.",
