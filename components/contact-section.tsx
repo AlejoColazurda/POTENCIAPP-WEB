@@ -30,12 +30,20 @@ export function ContactSection() {
           </div>
         </Reveal>
 
-        <Reveal as="h2" className="ed-parallax-slow mt-12 lg:mt-16 font-ed-display font-extrabold uppercase leading-[0.86] tracking-[-0.055em] text-[clamp(40px,10.4vw,200px)]">
-          <Line>
-            {tNav("ctaShort")}
-            <span className="text-brand-green">.</span>
-          </Line>
-        </Reveal>
+        {/* The word plus its green period must never leave the column: size is
+            the cap or whatever fits the container (0.82em ≈ Unbounded caps advance). */}
+        <div className="mt-12 lg:mt-16 [container-type:inline-size]">
+          <Reveal
+            as="h2"
+            className="ed-parallax-slow font-ed-display font-extrabold uppercase leading-[0.86] tracking-[-0.055em]"
+            style={{ fontSize: `min(clamp(40px, 10.4vw, 200px), calc(100cqw / (0.82 * ${tNav("ctaShort").length + 0.6})))` }}
+          >
+            <Line>
+              {tNav("ctaShort")}
+              <span className="text-brand-green">.</span>
+            </Line>
+          </Reveal>
+        </div>
 
         <Reveal className="mt-10 lg:mt-14">
           <a
