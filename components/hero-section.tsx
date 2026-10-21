@@ -19,6 +19,7 @@ export function HeroSection() {
   const te = useTranslations("editorial")
   const tp = useTranslations("portfolio")
   const lines = te.raw("titleLines") as string[]
+  const longest = Math.max(...lines.map((l, i) => l.length + (i === 1 ? 1.1 : 0)))
   const trust = t.raw("trustChips") as string[]
 
   return (
@@ -49,8 +50,14 @@ export function HeroSection() {
             <HeroShowcase />
           </Reveal>
 
-          <Reveal immediate as="div" className="relative z-10 col-span-12 md:col-span-7 md:row-start-1 md:self-end">
-            <h1 className="font-ed-display font-bold uppercase text-gray-100 leading-[0.88] tracking-[-0.045em] text-[clamp(36px,10.2vw,60px)] md:text-[clamp(40px,5.6vw,64px)] lg:text-[clamp(64px,5.6vw,92px)] md:whitespace-nowrap">
+          <Reveal immediate as="div" className="relative z-10 col-span-12 md:col-span-7 md:row-start-1 md:self-end [container-type:inline-size]">
+            {/* Size = the breakpoint cap, or whatever makes the longest line (plus the
+                indent of line 2) fit the column: EN "FROM SCRATCH." and FR "CONÇU DE
+                ZÉRO." are longer than the Spanish lines. 0.82em ≈ Unbounded Bold caps advance. */}
+            <h1
+              className="font-ed-display font-bold uppercase text-gray-100 leading-[0.88] tracking-[-0.045em] whitespace-nowrap [--h1-cap:clamp(36px,10.2vw,60px)] md:[--h1-cap:clamp(40px,5.6vw,64px)] lg:[--h1-cap:clamp(64px,5.6vw,92px)]"
+              style={{ fontSize: `min(var(--h1-cap), calc(100cqw / (0.82 * ${longest})))` }}
+            >
               {lines.map((line, i) => (
                 <Line key={line} i={i}>
                   {i === lines.length - 1 ? (
