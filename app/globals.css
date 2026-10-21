@@ -134,6 +134,14 @@
   --color-gray-300: #B8B8B8;
   --color-gray-100: #F5F5F5;
 
+  /* Editorial system (home): ink text on green CTAs, a mid grey for labels. */
+  --color-ink: #0B0B0C;
+  --color-gray-400: #8C8C8C;
+  --color-gray-600: #444444;
+
+  --font-ed-display: var(--font-unbounded), var(--font-space-grotesk), system-ui, sans-serif;
+  --font-ed-sans: var(--font-inter-tight), var(--font-inter), system-ui, sans-serif;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -180,12 +188,6 @@
   50% { transform: translateY(-10px); }
 }
 
-/* ShinyText sweep: 150% (shine off right) -> -50% (off left). */
-@keyframes shiny-sweep {
-  from { background-position: 150% center; }
-  to { background-position: -50% center; }
-}
-
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -216,6 +218,7 @@
 
 .marquee-track { animation: marquee 60s linear infinite; }
 .marquee-track-fast { animation: marquee 36s linear infinite; }
+.marquee-track-reverse { animation: marquee 48s linear infinite reverse; }
 .marquee-track:hover { animation-play-state: paused; }
 
 @keyframes scan-line {
@@ -287,27 +290,10 @@
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* ============================================
-   ReactBits integration
-   ============================================ */
-
-/* ScrollStack scopes its own scroller; keep it transparent over our bg. */
-.scroll-stack-card { will-change: transform; }
-
-/* ChromaGrid cards sit on the dark page — kill the default white ring. */
-.chroma-grid-brand article { background-clip: padding-box; }
-
-/* Rest saturation ≥ 0.85 (grayscale 0.15). No wash / spotlight on touch, < lg, or reduced motion. */
-@media (hover: none), (max-width: 1023px), (prefers-reduced-motion: reduce) {
-  .chroma-desaturate,
-  .chroma-card-spotlight {
-    display: none !important;
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
-  [style*="shiny-sweep"] { animation: none !important; }
   .marquee-track,
+  .marquee-track-reverse,
   .marquee-track-fast {
     animation: none !important;
   }
@@ -349,3 +335,110 @@
 .blog-prose th { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-primary, #f5f5f5); }
 .blog-prose code { font-family: var(--font-mono); font-size: 0.9em; background: rgba(255, 255, 255, 0.06); border-radius: 0.35em; padding: 0.1em 0.35em; }
 .blog-prose img { max-width: 100%; height: auto; border-radius: 0.75rem; border: 1px solid rgba(255, 255, 255, 0.08); }
+
+/* ============================================
+   Editorial system — home redesign
+   ============================================ */
+
+/* Small labels: indices, captions, figure numbers. Plain sans, no caps. */
+.ed-label {
+  font-family: var(--font-ed-sans);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Accent word inside a headline. */
+.ed-mark { color: var(--brand-green); }
+
+/* Outline display type (POTENCIAMOS band, big numerals). Unbounded is a
+   variable font with overlapping contours: a plain text-stroke draws the
+   overlaps inside letters (A, M, N). Painting the fill in the background
+   colour over a doubled stroke hides them. */
+.ed-outline {
+  -webkit-text-stroke: 3px var(--gray-700);
+  paint-order: stroke fill;
+  color: var(--ed-outline-fill, var(--gray-950));
+}
+
+/* ---------- Reveals (driven by components/editorial/reveal.tsx) ---------- */
+
+/* Text line rising out of its own mask. */
+.ed-line { display: block; overflow: hidden; padding-bottom: 0.06em; margin-bottom: -0.06em; }
+.ed-line > span {
+  display: block;
+  transform: translateY(105%);
+  transition: transform 1000ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.ed-in .ed-line > span { transform: none; }
+
+/* Block fading up a few pixels. */
+.ed-rise {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 800ms ease, transform 900ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+.ed-in .ed-rise,
+.ed-rise.ed-in { opacity: 1; transform: none; }
+
+/* Image uncovered from bottom to top, settling from a slight zoom. */
+.ed-mask { clip-path: inset(100% 0 0 0); transition: clip-path 1200ms cubic-bezier(0.77, 0, 0.18, 1); }
+.ed-mask img { transform: scale(1.12); transition: transform 1600ms cubic-bezier(0.19, 1, 0.22, 1); }
+.ed-in .ed-mask,
+.ed-mask.ed-in { clip-path: inset(0 0 0 0); }
+.ed-in .ed-mask img,
+.ed-mask.ed-in img { transform: scale(1); }
+
+/* Horizontal rule drawn left to right. */
+.ed-rule-draw { transform: scaleX(0); transform-origin: left; transition: transform 1200ms cubic-bezier(0.77, 0, 0.18, 1); }
+.ed-in .ed-rule-draw,
+.ed-rule-draw.ed-in { transform: scaleX(1); }
+
+/* Proceso: progress rule filled by scroll where the browser supports it. */
+@supports (animation-timeline: view()) {
+  .ed-scroll-fill {
+    transform-origin: left;
+    animation: ed-fill linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 60%;
+  }
+  @keyframes ed-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+}
+
+/* Links with an underline that wipes in. */
+.ed-link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+.ed-link:hover, .ed-link:focus-visible { background-size: 100% 1px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ed-line > span, .ed-rise, .ed-mask, .ed-mask img, .ed-rule-draw {
+    transition: none !important;
+  }
+  .ed-line > span, .ed-rise, .ed-mask img { transform: none !important; opacity: 1 !important; }
+  .ed-mask { clip-path: none !important; }
+  .ed-rule-draw { transform: none !important; }
+  .ed-scroll-fill { animation: none !important; transform: none !important; }
+}
+
+/* ---------- Parallax (CSS scroll-driven; static where unsupported) ---------- */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* An image inside a clipped frame drifts up as the frame crosses the viewport. */
+    .ed-parallax-img { animation: ed-parallax-img linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+    @keyframes ed-parallax-img { from { transform: translateY(-9%) scale(1.18); } to { transform: translateY(9%) scale(1.18); } }
+    /* Large decorative type moves slower than the page. */
+    .ed-parallax-slow { animation: ed-parallax-slow linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+    @keyframes ed-parallax-slow { from { transform: translateY(6vh); } to { transform: translateY(-6vh); } }
+    /* A block that floats up slightly faster than the page. */
+    .ed-parallax-fast { animation: ed-parallax-fast linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+    @keyframes ed-parallax-fast { from { transform: translateY(4vh); } to { transform: translateY(-4vh); } }
+  }
+}

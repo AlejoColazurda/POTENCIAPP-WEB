@@ -3,7 +3,7 @@
     "title": "PotenciApp | Software, ciberseguridad e infraestructura con contrato y garantía",
     "description": "Software, tiendas online y marketing para que tu negocio venda más: apps iOS y Android, sistemas, tiendas a medida, en Tiendanube, Empretienda y Mercado Libre, anuncios en Meta Ads, Google Ads y Mercado Libre Ads, IA y ciberseguridad. Contrato, precio cerrado, factura y garantía.",
     "ogTitle": "PotenciApp | Software que se firma, se entrega y se garantiza.",
-    "ogDescription": "Apps, e-commerce, sistemas, ciberseguridad e infraestructura cloud. Contrato, precio cerrado, factura y 90 días de garantía."
+    "ogDescription": "Apps, e-commerce, sistemas, ciberseguridad e infraestructura cloud. Contrato, precio cerrado, factura y garantía por escrito."
   },
   "nav": {
     "soluciones": "Soluciones",
@@ -20,7 +20,7 @@
     "blog": "Blog"
   },
   "hero": {
-    "statusBadge": "Respondemos en 24 h hábiles",
+    "statusBadge": "Tomando proyectos · 2026",
     "partnerBadge": "Contrato · Precio cerrado · Garantía",
     "outline": "POTENCIAMOS",
     "h2_line1": "Tu software, con",
@@ -33,16 +33,12 @@
         "label": "proyectos entregados"
       },
       "m2": {
-        "value": "8",
-        "label": "clientes en producción"
+        "value": "100%",
+        "label": "proyectos con contrato firmado"
       },
       "m3": {
-        "value": "90 días",
-        "label": "garantía post-entrega"
-      },
-      "m4": {
-        "value": "24 h",
-        "label": "respuesta comprometida"
+        "value": "iOS + Android",
+        "label": "apps publicadas con cuentas verificadas"
       }
     },
     "rotating": [
@@ -71,14 +67,14 @@
       "La propuesta, por escrito",
       "Precio cerrado",
       "Factura legal",
-      "90 días de garantía"
+      "Garantía por escrito"
     ]
   },
   "value": {
     "eyebrow": "Cómo trabajamos",
     "title": "Contratar software no debería ser un acto de fe.",
     "accent": "Por eso lo ponemos por escrito.",
-    "body": "Cada proyecto arranca con un contrato que fija alcance, hitos y fechas, y con un precio cerrado que no se mueve. Facturamos legalmente, respondemos en 24 horas hábiles y bancamos lo que entregamos con 90 días de garantía. Nada de eso es un favor: es la base."
+    "body": "Cada proyecto arranca con un contrato que fija alcance, hitos y fechas, y con un precio cerrado que no se mueve. Facturamos legalmente, tenés un canal directo con quien construye y respaldamos lo que entregamos con una garantía por escrito. Nada de eso es un favor: es la base."
   },
   "services": {
     "eyebrow": "Soluciones",
@@ -338,14 +334,14 @@
         "desc": "El número que aceptás es el número que pagás. Si pedís algo fuera del alcance, se cotiza aparte y por escrito antes de tocarlo."
       },
       "garantia": {
-        "tag": "90 días",
-        "title": "90 días de garantía post-entrega",
-        "desc": "Cualquier falla de lo que entregamos se corrige sin cargo durante los 90 días posteriores a la entrega. No es cortesía: está en el contrato."
+        "tag": "En el contrato",
+        "title": "Garantía post-entrega por escrito",
+        "desc": "Cualquier falla de lo que entregamos se corrige sin cargo durante el período de garantía que fija el contrato. No es cortesía: está firmado."
       },
       "respaldo": {
-        "tag": "Factura + respuesta en 24 h",
+        "tag": "Factura + canal directo",
         "title": "Empresa registrada, con factura",
-        "desc": "Facturamos legalmente cada pago y respondemos en 24 horas hábiles. Tenés comprobante, tenés interlocutor y tenés a quién reclamarle."
+        "desc": "Facturamos legalmente cada pago y durante el proyecto hablás con quien está construyendo, no con una casilla genérica. Tenés comprobante, interlocutor y a quién reclamarle."
       }
     }
   },
@@ -369,8 +365,8 @@
       "s3": {
         "num": "03",
         "title": "Entrega y garantía",
-        "desc": "Deploy a producción, entrega de accesos y capacitación a tu equipo. Desde ahí corren los 90 días de garantía.",
-        "tag": "90 DÍAS DE GARANTÍA"
+        "desc": "Deploy a producción, entrega de accesos y capacitación a tu equipo. Desde ahí corre la garantía que firmamos.",
+        "tag": "GARANTÍA POR ESCRITO"
       }
     }
   },
@@ -391,27 +387,10 @@
       "Contrato firmado con alcance, hitos y fechas",
       "Precio cerrado; los cambios se cotizan aparte y por escrito",
       "Empresa registrada, con factura por cada pago",
-      "90 días de garantía post-entrega sobre lo que hicimos",
+      "Garantía post-entrega por escrito sobre lo que hicimos",
       "Proyectos online que podés abrir y probar antes de firmar"
     ],
-    "stats": [
-      {
-        "value": "+40",
-        "label": "Proyectos entregados"
-      },
-      {
-        "value": "90 días",
-        "label": "Garantía post-entrega"
-      },
-      {
-        "value": "24 h",
-        "label": "Respuesta comprometida"
-      },
-      {
-        "value": "100%",
-        "label": "Proyectos con contrato firmado"
-      }
-    ]
+    "stats": []
   },
   "assistant": {
     "title": "Asistente PotenciApp",
@@ -428,7 +407,7 @@
       "Quiero vender más en Mercado Libre",
       "Quiero anuncios que vendan en Meta, Google o Mercado Libre"
     ],
-    "fallbackMessage": "Ahora mismo no puedo responder por acá. Seguimos por WhatsApp y te contesta el equipo en menos de 24 h hábiles.",
+    "fallbackMessage": "Ahora mismo no puedo responder por acá. Seguimos por WhatsApp y te contesta el equipo a la brevedad.",
     "fallbackCta": "Continuar en WhatsApp",
     "waGreeting": "Hola PotenciApp, vengo de la web.",
     "privacyNote": "Este chat usa IA (Google Gemini). No compartas contraseñas ni datos sensibles.",
@@ -454,19 +433,19 @@
       },
       {
         "q": "¿Qué incluye el contrato?",
-        "a": "Alcance detallado, etapas con fecha de entrega, precio cerrado, forma de pago y los 90 días de garantía post-entrega. Lo leés antes de firmar y te queda una copia."
+        "a": "Alcance detallado, etapas con fecha de entrega, precio cerrado, forma de pago y la garantía post-entrega con su plazo. Lo leés antes de firmar y te queda una copia."
       },
       {
-        "q": "¿Qué cubre la garantía de 90 días?",
-        "a": "Cualquier error o falla de lo que entregamos: lo corregimos sin cargo durante los 90 días posteriores a la entrega. No cubre funcionalidades nuevas ni cambios de alcance, que se cotizan aparte."
+        "q": "¿Qué cubre la garantía?",
+        "a": "Cualquier error o falla de lo que entregamos: lo corregimos sin cargo durante el período de garantía que fija el contrato. No cubre funcionalidades nuevas ni cambios de alcance, que se cotizan aparte."
       },
       {
         "q": "¿Emiten factura?",
         "a": "Sí. Somos una empresa registrada y facturamos cada pago del proyecto. Tenés comprobante fiscal de principio a fin."
       },
       {
-        "q": "¿En cuánto responden?",
-        "a": "24 horas hábiles, comprometidas por contrato. Durante el proyecto tenés un canal directo con quien está construyendo, no una casilla genérica."
+        "q": "¿Cómo es la comunicación durante el proyecto?",
+        "a": "Tenés un canal directo con quien está construyendo, no una casilla genérica. Cada etapa cierra con algo funcionando que podés abrir y probar vos mismo."
       },
       {
         "q": "¿Puedo ver algo que hayan hecho?",
@@ -498,18 +477,18 @@
     "eyebrow": "Empezar",
     "title": "Pedí tu propuesta",
     "accent": "por escrito.",
-    "subtitle": "Contanos qué necesitás por WhatsApp o con el asistente. Te respondemos en menos de 24 horas hábiles con un diagnóstico inicial y, si hay match, una propuesta con alcance, fechas y precio cerrado.",
+    "subtitle": "Contanos qué necesitás por WhatsApp o con el asistente. Te respondemos con un diagnóstico inicial y, si hay match, una propuesta con alcance, fechas y precio cerrado.",
     "perks": [
       "Diagnóstico sin costo",
       "Propuesta con precio cerrado",
-      "90 días de garantía"
+      "Garantía por escrito"
     ],
     "ctaWhatsApp": "Hablar por WhatsApp",
     "ctaAssistant": "Hablar con el asistente",
     "waGreeting": "Hola PotenciApp, quiero pedir una propuesta."
   },
   "footer": {
-    "tagline": "Software a medida para empresas y comercios: apps, e-commerce y sistemas internos. Con contrato, precio cerrado, factura y 90 días de garantía.",
+    "tagline": "Software a medida para empresas y comercios: apps, e-commerce y sistemas internos. Con contrato, precio cerrado, factura y garantía por escrito.",
     "operamos": "Operamos desde",
     "operamosValue": "Argentina · Remoto · Clientes en el exterior",
     "soluciones": "Soluciones",
@@ -545,7 +524,7 @@
       },
       {
         "h": "Garantía",
-        "p": "Lo entregado cuenta con una garantía de 90 días corridos desde la entrega, que cubre la corrección sin cargo de errores o fallas de lo desarrollado por nosotros. No cubre funcionalidades nuevas, cambios de alcance, ni fallas causadas por modificaciones de terceros, uso indebido o servicios externos."
+        "p": "Lo entregado cuenta con una garantía post-entrega cuyo plazo se fija en el contrato de cada proyecto, y que cubre la corrección sin cargo de errores o fallas de lo desarrollado por nosotros. No cubre funcionalidades nuevas, cambios de alcance, ni fallas causadas por modificaciones de terceros, uso indebido o servicios externos."
       },
       {
         "h": "Propiedad",
@@ -620,7 +599,7 @@
     "onlySpanish": "Este artículo está en español.",
     "ctaBadge": "Con contrato y garantía",
     "ctaTitle": "¿Querés que lo implementemos con contrato?",
-    "ctaBody": "Alcance cerrado, precio por escrito y 90 días de garantía sobre lo que entregamos.",
+    "ctaBody": "Alcance cerrado, precio por escrito y garantía sobre lo que entregamos.",
     "whatsapp": "Hablar por WhatsApp",
     "waMessage": "Hola PotenciApp, leí «{title}» y quiero una propuesta.",
     "keepExploring": "Más artículos",
@@ -706,5 +685,20 @@
     "blog": "Ver el blog",
     "contact": "Escribinos por WhatsApp",
     "waMessage": "Hola PotenciApp, encontré una página que no funciona en el sitio."
+  },
+  "editorial": {
+    "titleLines": [
+      "Software",
+      "a medida,",
+      "desde cero."
+    ],
+    "studio": "Estudio de software a medida",
+    "place": "Baradero, Argentina — Remoto",
+    "fig": "Fig.",
+    "clause": "Cláusula",
+    "signClient": "Firma del cliente",
+    "signStudio": "Por PotenciApp",
+    "scrollCue": "Desplazá",
+    "index": "Índice"
   }
 }

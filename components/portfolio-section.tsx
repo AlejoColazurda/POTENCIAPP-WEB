@@ -1,9 +1,9 @@
 "use client"
 
+import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import { useTranslations } from "next-intl"
-import ChromaGrid, { type ChromaItem } from "@/components/reactbits/ChromaGrid"
-import AnimatedContent from "@/components/reactbits/AnimatedContent"
+import { Reveal, SectionIndex } from "@/components/editorial/reveal"
 
 const DEMOS_INDEX = "https://demo.potenciapp.com"
 
@@ -129,86 +129,138 @@ const PROJECTS: Project[] = [
   },
 ]
 
+/**
+ * Plate layout for the production sites: an asymmetric 12-column rhythm
+ * (wide/narrow, then a three-up with offsets) instead of equal cards.
+ */
+const PLATES: { span: string; offset: string; aspect: string }[] = [
+  { span: "md:col-span-7", offset: "", aspect: "aspect-[16/10]" },
+  { span: "md:col-span-5", offset: "md:mt-40", aspect: "aspect-[4/3]" },
+  { span: "md:col-span-4", offset: "", aspect: "aspect-[4/3]" },
+  { span: "md:col-span-4", offset: "md:mt-24", aspect: "aspect-[4/3]" },
+  { span: "md:col-span-4", offset: "md:mt-10", aspect: "aspect-[4/3]" },
+  { span: "md:col-span-5", offset: "", aspect: "aspect-[4/3]" },
+  { span: "md:col-span-7", offset: "md:mt-20", aspect: "aspect-[16/10]" },
+  { span: "md:col-span-6 md:col-start-4", offset: "", aspect: "aspect-[16/10]" },
+]
+
 export function PortfolioSection() {
   const t = useTranslations("portfolio")
-
-  const toItem = (p: Project): ChromaItem => ({
-    image: p.image,
-    title: t(`items.${p.key}.title`),
-    subtitle: t(`items.${p.key}.category`),
-    location: t(`items.${p.key}.desc`),
-    handle: p.handle,
-    url: p.url,
-    badge: p.live ? t("live") : undefined,
-    cta: p.live ? t("verCaso") : t("verDemo"),
-    tags: p.tags,
-    borderColor: p.live ? "#22F23A" : "#2A2A2A",
-    gradient: p.live
-      ? "linear-gradient(160deg, rgba(34,242,58,0.16), #0A0A0A 62%)"
-      : "linear-gradient(160deg, #1A1A1A, #0A0A0A 62%)",
-  })
-
-  const liveItems = PROJECTS.filter((p) => p.live).map(toItem)
-  const demoItems = PROJECTS.filter((p) => !p.live).map(toItem)
+  const te = useTranslations("editorial")
+  const live = PROJECTS.filter((p) => p.live)
+  const demos = PROJECTS.filter((p) => !p.live)
 
   return (
-    <section
-      id="proyectos"
-      className="relative bg-gray-950 py-20 lg:py-32 border-t border-gray-800 overflow-hidden"
-    >
-      <div
-        aria-hidden
-        className="absolute top-1/3 left-[6%] w-[420px] h-[420px] rounded-full bg-brand-green/[0.05] blur-[140px] pointer-events-none"
-      />
+    <section id="proyectos" className="relative bg-black text-gray-100 scroll-mt-16">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-8 py-24 lg:py-36">
+        <Reveal className="grid grid-cols-12 gap-x-6 gap-y-8">
+          <div className="ed-rise col-span-12 lg:col-span-3">
+            <SectionIndex n="04" label={t("eyebrow")} />
+          </div>
+          <h2
+            className="ed-rise col-span-12 lg:col-span-6 font-ed-display font-medium text-[clamp(34px,5vw,84px)] leading-[0.98] tracking-[-0.04em]"
+            style={{ ["--i" as string]: 1 }}
+          >
+            {t("title")}
+          </h2>
+          <p
+            className="ed-rise col-span-12 md:col-span-8 lg:col-span-3 self-end font-ed-sans text-[17px] leading-[1.5] text-gray-300"
+            style={{ ["--i" as string]: 2 }}
+          >
+            {t("subtitle")}
+          </p>
+        </Reveal>
 
-      <div className="relative max-w-[1280px] mx-auto px-4 md:px-8">
-        <AnimatedContent distance={60} duration={0.9} threshold={0.15}>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 lg:mb-16">
-            <div>
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900 border border-gray-800">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
-                <span className="font-mono text-[11px] uppercase tracking-wider text-gray-300">
-                  {t("eyebrow")}
-                </span>
-              </span>
-              <h2 className="mt-5 font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.02em] text-gray-100 max-w-[640px]">
-                {t("title")}
-              </h2>
-            </div>
-            <p className="text-base text-gray-300 max-w-[420px] md:text-right leading-relaxed">
-              {t("subtitle")}
-            </p>
-          </div>
-        </AnimatedContent>
-
-        <div className="space-y-14">
-          <div>
-            <h3 className="font-display text-xl font-semibold tracking-tight text-gray-100 mb-6">
-              {t("liveGroup")}
-            </h3>
-            <ChromaGrid className="chroma-grid-brand" items={liveItems} radius={340} damping={0.4} fadeOut={0.5} />
-          </div>
-          <div>
-            <h3 className="font-display text-xl font-semibold tracking-tight text-gray-100 mb-6">
-              {t("demoGroup")}
-            </h3>
-            <ChromaGrid className="chroma-grid-brand" items={demoItems} radius={340} damping={0.4} fadeOut={0.5} />
-          </div>
+        <div className="mt-16 lg:mt-24 flex items-baseline justify-between border-t border-gray-800 pt-4">
+          <p className="ed-label text-gray-100">{t("liveGroup")}</p>
+          <p className="ed-label text-gray-400 tabular-nums">{String(live.length).padStart(2, "0")}</p>
         </div>
 
-        {/* No link to the raw demos index on purpose: the grid above IS the
-            curated selection. The slot sells the next step instead. */}
-        <div className="mt-12 flex flex-col items-center gap-3 text-center">
-          <p className="text-base text-gray-300">{t("ctaLine")}</p>
+        <ul className="mt-10 grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-14 lg:gap-y-20">
+          {live.map((p, i) => {
+            const plate = PLATES[i % PLATES.length]
+            return (
+              <li key={p.key} className={`${plate.span} ${plate.offset}`}>
+                <a href={p.url} target="_blank" rel="noopener noreferrer" className="group block">
+                  {/* Observe an unclipped wrapper: IntersectionObserver ignores
+                      targets whose own clip-path hides them entirely. */}
+                  <Reveal className={`relative ${plate.aspect} bg-gray-900`}>
+                    <div className="ed-mask absolute inset-0 overflow-hidden">
+                    <Image
+                      src={p.image}
+                      alt={t(`items.${p.key}.title`)}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="ed-parallax-img object-cover object-top transition-[filter] duration-700 grayscale-[25%] group-hover:grayscale-0"
+                    />
+                    </div>
+                    <span className="absolute left-3 top-3 ed-label bg-brand-green px-2 py-1 text-ink">
+                      {t("live")}
+                    </span>
+                  </Reveal>
+                  <div className="mt-4 grid grid-cols-[auto_1fr_auto] items-baseline gap-x-4 border-t border-gray-800 pt-3">
+                    <span className="ed-label text-gray-400 tabular-nums">
+                      {te("fig")} {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-ed-display text-lg lg:text-xl font-medium tracking-[-0.02em]">
+                      {t(`items.${p.key}.title`)}
+                    </span>
+                    <ArrowUpRight
+                      className="h-5 w-5 text-gray-400 transition-all duration-300 group-hover:text-brand-green group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      strokeWidth={1.75}
+                    />
+                    <span />
+                    <span className="col-span-2 mt-1 ed-label text-gray-400">
+                      {t(`items.${p.key}.category`)} — {p.handle}
+                    </span>
+                  </div>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+
+        {/* Demos: a text index; the thumbnail surfaces on hover (desktop) */}
+        <div className="mt-24 lg:mt-32 flex items-baseline justify-between border-t border-gray-800 pt-4">
+          <p className="ed-label text-gray-100">{t("demoGroup")}</p>
+          <p className="ed-label text-gray-400 tabular-nums">{String(demos.length).padStart(2, "0")}</p>
+        </div>
+        <ul className="mt-2">
+          {demos.map((p, i) => (
+            <li key={p.key} className="border-b border-gray-800">
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group grid grid-cols-[2.5rem_1fr_auto] md:grid-cols-[2.5rem_1.2fr_1fr_auto] items-center gap-x-4 py-5"
+              >
+                <span className="ed-label text-gray-400 tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-ed-display text-xl lg:text-3xl font-medium tracking-[-0.03em] transition-colors duration-300 group-hover:text-brand-green">
+                  {t(`items.${p.key}.title`)}
+                </span>
+                <span className="hidden md:block ed-label text-gray-400">{t(`items.${p.key}.category`)}</span>
+                <span className="flex items-center gap-4">
+                  <span className="relative hidden lg:block h-14 w-24 overflow-hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <Image src={p.image} alt="" fill sizes="96px" className="object-cover object-top" />
+                  </span>
+                  <span className="ed-label text-gray-300 inline-flex items-center gap-1 group-hover:text-gray-100">
+                    {t("verDemo")} <ArrowUpRight className="h-3.5 w-3.5" />
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        {/* The slot sells the next step instead of linking the raw demos index */}
+        <div className="mt-16 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <p className="font-ed-sans text-lg text-gray-300">{t("ctaLine")}</p>
           <a
             href="#contacto"
-            className="group inline-flex items-center gap-2 min-h-11 h-12 px-6 rounded-lg border border-brand-green text-brand-green font-display font-semibold text-sm hover:bg-brand-green/10 transition-all duration-300"
+            className="group inline-flex items-center justify-between gap-6 border border-gray-100/35 px-5 py-4 font-ed-sans font-semibold text-gray-100 transition-colors duration-300 hover:bg-brand-green hover:border-brand-green hover:text-ink"
           >
             {t("ctaButton")}
-            <ArrowUpRight
-              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              strokeWidth={2.5}
-            />
+            <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
         </div>
       </div>

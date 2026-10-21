@@ -1,88 +1,89 @@
 "use client"
 
-import { Check, Mail, Sparkles } from "lucide-react"
-import { WhatsAppIcon } from "@/components/whatsapp-icon"
+import { ArrowUpRight } from "lucide-react"
 import { useTranslations } from "next-intl"
-import AnimatedContent from "@/components/reactbits/AnimatedContent"
-import Magnet from "@/components/reactbits/Magnet"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
+import { Line, Reveal, SectionIndex } from "@/components/editorial/reveal"
 import { CONTACT_EMAIL, openFloatingChat, whatsAppUrl } from "@/lib/site"
 
 /**
- * Compact closing CTA. The long multi-field form it replaces asked for budget
- * and billing before the visitor ever talked to anyone — the floating assistant
- * and WhatsApp carry that conversation now.
+ * Closing statement on ink: one word set at poster scale, the WhatsApp CTA
+ * as a full-width bar that floods green on hover, the assistant and the
+ * email as secondary lines. Flows straight into the footer.
  */
 export function ContactSection() {
   const t = useTranslations("contact")
+  const tNav = useTranslations("nav")
   const perks = t.raw("perks") as string[]
 
   return (
-    <section
-      id="contacto"
-      className="relative bg-gray-950 py-20 lg:py-32 border-t border-gray-800 overflow-hidden"
-    >
-      <div
-        aria-hidden
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[520px] rounded-full bg-brand-green/[0.07] blur-[160px] pointer-events-none"
-      />
+    <section id="contacto" className="relative bg-black text-gray-100 scroll-mt-16">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-8 pt-24 lg:pt-36 pb-16">
+        <Reveal className="grid grid-cols-12 gap-x-6 gap-y-8">
+          <div className="ed-rise col-span-12 lg:col-span-3">
+            <SectionIndex n="10" label={t("eyebrow")} />
+          </div>
+          <div className="col-span-12 lg:col-span-9">
+            <p className="ed-rise font-ed-sans text-lg lg:text-xl leading-[1.45] text-gray-300 max-w-[52ch]">
+              {t("title")} <span className="text-gray-100">{t("accent")}</span> {t("subtitle")}
+            </p>
+          </div>
+        </Reveal>
 
-      <div className="relative max-w-[880px] mx-auto px-4 md:px-8 text-center">
-        <AnimatedContent distance={60} duration={0.9} threshold={0.15}>
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-900 border border-gray-800">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-green animate-pulse-dot" />
-            <span className="font-mono text-[11px] uppercase tracking-wider text-gray-300">
-              {t("eyebrow")}
+        <Reveal as="h2" className="ed-parallax-slow mt-12 lg:mt-16 font-ed-display font-extrabold uppercase leading-[0.86] tracking-[-0.055em] text-[clamp(40px,10.4vw,200px)]">
+          <Line>
+            {tNav("ctaShort")}
+            <span className="text-brand-green">.</span>
+          </Line>
+        </Reveal>
+
+        <Reveal className="mt-10 lg:mt-14">
+          <a
+            href={whatsAppUrl(t("waGreeting"))}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ed-rise group relative flex items-center justify-between gap-6 overflow-hidden border-y border-gray-100/35 px-5 py-6 lg:px-8 lg:py-8"
+          >
+            <span
+              aria-hidden
+              className="absolute inset-0 origin-left scale-x-0 bg-brand-green transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.18,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100"
+            />
+            <span className="relative flex items-center gap-4 lg:gap-6 font-ed-display text-2xl lg:text-5xl font-medium tracking-[-0.03em] transition-colors duration-300 group-hover:text-ink">
+              <WhatsAppIcon className="h-7 w-7 lg:h-10 lg:w-10 text-[#25D366] transition-colors group-hover:text-ink" />
+              {t("ctaWhatsApp")}
             </span>
-          </span>
+            <ArrowUpRight
+              className="relative h-8 w-8 lg:h-12 lg:w-12 shrink-0 transition-all duration-300 group-hover:text-ink group-hover:-translate-y-1 group-hover:translate-x-1"
+              strokeWidth={1.5}
+            />
+          </a>
 
-          <h2 className="mt-5 font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-[-0.02em] text-gray-100">
-            {t("title")} <span className="text-brand-green">{t("accent")}</span>
-          </h2>
-
-          <p className="mt-6 text-lg text-gray-300 leading-relaxed max-w-[600px] mx-auto">
-            {t("subtitle")}
-          </p>
-
-          <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2">
-            {perks.map((item) => (
-              <li key={item} className="inline-flex items-center gap-2 text-sm text-gray-300">
-                <Check className="h-4 w-4 text-brand-green" strokeWidth={2.5} />
-                {item}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Magnet padding={90} magnetStrength={5} wrapperClassName="inline-flex">
-              <a
-                href={whatsAppUrl(t("waGreeting"))}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-lg bg-brand-green text-black font-display font-bold text-base hover:bg-green-hover hover:shadow-[0_0_32px_rgba(34,242,58,0.5)] transition-all duration-300 active:scale-[0.98]"
-              >
-                <WhatsAppIcon className="h-5 w-5" />
-                {t("ctaWhatsApp")}
-              </a>
-            </Magnet>
-
+          <div className="ed-rise grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-6 pt-8" style={{ ["--i" as string]: 1 }}>
             <button
               type="button"
               onClick={openFloatingChat}
-              className="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-lg border border-brand-green text-brand-green font-display font-bold text-base hover:bg-brand-green/10 transition-all duration-300"
+              className="md:col-span-4 flex items-center justify-between border-b border-gray-800 pb-4 text-left font-ed-sans text-lg font-semibold hover:text-brand-green transition-colors"
             >
-              <Sparkles className="h-5 w-5" strokeWidth={2.5} />
               {t("ctaAssistant")}
+              <span aria-hidden>→</span>
             </button>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="md:col-span-4 flex items-center justify-between border-b border-gray-800 pb-4 font-ed-sans text-lg font-semibold hover:text-brand-green transition-colors"
+            >
+              {CONTACT_EMAIL}
+              <span aria-hidden>→</span>
+            </a>
+            <ul className="md:col-span-4 flex flex-col gap-1.5">
+              {perks.map((p) => (
+                <li key={p} className="ed-label text-gray-400 flex items-center gap-2">
+                  <span aria-hidden className="inline-block h-1.5 w-1.5 bg-brand-green" />
+                  {p}
+                </li>
+              ))}
+            </ul>
           </div>
-
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="mt-6 inline-flex items-center gap-2 font-mono text-[12px] uppercase tracking-wider text-gray-500 hover:text-brand-green transition-colors"
-          >
-            <Mail className="h-3.5 w-3.5" />
-            {CONTACT_EMAIL}
-          </a>
-        </AnimatedContent>
+        </Reveal>
       </div>
     </section>
   )

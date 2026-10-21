@@ -1,61 +1,75 @@
 "use client"
 
 import { useTranslations } from "next-intl"
-import { SectionHeading } from "./services-section"
-import ScrollFloat from "@/components/reactbits/ScrollFloat"
-import AnimatedContent from "@/components/reactbits/AnimatedContent"
+import { Reveal, SectionIndex } from "@/components/editorial/reveal"
 
-type StepKey = "s1" | "s2" | "s3"
+const KEYS = ["s1", "s2", "s3"] as const
 
+/**
+ * Process as one continuous line of time rather than three icon boxes: a
+ * single rule runs across the stages and fills with brand green as the
+ * section scrolls through (CSS scroll-driven animation where supported,
+ * a full static rule elsewhere). Each stage hangs from the line.
+ */
 export function ProcesoSection() {
   const t = useTranslations("proceso")
-  const keys: StepKey[] = ["s1", "s2", "s3"]
 
   return (
-    <section id="proceso" className="relative bg-gray-950 py-20 lg:py-32 border-t border-gray-800">
-      <div className="max-w-[1280px] mx-auto px-4 md:px-8">
-        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
-
-        <div className="relative mt-16 lg:mt-24">
-          <div
-            aria-hidden
-            className="hidden md:block absolute left-[6%] right-[6%] top-[64px] h-px"
-            style={{
-              backgroundImage:
-                "linear-gradient(90deg, #2A2A2A 0, #2A2A2A 8px, transparent 8px, transparent 16px)",
-              backgroundSize: "16px 1px",
-            }}
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-            {keys.map((k, i) => (
-              <div key={k} className="relative">
-                {/* Step numeral rises and un-squashes as the row enters the viewport */}
-                <ScrollFloat
-                  containerClassName="!my-0"
-                  textClassName="font-display font-bold text-[96px] lg:text-[128px] text-gray-700 leading-none tracking-[-0.04em] select-none"
-                  animationDuration={0.9}
-                  stagger={0.05}
-                  scrollStart="center bottom+=35%"
-                  scrollEnd="bottom bottom-=25%"
-                >
-                  {t(`steps.${k}.num`)}
-                </ScrollFloat>
-
-                <AnimatedContent distance={40} duration={0.8} delay={0.1 + i * 0.1} threshold={0.15}>
-                  <h3 className="mt-4 font-display font-semibold text-2xl text-gray-100">
-                    {t(`steps.${k}.title`)}
-                  </h3>
-                  <p className="mt-3 text-base text-gray-300 leading-relaxed max-w-[360px]">
-                    {t(`steps.${k}.desc`)}
-                  </p>
-                  <span className="mt-5 inline-block font-mono text-[11px] uppercase tracking-wider text-brand-green border border-brand-green/30 rounded-md px-2.5 py-1 bg-brand-green/5">
-                    {t(`steps.${k}.tag`)}
-                  </span>
-                </AnimatedContent>
-              </div>
-            ))}
+    <section id="proceso" className="relative bg-gray-950 text-gray-100 border-t border-gray-100/35 scroll-mt-16">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-8 py-24 lg:py-36">
+        <Reveal className="grid grid-cols-12 gap-x-6 gap-y-8">
+          <div className="ed-rise col-span-12 lg:col-span-3">
+            <SectionIndex n="06" label={t("eyebrow")} />
           </div>
+          <h2
+            className="ed-rise col-span-12 lg:col-span-5 font-ed-display font-medium text-[clamp(32px,4vw,64px)] leading-[1.02] tracking-[-0.035em]"
+            style={{ ["--i" as string]: 1 }}
+          >
+            {t("title")}
+          </h2>
+          <p
+            className="ed-rise col-span-12 md:col-span-8 lg:col-span-4 self-end font-ed-sans text-lg leading-[1.5] text-gray-300"
+            style={{ ["--i" as string]: 2 }}
+          >
+            {t("subtitle")}
+          </p>
+        </Reveal>
+
+        <div className="relative mt-20 lg:mt-28">
+          {/* The line of time */}
+          <div aria-hidden className="absolute left-0 right-0 top-0 hidden h-[3px] bg-gray-800 md:block">
+            <div className="ed-scroll-fill h-full w-full bg-brand-green" />
+          </div>
+
+          <ol className="grid grid-cols-1 md:grid-cols-3 md:gap-x-6">
+            {KEYS.map((k, i) => (
+              <Reveal
+                as="li"
+                key={k}
+                className="relative border-l-[3px] border-gray-800 pl-6 pb-14 md:border-l-0 md:pl-0 md:pb-0 md:pt-10"
+              >
+                <span aria-hidden className="absolute -left-[9px] top-0 h-4 w-4 bg-gray-100 md:left-0 md:-top-[6.5px]" />
+                <div className="ed-rise flex items-baseline justify-between gap-4" style={{ ["--i" as string]: i }}>
+                  <span className="ed-parallax-slow inline-block font-ed-display font-extrabold leading-none tracking-[-0.06em] text-[clamp(72px,8vw,136px)] ed-outline">
+                    {t(`steps.${k}.num`)}
+                  </span>
+                  <span className="ed-label text-gray-100 border border-gray-100/35 px-2 py-1">{t(`steps.${k}.tag`)}</span>
+                </div>
+                <h3
+                  className="ed-rise mt-8 font-ed-display text-2xl lg:text-[28px] font-medium tracking-[-0.025em] leading-[1.1]"
+                  style={{ ["--i" as string]: i + 1 }}
+                >
+                  {t(`steps.${k}.title`)}
+                </h3>
+                <p
+                  className="ed-rise mt-4 font-ed-sans text-[16px] leading-[1.6] text-gray-300 max-w-[40ch]"
+                  style={{ ["--i" as string]: i + 2 }}
+                >
+                  {t(`steps.${k}.desc`)}
+                </p>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

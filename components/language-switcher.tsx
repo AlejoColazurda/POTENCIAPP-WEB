@@ -58,7 +58,7 @@ export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label={t("switcherLabel")}
+        aria-label={`${t("switcherLabel")}: ${locale.toUpperCase()}`}
         className={cn(
           "inline-flex items-center gap-2 rounded-lg border border-gray-800 bg-gray-900 px-3 h-10 text-sm text-gray-300 hover:text-gray-100 hover:border-gray-700 transition-colors",
           compact && "h-9 px-2.5",

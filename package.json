@@ -12,7 +12,6 @@
     "remotion:render:all": "remotion render remotion/index.ts HeroBackground public/videos/hero-bg.mp4 && remotion render remotion/index.ts CasePreview1 public/videos/case-p1.mp4 && remotion render remotion/index.ts CasePreview2 public/videos/case-p2.mp4 && remotion render remotion/index.ts CasePreview3 public/videos/case-p3.mp4 && remotion render remotion/index.ts CasePreview4 public/videos/case-p4.mp4 && remotion render remotion/index.ts CasePreview5 public/videos/case-p5.mp4 && remotion render remotion/index.ts CasePreview6 public/videos/case-p6.mp4"
   },
   "dependencies": {
-    "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-accordion": "1.2.12",
     "@radix-ui/react-alert-dialog": "1.1.15",
@@ -51,7 +50,6 @@
     "cmdk": "1.1.1",
     "date-fns": "4.1.0",
     "embla-carousel-react": "8.6.0",
-    "gsap": "^3.15.0",
     "input-otp": "1.4.2",
     "lucide-react": "^0.564.0",
     "marked": "^15.0.12",
@@ -59,7 +57,6 @@
     "next": "16.2.0",
     "next-intl": "^4.12.0",
     "next-themes": "^0.4.6",
-    "ogl": "^1.0.11",
     "react": "19.2.4",
     "react-day-picker": "9.13.2",
     "react-dom": "19.2.4",

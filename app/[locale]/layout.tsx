@@ -1,11 +1,10 @@
 import type { Metadata, Viewport } from "next"
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google"
+import { Inter, Space_Grotesk, JetBrains_Mono, Unbounded, Inter_Tight } from "next/font/google"
 import { Toaster } from "sonner"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { setRequestLocale, getMessages, getTranslations } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
-import ClickSpark from "@/components/reactbits/ClickSpark"
 import { FloatingChat } from "@/components/floating-chat"
 import "../globals.css"
 
@@ -31,6 +30,21 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 
+// Editorial system (home): Unbounded for display, Inter Tight for reading.
+const unbounded = Unbounded({
+  subsets: ["latin"],
+  variable: "--font-unbounded",
+  weight: ["300", "500", "700", "800"],
+  display: "swap",
+})
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  variable: "--font-inter-tight",
+  weight: ["400", "500", "600"],
+  display: "swap",
+})
+
 const ORG_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -39,7 +53,7 @@ const ORG_JSONLD = {
   email: "contacto@potenciapp.com",
   telephone: "+5493329613035",
   description:
-    "Empresa de desarrollo de software a medida y marketing digital: aplicaciones iOS y Android, sistemas y tiendas online desarrolladas desde cero, tiendas en Tiendanube, Empretienda, Shopify y WooCommerce, cuentas y anuncios en Mercado Libre, anuncios en Meta Ads, Google Ads y Mercado Libre Ads, sitios en WordPress y a medida, sistemas internos, IA aplicada, ciberseguridad, arquitectura de software e infraestructura cloud (Docker, AWS, VPS, redes, mantenimiento). Contrato con hitos y fechas, precio cerrado, factura y 90 días de garantía.",
+    "Empresa de desarrollo de software a medida y marketing digital: aplicaciones iOS y Android, sistemas y tiendas online desarrolladas desde cero, tiendas en Tiendanube, Empretienda, Shopify y WooCommerce, cuentas y anuncios en Mercado Libre, anuncios en Meta Ads, Google Ads y Mercado Libre Ads, sitios en WordPress y a medida, sistemas internos, IA aplicada, ciberseguridad, arquitectura de software e infraestructura cloud (Docker, AWS, VPS, redes, mantenimiento). Contrato con hitos y fechas, precio cerrado, factura y garantía por escrito.",
   areaServed: ["AR", "Worldwide"],
   sameAs: ["https://demo.potenciapp.com"],
   knowsAbout: [
@@ -127,7 +141,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${unbounded.variable} ${interTight.variable}`}
     >
       <body
         suppressHydrationWarning
@@ -138,10 +152,7 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSONLD) }}
         />
         <NextIntlClientProvider messages={messages}>
-          {/* Brand-green spark burst on every click, page-wide */}
-          <ClickSpark sparkColor="#22F23A" sparkSize={11} sparkRadius={22} sparkCount={9} duration={430}>
-            {children}
-          </ClickSpark>
+          {children}
           <FloatingChat />
           <Toaster richColors theme="dark" position="top-center" />
         </NextIntlClientProvider>
