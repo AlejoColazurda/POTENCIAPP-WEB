@@ -17,7 +17,9 @@
     "garantia": "Garantia",
     "precios": "Preços",
     "equipo": "Equipe",
-    "blog": "Blog"
+    "blog": "Blog",
+    "confianza": "Antes de nos contratar",
+    "baradero": "Baradero"
   },
   "hero": {
     "statusBadge": "Aceitando projetos · 2026",
@@ -492,7 +494,7 @@
   "footer": {
     "tagline": "Software sob medida para empresas e comércios: apps, e-commerce e sistemas internos. Com contrato, preço fechado, nota fiscal e garantia por escrito.",
     "operamos": "Operamos de",
-    "operamosValue": "Argentina · Remoto · Clientes no exterior",
+    "operamosValue": "Baradero, Buenos Aires · Remoto · Clientes no exterior",
     "soluciones": "Soluções",
     "empresa": "Empresa",
     "recursos": "Recursos",
@@ -555,7 +557,8 @@
         "h": "Seus direitos",
         "p": "Você pode pedir a qualquer momento para acessar, corrigir ou excluir os dados que nos enviou, escrevendo para contacto@potenciapp.com. Dados vinculados a faturamento são mantidos pelo prazo exigido pela lei argentina."
       }
-    ]
+    ],
+    "identity": "Razão social: {legalName} · CUIT {cuit}."
   },
   "blog": {
     "eyebrow": "Blog · Cibersegurança",
@@ -702,5 +705,152 @@
     "signStudio": "Pela PotenciApp",
     "scrollCue": "Role",
     "index": "Índice"
+  },
+  "confianza": {
+    "metaTitle": "Antes de nos contratar: contrato, CUIT, garantia e referências | PotenciApp",
+    "metaDescription": "As 9 coisas que você deveria exigir de quem faz o seu site ou sistema, respondidas uma por uma: razão social e CUIT, contrato, domínio no seu nome, acessos, propriedade do código, custos, garantia, pagamentos por etapas e referências.",
+    "backHome": "← Voltar ao início",
+    "eyebrow": "Antes de nos contratar",
+    "title": "Tudo o que você deveria exigir de quem faz o seu site.",
+    "accent": "Respondido.",
+    "intro": "Pergunte a uma IA, a um contador ou a um conhecido o que pedir a um fornecedor de software e a lista é sempre a mesma. Aqui respondemos ponto por ponto, antes que você precise pedir.",
+    "listLabel": "Lista de verificação",
+    "askLabel": "O que você deveria pedir",
+    "answerLabel": "Nossa resposta",
+    "identity": "Faturamos como {legalName}, CUIT {cuit}.",
+    "identityPending": "Razão social e CUIT: peça pelo WhatsApp e enviamos na hora, antes de qualquer pagamento.",
+    "warranty": "A garantia pós-entrega é de {days} dias e consta no contrato.",
+    "warrantyPending": "A garantia pós-entrega tem prazo fixo, que consta em cada contrato.",
+    "items": [
+      {
+        "ask": "Razão social, CUIT e nota fiscal de cada pagamento.",
+        "answer": "{identity} Emitimos nota fiscal eletrônica de cada pagamento, em nome do seu negócio ou no seu. Você pode verificar o CUIT no comprovante de inscrição antes de pagar.",
+        "tag": "Verificável"
+      },
+      {
+        "ask": "Contrato assinado com escopo, preço final e data de entrega.",
+        "answer": "Nenhum projeto começa sem contrato assinado pelas duas partes. Ele define escopo detalhado, etapas com data, preço fechado, forma de pagamento e garantia. Enviamos o modelo de contrato pelo WhatsApp antes de você pagar qualquer coisa, para que revise com quem quiser.",
+        "tag": "Antes de qualquer pagamento"
+      },
+      {
+        "ask": "Domínio registrado no meu nome ou no do meu negócio.",
+        "answer": "O domínio é registrado no seu nome, no NIC Argentina ou no registrador correspondente, desde o primeiro dia. Se você já o tem, trabalhamos na sua conta. Nunca fica em nome da PotenciApp.",
+        "tag": "No seu nome"
+      },
+      {
+        "ask": "Acesso próprio à hospedagem, ao painel administrativo e às contas vinculadas.",
+        "answer": "Na entrega você recebe as credenciais de hospedagem, painel, domínio, meio de pagamento e qualquer conta criada para o projeto, e recomendamos trocar as senhas no mesmo dia. Se preferir, as contas são criadas no seu nome desde o início.",
+        "tag": "Entrega de acessos"
+      },
+      {
+        "ask": "Confirmação por escrito de quem é dono do design, do código e dos conteúdos.",
+        "answer": "Você. Ao concluir o pagamento do projeto, o código-fonte, o design e os conteúdos são de sua propriedade, como dizem o contrato e nossos termos. Pode levar para outro fornecedor quando quiser.",
+        "tag": "No contrato"
+      },
+      {
+        "ask": "Detalhe dos custos de renovação, hospedagem e manutenção.",
+        "answer": "A proposta separa o preço do projeto dos custos recorrentes: domínio, hospedagem, certificados e serviços de terceiros, com valor e frequência. A manutenção é opcional e contratada à parte; nada fica preso a nós.",
+        "tag": "Separado na proposta"
+      },
+      {
+        "ask": "Garantia e procedimento de suporte por escrito.",
+        "answer": "{warranty} Durante esse prazo corrigimos sem custo qualquer erro ou falha do que entregamos. Você reporta pelo WhatsApp ou e-mail, confirmamos o recebimento e dizemos quando fica resolvido. Não cobre funcionalidades novas nem mudanças de escopo, que são orçadas à parte.",
+        "tag": "Assinado"
+      },
+      {
+        "ask": "Pagamentos por etapas vinculados a entregas verificáveis.",
+        "answer": "Nunca pedimos o total adiantado. Há um sinal na assinatura e o restante é pago contra etapas que você mesmo pode abrir e testar, com o saldo final contra a entrega em produção. Percentuais e datas constam na proposta.",
+        "tag": "Contra entregas"
+      },
+      {
+        "ask": "Pelo menos dois clientes reais que aceitem dar referências.",
+        "answer": "Peça dois e passamos o contato de clientes com projetos entregues, com a permissão deles. Além disso, você pode abrir qualquer site ao vivo do portfólio e escrever para aquele negócio por conta própria.",
+        "tag": "Com permissão do cliente"
+      }
+    ],
+    "ctaTitle": "Peça tudo isso em uma só mensagem.",
+    "ctaBody": "Toque no botão e respondemos com o modelo de contrato, os dados de faturamento e duas referências.",
+    "ctaButton": "Pedir modelo de contrato e referências",
+    "waMessage": "Olá PotenciApp, estou avaliando contratar vocês. Podem me enviar o modelo de contrato, razão social e CUIT, duas referências de clientes e como tratam domínio, acessos, garantia e pagamentos por etapas?",
+    "seeProjects": "Ver projetos ao vivo"
+  },
+  "baradero": {
+    "metaTitle": "Design web e desenvolvimento de software em Baradero | PotenciApp",
+    "metaDescription": "Sites, lojas online, sistemas e apps para negócios de Baradero e região. Empresa local, com contrato, preço fechado, nota fiscal e garantia por escrito. Reunião presencial ou pelo WhatsApp.",
+    "backHome": "← Voltar ao início",
+    "eyebrow": "Baradero, Buenos Aires",
+    "title": "Design web e software em Baradero.",
+    "accent": "Você nos conhece pessoalmente.",
+    "intro": "A PotenciApp é uma empresa de desenvolvimento de software com sede em Baradero. Fazemos sites, lojas online, sistemas e apps para comércios e empresas da cidade e da região, e trabalhamos remotamente com clientes de todo o país.",
+    "ctaPrimary": "Pedir proposta",
+    "ctaSecondary": "Agendar uma reunião",
+    "waGreeting": "Olá PotenciApp, sou de Baradero e quero uma proposta para o meu negócio.",
+    "servicesLabel": "O que fazemos para negócios da região",
+    "services": [
+      {
+        "title": "Site para o seu negócio",
+        "desc": "Para que te encontrem no Google e escrevam pelo WhatsApp. Com domínio no seu nome e adaptado ao celular."
+      },
+      {
+        "title": "Loja online",
+        "desc": "Catálogo, pagamentos com Mercado Pago e envios. Sob medida ou em Tiendanube e Empretienda."
+      },
+      {
+        "title": "Sistema sob medida",
+        "desc": "Estoque, vendas, agendamentos ou o que hoje você controla em planilhas e papel, em um sistema que é seu."
+      },
+      {
+        "title": "App móvel",
+        "desc": "Publicado na App Store e no Google Play com contas verificadas."
+      },
+      {
+        "title": "Anúncios que vendem",
+        "desc": "Meta Ads, Google Ads e Mercado Libre Ads com relatórios claros de cada peso investido."
+      }
+    ],
+    "localLabel": "Por que uma empresa local",
+    "local": [
+      {
+        "title": "Reunião presencial",
+        "desc": "Nos encontramos em Baradero para o diagnóstico, as entregas e o treinamento. Você não precisa viajar nem explicar seu negócio por videochamada."
+      },
+      {
+        "title": "Mesmo horário, mesmo WhatsApp",
+        "desc": "Respondemos em horário comercial argentino pelo canal de sempre, com uma pessoa que conhece o seu projeto."
+      },
+      {
+        "title": "Clientes da região",
+        "desc": "Vários dos nossos clientes são negócios de Baradero e arredores que nos conhecem pessoalmente. Peça referências e fale com eles."
+      }
+    ],
+    "projectsLabel": "Projetos ao vivo",
+    "projectsHint": "Sites funcionando hoje. Abra-os antes de nos contratar.",
+    "faqLabel": "Perguntas frequentes em Baradero",
+    "faq": [
+      {
+        "q": "Vocês atendem presencialmente em Baradero?",
+        "a": "Sim. Estamos em Baradero e marcamos reuniões presenciais pelo WhatsApp, tanto para o diagnóstico inicial quanto para entregas e treinamento. Também trabalhamos por videochamada, se for mais cômodo."
+      },
+      {
+        "q": "Quanto custa um site em Baradero?",
+        "a": "Depende do que o seu negócio precisa: um site de apresentação não é o mesmo que uma loja online ou um sistema. O diagnóstico é gratuito e você sai com uma proposta por escrito com escopo, datas e preço fechado, que não muda."
+      },
+      {
+        "q": "Trabalham com negócios pequenos?",
+        "a": "Sim. Quiosques, lojas de roupa, refrigeração, marcenarias e escolas da região estão no nosso portfólio. Dimensionamos o projeto ao seu negócio, com contrato e nota fiscal como para uma grande empresa."
+      },
+      {
+        "q": "O que me convém: site ou loja online?",
+        "a": "Se quer ser encontrado e receber consultas, um site com WhatsApp basta. Se quer vender com pagamentos e envios sem atender cada pedido à mão, uma loja. Definimos juntos no diagnóstico."
+      },
+      {
+        "q": "Atendem clientes de San Pedro, Zárate, Campana ou San Antonio de Areco?",
+        "a": "Sim. Atendemos toda a zona norte da província de Buenos Aires, presencialmente ou de forma remota, além de clientes do resto do país e do exterior."
+      }
+    ],
+    "mapsLabel": "Onde estamos",
+    "mapsText": "Baradero, Buenos Aires, Argentina. As reuniões são combinadas pelo WhatsApp.",
+    "mapsLink": "Ver no Google Maps",
+    "trustLink": "O que exigir antes de nos contratar"
   }
 }

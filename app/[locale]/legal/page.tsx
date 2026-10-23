@@ -2,6 +2,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { setRequestLocale, getTranslations } from "next-intl/server"
 import { FileSignature, ShieldCheck } from "lucide-react"
+import { COMPANY } from "@/lib/company"
 
 type Block = { h: string; p: string }
 
@@ -26,7 +27,15 @@ export default async function LegalPage({
   const { locale } = await params
   setRequestLocale(locale)
   const t = await getTranslations({ locale, namespace: "legal" })
-  const termsBlocks = (t.raw("termsBlocks") as Block[]) ?? []
+  const rawTerms = (t.raw("termsBlocks") as Block[]) ?? []
+  // "Quiénes somos" carries the legal identity once the founder confirms it.
+  const identity =
+    COMPANY.legalName && COMPANY.cuit
+      ? t("identity", { legalName: COMPANY.legalName, cuit: COMPANY.cuit })
+      : null
+  const termsBlocks = rawTerms.map((block, i) =>
+    i === 0 && identity ? { ...block, p: `${block.p} ${identity}` } : block,
+  )
   const privacyBlocks = (t.raw("privacyBlocks") as Block[]) ?? []
 
   return (

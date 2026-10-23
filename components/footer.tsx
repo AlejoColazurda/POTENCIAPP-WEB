@@ -6,6 +6,7 @@ import { Link, usePathname } from "@/i18n/navigation"
 import { BrandWordmark } from "@/components/brand"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { BOOKING_URL, CONTACT_EMAIL, WA_PHONE } from "@/lib/site"
+import { BARADERO_PATH, COMPANY, TRUST_PATH } from "@/lib/company"
 import { NAV_PAGE_LINKS, homeSectionHref } from "@/components/header"
 
 
@@ -42,6 +43,8 @@ export function Footer() {
         { label: tNav("garantia"), href: section("garantia") },
         { label: tNav("proceso"), href: section("proceso") },
         { label: tNav("faq"), href: section("faq") },
+        { label: tNav("confianza"), href: TRUST_PATH },
+        { label: tNav("baradero"), href: BARADERO_PATH },
         ...pageLinks,
       ],
     },
@@ -131,7 +134,19 @@ export function Footer() {
         </div>
 
         <div className="mt-6 mb-20 flex flex-col gap-4 border-t border-gray-800 py-6 md:flex-row md:items-center md:justify-between">
-          <p className="ed-label text-gray-400">{t("rights", { year })}</p>
+          <div>
+            <p className="ed-label text-gray-400">{t("rights", { year })}</p>
+            {/* Legal identity in plain text: the first thing anyone verifying us looks for. */}
+            <p className="mt-1 ed-label text-gray-500">
+              {[
+                COMPANY.legalName,
+                COMPANY.cuit ? `CUIT ${COMPANY.cuit}` : null,
+                `${COMPANY.address.locality}, ${COMPANY.address.region}, ${COMPANY.address.countryName}`,
+              ]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+          </div>
           <p className="ed-label text-gray-300 flex items-center gap-2">
             <span aria-hidden className="inline-block h-2 w-2 bg-brand-green" />
             {t("availability")}

@@ -40,6 +40,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: locale === defaultLocale ? 1 : 0.8,
     },
     {
+      url: `${originFor(locale)}/antes-de-contratarnos`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${originFor(locale)}/baradero`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${originFor(locale)}/legal`,
       lastModified,
       changeFrequency: "yearly",

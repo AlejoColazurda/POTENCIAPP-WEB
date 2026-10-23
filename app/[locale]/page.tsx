@@ -13,6 +13,7 @@ import { BlogTeaser } from "@/components/blog-teaser"
 import { FaqSection } from "@/components/faq-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
+import { faqJsonLd } from "@/lib/company"
 
 /**
  * Section order follows the trust arc: promise (hero, value) → what we build
@@ -31,20 +32,11 @@ export default async function HomePage({
   // and answer engines can quote it directly.
   const tFaq = await getTranslations({ locale, namespace: "faq" })
   const faqItems = tFaq.raw("items") as { q: string; a: string }[]
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    inLanguage: locale,
-    mainEntity: faqItems.map((item) => ({
-      "@type": "Question",
-      name: item.q,
-      acceptedAnswer: { "@type": "Answer", text: item.a },
-    })),
-  }
+  const faqLd = faqJsonLd(locale, faqItems)
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 font-ed-sans">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <Header />
       <main>
         <HeroSection />
