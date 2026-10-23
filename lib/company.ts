@@ -14,7 +14,7 @@ export const COMPANY = {
   /** Razón social as it appears on the invoice (monotributo: the founder). */
   legalName: "Vladimir Gonzalez" as string | null,
   /** CUIT with dashes, e.g. "30-12345678-9". */
-  cuit: null as string | null,
+  cuit: "20-44113706-1" as string | null,
   /** Post-delivery warranty term, in years, as written in every contract. */
   warrantyYears: 2 as number | null,
   founder: "Vladimir Gonzalez",
