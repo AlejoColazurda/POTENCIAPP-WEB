@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { ArrowUpRight, CalendarDays } from "lucide-react"
 import { useLocale, useTranslations } from "next-intl"
 import { Link, usePathname } from "@/i18n/navigation"
@@ -152,6 +153,19 @@ export function Footer() {
             {t("availability")}
           </p>
           <div className="flex items-center gap-6">
+            {COMPANY.dataFiscal.imagePath && COMPANY.dataFiscal.qrUrl && (
+              // ARCA Data Fiscal badge: links to the official QR page so
+              // anyone can check the fiscal status behind the CUIT above.
+              <a
+                href={COMPANY.dataFiscal.qrUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Data Fiscal ARCA"
+                className="inline-flex shrink-0 opacity-80 transition-opacity hover:opacity-100"
+              >
+                <Image src={COMPANY.dataFiscal.imagePath} alt="Data Fiscal ARCA" width={44} height={60} />
+              </a>
+            )}
             <Link href="/legal#terminos" className="ed-label text-gray-400 hover:text-gray-100">
               {t("terms")}
             </Link>

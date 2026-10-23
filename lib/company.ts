@@ -27,6 +27,16 @@ export const COMPANY = {
   },
   /** Centre of Baradero; the office has no public street address. */
   geo: { latitude: -33.8097, longitude: -59.5083 },
+  /**
+   * ARCA "Data Fiscal" (Formulario 960/D). Both values come from the
+   * founder's ARCA account: the QR image goes in /public (imagePath) and the
+   * link is the one the QR encodes (http://qr.afip.gob.ar/?qr=…). The footer
+   * shows the badge only when both are set.
+   */
+  dataFiscal: {
+    imagePath: null as string | null,
+    qrUrl: null as string | null,
+  },
   /** Public profiles that back the identity (LinkedIn, Maps, demos). */
   sameAs: ["https://demo.potenciapp.com"] as string[],
   mapsSearchUrl: "https://www.google.com/maps/search/?api=1&query=PotenciApp+Baradero",
