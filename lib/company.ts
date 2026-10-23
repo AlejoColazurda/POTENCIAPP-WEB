@@ -11,12 +11,12 @@ import { CONTACT_EMAIL, SITE_URL, WA_PHONE } from "@/lib/site"
  */
 export const COMPANY = {
   brand: "PotenciApp",
-  /** Razón social as it appears on the invoice. */
-  legalName: null as string | null,
+  /** Razón social as it appears on the invoice (monotributo: the founder). */
+  legalName: "Vladimir Gonzalez" as string | null,
   /** CUIT with dashes, e.g. "30-12345678-9". */
   cuit: null as string | null,
-  /** Post-delivery warranty term, in days, as written in every contract. */
-  warrantyDays: null as number | null,
+  /** Post-delivery warranty term, in years, as written in every contract. */
+  warrantyYears: 2 as number | null,
   founder: "Vladimir Gonzalez",
   address: {
     locality: "Baradero",

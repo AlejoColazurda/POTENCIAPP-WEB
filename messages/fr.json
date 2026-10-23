@@ -342,7 +342,7 @@
       },
       "respaldo": {
         "tag": "Facture + contact direct",
-        "title": "Société enregistrée, avec facturation",
+        "title": "Une facture légale pour chaque paiement",
         "desc": "Nous facturons légalement chaque paiement et, pendant le projet, vous parlez à celui qui construit, pas à une boîte générique. Vous avez un justificatif, un interlocuteur et quelqu'un à qui réclamer."
       }
     }
@@ -388,7 +388,7 @@
     "nosotrosItems": [
       "Un contrat signé avec périmètre, jalons et dates",
       "Prix ferme ; les changements sont chiffrés à part et par écrit",
-      "Société enregistrée, avec une facture pour chaque paiement",
+      "Une facture légale pour chaque paiement, émise par le signataire du contrat",
       "Garantie écrite après livraison sur ce que nous avons fait",
       "Des projets en ligne à ouvrir et tester avant de signer"
     ],
@@ -443,7 +443,7 @@
       },
       {
         "q": "Émettez-vous des factures ?",
-        "a": "Oui. Nous sommes une société enregistrée et nous facturons chaque paiement du projet. Vous avez un justificatif du début à la fin."
+        "a": "Oui. PotenciApp est le nom commercial de Vladimir Gonzalez, inscrit auprès de l'administration fiscale argentine, et chaque paiement du projet vous est facturé. Le signataire du contrat est celui qui émet la facture, et vous pouvez le vérifier avant de payer."
       },
       {
         "q": "Comment se passe la communication pendant le projet ?",
@@ -520,7 +520,7 @@
     "termsBlocks": [
       {
         "h": "Qui nous sommes",
-        "p": "PotenciApp est une société de développement logiciel enregistrée en Argentine, basée à Baradero, Buenos Aires. Contact : contacto@potenciapp.com · WhatsApp +54 9 3329 613035."
+        "p": "PotenciApp est le nom commercial sous lequel Vladimir Gonzalez, inscrit auprès de l'administration fiscale argentine, fournit des services de développement logiciel depuis Baradero, Buenos Aires. Contact : contacto@potenciapp.com · WhatsApp +54 9 3329 613035."
       },
       {
         "h": "Comment nous contractons",
@@ -558,7 +558,8 @@
         "p": "Vous pouvez à tout moment demander l'accès, la correction ou la suppression des données envoyées, en écrivant à contacto@potenciapp.com. Les données liées à la facturation sont conservées le temps exigé par la loi argentine."
       }
     ],
-    "identity": "Raison sociale : {legalName} · CUIT {cuit}."
+    "identity": "Raison sociale : {legalName} · CUIT {cuit}.",
+    "identityName": "Raison sociale : {legalName}."
   },
   "blog": {
     "eyebrow": "Blog · Cybersécurité",
@@ -719,7 +720,7 @@
     "answerLabel": "Notre réponse",
     "identity": "Nous facturons sous {legalName}, CUIT {cuit}.",
     "identityPending": "Raison sociale et CUIT : demandez-les sur WhatsApp et nous les envoyons immédiatement, avant tout paiement.",
-    "warranty": "La garantie après livraison est de {days} jours et figure dans le contrat.",
+    "warranty": "La garantie après livraison est de {years, plural, one {# an} other {# ans}} et figure dans le contrat.",
     "warrantyPending": "La garantie après livraison a une durée fixe qui figure dans chaque contrat.",
     "items": [
       {
@@ -772,7 +773,8 @@
     "ctaBody": "Appuyez sur le bouton et nous répondons avec le modèle de contrat, les données de facturation et deux références.",
     "ctaButton": "Demander le modèle de contrat et des références",
     "waMessage": "Bonjour PotenciApp, j'envisage de vous engager. Pouvez-vous m'envoyer le modèle de contrat, la raison sociale et le CUIT, deux références clients et votre façon de gérer le domaine, les accès, la garantie et les paiements par étapes ?",
-    "seeProjects": "Voir les projets en ligne"
+    "seeProjects": "Voir les projets en ligne",
+    "identityName": "Nous facturons sous {legalName}."
   },
   "baradero": {
     "metaTitle": "Création de sites web et développement logiciel à Baradero | PotenciApp",

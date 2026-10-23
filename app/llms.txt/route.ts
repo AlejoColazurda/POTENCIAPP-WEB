@@ -50,8 +50,8 @@ ${legalLines}- Sede: Baradero, Buenos Aires, Argentina (CP 2942). Atiende en per
 
 - Contrato firmado con alcance, hitos y fechas antes de empezar.
 - Precio cerrado; los cambios de alcance se cotizan aparte y por escrito.
-- Empresa registrada, con factura por cada pago.
-- Garantía post-entrega sobre lo desarrollado${COMPANY.warrantyDays ? ` (${COMPANY.warrantyDays} días, escrita en el contrato)` : ", con plazo fijo escrito en el contrato"}.
+- Factura legal por cada pago, emitida por quien firma el contrato (PotenciApp es el nombre comercial de Vladimir Gonzalez, con inscripción fiscal en Argentina; no es una sociedad constituida).
+- Garantía post-entrega sobre lo desarrollado${COMPANY.warrantyYears ? ` (${COMPANY.warrantyYears} años, escrita en el contrato)` : ", con plazo fijo escrito en el contrato"}.
 - Pagos por etapas contra entregas verificables; nunca el total por adelantado.
 - Dominio, hosting y cuentas a nombre del cliente; el código es del cliente al completar el pago.
 - Referencias de clientes reales a pedido, con su permiso.

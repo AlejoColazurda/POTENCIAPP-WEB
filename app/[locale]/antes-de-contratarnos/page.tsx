@@ -44,9 +44,11 @@ export default async function TrustPage({ params }: PageProps) {
   const identity =
     COMPANY.legalName && COMPANY.cuit
       ? t("identity", { legalName: COMPANY.legalName, cuit: COMPANY.cuit })
-      : t("identityPending")
-  const warranty = COMPANY.warrantyDays
-    ? t("warranty", { days: COMPANY.warrantyDays })
+      : COMPANY.legalName
+        ? t("identityName", { legalName: COMPANY.legalName })
+        : t("identityPending")
+  const warranty = COMPANY.warrantyYears
+    ? t("warranty", { years: COMPANY.warrantyYears })
     : t("warrantyPending")
 
   const items = (t.raw("items") as Item[]).map((item) => ({

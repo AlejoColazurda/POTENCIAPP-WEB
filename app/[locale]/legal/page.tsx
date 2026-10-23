@@ -32,7 +32,9 @@ export default async function LegalPage({
   const identity =
     COMPANY.legalName && COMPANY.cuit
       ? t("identity", { legalName: COMPANY.legalName, cuit: COMPANY.cuit })
-      : null
+      : COMPANY.legalName
+        ? t("identityName", { legalName: COMPANY.legalName })
+        : null
   const termsBlocks = rawTerms.map((block, i) =>
     i === 0 && identity ? { ...block, p: `${block.p} ${identity}` } : block,
   )

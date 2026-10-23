@@ -342,7 +342,7 @@
       },
       "respaldo": {
         "tag": "Factura + canal directo",
-        "title": "Empresa registrada, con factura",
+        "title": "Factura legal por cada pago",
         "desc": "Facturamos legalmente cada pago y durante el proyecto hablás con quien está construyendo, no con una casilla genérica. Tenés comprobante, interlocutor y a quién reclamarle."
       }
     }
@@ -388,7 +388,7 @@
     "nosotrosItems": [
       "Contrato firmado con alcance, hitos y fechas",
       "Precio cerrado; los cambios se cotizan aparte y por escrito",
-      "Empresa registrada, con factura por cada pago",
+      "Factura legal por cada pago, emitida por quien firma el contrato",
       "Garantía post-entrega por escrito sobre lo que hicimos",
       "Proyectos online que podés abrir y probar antes de firmar"
     ],
@@ -443,7 +443,7 @@
       },
       {
         "q": "¿Emiten factura?",
-        "a": "Sí. Somos una empresa registrada y facturamos cada pago del proyecto. Tenés comprobante fiscal de principio a fin."
+        "a": "Sí. PotenciApp es el nombre comercial de Vladimir Gonzalez, con inscripción fiscal en Argentina, y cada pago del proyecto se factura a tu nombre. Quien firma el contrato es quien emite la factura, y podés verificarlo antes de pagar."
       },
       {
         "q": "¿Cómo es la comunicación durante el proyecto?",
@@ -520,7 +520,7 @@
     "termsBlocks": [
       {
         "h": "Quiénes somos",
-        "p": "PotenciApp es una empresa de desarrollo de software registrada en Argentina, con base en Baradero, Buenos Aires. Contacto: contacto@potenciapp.com · WhatsApp +54 9 3329 613035."
+        "p": "PotenciApp es el nombre comercial bajo el que Vladimir Gonzalez, con inscripción fiscal en Argentina, presta servicios de desarrollo de software desde Baradero, Buenos Aires. Contacto: contacto@potenciapp.com · WhatsApp +54 9 3329 613035."
       },
       {
         "h": "Cómo contratamos",
@@ -558,7 +558,8 @@
         "p": "Podés pedirnos en cualquier momento acceder, corregir o eliminar los datos que nos hayas enviado, escribiendo a contacto@potenciapp.com. Los datos vinculados a facturación se conservan por el plazo que exige la ley argentina."
       }
     ],
-    "identity": "Razón social: {legalName} · CUIT {cuit}."
+    "identity": "Razón social: {legalName} · CUIT {cuit}.",
+    "identityName": "Razón social: {legalName}."
   },
   "blog": {
     "eyebrow": "Blog · Ciberseguridad",
@@ -719,7 +720,7 @@
     "answerLabel": "Nuestra respuesta",
     "identity": "Facturamos como {legalName}, CUIT {cuit}.",
     "identityPending": "Razón social y CUIT: pedínoslos por WhatsApp y te los mandamos en el momento, antes de cualquier pago.",
-    "warranty": "La garantía post-entrega es de {days} días y figura en el contrato.",
+    "warranty": "La garantía post-entrega es de {years, plural, one {# año} other {# años}} y figura en el contrato.",
     "warrantyPending": "La garantía post-entrega tiene un plazo fijo que figura en cada contrato.",
     "items": [
       {
@@ -772,7 +773,8 @@
     "ctaBody": "Tocá el botón y te respondemos con el modelo de contrato, los datos de facturación y dos referencias.",
     "ctaButton": "Pedir contrato modelo y referencias",
     "waMessage": "Hola PotenciApp, estoy evaluando contratarlos. ¿Me pasan el modelo de contrato, razón social y CUIT, dos referencias de clientes y cómo manejan dominio, accesos, garantía y pagos por etapas?",
-    "seeProjects": "Ver proyectos en vivo"
+    "seeProjects": "Ver proyectos en vivo",
+    "identityName": "Facturamos como {legalName}."
   },
   "baradero": {
     "metaTitle": "Diseño web y desarrollo de software en Baradero | PotenciApp",

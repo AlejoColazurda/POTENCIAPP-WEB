@@ -342,7 +342,7 @@
       },
       "respaldo": {
         "tag": "Invoice + direct line",
-        "title": "Registered company, with invoicing",
+        "title": "A legal invoice for every payment",
         "desc": "We invoice every payment legally, and during the project you talk to whoever is building, not a generic inbox. You have a receipt, a contact and someone to hold accountable."
       }
     }
@@ -388,7 +388,7 @@
     "nosotrosItems": [
       "A signed contract with scope, milestones and dates",
       "Fixed price; changes are quoted separately and in writing",
-      "Registered company, with an invoice for every payment",
+      "A legal invoice for every payment, issued by whoever signs the contract",
       "Written post-delivery warranty on what we built",
       "Live projects you can open and test before you sign"
     ],
@@ -443,7 +443,7 @@
       },
       {
         "q": "Do you issue invoices?",
-        "a": "Yes. We're a registered company and we invoice every payment on the project. You have proper documentation from start to finish."
+        "a": "Yes. PotenciApp is the trade name of Vladimir Gonzalez, registered with the Argentine tax authority, and every project payment is invoiced to you. Whoever signs the contract is who issues the invoice, and you can verify it before paying."
       },
       {
         "q": "How does communication work during the project?",
@@ -520,7 +520,7 @@
     "termsBlocks": [
       {
         "h": "Who we are",
-        "p": "PotenciApp is a software development company registered in Argentina, based in Baradero, Buenos Aires. Contact: contacto@potenciapp.com · WhatsApp +54 9 3329 613035."
+        "p": "PotenciApp is the trade name under which Vladimir Gonzalez, registered with the Argentine tax authority, provides software development services from Baradero, Buenos Aires. Contact: contacto@potenciapp.com · WhatsApp +54 9 3329 613035."
       },
       {
         "h": "How we engage",
@@ -558,7 +558,8 @@
         "p": "You can ask us at any time to access, correct or delete the data you sent us by writing to contacto@potenciapp.com. Billing-related data is kept for as long as Argentine law requires."
       }
     ],
-    "identity": "Legal name: {legalName} · Tax ID (CUIT) {cuit}."
+    "identity": "Legal name: {legalName} · Tax ID (CUIT) {cuit}.",
+    "identityName": "Legal name: {legalName}."
   },
   "blog": {
     "eyebrow": "Blog · Cybersecurity",
@@ -719,7 +720,7 @@
     "answerLabel": "Our answer",
     "identity": "We invoice as {legalName}, tax ID (CUIT) {cuit}.",
     "identityPending": "Legal name and tax ID: ask us on WhatsApp and we send them right away, before any payment.",
-    "warranty": "The post-delivery warranty is {days} days and is written in the contract.",
+    "warranty": "The post-delivery warranty is {years, plural, one {# year} other {# years}} and is written in the contract.",
     "warrantyPending": "The post-delivery warranty has a fixed term written in every contract.",
     "items": [
       {
@@ -772,7 +773,8 @@
     "ctaBody": "Tap the button and we reply with the contract template, invoicing details and two references.",
     "ctaButton": "Request contract template and references",
     "waMessage": "Hi PotenciApp, I am considering hiring you. Could you send me the contract template, legal name and tax ID, two client references, and how you handle the domain, access, warranty and staged payments?",
-    "seeProjects": "See live projects"
+    "seeProjects": "See live projects",
+    "identityName": "We invoice as {legalName}."
   },
   "baradero": {
     "metaTitle": "Web design and software development in Baradero | PotenciApp",
