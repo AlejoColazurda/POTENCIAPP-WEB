@@ -814,7 +814,7 @@
     "local": [
       {
         "title": "Rendez-vous en personne",
-        "desc": "Nous nous retrouvons à Baradero pour le diagnostic, les livraisons et la formation. Pas de déplacement, pas d'explications par visioconférence."
+        "desc": "Nous nous retrouvons dans notre bureau de Baradero pour le diagnostic, les livraisons et la formation. Pas de déplacement, pas d'explications par visioconférence."
       },
       {
         "title": "Mêmes horaires, même WhatsApp",
@@ -831,7 +831,7 @@
     "faq": [
       {
         "q": "Recevez-vous en personne à Baradero ?",
-        "a": "Oui. Nous sommes à Baradero et organisons des rendez-vous en personne via WhatsApp, pour le diagnostic initial comme pour les livraisons et la formation. Nous travaillons aussi en visioconférence si cela vous convient mieux."
+        "a": "Oui. Notre bureau est au {address}, Baradero : nous y faisons le diagnostic initial, les livraisons et la formation. Les visites se fixent sur WhatsApp. Nous travaillons aussi en visioconférence si cela vous convient mieux."
       },
       {
         "q": "Combien coûte un site web à Baradero ?",
@@ -851,7 +851,7 @@
       }
     ],
     "mapsLabel": "Où nous sommes",
-    "mapsText": "Baradero, Buenos Aires, Argentine. Les rendez-vous se fixent sur WhatsApp.",
+    "mapsText": "Bureau au {address}, Baradero, Buenos Aires. Fixez votre visite sur WhatsApp et nous vous recevons.",
     "mapsLink": "Voir sur Google Maps",
     "trustLink": "Ce qu'il faut exiger avant de nous engager"
   }

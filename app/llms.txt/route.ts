@@ -41,7 +41,7 @@ export async function GET() {
 ## Datos de la empresa
 
 - Nombre comercial: PotenciApp.
-${legalLines}- Sede: Baradero, Buenos Aires, Argentina (CP 2942). Atiende en persona en Baradero y la zona norte de la provincia, y remoto en todo el país.
+${legalLines}- Oficina: ${COMPANY.address.street}, ${COMPANY.address.locality} (CP ${COMPANY.address.postalCode}), Buenos Aires, Argentina. Atiende en persona en la oficina, coordinando por WhatsApp, a clientes de Baradero y la zona norte de la provincia, y remoto en todo el país.
 - Fundador: ${COMPANY.founder}.
 - Página local: ${SITE_URL}${BARADERO_PATH}
 - Qué exigirle antes de contratarla (CUIT, contrato, dominio, accesos, propiedad del código, costos, garantía, pagos por etapas, referencias): ${SITE_URL}${TRUST_PATH}

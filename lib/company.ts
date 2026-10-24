@@ -19,14 +19,16 @@ export const COMPANY = {
   warrantyYears: 2 as number | null,
   founder: "Vladimir Gonzalez",
   address: {
+    /** Office (rented, open to clients). Not the founder's home. */
+    street: "Anchorena 1294",
     locality: "Baradero",
     region: "Buenos Aires",
     postalCode: "2942",
     country: "AR",
     countryName: "Argentina",
   },
-  /** Centre of Baradero; the office has no public street address. */
-  geo: { latitude: -33.8097, longitude: -59.5083 },
+  /** Anchorena 1294, Baradero (pin taken from Google Maps). */
+  geo: { latitude: -33.8104458, longitude: -59.5047126 },
   /**
    * ARCA "Data Fiscal" (Formulario 960/D) for the website, issued from the
    * founder's ARCA account under "Generación del F960/D para Sitios Web".
@@ -40,7 +42,7 @@ export const COMPANY = {
   },
   /** Public profiles that back the identity (LinkedIn, Maps, demos). */
   sameAs: ["https://demo.potenciapp.com"] as string[],
-  mapsSearchUrl: "https://www.google.com/maps/search/?api=1&query=PotenciApp+Baradero",
+  mapsSearchUrl: "https://www.google.com/maps/search/?api=1&query=Anchorena+1294%2C+B2942+Baradero%2C+Buenos+Aires",
 } as const
 
 /** Routes of the trust pages, locale-prefixed by next-intl `Link`. */
@@ -70,6 +72,7 @@ export function organizationJsonLd(description: string) {
     founder: { "@type": "Person", name: COMPANY.founder },
     address: {
       "@type": "PostalAddress",
+      streetAddress: address.street,
       addressLocality: address.locality,
       addressRegion: address.region,
       postalCode: address.postalCode,

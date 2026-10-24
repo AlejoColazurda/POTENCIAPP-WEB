@@ -43,7 +43,9 @@ export default async function BaraderoPage({ params }: PageProps) {
 
   const services = t.raw("services") as Card[]
   const local = t.raw("local") as Card[]
-  const faq = t.raw("faq") as Faq[]
+  // {address} in the copy is the office street, kept in lib/company.ts.
+  const withAddress = (text: string) => text.replaceAll("{address}", COMPANY.address.street)
+  const faq = (t.raw("faq") as Faq[]).map((f) => ({ q: f.q, a: withAddress(f.a) }))
   const live = PROJECTS.filter((p) => p.live)
 
   const webPageLd = {
@@ -239,7 +241,7 @@ export default async function BaraderoPage({ params }: PageProps) {
                 <p className="mt-4 flex items-start gap-3 font-ed-display text-xl lg:text-3xl font-medium tracking-[-0.02em] leading-[1.2]">
                   <MapPin className="mt-1 h-6 w-6 shrink-0 text-brand-green" strokeWidth={1.75} />
                   <span>
-                    {t("mapsText")}
+                    {withAddress(t.raw("mapsText") as string)}
                   </span>
                 </p>
               </div>
