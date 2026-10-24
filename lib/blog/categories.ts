@@ -1,9 +1,16 @@
 import type { BlogCategory, CategoryInfo, PublicBlogCategory } from "./types"
 
 /** Categories shown as public pills. Empty ones stay hidden. */
-export const PUBLIC_BLOG_CATEGORIES: readonly PublicBlogCategory[] = ["security", "stores", "news"]
+export const PUBLIC_BLOG_CATEGORIES: readonly PublicBlogCategory[] = ["software", "security", "stores", "news"]
 
 export const BLOG_CATEGORIES: Record<BlogCategory, CategoryInfo> = {
+  software: {
+    id: "software",
+    label: "Contratar software",
+    labelShort: "Contratar",
+    description: "Precios, contratos, accesos y casos reales antes de pagarle a un programador o agencia.",
+    color: "#FFB020",
+  },
   security: {
     id: "security",
     label: "Seguridad",

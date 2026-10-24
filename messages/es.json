@@ -580,11 +580,11 @@
     "author": "Equipo PotenciApp"
   },
   "blogUi": {
-    "metaTitle": "Blog de PotenciApp | Seguridad y tiendas para comercios",
-    "metaDescription": "Guías cortas para proteger tu tienda, tus cuentas y tus cobros. Sin tecnicismos.",
+    "metaTitle": "Blog de PotenciApp | Contratar software sin quemarte",
+    "metaDescription": "Lo que nadie te cuenta antes de pagarle a un programador: contratos, accesos, precios y casos reales. Y seguridad para tu comercio.",
     "eyebrow": "Blog",
-    "heroTitle": "Seguridad y tiendas, explicadas para tu comercio.",
-    "heroSubtitle": "Guías cortas y el resumen del mes. Pasos que podés aplicar hoy.",
+    "heroTitle": "Contratar software, sin quemarte.",
+    "heroSubtitle": "Lo que nadie te cuenta antes de pagarle a un programador o a una agencia. Casos reales, contratos y la seguridad de tu comercio.",
     "homeAria": "PotenciApp: ir al inicio",
     "navAria": "Navegación del blog",
     "backToSite": "Volver a la web principal",
@@ -637,6 +637,10 @@
     "roleTeam": "PotenciApp",
     "roleAi": "Redactado con IA y revisado por el equipo",
     "categories": {
+      "software": {
+        "label": "Contratar software",
+        "short": "Contratar"
+      },
       "security": {
         "label": "Seguridad",
         "short": "Seguridad"
