@@ -580,11 +580,11 @@
     "author": "PotenciApp team"
   },
   "blogUi": {
-    "metaTitle": "PotenciApp Blog | Security and stores for retailers",
-    "metaDescription": "Short guides to protect your store, accounts and payments. No jargon.",
+    "metaTitle": "PotenciApp Blog | Buying software without getting burned",
+    "metaDescription": "What nobody tells you before you pay a developer: contracts, access, pricing and real cases. Plus security for your business.",
     "eyebrow": "Blog",
-    "heroTitle": "Security and stores, explained for your shop.",
-    "heroSubtitle": "Short guides and the monthly briefing. Steps you can apply today.",
+    "heroTitle": "Buying software, without getting burned.",
+    "heroSubtitle": "What nobody tells you before you pay a developer or an agency. Real cases, contracts and your business's security.",
     "homeAria": "PotenciApp: go to home",
     "navAria": "Blog navigation",
     "backToSite": "Back to main site",
@@ -637,6 +637,10 @@
     "roleTeam": "PotenciApp",
     "roleAi": "Drafted with AI, reviewed by the team",
     "categories": {
+      "software": {
+        "label": "Buying software",
+        "short": "Buying"
+      },
       "security": {
         "label": "Security",
         "short": "Security"
