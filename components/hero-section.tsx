@@ -96,6 +96,7 @@ export function HeroSection() {
           <Reveal immediate className="ed-rise col-span-12 lg:col-span-4 lg:col-start-9 flex flex-col justify-end" style={{ ["--i" as string]: 5 }}>
             <a
               href="#contacto"
+              data-ga-cta="pedir_propuesta"
               className="group flex items-center justify-between gap-6 bg-brand-green px-6 py-6 text-ink transition-colors duration-300 hover:bg-green-hover"
             >
               <span className="font-ed-display text-xl lg:text-2xl font-semibold tracking-[-0.02em]">

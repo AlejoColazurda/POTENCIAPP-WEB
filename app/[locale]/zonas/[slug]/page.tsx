@@ -139,6 +139,7 @@ export default async function ZonaPage({ params }: PageProps) {
             >
               <a
                 href={whatsAppUrl(zona.waGreeting)}
+                data-ga-cta="pedir_propuesta"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 bg-brand-green px-5 py-4 font-ed-sans font-semibold text-ink transition-colors duration-300 hover:bg-green-hover"
