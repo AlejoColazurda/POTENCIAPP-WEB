@@ -9,6 +9,13 @@ import { CONTACT_EMAIL, SITE_URL, WA_PHONE } from "@/lib/site"
  * neutral sentence and the structured data omits the field. Fill it, do not
  * invent it — every figure on the site must be verifiable.
  */
+/**
+ * Google Business Profile listing, by its permanent CID (ludocid). Share
+ * links (share.google/…) are redirects; this form is stable and is what
+ * search engines match against the LocalBusiness entity.
+ */
+const GBP_URL = "https://maps.google.com/?cid=13483901001912036634"
+
 export const COMPANY = {
   brand: "PotenciApp",
   /** Razón social as it appears on the invoice (monotributo: the founder). */
@@ -28,8 +35,8 @@ export const COMPANY = {
     country: "AR",
     countryName: "Argentina",
   },
-  /** Anchorena 1294, Baradero (pin taken from Google Maps). */
-  geo: { latitude: -33.8104458, longitude: -59.5047126 },
+  /** Same pin as the Google Business Profile listing. */
+  geo: { latitude: -33.8104458, longitude: -59.5040689 },
   /**
    * ARCA "Data Fiscal" (Formulario 960/D) for the website, issued from the
    * founder's ARCA account under "Generación del F960/D para Sitios Web".
@@ -42,8 +49,9 @@ export const COMPANY = {
     qrUrl: "http://qr.afip.gob.ar/?qr=CDdazRkwjFwFD1QFh63yPQ,," as string | null,
   },
   /** Public profiles that back the identity (LinkedIn, Maps, demos). */
-  sameAs: ["https://demo.potenciapp.com"] as string[],
-  mapsSearchUrl: "https://www.google.com/maps/search/?api=1&query=Anchorena+1294%2C+B2942+Baradero%2C+Buenos+Aires",
+  sameAs: [GBP_URL, "https://demo.potenciapp.com"] as string[],
+  /** Opens the Google Business Profile listing (directions, reviews). */
+  mapsSearchUrl: GBP_URL,
 } as const
 
 /** Routes of the trust pages, locale-prefixed by next-intl `Link`. */
@@ -100,6 +108,7 @@ export function organizationJsonLd(description: string) {
       },
     ],
     sameAs: COMPANY.sameAs,
+    hasMap: COMPANY.mapsSearchUrl,
     knowsAbout: [
       "Desarrollo de aplicaciones móviles",
       "E-commerce",
