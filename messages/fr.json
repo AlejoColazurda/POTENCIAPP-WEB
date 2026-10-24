@@ -17,7 +17,9 @@
     "garantia": "Garantie",
     "precios": "Tarifs",
     "equipo": "Équipe",
-    "blog": "Blog"
+    "blog": "Blog",
+    "confianza": "Avant de nous engager",
+    "baradero": "Baradero"
   },
   "hero": {
     "statusBadge": "Projets en cours · 2026",
@@ -340,7 +342,7 @@
       },
       "respaldo": {
         "tag": "Facture + contact direct",
-        "title": "Société enregistrée, avec facturation",
+        "title": "Une facture légale pour chaque paiement",
         "desc": "Nous facturons légalement chaque paiement et, pendant le projet, vous parlez à celui qui construit, pas à une boîte générique. Vous avez un justificatif, un interlocuteur et quelqu'un à qui réclamer."
       }
     }
@@ -386,7 +388,7 @@
     "nosotrosItems": [
       "Un contrat signé avec périmètre, jalons et dates",
       "Prix ferme ; les changements sont chiffrés à part et par écrit",
-      "Société enregistrée, avec une facture pour chaque paiement",
+      "Une facture légale pour chaque paiement, émise par le signataire du contrat",
       "Garantie écrite après livraison sur ce que nous avons fait",
       "Des projets en ligne à ouvrir et tester avant de signer"
     ],
@@ -441,7 +443,7 @@
       },
       {
         "q": "Émettez-vous des factures ?",
-        "a": "Oui. Nous sommes une société enregistrée et nous facturons chaque paiement du projet. Vous avez un justificatif du début à la fin."
+        "a": "Oui. PotenciApp est le nom commercial de Vladimir Gonzalez, inscrit auprès de l'administration fiscale argentine, et chaque paiement du projet vous est facturé. Le signataire du contrat est celui qui émet la facture, et vous pouvez le vérifier avant de payer."
       },
       {
         "q": "Comment se passe la communication pendant le projet ?",
@@ -492,7 +494,7 @@
   "footer": {
     "tagline": "Logiciel sur mesure pour entreprises et commerces : apps, e-commerce et systèmes internes. Avec contrat, prix ferme, facturation et garantie écrite.",
     "operamos": "Nous opérons depuis",
-    "operamosValue": "Argentine · À distance · Clients à l'étranger",
+    "operamosValue": "Baradero, Buenos Aires · À distance · Clients à l'étranger",
     "soluciones": "Solutions",
     "empresa": "Entreprise",
     "recursos": "Ressources",
@@ -518,7 +520,7 @@
     "termsBlocks": [
       {
         "h": "Qui nous sommes",
-        "p": "PotenciApp est une société de développement logiciel enregistrée en Argentine, basée à Baradero, Buenos Aires. Contact : contacto@potenciapp.com · WhatsApp +54 9 3329 613035."
+        "p": "PotenciApp est le nom commercial sous lequel Vladimir Gonzalez, inscrit auprès de l'administration fiscale argentine, fournit des services de développement logiciel depuis Baradero, Buenos Aires. Contact : contacto@potenciapp.com · WhatsApp +54 9 3329 613035."
       },
       {
         "h": "Comment nous contractons",
@@ -555,7 +557,9 @@
         "h": "Vos droits",
         "p": "Vous pouvez à tout moment demander l'accès, la correction ou la suppression des données envoyées, en écrivant à contacto@potenciapp.com. Les données liées à la facturation sont conservées le temps exigé par la loi argentine."
       }
-    ]
+    ],
+    "identity": "Raison sociale : {legalName} · CUIT {cuit}.",
+    "identityName": "Raison sociale : {legalName}."
   },
   "blog": {
     "eyebrow": "Blog · Cybersécurité",
@@ -702,5 +706,153 @@
     "signStudio": "Pour PotenciApp",
     "scrollCue": "Défiler",
     "index": "Index"
+  },
+  "confianza": {
+    "metaTitle": "Avant de nous engager : contrat, CUIT, garantie et références | PotenciApp",
+    "metaDescription": "Les 9 choses à exiger de celui qui fait votre site ou votre système, répondues une par une : raison sociale et CUIT, contrat, domaine à votre nom, accès, propriété du code, coûts, garantie, paiements par étapes et références.",
+    "backHome": "← Retour à l'accueil",
+    "eyebrow": "Avant de nous engager",
+    "title": "Tout ce que vous devriez exiger de celui qui fait votre site.",
+    "accent": "Répondu.",
+    "intro": "Demandez à une IA, à un comptable ou à un proche ce qu'il faut exiger d'un prestataire logiciel : la liste est toujours la même. Nous y répondons ici point par point, avant que vous ayez à la demander.",
+    "listLabel": "Liste de vérification",
+    "askLabel": "Ce que vous devriez demander",
+    "answerLabel": "Notre réponse",
+    "identity": "Nous facturons sous {legalName}, CUIT {cuit}.",
+    "identityPending": "Raison sociale et CUIT : demandez-les sur WhatsApp et nous les envoyons immédiatement, avant tout paiement.",
+    "warranty": "La garantie après livraison est de {years, plural, one {# an} other {# ans}} et figure dans le contrat.",
+    "warrantyPending": "La garantie après livraison a une durée fixe qui figure dans chaque contrat.",
+    "items": [
+      {
+        "ask": "Raison sociale, CUIT et facture pour chaque paiement.",
+        "answer": "{identity} Nous émettons une facture électronique pour chaque paiement, au nom de votre entreprise ou au vôtre. Vous pouvez vérifier le CUIT sur l'attestation d'inscription avant de payer.",
+        "tag": "Vérifiable"
+      },
+      {
+        "ask": "Un contrat signé avec périmètre, prix final et date de livraison.",
+        "answer": "Aucun projet ne démarre sans contrat signé par les deux parties. Il fixe un périmètre détaillé, des étapes datées, un prix ferme, les modalités de paiement et la garantie. Nous vous envoyons le modèle de contrat sur WhatsApp avant tout paiement, pour que vous le fassiez relire par qui vous voulez.",
+        "tag": "Avant tout paiement"
+      },
+      {
+        "ask": "Un domaine enregistré à mon nom ou à celui de mon entreprise.",
+        "answer": "Le domaine est enregistré à votre nom, chez NIC Argentina ou le registrar concerné, dès le premier jour. Si vous l'avez déjà, nous travaillons sur votre compte. Il n'est jamais au nom de PotenciApp.",
+        "tag": "À votre nom"
+      },
+      {
+        "ask": "Mes propres accès à l'hébergement, au panneau d'administration et aux comptes liés.",
+        "answer": "À la livraison vous recevez les identifiants d'hébergement, du panneau, du domaine, de la passerelle de paiement et de tout compte créé pour le projet, et nous vous recommandons de changer les mots de passe le jour même. Si vous préférez, les comptes sont créés à votre nom dès le départ.",
+        "tag": "Remise des accès"
+      },
+      {
+        "ask": "Une confirmation écrite de qui possède le design, le code et les contenus.",
+        "answer": "Vous. Une fois le projet entièrement payé, le code source, le design et les contenus sont votre propriété, comme l'indiquent le contrat et nos conditions. Vous pouvez les confier à un autre prestataire quand vous voulez.",
+        "tag": "Dans le contrat"
+      },
+      {
+        "ask": "Le détail des coûts de renouvellement, d'hébergement et de maintenance.",
+        "answer": "La proposition sépare le prix du projet des coûts récurrents : domaine, hébergement, certificats et services tiers, avec leur montant et leur fréquence. La maintenance est optionnelle et contractée à part ; rien ne vous lie à nous.",
+        "tag": "Détaillé dans la proposition"
+      },
+      {
+        "ask": "Une garantie et une procédure de support par écrit.",
+        "answer": "{warranty} Pendant ce délai, nous corrigeons gratuitement toute erreur ou défaut de ce que nous avons livré. Vous signalez par WhatsApp ou e-mail, nous confirmons la réception et vous indiquons quand ce sera résolu. Cela ne couvre pas les nouvelles fonctionnalités ni les changements de périmètre, devisés à part.",
+        "tag": "Signé"
+      },
+      {
+        "ask": "Des paiements par étapes liés à des livraisons vérifiables.",
+        "answer": "Nous ne demandons jamais la totalité à l'avance. Il y a un acompte à la signature et le reste se paie contre des étapes que vous pouvez ouvrir et tester vous-même, avec le solde contre la mise en production. Les pourcentages et les dates figurent dans la proposition.",
+        "tag": "Contre livraisons"
+      },
+      {
+        "ask": "Au moins deux clients réels acceptant de donner une référence.",
+        "answer": "Demandez-en deux et nous vous transmettons le contact de clients aux projets livrés, avec leur accord. Vous pouvez aussi ouvrir n'importe quel site en ligne de notre portfolio et écrire vous-même à cette entreprise.",
+        "tag": "Avec l'accord du client"
+      }
+    ],
+    "ctaTitle": "Demandez-nous tout cela en un seul message.",
+    "ctaBody": "Appuyez sur le bouton et nous répondons avec le modèle de contrat, les données de facturation et deux références.",
+    "ctaButton": "Demander le modèle de contrat et des références",
+    "waMessage": "Bonjour PotenciApp, j'envisage de vous engager. Pouvez-vous m'envoyer le modèle de contrat, la raison sociale et le CUIT, deux références clients et votre façon de gérer le domaine, les accès, la garantie et les paiements par étapes ?",
+    "seeProjects": "Voir les projets en ligne",
+    "identityName": "Nous facturons sous {legalName}."
+  },
+  "baradero": {
+    "metaTitle": "Création de sites web et développement logiciel à Baradero | PotenciApp",
+    "metaDescription": "Sites web, boutiques en ligne, systèmes et applications pour les entreprises de Baradero et de la région. Entreprise locale, avec contrat, prix ferme, facture et garantie écrite. Rendez-vous en personne ou sur WhatsApp.",
+    "backHome": "← Retour à l'accueil",
+    "eyebrow": "Baradero, Buenos Aires",
+    "title": "Sites web et logiciels à Baradero.",
+    "accent": "Vous pouvez nous rencontrer.",
+    "intro": "PotenciApp est une entreprise de développement logiciel basée à Baradero. Nous créons des sites web, des boutiques en ligne, des systèmes et des applications pour les commerces et entreprises de la ville et de la région, et travaillons à distance avec des clients de tout le pays.",
+    "ctaPrimary": "Demander une proposition",
+    "ctaSecondary": "Prendre rendez-vous",
+    "waGreeting": "Bonjour PotenciApp, je suis à Baradero et je souhaite une proposition pour mon entreprise.",
+    "servicesLabel": "Ce que nous faisons pour les entreprises de la région",
+    "services": [
+      {
+        "title": "Un site web pour votre entreprise",
+        "desc": "Pour qu'on vous trouve sur Google et qu'on vous écrive sur WhatsApp. Domaine à votre nom, adapté au mobile."
+      },
+      {
+        "title": "Boutique en ligne",
+        "desc": "Catalogue, paiements Mercado Pago et livraisons. Sur mesure ou sur Tiendanube et Empretienda."
+      },
+      {
+        "title": "Système sur mesure",
+        "desc": "Stock, ventes, rendez-vous ou tout ce que vous gérez aujourd'hui sur tableur et papier, dans un système qui vous appartient."
+      },
+      {
+        "title": "Application mobile",
+        "desc": "Publiée sur l'App Store et Google Play avec des comptes vérifiés."
+      },
+      {
+        "title": "Des publicités qui vendent",
+        "desc": "Meta Ads, Google Ads et Mercado Libre Ads avec des rapports clairs sur chaque peso investi."
+      }
+    ],
+    "localLabel": "Pourquoi une entreprise locale",
+    "local": [
+      {
+        "title": "Rendez-vous en personne",
+        "desc": "Nous nous retrouvons à Baradero pour le diagnostic, les livraisons et la formation. Pas de déplacement, pas d'explications par visioconférence."
+      },
+      {
+        "title": "Mêmes horaires, même WhatsApp",
+        "desc": "Nous répondons aux heures ouvrées argentines sur le canal que vous utilisez déjà, avec une personne qui connaît votre projet."
+      },
+      {
+        "title": "Des clients de la région",
+        "desc": "Plusieurs de nos clients sont des entreprises de Baradero et des environs qui nous connaissent en personne. Demandez des références et parlez-leur."
+      }
+    ],
+    "projectsLabel": "Projets en ligne",
+    "projectsHint": "Des sites qui fonctionnent aujourd'hui. Ouvrez-les avant de nous engager.",
+    "faqLabel": "Questions fréquentes à Baradero",
+    "faq": [
+      {
+        "q": "Recevez-vous en personne à Baradero ?",
+        "a": "Oui. Nous sommes à Baradero et organisons des rendez-vous en personne via WhatsApp, pour le diagnostic initial comme pour les livraisons et la formation. Nous travaillons aussi en visioconférence si cela vous convient mieux."
+      },
+      {
+        "q": "Combien coûte un site web à Baradero ?",
+        "a": "Cela dépend des besoins de votre entreprise : un site vitrine n'est pas une boutique en ligne ni un système. Le diagnostic est gratuit et vous repartez avec une proposition écrite précisant périmètre, dates et prix ferme, qui ne bouge pas."
+      },
+      {
+        "q": "Travaillez-vous avec de petites entreprises ?",
+        "a": "Oui. Kiosques, boutiques de vêtements, réfrigération, menuiseries et écoles de la région figurent dans notre portfolio. Nous dimensionnons le projet à votre entreprise, avec contrat et facture comme pour une grande société."
+      },
+      {
+        "q": "Site web ou boutique en ligne : que me faut-il ?",
+        "a": "Si vous voulez être trouvé et contacté, un site avec WhatsApp suffit. Si vous voulez vendre avec paiements et livraisons sans traiter chaque commande à la main, une boutique. Nous le définissons ensemble lors du diagnostic."
+      },
+      {
+        "q": "Travaillez-vous avec des clients de San Pedro, Zárate, Campana ou San Antonio de Areco ?",
+        "a": "Oui. Nous couvrons tout le nord de la province de Buenos Aires, en personne ou à distance, ainsi que des clients du reste du pays et de l'étranger."
+      }
+    ],
+    "mapsLabel": "Où nous sommes",
+    "mapsText": "Baradero, Buenos Aires, Argentine. Les rendez-vous se fixent sur WhatsApp.",
+    "mapsLink": "Voir sur Google Maps",
+    "trustLink": "Ce qu'il faut exiger avant de nous engager"
   }
 }

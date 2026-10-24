@@ -6,6 +6,7 @@ import { setRequestLocale, getMessages, getTranslations } from "next-intl/server
 import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
 import { FloatingChat } from "@/components/floating-chat"
+import { organizationJsonLd } from "@/lib/company"
 import "../globals.css"
 
 const inter = Inter({
@@ -45,44 +46,9 @@ const interTight = Inter_Tight({
   display: "swap",
 })
 
-const ORG_JSONLD = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "PotenciApp",
-  url: "https://www.potenciapp.com",
-  email: "contacto@potenciapp.com",
-  telephone: "+5493329613035",
-  description:
-    "Empresa de desarrollo de software a medida y marketing digital: aplicaciones iOS y Android, sistemas y tiendas online desarrolladas desde cero, tiendas en Tiendanube, Empretienda, Shopify y WooCommerce, cuentas y anuncios en Mercado Libre, anuncios en Meta Ads, Google Ads y Mercado Libre Ads, sitios en WordPress y a medida, sistemas internos, IA aplicada, ciberseguridad, arquitectura de software e infraestructura cloud (Docker, AWS, VPS, redes, mantenimiento). Contrato con hitos y fechas, precio cerrado, factura y garantía por escrito.",
-  areaServed: ["AR", "Worldwide"],
-  sameAs: ["https://demo.potenciapp.com"],
-  knowsAbout: [
-    "Desarrollo de aplicaciones móviles",
-    "E-commerce",
-    "Desarrollo de software a medida",
-    "Tiendanube",
-    "Empretienda",
-    "Shopify",
-    "WooCommerce",
-    "WordPress",
-    "Mercado Libre",
-    "Mercado Libre Ads",
-    "Meta Ads",
-    "Google Ads",
-    "Marketing digital",
-    "Diseño y actualización de sitios web",
-    "Sistemas internos y ERPs",
-    "Inteligencia artificial aplicada",
-    "Automatización de procesos",
-    "Ciberseguridad",
-    "Arquitectura de software",
-    "Docker",
-    "AWS",
-    "Servidores VPS",
-    "Redes",
-    "Mantenimiento de infraestructura",
-  ],
-}
+const ORG_JSONLD = organizationJsonLd(
+  "Empresa de desarrollo de software a medida y marketing digital: aplicaciones iOS y Android, sistemas y tiendas online desarrolladas desde cero, tiendas en Tiendanube, Empretienda, Shopify y WooCommerce, cuentas y anuncios en Mercado Libre, anuncios en Meta Ads, Google Ads y Mercado Libre Ads, sitios en WordPress y a medida, sistemas internos, IA aplicada, ciberseguridad, arquitectura de software e infraestructura cloud (Docker, AWS, VPS, redes, mantenimiento). Contrato con hitos y fechas, precio cerrado, factura y garantía por escrito.",
+)
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))

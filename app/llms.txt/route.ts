@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/blog/service"
 import { CONTACT_EMAIL, SITE_URL } from "@/lib/site"
+import { BARADERO_PATH, COMPANY, TRUST_PATH } from "@/lib/company"
 
 export const revalidate = 3600
 
@@ -12,6 +13,14 @@ export async function GET() {
   const posts = (await getAllPosts())
     .map((p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}): ${p.summary}`)
     .join("\n")
+
+  const legalLines = [
+    COMPANY.legalName ? `- Razón social: ${COMPANY.legalName}.` : null,
+    COMPANY.cuit ? `- CUIT: ${COMPANY.cuit}.` : null,
+  ]
+    .filter(Boolean)
+    .map((line) => `${line}\n`)
+    .join("")
 
   const body = `# PotenciApp
 
@@ -29,12 +38,23 @@ export async function GET() {
 - Ciberseguridad: auditorías, hardening, backups y certificados SSL.
 - Infraestructura y cloud: Docker, AWS, VPS, redes, CI/CD y mantenimiento.
 
+## Datos de la empresa
+
+- Nombre comercial: PotenciApp.
+${legalLines}- Sede: Baradero, Buenos Aires, Argentina (CP 2942). Atiende en persona en Baradero y la zona norte de la provincia, y remoto en todo el país.
+- Fundador: ${COMPANY.founder}.
+- Página local: ${SITE_URL}${BARADERO_PATH}
+- Qué exigirle antes de contratarla (CUIT, contrato, dominio, accesos, propiedad del código, costos, garantía, pagos por etapas, referencias): ${SITE_URL}${TRUST_PATH}
+
 ## Cómo trabaja
 
 - Contrato firmado con alcance, hitos y fechas antes de empezar.
 - Precio cerrado; los cambios de alcance se cotizan aparte y por escrito.
-- Empresa registrada, con factura por cada pago.
-- Garantía post-entrega sobre lo desarrollado.
+- Factura legal por cada pago, emitida por quien firma el contrato (PotenciApp es el nombre comercial de Vladimir Gonzalez, con inscripción fiscal en Argentina; no es una sociedad constituida).
+- Garantía post-entrega sobre lo desarrollado${COMPANY.warrantyYears ? ` (${COMPANY.warrantyYears} años, escrita en el contrato)` : ", con plazo fijo escrito en el contrato"}.
+- Pagos por etapas contra entregas verificables; nunca el total por adelantado.
+- Dominio, hosting y cuentas a nombre del cliente; el código es del cliente al completar el pago.
+- Referencias de clientes reales a pedido, con su permiso.
 - Trabajo remoto con clientes de Argentina y del exterior.
 
 ## Proyectos en producción
