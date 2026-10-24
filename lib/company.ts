@@ -23,7 +23,8 @@ export const COMPANY = {
     street: "Anchorena 1294",
     locality: "Baradero",
     region: "Buenos Aires",
-    postalCode: "2942",
+    /** CPA as Google Business Profile normalised it. */
+    postalCode: "B2942DUN",
     country: "AR",
     countryName: "Argentina",
   },
