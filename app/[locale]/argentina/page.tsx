@@ -133,6 +133,7 @@ export default async function ArgentinaPage({ params }: PageProps) {
             >
               <a
                 href={whatsAppUrl("Hola PotenciApp, quiero una propuesta para mi negocio.")}
+                data-ga-cta="pedir_propuesta"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 bg-brand-green px-5 py-4 font-ed-sans font-semibold text-ink transition-colors duration-300 hover:bg-green-hover"

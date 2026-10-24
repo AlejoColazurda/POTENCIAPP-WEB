@@ -5,7 +5,10 @@ import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { setRequestLocale, getMessages, getTranslations } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
+import { GoogleAnalytics } from "@next/third-parties/google"
 import { FloatingChat } from "@/components/floating-chat"
+import { AnalyticsEvents } from "@/components/analytics/analytics-events"
+import { GA_ID } from "@/lib/analytics"
 import { organizationJsonLd } from "@/lib/company"
 import "../globals.css"
 
@@ -122,6 +125,13 @@ export default async function LocaleLayout({
           <FloatingChat />
           <Toaster richColors theme="dark" position="top-center" />
         </NextIntlClientProvider>
+        {/* /admin has its own root layout, so analytics never loads there. */}
+        {GA_ID ? (
+          <>
+            <GoogleAnalytics gaId={GA_ID} />
+            <AnalyticsEvents />
+          </>
+        ) : null}
       </body>
     </html>
   )
