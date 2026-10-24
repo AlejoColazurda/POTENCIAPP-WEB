@@ -8,6 +8,9 @@ import { BLOG_CATEGORIES } from "@/lib/blog/categories"
 import { fileSlugs } from "@/lib/blog/service"
 import { generateDrafts, generateMonthlyRoundup, translatePost, TRANSLATION_LOCALES } from "@/lib/blog-drafts"
 import { requireAdmin, requireOwner, roleFor } from "@/lib/admin"
+import { blogIndexUrl, blogPostUrl } from "@/lib/blog/urls"
+import { submitToIndexNow } from "@/lib/indexnow"
+import { routing } from "@/i18n/routing"
 import { SITE_URL } from "@/lib/site"
 import { adminEmails, isSupabaseConfigured, serviceClient, sessionClient } from "@/lib/supabase"
 
@@ -229,6 +232,18 @@ export async function setStatus(id: string, status: "draft" | "published" | "dis
   revalidateBlog()
   revalidatePath("/admin")
   revalidatePath(`/admin/posts/${id}`)
+
+  // Tell Bing and the other IndexNow engines right away: the blog changes
+  // without a deploy, so the post-deploy ping would never see it. Also sent
+  // when a post is unpublished, so they drop it sooner.
+  after(async () => {
+    const { data: post } = await db.from("blog_posts").select("slug").eq("id", id).single()
+    if (!post?.slug) return
+    await submitToIndexNow([
+      ...routing.locales.map((l) => blogPostUrl(post.slug, l)),
+      ...routing.locales.map((l) => blogIndexUrl(l)),
+    ])
+  })
 
   // Translate in the background so publishing stays instant. Hand-edited
   // translations are kept; the panel shows which ones are out of date.

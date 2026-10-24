@@ -1,0 +1,51 @@
+# Announces every URL in the sitemap to IndexNow (Bing, Yandex, Seznam…)
+# right after Vercel finishes a production deploy of main, so changed pages
+# are recrawled now instead of whenever Bing gets to them.
+#
+# Trigger: the commit status Vercel posts ("Vercel – potenciapp-web").
+# Only success on a commit that is on main counts; preview deploys of PR
+# branches are ignored. The key is public by design (see lib/indexnow.ts).
+name: IndexNow
+
+on:
+  status:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+
+jobs:
+  submit:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.state == 'success' &&
+       endsWith(github.event.context, 'potenciapp-web') &&
+       contains(github.event.branches.*.name, 'main'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SITE: https://www.potenciapp.com
+      KEY: 551949698d91586644ad5800a0d656e3
+    steps:
+      - name: Check the key file is live
+        run: |
+          body=$(curl -fsS "$SITE/$KEY.txt")
+          test "$body" = "$KEY" || { echo "Key file mismatch"; exit 1; }
+
+      - name: Submit sitemap URLs
+        run: |
+          urls=$(curl -fsS "$SITE/sitemap.xml" | grep -oE '<loc>[^<]+</loc>' | sed -E 's#</?loc>##g')
+          count=$(printf '%s\n' "$urls" | grep -c . || true)
+          test "$count" -gt 0 || { echo "No URLs in sitemap"; exit 1; }
+          payload=$(printf '%s\n' "$urls" | jq -R . | jq -s \
+            --arg host "www.potenciapp.com" --arg key "$KEY" --arg loc "$SITE/$KEY.txt" \
+            '{host: $host, key: $key, keyLocation: $loc, urlList: .}')
+          code=$(curl -sS -o response.txt -w '%{http_code}' -X POST https://api.indexnow.org/indexnow \
+            -H 'Content-Type: application/json; charset=utf-8' --data "$payload")
+          echo "IndexNow HTTP $code for $count URLs"
+          cat response.txt || true
+          case "$code" in 200|202) ;; *) exit 1 ;; esac
