@@ -28,14 +28,15 @@ export const COMPANY = {
   /** Centre of Baradero; the office has no public street address. */
   geo: { latitude: -33.8097, longitude: -59.5083 },
   /**
-   * ARCA "Data Fiscal" (Formulario 960/D). Both values come from the
-   * founder's ARCA account: the QR image goes in /public (imagePath) and the
-   * link is the one the QR encodes (http://qr.afip.gob.ar/?qr=…). The footer
-   * shows the badge only when both are set.
+   * ARCA "Data Fiscal" (Formulario 960/D) for the website, issued from the
+   * founder's ARCA account under "Generación del F960/D para Sitios Web".
+   * The logo is ARCA's official image (served over https to avoid mixed
+   * content); the link is exactly the one ARCA issued for potenciapp.com.
+   * It opens ARCA's consumer-complaint login, so it exposes no personal data.
    */
   dataFiscal: {
-    imagePath: null as string | null,
-    qrUrl: null as string | null,
+    imageUrl: "https://www.afip.gob.ar/images/f960/DATAWEB.jpg" as string | null,
+    qrUrl: "http://qr.afip.gob.ar/?qr=CDdazRkwjFwFD1QFh63yPQ,," as string | null,
   },
   /** Public profiles that back the identity (LinkedIn, Maps, demos). */
   sameAs: ["https://demo.potenciapp.com"] as string[],
