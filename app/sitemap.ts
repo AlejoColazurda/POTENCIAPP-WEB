@@ -3,6 +3,8 @@ import path from "node:path"
 import type { MetadataRoute } from "next"
 import { SITE_URL } from "@/lib/site"
 import { blogIndexUrl, blogPostUrl } from "@/lib/blog/urls"
+import { SERVICIOS, SERVICIOS_PATH, servicioPath } from "@/lib/servicios"
+import { ARGENTINA_PATH, ZONAS, zonaPath } from "@/lib/zonas"
 
 function publishedFileSlugs(): string[] {
   const dir = path.join(process.cwd(), "content", "blog")
@@ -74,5 +76,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   )
 
-  return [...pages, ...posts]
+  // Spanish-only national and local pages (no locale prefix).
+  const esOnly: MetadataRoute.Sitemap = [
+    { url: `${SITE_URL}${ARGENTINA_PATH}`, lastModified, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}${SERVICIOS_PATH}`, lastModified, changeFrequency: "monthly", priority: 0.8 },
+    ...SERVICIOS.map((s) => ({
+      url: `${SITE_URL}${servicioPath(s.slug)}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    ...ZONAS.map((z) => ({
+      url: `${SITE_URL}${zonaPath(z.slug)}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  ]
+
+  return [...pages, ...esOnly, ...posts]
 }

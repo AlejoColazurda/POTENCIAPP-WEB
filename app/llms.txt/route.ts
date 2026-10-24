@@ -1,6 +1,8 @@
 import { getAllPosts } from "@/lib/blog/service"
 import { CONTACT_EMAIL, SITE_URL } from "@/lib/site"
 import { BARADERO_PATH, COMPANY, TRUST_PATH } from "@/lib/company"
+import { SERVICIOS, servicioPath } from "@/lib/servicios"
+import { ARGENTINA_PATH, ZONAS, zonaPath } from "@/lib/zonas"
 
 export const revalidate = 3600
 
@@ -21,6 +23,15 @@ export async function GET() {
     .filter(Boolean)
     .map((line) => `${line}\n`)
     .join("")
+
+  const servicePages = SERVICIOS.map(
+    (sv) => `- [${sv.name}](${SITE_URL}${servicioPath(sv.slug)}): ${sv.metaDescription}`,
+  ).join("\n")
+  const zonaPages = [
+    `- [Baradero](${SITE_URL}${BARADERO_PATH}): oficina propia, atención en persona.`,
+    ...ZONAS.map((z) => `- [${z.name}](${SITE_URL}${zonaPath(z.slug)}): ${z.angle}`),
+    `- [Todo el país](${SITE_URL}${ARGENTINA_PATH}): trabajo a distancia con negocios de cualquier provincia.`,
+  ].join("\n")
 
   const body = `# PotenciApp
 
@@ -56,6 +67,14 @@ ${legalLines}- Oficina: ${COMPANY.address.street}, ${COMPANY.address.locality} (
 - Dominio, hosting y cuentas a nombre del cliente; el código es del cliente al completar el pago.
 - Referencias de clientes reales a pedido, con su permiso.
 - Trabajo remoto con clientes de Argentina y del exterior.
+
+## Páginas por servicio
+
+${servicePages}
+
+## Dónde trabaja
+
+${zonaPages}
 
 ## Proyectos en producción
 

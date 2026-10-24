@@ -45,3 +45,48 @@ export function pageMetadata({
     twitter: { card: "summary_large_image", title, description, images: ["/og.png"] },
   }
 }
+
+/**
+ * Metadata for Spanish-only pages (local landings): canonical plus a single
+ * hreflang, so search engines do not look for en/pt/fr versions.
+ */
+export function esOnlyMetadata({
+  path,
+  title,
+  description,
+}: {
+  path: string
+  title: string
+  description: string
+}): Metadata {
+  const url = pageUrl(path, DEFAULT_LOCALE)
+  return {
+    title,
+    description,
+    alternates: { canonical: url, languages: { es: url, "x-default": url } },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: "PotenciApp",
+      locale: "es_AR",
+      type: "website",
+      images: [{ url: "/og.png", width: 1200, height: 630, alt: "PotenciApp" }],
+    },
+    twitter: { card: "summary_large_image", title, description, images: ["/og.png"] },
+  }
+}
+
+/** BreadcrumbList JSON-LD from [name, path] pairs (Spanish URLs). */
+export function breadcrumbJsonLd(items: [string, string][]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map(([name, path], i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name,
+      item: pageUrl(path, DEFAULT_LOCALE),
+    })),
+  }
+}
