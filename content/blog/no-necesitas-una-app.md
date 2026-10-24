@@ -61,4 +61,4 @@ Cuando le pedís una app a un proveedor, la respuesta fácil es "sí, dale". Es 
 
 ¿No estás seguro de qué te conviene? Contanos tu caso por WhatsApp y te decimos qué haríamos nosotros, aunque la respuesta sea que no hace falta contratar nada.
 
-**Volvé al capítulo 1:** [¿De quién es el código de tu app?](/blog/quien-es-dueno-del-codigo)
+**Sigue en el capítulo 4:** [Las 9 cláusulas que tiene que tener el contrato con tu programador](/blog/clausulas-contrato-programador).

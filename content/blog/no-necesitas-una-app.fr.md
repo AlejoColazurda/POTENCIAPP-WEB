@@ -57,4 +57,4 @@ Quand vous demandez une application à un prestataire, la réponse facile est «
 
 Vous n'êtes pas sûr de ce qui vous convient ? Racontez-nous votre cas par WhatsApp et nous vous dirons ce que nous ferions à votre place, même si la réponse est qu'il n'y a rien à engager.
 
-**Retour au chapitre 1 :** [De qui est le code de votre application ?](/fr/blog/quien-es-dueno-del-codigo)
+**La suite au chapitre 4 :** [Les 9 clauses que doit contenir le contrat avec votre programmeur](/fr/blog/clausulas-contrato-programador).

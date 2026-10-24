@@ -57,4 +57,4 @@ When you ask a provider for an app, the easy answer is "sure, let's do it." It's
 
 Not sure what suits you best? Tell us about your case on WhatsApp and we'll tell you what we would do, even if the answer is that you don't need to hire anything.
 
-**Back to chapter 1:** [Who owns your app's code?](/en/blog/quien-es-dueno-del-codigo)
+**Continued in chapter 4:** [The 9 clauses your contract with your developer must have](/en/blog/clausulas-contrato-programador).
