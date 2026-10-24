@@ -20,8 +20,13 @@ interface PageProps {
 
 export const dynamicParams = false
 
-export function generateStaticParams({ params }: { params: { locale: string } }) {
-  if (params.locale !== "es") return []
+/**
+ * Every slug, without reading the parent locale: in the production build the
+ * parent params are not reliable here, and returning [] made every slug fall
+ * through to the catch-all 404. Non-Spanish locales 404 in the page itself
+ * and the middleware redirects /en/... to the Spanish URL anyway.
+ */
+export function generateStaticParams() {
   return SERVICIOS.map((s) => ({ slug: s.slug }))
 }
 
