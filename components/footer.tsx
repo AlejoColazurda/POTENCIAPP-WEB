@@ -7,6 +7,8 @@ import { BrandWordmark } from "@/components/brand"
 import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { BOOKING_URL, CONTACT_EMAIL, WA_PHONE } from "@/lib/site"
 import { BARADERO_PATH, COMPANY, TRUST_PATH } from "@/lib/company"
+import { SERVICIOS_PATH } from "@/lib/servicios"
+import { ARGENTINA_PATH } from "@/lib/zonas"
 import { NAV_PAGE_LINKS, homeSectionHref } from "@/components/header"
 
 
@@ -35,6 +37,13 @@ export function Footer() {
       links: [
         { label: tNav("soluciones"), href: section("soluciones") },
         { label: tNav("proyectos"), href: section("proyectos") },
+        // Service and national pages exist in Spanish only.
+        ...(locale === "es"
+          ? [
+              { label: "Todos los servicios", href: SERVICIOS_PATH },
+              { label: "Toda Argentina", href: ARGENTINA_PATH },
+            ]
+          : []),
       ],
     },
     {

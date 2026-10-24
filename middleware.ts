@@ -36,8 +36,27 @@ async function refreshAdminSession(request: NextRequest) {
 // browse the site in another language (NEXT_LOCALE cookie) end up here.
 const LOCALIZED_ADMIN = new RegExp(`^/(?:${routing.locales.join("|")})(/admin(?:/.*)?)$`)
 
+// Spanish-only pages (national hub, services, towns). They must not follow
+// the visitor's language cookie or Accept-Language: /en/argentina does not
+// exist, so a redirect there would be a 404.
+const ES_ONLY = /^\/(?:argentina|servicios|zonas)(?:\/.*)?$/
+const LOCALIZED_ES_ONLY = new RegExp(
+  `^/(?:${routing.locales.join("|")})(/(?:argentina|servicios|zonas)(?:/.*)?)$`,
+)
+
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
+  const prefixedEsOnly = pathname.match(LOCALIZED_ES_ONLY)
+  if (prefixedEsOnly) {
+    const url = request.nextUrl.clone()
+    url.pathname = prefixedEsOnly[1]
+    return NextResponse.redirect(url, 308)
+  }
+  if (ES_ONLY.test(pathname)) {
+    const url = request.nextUrl.clone()
+    url.pathname = `/es${pathname}`
+    return NextResponse.rewrite(url)
+  }
   const localized = pathname.match(LOCALIZED_ADMIN)
   if (localized) {
     const url = request.nextUrl.clone()

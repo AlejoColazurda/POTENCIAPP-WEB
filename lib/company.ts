@@ -1,6 +1,13 @@
 import { CONTACT_EMAIL, SITE_URL, WA_PHONE } from "@/lib/site"
 
 /**
+ * Google Business Profile listing, by its permanent CID (ludocid). Share
+ * links (share.google/…) are redirects; this form is stable and is what
+ * search engines match against the LocalBusiness entity.
+ */
+const GBP_URL = "https://maps.google.com/?cid=13483901001912036634"
+
+/**
  * Legal and local identity of the company, in one place. Everything an
  * evaluator (a person or an answer engine) asks before hiring us reads from
  * here: footer, /legal, /antes-de-contratarnos, /baradero and the JSON-LD.
@@ -9,13 +16,6 @@ import { CONTACT_EMAIL, SITE_URL, WA_PHONE } from "@/lib/site"
  * neutral sentence and the structured data omits the field. Fill it, do not
  * invent it — every figure on the site must be verifiable.
  */
-/**
- * Google Business Profile listing, by its permanent CID (ludocid). Share
- * links (share.google/…) are redirects; this form is stable and is what
- * search engines match against the LocalBusiness entity.
- */
-const GBP_URL = "https://maps.google.com/?cid=13483901001912036634"
-
 export const COMPANY = {
   brand: "PotenciApp",
   /** Razón social as it appears on the invoice (monotributo: the founder). */

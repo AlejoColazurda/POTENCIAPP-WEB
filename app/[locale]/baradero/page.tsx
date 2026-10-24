@@ -10,9 +10,14 @@ import { BARADERO_PATH, COMPANY, ORG_ID, TRUST_PATH, faqJsonLd } from "@/lib/com
 import { pageMetadata, pageUrl } from "@/lib/pages"
 import { PROJECTS } from "@/lib/projects"
 import { BOOKING_URL, whatsAppUrl } from "@/lib/site"
+import { SERVICIOS, servicioPath } from "@/lib/servicios"
+import { ARGENTINA_PATH, ZONAS, zonaPath } from "@/lib/zonas"
 
 type Card = { title: string; desc: string }
 type Faq = { q: string; a: string }
+
+const CHIP =
+  "inline-flex border border-gray-700 px-4 py-2 font-ed-sans text-[15px] text-gray-100 transition-colors hover:border-brand-green"
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -259,6 +264,36 @@ export default async function BaraderoPage({ params }: PageProps) {
             </Reveal>
           </div>
         </section>
+        {/* Spanish only: links to the national service pages and nearby towns. */}
+        {locale === "es" && (
+          <section className="border-t border-gray-800">
+            <div className="mx-auto max-w-[1440px] px-4 md:px-8 py-14 lg:py-20 grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div>
+                <SectionIndex n="06" label="Servicios" />
+                <ul className="mt-6 flex flex-wrap gap-3">
+                  {SERVICIOS.map((sv) => (
+                    <li key={sv.slug}>
+                      <Link href={servicioPath(sv.slug)} className={CHIP}>{sv.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <SectionIndex n="07" label="También atendemos en" />
+                <ul className="mt-6 flex flex-wrap gap-3">
+                  {ZONAS.map((z) => (
+                    <li key={z.slug}>
+                      <Link href={zonaPath(z.slug)} className={CHIP}>{z.name}</Link>
+                    </li>
+                  ))}
+                  <li>
+                    <Link href={ARGENTINA_PATH} className={CHIP}>Todo el país</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        )}
       </main>
 
       <Footer />
