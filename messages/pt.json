@@ -814,7 +814,7 @@
     "local": [
       {
         "title": "Reunião presencial",
-        "desc": "Nos encontramos em Baradero para o diagnóstico, as entregas e o treinamento. Você não precisa viajar nem explicar seu negócio por videochamada."
+        "desc": "Nos encontramos no nosso escritório de Baradero para o diagnóstico, as entregas e o treinamento. Você não precisa viajar nem explicar seu negócio por videochamada."
       },
       {
         "title": "Mesmo horário, mesmo WhatsApp",
@@ -831,7 +831,7 @@
     "faq": [
       {
         "q": "Vocês atendem presencialmente em Baradero?",
-        "a": "Sim. Estamos em Baradero e marcamos reuniões presenciais pelo WhatsApp, tanto para o diagnóstico inicial quanto para entregas e treinamento. Também trabalhamos por videochamada, se for mais cômodo."
+        "a": "Sim. Nosso escritório fica na {address}, Baradero, onde fazemos o diagnóstico inicial, as entregas e o treinamento. Combinamos a visita pelo WhatsApp. Também trabalhamos por videochamada, se for mais cômodo."
       },
       {
         "q": "Quanto custa um site em Baradero?",
@@ -851,7 +851,7 @@
       }
     ],
     "mapsLabel": "Onde estamos",
-    "mapsText": "Baradero, Buenos Aires, Argentina. As reuniões são combinadas pelo WhatsApp.",
+    "mapsText": "Escritório na {address}, Baradero, Buenos Aires. Combine sua visita pelo WhatsApp e te recebemos.",
     "mapsLink": "Ver no Google Maps",
     "trustLink": "O que exigir antes de nos contratar"
   }

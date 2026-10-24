@@ -141,7 +141,7 @@ export function Footer() {
               {[
                 COMPANY.legalName,
                 COMPANY.cuit ? `CUIT ${COMPANY.cuit}` : null,
-                `${COMPANY.address.locality}, ${COMPANY.address.region}, ${COMPANY.address.countryName}`,
+                `${COMPANY.address.street}, ${COMPANY.address.locality}, ${COMPANY.address.region}, ${COMPANY.address.countryName}`,
               ]
                 .filter(Boolean)
                 .join(" · ")}

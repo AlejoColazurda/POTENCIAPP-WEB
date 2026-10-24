@@ -814,7 +814,7 @@
     "local": [
       {
         "title": "Meet in person",
-        "desc": "We meet in Baradero for the assessment, deliveries and training. No travelling, no explaining your business over video calls."
+        "desc": "We meet at our Baradero office for the assessment, deliveries and training. No travelling, no explaining your business over video calls."
       },
       {
         "title": "Same hours, same WhatsApp",
@@ -831,7 +831,7 @@
     "faq": [
       {
         "q": "Do you meet in person in Baradero?",
-        "a": "Yes. We are in Baradero and arrange in-person meetings on WhatsApp, for the initial assessment as well as deliveries and training. We also work over video call if that suits you better."
+        "a": "Yes. Our office is at {address}, Baradero, where we run the initial assessment, deliveries and training. We arrange visits on WhatsApp. We also work over video call if that suits you better."
       },
       {
         "q": "How much does a website cost in Baradero?",
@@ -851,7 +851,7 @@
       }
     ],
     "mapsLabel": "Where we are",
-    "mapsText": "Baradero, Buenos Aires, Argentina. Meetings are arranged on WhatsApp.",
+    "mapsText": "Office at {address}, Baradero, Buenos Aires. Arrange your visit on WhatsApp and we will see you there.",
     "mapsLink": "See on Google Maps",
     "trustLink": "What to demand before hiring us"
   }
