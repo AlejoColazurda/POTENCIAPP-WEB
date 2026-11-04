@@ -76,7 +76,7 @@ export function BrandMark({
 }
 
 /**
- * BrandWordmark — wordmark oficial Potenciapp.
+ * BrandWordmark — wordmark oficial PotenciApp.
  * Renderiza el PNG original a resolución máxima (943×133, aspect ~7.09:1) desde
  * /public/branding/png/wordmark-{theme}-full.png — fuente única de verdad para
  * que cualquier update del asset se refleje sin tocar tamaños intermedios.

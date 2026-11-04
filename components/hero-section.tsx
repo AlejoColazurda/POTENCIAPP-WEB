@@ -58,6 +58,10 @@ export function HeroSection() {
               className="font-ed-display font-bold uppercase text-gray-100 leading-[0.88] tracking-[-0.045em] whitespace-nowrap [--h1-cap:clamp(36px,10.2vw,60px)] md:[--h1-cap:clamp(40px,5.6vw,64px)] lg:[--h1-cap:clamp(64px,5.6vw,92px)]"
               style={{ fontSize: `min(var(--h1-cap), calc(100cqw / (0.82 * ${longest})))` }}
             >
+              {/* The brand leads the H1 for search engines and screen readers
+                  ("PotenciApp: software a medida, desde cero."); visually it is
+                  already the first word of the colophon row above. */}
+              <span className="sr-only">PotenciApp: </span>
               {lines.map((line, i) => (
                 <Line key={line} i={i}>
                   {i === lines.length - 1 ? (

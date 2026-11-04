@@ -2,6 +2,7 @@ import fs from "node:fs"
 import path from "node:path"
 import type { BlogPost } from "./types"
 import { SITE_URL } from "@/lib/site"
+import { ORG_ID } from "@/lib/company"
 import { blogIndexUrl, blogPostUrl } from "./urls"
 
 export function blogIndexOgImage() {
@@ -30,7 +31,9 @@ export function generateBlogPostingJsonLd(post: BlogPost) {
     author: { "@type": "Organization", name: post.author.name, url: SITE_URL },
     publisher: {
       "@type": "Organization",
+      "@id": ORG_ID,
       name: "PotenciApp",
+      url: `${SITE_URL}/`,
       logo: { "@type": "ImageObject", url: `${SITE_URL}/potenciapp-logo.png` },
     },
     keywords: post.tags.join(", "),
@@ -48,8 +51,9 @@ export function generateBlogIndexJsonLd(locale: string, name: string, descriptio
     inLanguage: locale,
     publisher: {
       "@type": "Organization",
+      "@id": ORG_ID,
       name: "PotenciApp",
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
       logo: `${SITE_URL}/potenciapp-logo.png`,
     },
   }

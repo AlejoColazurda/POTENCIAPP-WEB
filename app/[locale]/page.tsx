@@ -13,7 +13,7 @@ import { BlogTeaser } from "@/components/blog-teaser"
 import { FaqSection } from "@/components/faq-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
-import { faqJsonLd } from "@/lib/company"
+import { faqJsonLd, websiteJsonLd } from "@/lib/company"
 
 /**
  * Section order follows the trust arc: promise (hero, value) → what we build
@@ -33,9 +33,12 @@ export default async function HomePage({
   const tFaq = await getTranslations({ locale, namespace: "faq" })
   const faqItems = tFaq.raw("items") as { q: string; a: string }[]
   const faqLd = faqJsonLd(locale, faqItems)
+  // WebSite (site name + alternate spellings): Google only reads it on the home page.
+  const websiteLd = websiteJsonLd(locale)
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 font-ed-sans">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <Header />
       <main>
