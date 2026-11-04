@@ -80,7 +80,7 @@ export default async function BaraderoPage({ params }: PageProps) {
               <SectionIndex n="§" label={t("eyebrow")} />
               <Link
                 href="/"
-                className="mt-4 inline-block ed-label text-gray-500 transition-colors hover:text-brand-green"
+                className="mt-4 inline-block ed-label text-gray-400 transition-colors hover:text-brand-green"
               >
                 {t("backHome")}
               </Link>
@@ -217,23 +217,23 @@ export default async function BaraderoPage({ params }: PageProps) {
                 </Link>
               </p>
             </div>
-            <dl className="col-span-12 lg:col-span-8 border-t border-gray-100/35">
+            <ol className="col-span-12 lg:col-span-8 border-t border-gray-100/35">
               {faq.map((f, i) => (
-                <div
+                <li
                   key={f.q}
                   className="ed-rise grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-gray-800 py-6"
                   style={{ ["--i" as string]: i + 1 }}
                 >
                   <span className="ed-label text-gray-400 tabular-nums">{String(i + 1).padStart(2, "0")}</span>
                   <div>
-                    <dt className="font-ed-display text-lg lg:text-[22px] font-medium tracking-[-0.02em] leading-[1.25]">
+                    <h3 className="font-ed-display text-lg lg:text-[22px] font-medium tracking-[-0.02em] leading-[1.25]">
                       {f.q}
-                    </dt>
-                    <dd className="mt-3 font-ed-sans text-[16px] leading-[1.65] text-gray-300 max-w-[68ch]">{f.a}</dd>
+                    </h3>
+                    <p className="mt-3 font-ed-sans text-[16px] leading-[1.65] text-gray-300 max-w-[68ch]">{f.a}</p>
                   </div>
-                </div>
+                </li>
               ))}
-            </dl>
+            </ol>
           </Reveal>
         </section>
 
