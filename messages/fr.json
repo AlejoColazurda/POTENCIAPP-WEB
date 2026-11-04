@@ -580,11 +580,11 @@
     "author": "Équipe PotenciApp"
   },
   "blogUi": {
-    "metaTitle": "Blog PotenciApp | Sécurité et boutiques pour commerces",
-    "metaDescription": "Guides courts pour protéger votre boutique, vos comptes et vos encaissements. Sans jargon.",
+    "metaTitle": "Blog PotenciApp | Acheter un logiciel sans se brûler",
+    "metaDescription": "Ce que personne ne vous dit avant de payer un développeur : contrats, accès, prix et cas réels. Et la sécurité de votre commerce.",
     "eyebrow": "Blog",
-    "heroTitle": "Sécurité et boutiques, expliquées pour votre commerce.",
-    "heroSubtitle": "Guides courts et le brief du mois. Des étapes applicables aujourd’hui.",
+    "heroTitle": "Acheter un logiciel, sans se brûler.",
+    "heroSubtitle": "Ce que personne ne vous dit avant de payer un développeur ou une agence. Cas réels, contrats et sécurité de votre commerce.",
     "homeAria": "PotenciApp : aller à l'accueil",
     "navAria": "Navigation du blog",
     "backToSite": "Retour au site principal",
@@ -637,6 +637,10 @@
     "roleTeam": "PotenciApp",
     "roleAi": "Rédigé avec l’IA, relu par l’équipe",
     "categories": {
+      "software": {
+        "label": "Acheter un logiciel",
+        "short": "Achat logiciel"
+      },
       "security": {
         "label": "Sécurité",
         "short": "Sécurité"
