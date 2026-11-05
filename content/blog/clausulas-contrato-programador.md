@@ -3,6 +3,7 @@ title: "Las 9 cláusulas que tiene que tener el contrato con tu programador"
 description: Alcance, hitos, pagos, cambios, código, accesos, garantía, datos y salida. Qué tiene que decir cada una, cómo se ve una cláusula floja y qué preguntar antes de firmar.
 date: 2026-10-24
 tag: Contratar software
+cover: /blog/covers/clausulas-contrato-programador.jpg
 category: software
 author: Equipo PotenciApp
 ---

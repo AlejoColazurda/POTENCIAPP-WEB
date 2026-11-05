@@ -3,6 +3,7 @@ title: Antes de pagarle a una agencia o a un programador: 8 cosas que tienen que
 description: El dominio, el email, las cuentas de anuncios, la app en las tiendas. Si están a nombre de otro, tu negocio depende de que esa persona te atienda el teléfono.
 date: 2026-11-04
 tag: Proveedores
+cover: /blog/covers/cuentas-a-tu-nombre-agencia-programador.jpg
 category: security
 author: Equipo PotenciApp
 ---

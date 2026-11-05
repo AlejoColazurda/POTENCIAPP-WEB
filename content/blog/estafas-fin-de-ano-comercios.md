@@ -3,6 +3,7 @@ title: Diciembre, el mes de las estafas: 5 que apuntan a los comercios en las fi
 description: Cuentas truchas con sorteos, el cliente que "te pagó de más", el proveedor que cambió el CBU. Cómo reconocerlas y qué dejar configurado antes del 1 de diciembre.
 date: 2026-11-04
 tag: Estafas
+cover: /blog/covers/estafas-fin-de-ano-comercios.jpg
 category: security
 author: Equipo PotenciApp
 ---

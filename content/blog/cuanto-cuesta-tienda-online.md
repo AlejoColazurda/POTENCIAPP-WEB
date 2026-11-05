@@ -3,6 +3,7 @@ title: Cuánto cuesta de verdad una tienda online: Tiendanube vs. una tienda a m
 description: El plan mensual es solo una parte. Comisiones, apps, Mercado Pago y mantenimiento: cómo sacar la cuenta completa y cuándo conviene cada opción, incluso si la respuesta es "todavía no te conviene a medida".
 date: 2026-11-04
 tag: E-commerce
+cover: /blog/covers/cuanto-cuesta-tienda-online.jpg
 category: stores
 author: Equipo PotenciApp
 ---
