@@ -3,6 +3,7 @@ title: ¿De quién es el código de tu app? El detalle que te puede dejar rehén
 description: Pagaste el desarrollo, pero eso no te hace dueño. Qué dice la ley argentina, qué tiene que decir tu contrato y los siete accesos que tienen que estar a tu nombre.
 date: 2026-10-24
 tag: Contratar software
+cover: /blog/covers/quien-es-dueno-del-codigo.jpg
 category: software
 author: Equipo PotenciApp
 ---

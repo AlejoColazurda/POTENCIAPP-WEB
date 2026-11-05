@@ -3,6 +3,7 @@ title: "Autopsia de una app que nadie descargó"
 description: Un corralón pagó una app para recibir pedidos. Un año después tenía 9 usuarios activos y había desaparecido de la App Store. Reconstruimos qué salió mal y qué funcionó en su lugar.
 date: 2026-10-24
 tag: Contratar software
+cover: /blog/covers/autopsia-app-que-nadie-descargo.jpg
 category: software
 author: Equipo PotenciApp
 ---

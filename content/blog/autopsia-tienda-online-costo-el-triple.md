@@ -3,6 +3,7 @@ title: "Autopsia de una tienda online que costó el triple de lo presupuestado"
 description: Un presupuesto por WhatsApp, cuatro "eso no estaba incluido" y un programador que dejó de contestar. Reconstruimos el caso paso a paso, y cómo se evitaba cada herida.
 date: 2026-10-24
 tag: Contratar software
+cover: /blog/covers/autopsia-tienda-online-costo-el-triple.jpg
 category: software
 author: Equipo PotenciApp
 ---

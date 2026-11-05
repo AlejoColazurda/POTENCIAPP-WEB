@@ -3,6 +3,7 @@ title: "No necesitás una app (todavía): cuándo alcanza con una web y cuándo 
 description: Lo dice una empresa que hace apps. Lo que cuesta tener una app además de hacerla, cuándo una web resuelve lo mismo y cinco preguntas para decidir sin que te vendan nada.
 date: 2026-10-24
 tag: Contratar software
+cover: /blog/covers/no-necesitas-una-app.jpg
 category: software
 author: Equipo PotenciApp
 ---

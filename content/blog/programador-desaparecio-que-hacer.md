@@ -3,6 +3,7 @@ title: "Tu programador desapareció: qué hacer en las primeras 48 horas"
 description: No contesta, el sistema sigue andando (por ahora) y no sabés qué tenés. Un plan en orden para inventariar, proteger lo que es tuyo, pedir lo que falta y no empeorar las cosas.
 date: 2026-10-24
 tag: Contratar software
+cover: /blog/covers/programador-desaparecio-que-hacer.jpg
 category: software
 author: Equipo PotenciApp
 ---
