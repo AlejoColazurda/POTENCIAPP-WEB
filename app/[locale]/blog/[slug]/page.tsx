@@ -10,6 +10,7 @@ import { blogPostUrl, formatBlogDate } from "@/lib/blog/urls"
 import { whatsAppUrl } from "@/lib/site"
 import { SocialShareBar } from "@/components/blog/social-share-bar"
 import { MarkdownContent } from "@/components/blog/markdown-content"
+import { ArticleReadTracker } from "@/components/analytics/article-read-tracker"
 import { BlogCover } from "@/components/blog/cover"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -153,6 +154,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </p>
 
           <MarkdownContent content={post.content} className="text-[#B8B8B8]" />
+          <ArticleReadTracker slug={post.slug} title={post.title} category={post.category} />
 
           {post.tags.length > 0 ? (
             <div className="flex flex-wrap items-center gap-2 border-t border-[#1A1A1A] pt-6">

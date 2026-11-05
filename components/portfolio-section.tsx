@@ -134,6 +134,7 @@ export function PortfolioSection() {
           <p className="font-ed-sans text-lg text-gray-300">{t("ctaLine")}</p>
           <a
             href="#contacto"
+            data-ga-cta="pedir_propuesta"
             className="group inline-flex items-center justify-between gap-6 border border-gray-100/35 px-5 py-4 font-ed-sans font-semibold text-gray-100 transition-colors duration-300 hover:bg-brand-green hover:border-brand-green hover:text-ink"
           >
             {t("ctaButton")}

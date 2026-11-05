@@ -99,6 +99,7 @@ export function Header() {
             <LanguageSwitcher compact />
             <a
               href={contactoHref}
+              data-ga-cta="pedir_propuesta"
               className="inline-flex items-center justify-center gap-2 px-4 lg:px-5 min-h-11 h-11 rounded-lg bg-brand-green text-black font-semibold text-sm hover:bg-green-hover hover:shadow-[0_0_24px_rgba(34,242,58,0.4)] transition-all duration-300 active:scale-[0.98]"
             >
               {t("ctaLong")}
@@ -156,6 +157,7 @@ export function Header() {
           )}
           <a
             href={contactoHref}
+            data-ga-cta="pedir_propuesta"
             onClick={() => setIsMobileMenuOpen(false)}
             className="mt-3 inline-flex items-center justify-center gap-2 h-12 rounded-lg bg-brand-green text-black font-semibold"
           >

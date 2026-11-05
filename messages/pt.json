@@ -515,7 +515,7 @@
   "legal": {
     "title": "Legal",
     "backHome": "← Voltar ao início",
-    "updated": "Última atualização: agosto de 2026",
+    "updated": "Última atualização: outubro de 2026",
     "termsTitle": "Termos e condições",
     "termsBlocks": [
       {
@@ -543,7 +543,11 @@
     "privacyBlocks": [
       {
         "h": "Quais dados recebemos",
-        "p": "Este site não usa cookies de rastreamento nem ferramentas de análise. Só recebemos os dados que você envia voluntariamente: o que escreve no chat do site, no WhatsApp ou por email (normalmente nome, contato e descrição do projeto)."
+        "p": "Este site não usa cookies de publicidade. Os dados pessoais que recebemos são os que você envia voluntariamente: o que escreve no chat do site, no WhatsApp ou por email (normalmente nome, contato e descrição do projeto)."
+      },
+      {
+        "h": "Cookies e análise",
+        "p": "Usamos o Google Analytics 4 para medir, de forma agregada, quais páginas e artigos são lidos e quantas consultas cada um gera (cliques no WhatsApp e em «Pedir proposta»). O Google Analytics instala cookies próprios (como _ga) e recebe dados de navegação: páginas vistas, dispositivo, navegador e localização aproximada. Não os usamos para publicidade nem para identificar você. Você pode bloquear os cookies no navegador ou instalar o complemento de desativação do Google Analytics (tools.google.com/dlpage/gaoptout)."
       },
       {
         "h": "O chat do site",

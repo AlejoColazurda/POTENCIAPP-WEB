@@ -515,7 +515,7 @@
   "legal": {
     "title": "Mentions légales",
     "backHome": "← Retour à l'accueil",
-    "updated": "Dernière mise à jour : août 2026",
+    "updated": "Dernière mise à jour : octobre 2026",
     "termsTitle": "Conditions générales",
     "termsBlocks": [
       {
@@ -543,7 +543,11 @@
     "privacyBlocks": [
       {
         "h": "Quelles données nous recevons",
-        "p": "Ce site n'utilise ni cookies de suivi ni outils d'analyse. Nous ne recevons que les données que vous nous envoyez volontairement : ce que vous écrivez dans le chat du site, sur WhatsApp ou par email (généralement nom, coordonnées et description du projet)."
+        "p": "Ce site n'utilise pas de cookies publicitaires. Les données personnelles que nous recevons sont celles que vous nous envoyez volontairement : ce que vous écrivez dans le chat du site, sur WhatsApp ou par email (généralement nom, coordonnées et description du projet)."
+      },
+      {
+        "h": "Cookies et analyse",
+        "p": "Nous utilisons Google Analytics 4 pour mesurer, de façon agrégée, quelles pages et quels articles sont lus et combien de demandes chacun génère (clics sur WhatsApp et sur « Demander une proposition »). Google Analytics dépose ses propres cookies (comme _ga) et reçoit des données de navigation : pages vues, appareil, navigateur et localisation approximative. Nous ne les utilisons ni pour la publicité ni pour vous identifier. Vous pouvez bloquer les cookies depuis votre navigateur ou installer le module de désactivation de Google Analytics (tools.google.com/dlpage/gaoptout)."
       },
       {
         "h": "Le chat du site",

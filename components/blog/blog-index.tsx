@@ -60,7 +60,7 @@ export function BlogIndex({ initialPosts }: BlogIndexProps) {
         <EmptyContent>
           <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center">
             <Button asChild className="min-h-11 bg-[#22F23A] text-black hover:bg-[#1AD832]">
-              <Link href="/#contacto">{tNav("ctaLong")}</Link>
+              <Link href="/#contacto" data-ga-cta="pedir_propuesta">{tNav("ctaLong")}</Link>
             </Button>
             <Button asChild variant="outline" className="min-h-11 border-[#1A1A1A] text-[#F5F5F5]">
               <a href={whatsAppUrl(tBlog("waGreeting"))} target="_blank" rel="noopener noreferrer">
