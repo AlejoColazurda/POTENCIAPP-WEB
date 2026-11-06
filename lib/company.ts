@@ -17,7 +17,20 @@ const GBP_URL = "https://maps.google.com/?cid=13483901001912036634"
  * invent it — every figure on the site must be verifiable.
  */
 export const COMPANY = {
+  /**
+   * The one spelling of the brand: capital P, capital A, written together.
+   * Google kept rewriting the query "potenciapp" to "potencia" because it
+   * did not know the word as a name; every title, heading, profile and
+   * mention must use exactly this form so the entity is unambiguous.
+   */
   brand: "PotenciApp",
+  /**
+   * Spellings people actually type. Declared as `alternateName` in the
+   * WebSite and Organization JSON-LD; never shown as the brand itself.
+   */
+  alternateNames: ["Potenciapp", "Potenci App", "potenciapp.com"] as string[],
+  /** Square logo on a white background (Google's logo guidelines). */
+  logo: { path: "/potenciapp-logo.png", width: 1024, height: 1024 },
   /** Razón social as it appears on the invoice (monotributo: the founder). */
   legalName: "Vladimir Gonzalez" as string | null,
   /** CUIT with dashes, e.g. "30-12345678-9". */
@@ -48,7 +61,11 @@ export const COMPANY = {
     imageUrl: "https://www.afip.gob.ar/images/f960/DATAWEB.jpg" as string | null,
     qrUrl: "http://qr.afip.gob.ar/?qr=CDdazRkwjFwFD1QFh63yPQ,," as string | null,
   },
-  /** Public profiles that back the identity (LinkedIn, Maps, demos). */
+  /**
+   * Public profiles that back the identity (Maps, demos). Add the LinkedIn,
+   * Instagram and Facebook page URLs here once they exist and are named
+   * exactly "PotenciApp": sameAs is how Google ties them to this entity.
+   */
   sameAs: [GBP_URL, "https://demo.potenciapp.com"] as string[],
   /** Opens the Google Business Profile listing (directions, reviews). */
   mapsSearchUrl: GBP_URL,
@@ -60,6 +77,39 @@ export const BARADERO_PATH = "/baradero"
 
 /** Stable @id so every page's JSON-LD points at the same entity. */
 export const ORG_ID = `${SITE_URL}/#organization`
+export const WEBSITE_ID = `${SITE_URL}/#website`
+
+/** Absolute URL of the brand logo, as an ImageObject. */
+function logoImageObject() {
+  return {
+    "@type": "ImageObject",
+    "@id": `${SITE_URL}/#logo`,
+    url: `${SITE_URL}${COMPANY.logo.path}`,
+    contentUrl: `${SITE_URL}${COMPANY.logo.path}`,
+    width: COMPANY.logo.width,
+    height: COMPANY.logo.height,
+    caption: COMPANY.brand,
+  }
+}
+
+/**
+ * WebSite block for the home page. Google reads `name` (and falls back to
+ * `alternateName`) to pick the site name shown in results; it is also the
+ * strongest on-site signal that "PotenciApp" is a name, not a typo of
+ * "potencia". Google only reads it on the home page, so render it there.
+ */
+export function websiteJsonLd(locale: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": WEBSITE_ID,
+    name: COMPANY.brand,
+    alternateName: COMPANY.alternateNames,
+    url: `${SITE_URL}/`,
+    inLanguage: locale,
+    publisher: { "@id": ORG_ID },
+  }
+}
 
 /**
  * ProfessionalService (a LocalBusiness, which is an Organization): what a
@@ -72,9 +122,12 @@ export function organizationJsonLd(description: string) {
     "@type": ["ProfessionalService", "LocalBusiness", "Organization"],
     "@id": ORG_ID,
     name: COMPANY.brand,
+    alternateName: COMPANY.alternateNames,
     ...(COMPANY.legalName ? { legalName: COMPANY.legalName } : {}),
     ...(COMPANY.cuit ? { taxID: COMPANY.cuit, vatID: COMPANY.cuit } : {}),
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
+    logo: logoImageObject(),
+    image: `${SITE_URL}${COMPANY.logo.path}`,
     email: CONTACT_EMAIL,
     telephone: `+${WA_PHONE}`,
     description,

@@ -1,6 +1,6 @@
-# Branding Potenciapp — Assets (REAL, partiendo del diseño original)
+# Branding PotenciApp — Assets (REAL, partiendo del diseño original)
 
-Logos e iconos de Potenciapp en PNG con **fondo transparente real**, derivados de los archivos originales del diseño. Ya no son recreaciones SVG aproximadas — son las imágenes oficiales procesadas.
+Logos e iconos de PotenciApp en PNG con **fondo transparente real**, derivados de los archivos originales del diseño. Ya no son recreaciones SVG aproximadas — son las imágenes oficiales procesadas.
 
 ## Estructura
 
@@ -72,17 +72,17 @@ https://www.potenciapp.com/apple-icon.png
 <link rel="apple-touch-icon" href="/branding/favicons/favicon-180.png">
 
 <!-- Header oscuro (sobre fondo --pp-ink o negro) -->
-<img src="/branding/png/wordmark-dark-800.png" alt="Potenciapp" width="200" height="28">
+<img src="/branding/png/wordmark-dark-800.png" alt="PotenciApp" width="200" height="28">
 
 <!-- Header claro (sobre fondo blanco/paper) -->
-<img src="/branding/png/wordmark-light-800.png" alt="Potenciapp" width="200" height="28">
+<img src="/branding/png/wordmark-light-800.png" alt="PotenciApp" width="200" height="28">
 
 <!-- Avatar / ícono compacto -->
-<img src="/branding/png/mark-128.png" alt="Potenciapp" width="40" height="40">
+<img src="/branding/png/mark-128.png" alt="PotenciApp" width="40" height="40">
 ```
 
 Si lo usás desde un repo distinto (no `POTENCIAPP-WEB`), referenciá la URL absoluta:
 
 ```tsx
-<img src="https://www.potenciapp.com/branding/png/wordmark-dark-800.png" alt="Potenciapp" />
+<img src="https://www.potenciapp.com/branding/png/wordmark-dark-800.png" alt="PotenciApp" />
 ```

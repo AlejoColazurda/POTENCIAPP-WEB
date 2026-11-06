@@ -65,6 +65,17 @@ export async function generateMetadata({
     metadataBase: new URL("https://www.potenciapp.com"),
     title: t("title"),
     description: t("description"),
+    applicationName: "PotenciApp",
+    // Declared explicitly: Google picks the results favicon from these <link>
+    // tags on the home page and prefers sizes that are multiples of 48px.
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/icon.svg", type: "image/svg+xml" },
+        { url: "/branding/favicons/favicon-48.png", sizes: "48x48", type: "image/png" },
+      ],
+      apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+    },
     alternates: {
       canonical: locale === "es" ? "/" : `/${locale}`,
       languages: { es: "/", en: "/en", pt: "/pt", fr: "/fr", "x-default": "/" },
