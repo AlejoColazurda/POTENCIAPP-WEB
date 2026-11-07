@@ -52,7 +52,8 @@ export function generateBlogPostingJsonLd(post: BlogPost) {
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     headline: post.title,
     description: post.summary,
-    image: [post.coverImage || blogIndexOgImage()],
+    // Google wants absolute image URLs; covers in the repo are root-relative.
+    image: [post.coverImage ? new URL(post.coverImage, SITE_URL).href : blogIndexOgImage()],
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
     author: authorJsonLd(post.author.name),
