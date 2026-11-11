@@ -35,6 +35,7 @@ export function GarantiaSection() {
             </p>
             <a
               href="#contacto"
+              data-ga-cta="pedir_propuesta"
               className="ed-rise group mt-10 inline-flex items-center gap-4 bg-brand-green px-5 py-4 font-ed-sans font-semibold text-ink transition-colors duration-300 hover:bg-green-hover"
               style={{ ["--i" as string]: 3 }}
             >
