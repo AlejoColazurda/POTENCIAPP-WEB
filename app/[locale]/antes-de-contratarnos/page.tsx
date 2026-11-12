@@ -73,7 +73,7 @@ export default async function TrustPage({ params }: PageProps) {
               <SectionIndex n="§" label={t("eyebrow")} />
               <Link
                 href="/"
-                className="mt-4 inline-block ed-label text-gray-500 transition-colors hover:text-brand-green"
+                className="mt-4 inline-block ed-label text-gray-400 transition-colors hover:text-brand-green"
               >
                 {t("backHome")}
               </Link>
