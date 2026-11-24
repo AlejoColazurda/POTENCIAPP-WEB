@@ -150,6 +150,7 @@ export default async function TrustPage({ params }: PageProps) {
               <div className="ed-rise mt-8 flex flex-col sm:flex-row flex-wrap gap-4" style={{ ["--i" as string]: 2 }}>
                 <a
                   href={whatsAppUrl(t("waMessage"))}
+                  data-ga-cta="pedir_propuesta"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-3 bg-brand-green px-5 py-4 font-ed-sans font-semibold text-ink transition-colors duration-300 hover:bg-green-hover"

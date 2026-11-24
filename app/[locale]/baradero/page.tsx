@@ -103,6 +103,7 @@ export default async function BaraderoPage({ params }: PageProps) {
             >
               <a
                 href={whatsAppUrl(t("waGreeting"))}
+                data-ga-cta="pedir_propuesta"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 bg-brand-green px-5 py-4 font-ed-sans font-semibold text-ink transition-colors duration-300 hover:bg-green-hover"
