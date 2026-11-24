@@ -62,7 +62,7 @@ export default async function ServiciosPage({ params }: PageProps) {
           <Reveal immediate className="grid grid-cols-12 gap-x-6 gap-y-8">
             <div className="ed-rise col-span-12 lg:col-span-3">
               <SectionIndex n="§" label="Servicios" />
-              <Link href="/" className="mt-4 inline-block ed-label text-gray-500 transition-colors hover:text-brand-green">
+              <Link href="/" className="mt-4 inline-block ed-label text-gray-400 transition-colors hover:text-brand-green">
                 ← Volver al inicio
               </Link>
             </div>

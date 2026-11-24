@@ -146,7 +146,7 @@ export function Footer() {
           <div>
             <p className="ed-label text-gray-400">{t("rights", { year })}</p>
             {/* Legal identity in plain text: the first thing anyone verifying us looks for. */}
-            <p className="mt-1 ed-label text-gray-500">
+            <p className="mt-1 ed-label text-gray-400">
               {[
                 COMPANY.legalName,
                 COMPANY.cuit ? `CUIT ${COMPANY.cuit}` : null,
