@@ -87,6 +87,22 @@ export const PROJECTS: Project[] = [
     tags: ["Delivery", "E-commerce", "WhatsApp API"],
   },
   {
+    key: "lmt",
+    url: "https://www.metalurgicaintegral.com.ar",
+    image: "/demos/lmt.webp",
+    live: true,
+    handle: "metalurgicaintegral.com.ar",
+    tags: ["Landing", "SEO", "WhatsApp API"],
+  },
+  {
+    key: "hidradock",
+    url: "https://www.hidradock.com.ar",
+    image: "/demos/hidradock.webp",
+    live: true,
+    handle: "hidradock.com.ar",
+    tags: ["Landing", "Gallery", "WhatsApp API"],
+  },
+  {
     key: "jazcal",
     url: `${DEMOS_INDEX}/web/jazcal-software/`,
     image: "/demos/jazcal.webp",
@@ -99,20 +115,6 @@ export const PROJECTS: Project[] = [
     image: "/demos/sportivo.webp",
     handle: "DEMO",
     tags: ["CMS", "Admin", "Menu"],
-  },
-  {
-    key: "lmt",
-    url: `${DEMOS_INDEX}/web/lmt-metalurgica/`,
-    image: "/demos/lmt.webp",
-    handle: "DEMO",
-    tags: ["Landing", "SEO", "WhatsApp API"],
-  },
-  {
-    key: "hidradock",
-    url: `${DEMOS_INDEX}/web/hidradock/`,
-    image: "/demos/hidradock.webp",
-    handle: "DEMO",
-    tags: ["Landing", "Gallery", "WhatsApp API"],
   },
   {
     key: "fussinato",

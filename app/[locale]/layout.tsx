@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next"
-import { Inter, Space_Grotesk, JetBrains_Mono, Unbounded, Inter_Tight } from "next/font/google"
 import { Toaster } from "sonner"
 import { NextIntlClientProvider, hasLocale } from "next-intl"
 import { setRequestLocale, getMessages, getTranslations } from "next-intl/server"
@@ -7,44 +6,8 @@ import { notFound } from "next/navigation"
 import { routing } from "@/i18n/routing"
 import { FloatingChat } from "@/components/floating-chat"
 import { organizationJsonLd } from "@/lib/company"
+import { inter, spaceGrotesk, jetbrainsMono, unbounded, interTight } from "../fonts/fonts"
 import "../globals.css"
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "500", "600"],
-  display: "swap",
-})
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  weight: ["500", "600", "700"],
-  display: "swap",
-})
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
-  weight: ["400", "500"],
-  display: "swap",
-})
-
-
-// Editorial system (home): Unbounded for display, Inter Tight for reading.
-const unbounded = Unbounded({
-  subsets: ["latin"],
-  variable: "--font-unbounded",
-  weight: ["300", "500", "700", "800"],
-  display: "swap",
-})
-
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--font-inter-tight",
-  weight: ["400", "500", "600"],
-  display: "swap",
-})
 
 const ORG_JSONLD = organizationJsonLd(
   "Empresa de desarrollo de software a medida y marketing digital: aplicaciones iOS y Android, sistemas y tiendas online desarrolladas desde cero, tiendas en Tiendanube, Empretienda, Shopify y WooCommerce, cuentas y anuncios en Mercado Libre, anuncios en Meta Ads, Google Ads y Mercado Libre Ads, sitios en WordPress y a medida, sistemas internos, IA aplicada, ciberseguridad, arquitectura de software e infraestructura cloud (Docker, AWS, VPS, redes, mantenimiento). Contrato con hitos y fechas, precio cerrado, factura y garantía por escrito.",
