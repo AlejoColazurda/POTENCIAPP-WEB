@@ -21,5 +21,10 @@ Fotos de [Pexels](https://www.pexels.com) (licencia libre, uso comercial, sin at
 | verificacion-en-dos-pasos-comercio.jpg | https://www.pexels.com/photo/27522927/ |
 | excel-o-sistema-a-medida.jpg | https://www.pexels.com/photo/7735769/ |
 | estafas-mails-sms-falsos-arca-bancos.jpg | https://www.pexels.com/photo/7821766/ |
+| mercado-libre-y-tienda-propia-stock.jpg | https://www.pexels.com/photo/6169033/ |
+| empleado-se-va-accesos-checklist.jpg | https://www.pexels.com/photo/8112169/ |
+| web-lenta-como-medirla.jpg | https://www.pexels.com/photo/4458420/ |
+| dominio-com-ar-a-tu-nombre-nic-argentina.jpg | https://www.pexels.com/photo/7875785/ |
+| como-recibir-proyecto-terminado-checklist.jpg | https://www.pexels.com/photo/7651554/ |
 
 Los artículos sin portada (`cover:` en el .md o "Imagen de portada" en /admin) muestran una portada con la marca, generada por `components/blog/cover.tsx`.
