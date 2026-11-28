@@ -1,7 +1,7 @@
 import type { BlogCategory, CategoryInfo, PublicBlogCategory } from "./types"
 
 /** Categories shown as public pills. Empty ones stay hidden. */
-export const PUBLIC_BLOG_CATEGORIES: readonly PublicBlogCategory[] = ["software", "security", "stores", "news"]
+export const PUBLIC_BLOG_CATEGORIES: readonly PublicBlogCategory[] = ["software", "security", "stores", "marketing", "news"]
 
 export const BLOG_CATEGORIES: Record<BlogCategory, CategoryInfo> = {
   software: {
@@ -24,6 +24,13 @@ export const BLOG_CATEGORIES: Record<BlogCategory, CategoryInfo> = {
     labelShort: "Tiendas",
     description: "Tiendas online: accesos, cobros y operación del panel.",
     color: "#22F23A",
+  },
+  marketing: {
+    id: "marketing",
+    label: "Visibilidad",
+    labelShort: "Visibilidad",
+    description: "Cómo hacer que te encuentren: Google Maps, reseñas, buscadores y anuncios.",
+    color: "#A855F7",
   },
   news: {
     id: "news",

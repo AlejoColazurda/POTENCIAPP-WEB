@@ -16,5 +16,10 @@ Fotos de [Pexels](https://www.pexels.com) (licencia libre, uso comercial, sin at
 | no-necesitas-una-app.jpg | https://www.pexels.com/photo/5839461/ |
 | programador-desaparecio-que-hacer.jpg | https://www.pexels.com/photo/5499551/ |
 | quien-es-dueno-del-codigo.jpg | https://www.pexels.com/photo/546819/ |
+| google-business-profile-aparecer-en-maps.jpg | https://www.pexels.com/photo/8475169/ |
+| tiendanube-empretienda-shopify-cual-elegir.jpg | https://www.pexels.com/photo/6956903/ |
+| verificacion-en-dos-pasos-comercio.jpg | https://www.pexels.com/photo/27522927/ |
+| excel-o-sistema-a-medida.jpg | https://www.pexels.com/photo/7735769/ |
+| estafas-mails-sms-falsos-arca-bancos.jpg | https://www.pexels.com/photo/7821766/ |
 
 Los artículos sin portada (`cover:` en el .md o "Imagen de portada" en /admin) muestran una portada con la marca, generada por `components/blog/cover.tsx`.
