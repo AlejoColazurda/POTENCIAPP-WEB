@@ -672,6 +672,10 @@
       "stores": {
         "label": "Stores",
         "short": "Stores"
+      },
+      "marketing": {
+        "label": "Visibility",
+        "short": "Visibility"
       }
     },
     "emptyCatalogTitle": "No notes published yet",
